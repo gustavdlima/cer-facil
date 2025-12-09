@@ -1,6 +1,6 @@
 # CER Fácil
 
-Sistema de gerenciamento de certificados digitais (CER).
+CERS e Oficina Ortopédica
 
 ## Tecnologias
 
