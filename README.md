@@ -64,3 +64,37 @@ cer-facil/
 ├── styles/               # Estilos globais
 └── package.json          # Dependências e scripts
 ```
+## Erros Conhecidos
+
+❌ Falha ao Carregar o Plugin Tailwind
+Este erro impede que o servidor seja iniciado, pois o Bun não consegue localizar o plugin do Tailwind CSS.
+
+```
+Código do Erro
+error: Failed to load lugins for Bun.Server:
+error: Cannot find package 'bun-plugin-tailwind' from 'home/user/cer-facil'
+
+```
+
+Como Corrigir:
+
+1- Garanta a Instalação Correta do Plugin:
+
+```Bash
+bun install bun-plugin-tailwind
+```
+2- Libere a Porta 3000 (Se Necessário):
+
+```Bash
+# 1. Identifica qual processo está usando a porta 3000
+sudo lsof -i :3000
+
+# 2. Encerra o processo usando a porta 3000
+sudo fuser -k 3000/tcp
+```
+
+Tente executar novamente
+
+```Bash
+bun dev
+```
