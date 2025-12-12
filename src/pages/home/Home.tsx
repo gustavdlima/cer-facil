@@ -1,5 +1,7 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import CersCards from "./components/cers-cards/CersCards";
+import NetworkInfo from "./components/network-info/NetworkInfo";
 
 export default function Home() {
   return (
@@ -12,11 +14,18 @@ export default function Home() {
         </CardHeader>
         <CardContent>
           <p className="text-muted-foreground mb-4">
-            Esta é a página inicial. Comece a construir sua aplicação aqui!
+            Este mapa inteligente foi criado para conectar pessoas com deficiência e suas famílares aos Centros Especializados em Reabilitação (CER's) do estado. De forma rápida e personalizada, você poderá:
+
+            Entender o que são os CER's e como funciona a rede de cuidado.
+
+            Descobrir quais unidades atendem ao tipo de deficiência que você busca.
+
+            Encontrar o CER mais adequado com base no seu município e necessidades específicas.
           </p>
-          <Button>Começar</Button>
         </CardContent>
       </Card>
+      <NetworkInfo />
+      <CersCards />
     </div>
   );
 }
