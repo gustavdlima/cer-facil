@@ -5,7 +5,7 @@ import NetworkInfo from "./components/network-info/NetworkInfo";
 
 export default function Home() {
   return (
-    <div className="container mx-auto p-8">
+    <div className="container mx-auto p-8 pt-24">
       <Card className="max-w-2xl mx-auto">
         <CardHeader>
           <CardTitle>Bem-vindo ao CER Fácil</CardTitle>
