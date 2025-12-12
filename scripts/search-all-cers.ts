@@ -1,7 +1,3 @@
-/**
- * Search for CER stablishments in pbb, Brazil
- */
-
 // CNES codes for all CERs in Paraíba state with their rehabilitation modalities
 
 const PARAIBA_CER_CODES = [
@@ -24,21 +20,20 @@ const PARAIBA_CER_CODES = [
 //
 async function fetchEstablishmentData(cnesCode: string) {
   try {
-    // Call CNES open data API endpoint
     const response = await fetch(`https://apidadosabertos.saude.gov.br/cnes/estabelecimentos/${cnesCode}`, {
       method: 'GET',
       headers: {
         'accept': 'application/json'
       }
     });
-    
+
     if (!response.ok) {
       throw new Error(`HTTP Error: ${response.status}`);
     }
-    
+
     const establishmentData = await response.json();
     console.log(`Data for ${cnesCode} received successfully!`);
-    
+
     return establishmentData;
   } catch (error) {
     console.error(`Error fetching ${cnesCode}:`, error.message);
@@ -46,17 +41,11 @@ async function fetchEstablishmentData(cnesCode: string) {
   }
 }
 
-/**
- * Fetch and display data for all CER establishments in Paraíba state
- * Iterates through all CNES codes and retrieves detailed information
- */
-
 async function fetchAllParaibaCERs() {
   for (const cnesCode of PARAIBA_CER_CODES) {
     const establishment = await fetchEstablishmentData(cnesCode);
-    
+
     if (establishment) {
-      // Display establishment information using API response field names
       console.log(`\n--- ${establishment.nome_fantasia || 'Name not available'} ---`);
       console.log(`CNES Code: ${establishment.codigo_cnes}`);
       console.log(`Legal Name: ${establishment.nome_razao_social || 'N/A'}`);
@@ -65,8 +54,7 @@ async function fetchAllParaibaCERs() {
       console.log(`Email: ${establishment.endereco_email_estabelecimento || 'N/A'}`);
       console.log(`Administrative Level: ${establishment.descricao_esfera_administrativa || 'N/A'}`);
     }
-    
-    // Rate limiting
+
     await new Promise(resolve => setTimeout(resolve, 500));
   }
 }
