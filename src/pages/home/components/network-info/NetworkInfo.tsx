@@ -8,8 +8,8 @@ export default function NetworkInfo() {
             <h1 className="font-bold text-5xl sm:text-4xl border-b-5 pb-4">O que é a Rede de Apoio à Pessoa com Deficiência (RCPD)</h1>
             <p className="m-5 text-justify">A Rede de Cuidado à Pessoa com Deficiência (RCPD) é uma política pública instituída pelo Ministério da Saúde em 2012, no âmbito da Rede de Atenção à Saúde (RAS) do SUS, como parte do programa Viver sem Limite (Plano Nacional dos Direitos da Pessoa com Deficiência como finalidade promover, por meio da integração e articulação de políticas, programas e ações, o exercício pleno e equitativo dos direitos das pessoas com deficiência). Seu objetivo é ampliar o acesso e qualificar o atendimento às pessoas com deficiência temporária ou permanente; progressiva, regressiva ou estável; intermitente ou contínua, no Sistema Único de Saúde (SUS). A RCPD funciona como uma articulação entre diferentes pontos de atenção do SUS, garantindo que a pessoa com deficiência seja acompanhada de forma integral em todas as fases da vida.</p>
 
-            <div className="grid grid-cols-3  m-10"> {/*div containing the three cards for the three atention points of the RCPD*/}
-                <div  > 
+            <div className="grid grid-cols-3  m-10">
+                <div  >
                     <Card className="max-w-2xl mx-auto m-5">
                         <CardHeader>
                             <CardTitle className="text-center text-5xl sm:text-3xl">Atenção Básica</CardTitle>
@@ -49,14 +49,14 @@ export default function NetworkInfo() {
                 </div>
             </div>
 
-            <div> {/*div containing the text for the three atention points*/}
+            <div>
                 <div>
                     <h1 className="font-bold text-5xl sm:text-4xl border-b-5 pb-4">Atenção Básica</h1>
                     <p className="m-5 text-justify">A Atenção Básica é a modalidade de atenção à saúde com maior grau de descentralização e capilaridade, sendo o ponto de entrada da Rede de Cuidados à Pessoa com Deficiência (RCPD). Seus principais pontos de atenção incluem as Unidades Básicas de Saúde (UBS), a eMulti- Equipes Multiprofissionais e a Atenção Odontológica.
                         A Atenção Básica tem como funções coordenar o cuidado, ordenar a rede de atenção à saúde, identificar riscos, necessidades e demandas, além de utilizar e articular tecnologias de cuidado individual e coletivo. Entre suas ações estratégicas destacam-se: identificação precoce de deficiências, acompanhamento de recém-nascidos de alto risco, educação em saúde voltada à prevenção de acidentes, acompanhamento domiciliar, apoio às famílias e orientação no ambiente escolar, garantindo acessibilidade e inclusão.
                     </p>
 
-                    <div className="m-5"> {/*div containing the text for the different components of the respective atention point*/}
+                    <div className="m-5">
                         <h2 className="font-bold text-5xl sm:text-2xl">Componentes da Atenção Básica</h2>
                         <div className="m-5">
                             <div>
@@ -83,7 +83,7 @@ export default function NetworkInfo() {
                     <h1 className="font-bold text-5xl sm:text-4xl border-b-5 pb-4">Atenção Especializada em Reabilitação</h1>
                     <p className="m-5 text-justify">A Atenção Especializada em Reabilitação da Rede de Cuidados à Pessoa com Deficiência (RCPD) abrange ações voltadas à reabilitação auditiva, física, visual, intelectual, ostomia e múltiplas deficiências. Esse componente é formado por diferentes pontos de atenção, incluindo Serviços de Reabilitação especializados, Centros Especializados em Reabilitação (CER), Centros de Especialidades Odontológicas (CEO) e Oficinas Ortopédicas, todos integrados à rede para garantir atendimento contínuo e coordenado.</p>
 
-                    <div className="m-5"> {/*div containing the text for the different components of the respective atention point*/}
+                    <div className="m-5">
                         <h2 className="font-bold text-5xl sm:text-2xl">Componentes Atenção Especializada em Reabilitação</h2>
                         <div className="m-5">
                             <div>
@@ -105,11 +105,8 @@ export default function NetworkInfo() {
                 <div>
                     <h1 className="font-bold text-5xl sm:text-4xl border-b-5 pb-4">Atenção Hospitalar e de Urgência e Emergência</h1>
                     <p className="m-5 text-justify">A Atenção Hospitalar e de Urgência e Emergência na Rede de Cuidados à Pessoa com Deficiência visa garantir atendimento imediato e especializado a pessoas com deficiência em situações críticas de saúde.</p>
-
-                    
                 </div>
-
             </div>
         </div>
     )
-} 
+}
