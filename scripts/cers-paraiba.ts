@@ -4,9 +4,9 @@
  */
 
 export interface CER {
-  cnes: string;          // National Health Establishment Registry code
-  nome: string;          // Institution name
-  modalidades: string[]; // Rehabilitation modalities offered
+  cnes: string;          
+  nome: string;         
+  modalidades: string[];
 }
 
 /**

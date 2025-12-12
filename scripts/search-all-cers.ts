@@ -24,8 +24,6 @@ const PARAIBA_CER_CODES = [
 //
 async function fetchEstablishmentData(cnesCode: string) {
   try {
-    console.log(`Fetching establishment ${cnesCode}...`);
-    
     // Call CNES open data API endpoint
     const response = await fetch(`https://apidadosabertos.saude.gov.br/cnes/estabelecimentos/${cnesCode}`, {
       method: 'GET',
@@ -54,8 +52,6 @@ async function fetchEstablishmentData(cnesCode: string) {
  */
 
 async function fetchAllParaibaCERs() {
-  console.log("Fetching all CERs in Paraíba state...");
-  
   for (const cnesCode of PARAIBA_CER_CODES) {
     const establishment = await fetchEstablishmentData(cnesCode);
     
