@@ -1,26 +1,41 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
+import { Button } from "@/components/ui/button";
 
 export default function Welcome() {
-    return (
-        <div>
-             <Card className="max-w-2xl mx-auto">
-                <CardHeader>
-                <CardTitle>Bem-vindo ao CER Fácil</CardTitle>
-                <CardDescription>
-                </CardDescription>
-                </CardHeader>
-                <CardContent>
-                <p className="text-muted-foreground mb-4">
-                    Este mapa inteligente foi criado para conectar pessoas com deficiência e suas famílares aos Centros Especializados em Reabilitação (CER's) do estado. De forma rápida e personalizada, você poderá:
+  const scrollToNetworkInfo = () => {
+    const element = document.getElementById("network-info");
+    element?.scrollIntoView({ behavior: "smooth" });
+  };
 
-                    Entender o que são os CER's e como funciona a rede de cuidado.
+  return (
+    <div className="w-screen h-screen flex items-center justify-center p-8">
+      <Card className="max-w-2xl">
+        <CardHeader className="text-center">
+          <CardTitle className="text-4xl font-bold">CER Fácil</CardTitle>
+          <CardDescription className="text-lg">
+            Conectamos pessoas com deficiência aos Centros de Reabilitação
+          </CardDescription>
+        </CardHeader>
 
-                    Descobrir quais unidades atendem ao tipo de deficiência que você busca.
+        <CardContent>
+          <p className="text-muted-foreground text-center leading-relaxed">
+            Seja bem-vindo ao CER Fácil. Aplicação voltada a facilitar o
+            conhecimento e acesso aos Centros de Reabilitação (CERs) para
+            pessoas com deficiência.
+          </p>
+        </CardContent>
 
-                    Encontrar o CER mais adequado com base no seu município e necessidades específicas.
-                </p>
-                </CardContent>
-            </Card>
-        </div>
-    )
+        <CardContent className="text-center">
+          <Button onClick={scrollToNetworkInfo}>Saber Mais</Button>
+        </CardContent>
+      </Card>
+    </div>
+  );
 }
