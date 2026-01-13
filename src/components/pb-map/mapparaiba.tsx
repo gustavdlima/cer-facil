@@ -8,6 +8,7 @@ import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 import { MACROS_PB } from './macros/data';
 import { CORES_REGIOES } from './macros/data';
+//import { dadosCers } from './dadosCers.js';
 
 let DefaultIcon = L.icon({
   iconUrl: markerIcon,
@@ -46,7 +47,6 @@ const MapParaiba = () => {
             color: 'white',
             fillOpacity: 1
           })
-          //return estilos[key - 1];
         }
       }
     }
@@ -56,24 +56,24 @@ const MapParaiba = () => {
   // Função que roda para CADA cidade (feature) do mapa
   const onEachCity = (feature, layer) => {
     // Tenta pegar o nome da cidade (pode variar dependendo do JSON)
-    const nomeCidade = feature.properties.name || feature.properties.NM_MUN || "Cidade Desconhecida";
+    const nameCity = feature.properties.name || feature.properties.NM_MUN || "Cidade Desconhecida";
 
     layer.on({
       // 1. Ao clicar na cidade
       click: (event) => {
         //alert(`Você clicou em: ${nomeCidade}`);
         // Aqui você pode colocar lógica para abrir um modal, navegar para outra página, etc.
-        console.log("Dados da cidade:", feature.properties);
+        //console.log("Dados da cidade:", feature.properties);
       },
 
-      // 2. Ao passar o mouse (Destaque)
+      // 2. Mouse over 
       mouseover: (event) => {
         event.target.setStyle({
           weight: 3,
-          color: '#f1c40f', // Borda Amarela
+          color: '#f1c40f', // Yellow border
           fillOpacity: 0.8
         });
-        event.target.bringToFront(); // Traz a cidade para frente para a borda não ficar escondida
+        event.target.bringToFront(); // featured city
       },
 
       // 3. Ao tirar o mouse (Volta ao normal)
@@ -88,21 +88,18 @@ const MapParaiba = () => {
     });
 
     // Adiciona uma etiqueta simples (Tooltip) que aparece ao passar o mouse
-    layer.bindTooltip(nomeCidade, { sticky: true });
+    layer.bindTooltip(nameCity, { sticky: true });
+     
+    
+   
+    var popupContent = `
+      <div style="font-size: 14px;">
+        <strong>${nameCity}</strong><br/>
+        <em>Este é o município destaque!</em>
+      </div>`;
 
-    const popupContent = `
-    <div style="font-family: sans-serif;">
-      <h4 style="margin: 0 0 5px 0; color: #2c3e50;">${nomeCidade}</h4>
-      <p style="margin: 0; font-size: 14px;">
-        <strong>População:</strong> hfhifofrrhrr
-      </p>
-      <hr />
-      <button onclick="console.log('Clicou em hdfhvihighfibhigehieh')" 
-              style="cursor:pointer; background:#3498db; color:white; border:none; padding:5px 10px; border-radius:3px;">
-        Ver detalhes
-      </button>
-    </div>
-  `;
+    layer.bindPopup(popupContent);
+
 
     // 3. Vinculamos o Popup à camada (município)
     layer.bindPopup(popupContent, {
@@ -130,9 +127,45 @@ const MapParaiba = () => {
           />
         )}
 
-        {/* Marcadores extras (opcionais) */}
+        {/*Cities that have the cer*/}
         <Marker position={[-7.115, -34.863]}>
           <Popup>João Pessoa</Popup>
+        </Marker>
+        <Marker position={[-7.224955, -35.896587]}>
+          <Popup>Campina Grande</Popup> 
+        </Marker>
+          <Marker position={[-6.768997, -38.230878]}>
+          <Popup>Sousa</Popup> 
+        </Marker>
+          <Marker position={[-7.020719, -37.278748]}>
+          <Popup>Patos</Popup> 
+        </Marker>
+          <Marker position={[-7.262097, -34.912868]}>
+          <Popup>Conde</Popup> 
+        </Marker>
+          <Marker position={[-6.854207, -35.476743]}>
+          <Popup>Guarabira</Popup> 
+        </Marker>
+          <Marker position={[-6.531348, -35.741093]}>
+          <Popup>Araruna</Popup> 
+        </Marker>
+          <Marker position={[-7.894509, -37.123576]}>
+          <Popup>Monteiro</Popup> 
+        </Marker>
+          <Marker position={[-7.197234, -37.924440]}>
+          <Popup>Piancó</Popup> 
+        </Marker>
+          <Marker position={[-6.342879, -37.748187]}>
+          <Popup>Catolé do Rocha</Popup> 
+        </Marker>
+          <Marker position={[-6.889504, -38.556146]}>
+          <Popup>Cajazeiras</Popup> 
+        </Marker>
+          <Marker position={[-7.484412, -36.662841]}>
+          <Popup>Serra Branca</Popup> 
+        </Marker>
+          <Marker position={[-7.735527, -37.992131]}>
+          <Popup>Princesa Isabel</Popup> 
         </Marker>
 
       </MapContainer>
