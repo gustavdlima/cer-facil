@@ -8,7 +8,7 @@ import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 import { MACROS_PB } from './macros/data';
 import { CORES_REGIOES } from './macros/data';
-//import { dadosCers } from './dadosCers.js';
+import { dadosCers } from '../dadosCers/dadosCers.js';
 
 let DefaultIcon = L.icon({
   iconUrl: markerIcon,
@@ -88,27 +88,29 @@ const MapParaiba = () => {
     });
 
     // Adiciona uma etiqueta simples (Tooltip) que aparece ao passar o mouse
-    layer.bindTooltip(nameCity, { sticky: true });
-     
-    
-   
-    var popupContent = `
-      <div style="font-size: 14px;">
-        <strong>${nameCity}</strong><br/>
-        <em>Este é o município destaque!</em>
-      </div>`;
+  layer.bindTooltip(nameCity, { sticky: true }); 
+  const municipiosComCer = ["João Pessoa", "Campina Grande", "Sousa", "Patos", "Conde", "Guarabira", "Araruna", "Monteiro", "Piancó", "Catolé do Rocha", "Cajazeiras", "Serra Branca", "Princesa Isabel"];
+  
+  let popupContent = "";
 
+  if (municipiosComCer.includes(nameCity)) {
+    popupContent = `
+              <div style="font-size: 14px;">
+                <strong>${nameCity}</strong><br/>
+                <em>Este é o município destaque! (Com CER)</em>
+              </div>`;
     layer.bindPopup(popupContent);
+  } else {
+    popupContent = `
+            <div style="font-size: 14px;">
+              <strong>${nameCity}</strong><br/>
+              <em>Não há Centro de Reabilitação Especializado.</em>
+            </div>`;
+    layer.bindPopup(popupContent);
+  }
 
-
-    // 3. Vinculamos o Popup à camada (município)
-    layer.bindPopup(popupContent, {
-      maxWidth: 250,      // Largura máxima da janelinha
-      className: 'custom-popup' // Você pode usar isso para estilizar no seu CSS
-    });
-
-
-  };
+  
+  }
 
   return (
     <div style={{ height: '500px', width: '100%', background: '#f4f4f4', borderRadius: '8px' }}>
