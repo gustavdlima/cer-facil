@@ -10,9 +10,16 @@ import { Button } from "@/components/ui/button";
 
 export default function Welcome() {
   const scrollToNetworkInfo = () => {
-    const element = document.getElementById("network-info");
-    element?.scrollIntoView({ behavior: "smooth" });
-  };
+  const element = document.getElementById("network-info");
+  if (element) {
+    const navbarHeight = 64; // altura da navbar (h-16)
+    const elementPosition = element.offsetTop - navbarHeight;
+    window.scrollTo({
+      top: elementPosition,
+      behavior: "smooth"
+    });
+  }
+};
 
   return (
     <div className="w-screen h-screen flex items-center justify-center p-8">
