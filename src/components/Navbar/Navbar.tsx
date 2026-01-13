@@ -1,3 +1,16 @@
+import { Button } from "@/components/ui/button";
+const scrollToNetworkInfo = () => {
+  const element = document.getElementById("network-info");
+  if (element) {
+    const navbarHeight = 64; // altura da navbar (h-16)
+    const elementPosition = element.offsetTop - navbarHeight;
+    window.scrollTo({
+      top: elementPosition,
+      behavior: "smooth"
+    });
+  }
+};
+
 export function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b bg-white shadow-sm">
@@ -7,13 +20,16 @@ export function Navbar() {
             <h1 className="text-xl font-semibold">CER Fácil</h1>
           </div>
           <div className="flex items-center space-x-4">
-            <a href="#" className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
+            <a href="#" className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium cursor-pointer select-none">
               Início
             </a>
-            <a href="#" className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
+            <div onClick={scrollToNetworkInfo} className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium cursor-pointer select-none">
+              Saber Mais
+            </div>
+            <a href="#" className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium cursor-pointer select-none">
               Contato
             </a>
-            <a href="#" className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
+            <a href="#" className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium cursor-pointer select-none">
               Sobre
             </a>
           </div>
