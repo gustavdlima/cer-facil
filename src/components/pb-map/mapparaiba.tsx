@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { MapContainer, Marker, Popup, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
+import L, { featureGroup } from 'leaflet';
 
 // Correção dos ícones padrão do Leaflet
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+import { MACROS_PB } from './macros/data';
+import { CORES_REGIOES } from './macros/data';
 
 let DefaultIcon = L.icon({
-    iconUrl: markerIcon,
-    shadowUrl: markerShadow,
-    iconSize: [25, 41],
-    iconAnchor: [12, 41]
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41]
 });
 L.Marker.prototype.options.icon = DefaultIcon;
 
@@ -27,14 +29,27 @@ const MapParaiba = () => {
       .then(data => setGeoData(data))
       .catch(err => console.error("Erro ao carregar mapa:", err));
   }, []);
+  
+  // Aplicar o estilo de acordo com a região
+  const aplicarEstilo = (feature, layer) => {
+    const nomeCidade = feature.properties.name || feature.properties.NM_MUN || "Cidade Desconhecida";
 
-  // Estilo padrão (Azul)
-  const estiloPadrao = {
-    fillColor: '#3498db',
-    weight: 1,
-    opacity: 1,
-    color: 'white', // Borda branca fina
-    fillOpacity: 1
+    for (const macroRegioes in MACROS_PB) {
+      const macro = MACROS_PB[macroRegioes];
+
+      for (const key in macro) {
+        if (macro[key]["municipios"].includes(nomeCidade)) {
+          return ({
+            fillColor: CORES_REGIOES[key - 1],
+            weight: 1,
+            opacity: 1,
+            color: 'white',
+            fillOpacity: 1
+          })
+          //return estilos[key - 1];
+        }
+      }
+    }
   };
 
   // --- A MÁGICA ACONTECE AQUI ---
@@ -48,7 +63,7 @@ const MapParaiba = () => {
       click: (event) => {
         //alert(`Você clicou em: ${nomeCidade}`);
         // Aqui você pode colocar lógica para abrir um modal, navegar para outra página, etc.
-        console.log("Dados da cidade:", feature.properties); 
+        console.log("Dados da cidade:", feature.properties);
       },
 
       // 2. Ao passar o mouse (Destaque)
@@ -63,7 +78,12 @@ const MapParaiba = () => {
 
       // 3. Ao tirar o mouse (Volta ao normal)
       mouseout: (event) => {
-        event.target.setStyle(estiloPadrao); // Reseta para o estilo original
+        event.target.setStyle({
+          weight: 1,
+          opacity: 1,
+          color: 'white',
+          fillOpacity: 1
+        }); // Reseta para o estilo original
       }
     });
 
@@ -84,29 +104,28 @@ const MapParaiba = () => {
     </div>
   `;
 
-  // 3. Vinculamos o Popup à camada (município)
-  layer.bindPopup(popupContent, {
-    maxWidth: 250,      // Largura máxima da janelinha
-    className: 'custom-popup' // Você pode usar isso para estilizar no seu CSS
-  });
+    // 3. Vinculamos o Popup à camada (município)
+    layer.bindPopup(popupContent, {
+      maxWidth: 250,      // Largura máxima da janelinha
+      className: 'custom-popup' // Você pode usar isso para estilizar no seu CSS
+    });
 
 
   };
 
   return (
     <div style={{ height: '500px', width: '100%', background: '#f4f4f4', borderRadius: '8px' }}>
-      <MapContainer 
-        center={position} 
-        zoom={zoomLevel} 
-        scrollWheelZoom={true} 
-        style={{ height: '100%', width: '100%', background: 'transparent' }} 
-      >
-        
+      <MapContainer
+        center={position}
+        zoom={zoomLevel}
+        scrollWheelZoom={true}
+        style={{ height: '100%', width: '100%', background: 'transparent' }}>
+
         {/* GeoJSON com a interatividade adicionada */}
         {geoData && (
-          <GeoJSON 
-            data={geoData} 
-            style={estiloPadrao} 
+          <GeoJSON
+            data={geoData}
+            style={aplicarEstilo}
             onEachFeature={onEachCity} // <--- Aqui conectamos a função de clique
           />
         )}
