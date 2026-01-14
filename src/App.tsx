@@ -3,6 +3,7 @@ import Home from "./pages/home/Home";
 import { Navbar } from "./components/Navbar/Navbar";
 import PbMap from "./components/pb-map/pb-map";
 import MapParaiba from "./components/pb-map/mapparaiba";
+import MapCaptions from "./components/pb-map/mapcaptions";
 
 export function App() {
   return (
@@ -10,6 +11,7 @@ export function App() {
       <Navbar />
       <Home />
        <MapParaiba/>
+       <MapCaptions/>
     </>
   );
 }
