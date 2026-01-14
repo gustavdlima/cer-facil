@@ -69,9 +69,9 @@ const MapParaiba = () => {
     const nameCity = feature.properties.name || feature.properties.NM_MUN || "Cidade Desconhecida";
 
     layer.on({
-    
+
       click: (event) => {
-      ;
+        ;
       },
 
       // 2. Mouse over 
@@ -100,7 +100,7 @@ const MapParaiba = () => {
     // // Adds a popup that appears when the city is clicked
     const CersCity = dadosCers.filter(cer => cer.cidade === nameCity);
     let popupContent = "";
-   if (CersCity.length > 0) {
+    if (CersCity.length > 0) {
       const listaCersHtml = CersCity.map(cer => `
         <div 
           onclick="window.navegarParaCer('${cer.id}')"
