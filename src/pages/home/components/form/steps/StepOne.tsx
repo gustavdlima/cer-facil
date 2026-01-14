@@ -10,9 +10,10 @@ import {
 
 interface StepOneProps {
   setShowForm: (show: boolean) => void;
+  onNext: () => void;
 }
 
-export default function StepOne({ setShowForm }: StepOneProps) {
+export default function StepOne({ setShowForm, onNext }: StepOneProps) {
   return (
     <div>
       <Card>
@@ -61,10 +62,8 @@ export default function StepOne({ setShowForm }: StepOneProps) {
         </CardContent>
 
         <CardContent className="flex justify-between">
-          <Button variant="outline" onClick={() => setShowForm(false)}>
-            Voltar
-          </Button>
-          <Button>Próximo</Button>
+          <Button onClick={() => setShowForm(false)}>Voltar</Button>
+          <Button onClick={onNext}>Próximo</Button>
         </CardContent>
       </Card>
     </div>
