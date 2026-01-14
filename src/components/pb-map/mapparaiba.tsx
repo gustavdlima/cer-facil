@@ -87,9 +87,9 @@ const MapParaiba = () => {
       }
     });
 
-    // Adiciona uma etiqueta simples (Tooltip) que aparece ao passar o mouse
+    // Adds a simple tooltip that appears on hover
     layer.bindTooltip(nameCity, { sticky: true });
-    // Adiciona um popup que aparece ao clicar na cidade
+    // // Adds a popup that appears when the city is clicked
     const CersCity = dadosCers.filter(cer => cer.cidade === nameCity);
 
     let popupContent = "";
