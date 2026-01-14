@@ -17,15 +17,11 @@ interface CerFormProps {
 
 export default function CerForm({ setShowForm }: CerFormProps) {
   return (
-    <Card>
-      <CardContent>
-        <div id="cer-form" className="container mx-auto p-8">
-          <StepOne setShowForm={setShowForm} />
-          <StepTwo />
-          <StepThree />
-          <StepFour />
-        </div>
-      </CardContent>
-    </Card>
+    <div id="cer-form" className="container mx-auto p-8">
+      <StepOne setShowForm={setShowForm} />
+      <StepTwo />
+      <StepThree />
+      <StepFour />
+    </div>
   );
 }
