@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { MapPin, Search, Loader2 } from "lucide-react";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 
 import {
   Card,
@@ -27,11 +29,54 @@ export default function StepThree({
 }: StepThreeProps) {
   const [cep, setCep] = useState("");
   const [location, setLocation] = useState("");
+  const [coordinates, setCoordinates] = useState<{
+    lat: number;
+    lon: number;
+  } | null>(null);
   const [loading, setLoading] = useState(false);
+  const mapRef = useRef<L.Map | null>(null);
+  const mapContainerRef = useRef<HTMLDivElement>(null);
+
+  // Inicializar mapa quando coordenadas mudarem
+  useEffect(() => {
+    if (coordinates && mapContainerRef.current) {
+      // Destruir mapa anterior se existir
+      if (mapRef.current) {
+        mapRef.current.remove();
+      }
+
+      // Criar novo mapa
+      const map = L.map(mapContainerRef.current).setView(
+        [coordinates.lat, coordinates.lon],
+        15
+      );
+
+      // Adicionar camada de tiles do OpenStreetMap
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      }).addTo(map);
+
+      // Adicionar marcador
+      L.marker([coordinates.lat, coordinates.lon])
+        .addTo(map)
+        .bindPopup("Sua localização")
+        .openPopup();
+
+      mapRef.current = map;
+    }
+
+    // Cleanup ao desmontar
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove();
+        mapRef.current = null;
+      }
+    };
+  }, [coordinates]);
 
   const getCepFromCoordinates = async (lat: number, lon: number) => {
     try {
-      // Usando API Nominatim (OpenStreetMap) para geocodificação reversa
       const response = await fetch(
         `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&addressdetails=1`
       );
@@ -47,6 +92,26 @@ export default function StepThree({
     }
   };
 
+  const getCoordinatesFromCep = async (cepValue: string) => {
+    try {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/search?postalcode=${cepValue}&country=Brazil&format=json`
+      );
+      const data = await response.json();
+
+      if (data && data.length > 0) {
+        return {
+          lat: parseFloat(data[0].lat),
+          lon: parseFloat(data[0].lon),
+        };
+      }
+      return null;
+    } catch (error) {
+      console.error("Erro ao buscar coordenadas:", error);
+      return null;
+    }
+  };
+
   const handleGeolocation = () => {
     if (navigator.geolocation) {
       setLoading(true);
@@ -56,8 +121,8 @@ export default function StepThree({
           const lon = position.coords.longitude;
           const loc = `${lat},${lon}`;
           setLocation(loc);
+          setCoordinates({ lat, lon });
 
-          // Buscar CEP baseado nas coordenadas
           const foundCep = await getCepFromCoordinates(lat, lon);
           if (foundCep) {
             setCep(foundCep);
@@ -72,9 +137,17 @@ export default function StepThree({
     }
   };
 
-  const handleCepSearch = () => {
+  const handleCepSearch = async () => {
     if (cep.length >= 8) {
-      setLocation(cep);
+      setLoading(true);
+      const coords = await getCoordinatesFromCep(cep);
+      if (coords) {
+        setCoordinates(coords);
+        setLocation(`${coords.lat},${coords.lon}`);
+      } else {
+        setLocation(cep);
+      }
+      setLoading(false);
     }
   };
 
@@ -134,15 +207,26 @@ export default function StepThree({
                   value={cep}
                   onChange={(e) => setCep(e.target.value)}
                 />
-                <Button onClick={handleCepSearch} variant="outline">
+                <Button
+                  onClick={handleCepSearch}
+                  variant="outline"
+                  disabled={loading}
+                >
                   <Search className="h-4 w-4" />
                 </Button>
               </div>
             </div>
 
-            {location && (
-              <div className="text-sm text-green-600">
-                ✓ Localização definida {cep && `(CEP: ${cep})`}
+            {location && coordinates && (
+              <div className="w-full max-w-sm space-y-2">
+                <div className="text-sm text-green-600 text-center">
+                  ✓ Localização definida {cep && `(CEP: ${cep})`}
+                </div>
+                {/* Container do mapa Leaflet */}
+                <div
+                  ref={mapContainerRef}
+                  className="w-full h-[300px] rounded-lg border"
+                />
               </div>
             )}
           </div>
