@@ -1,3 +1,6 @@
+import { Button } from "@/components/ui/button";
+import CerForm from "../form/CerForm";
+
 import {
   Card,
   CardContent,
@@ -6,20 +9,15 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { Button } from "@/components/ui/button";
+interface WelcomeProps {
+  showForm: boolean;
+  setShowForm: (show: boolean) => void;
+}
 
-export default function Welcome() {
-  const scrollToNetworkInfo = () => {
-  const element = document.getElementById("network-info");
-  if (element) {
-    const navbarHeight = 64; // altura da navbar (h-16)
-    const elementPosition = element.offsetTop - navbarHeight;
-    window.scrollTo({
-      top: elementPosition,
-      behavior: "smooth"
-    });
+export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
+  if (showForm) {
+    return <CerForm />;
   }
-};
 
   return (
     <div className="w-screen h-screen flex items-center justify-center p-8">
@@ -40,7 +38,7 @@ export default function Welcome() {
         </CardContent>
 
         <CardContent className="text-center">
-          <Button onClick={scrollToNetworkInfo}>Saber Mais</Button>
+          <Button onClick={() => setShowForm(true)}>Começar busca</Button>
         </CardContent>
       </Card>
     </div>
