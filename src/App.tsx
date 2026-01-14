@@ -15,3 +15,17 @@ export function App() {
 }
 
 export default App;
+
+/*
+Namoral, 
+decora, anota, aprende... isso aí, deu trabalho bolar isso
+
+App.tsx
+├── showForm = false (estado vive aqui)
+├── {!showForm && <Navbar />}  → !false = true → Navbar APARECE
+└── <Home showForm={false} setShowForm={função}>
+    ├── <Welcome showForm={false} setShowForm={função}>
+    │   └── if (showForm) → false → NÃO mostra CerForm
+    │   └── Mostra card de boas-vindas
+    └── {!showForm && ...}  → !false = true → NetworkInfo e CersCards APARECEM
+*/

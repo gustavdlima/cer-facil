@@ -11,12 +11,16 @@ import StepTwo from "./steps/StepTwo";
 import StepThree from "./steps/StepThree";
 import StepFour from "./steps/StepFour";
 
-export default function CerForm() {
+interface CerFormProps {
+  setShowForm: (show: boolean) => void;
+}
+
+export default function CerForm({ setShowForm }: CerFormProps) {
   return (
     <Card>
       <CardContent>
         <div id="cer-form" className="container mx-auto p-8">
-          <StepOne />
+          <StepOne setShowForm={setShowForm} />
           <StepTwo />
           <StepThree />
           <StepFour />

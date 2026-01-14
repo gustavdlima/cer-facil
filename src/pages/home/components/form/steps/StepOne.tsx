@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+
 import {
   Card,
   CardContent,
@@ -6,7 +8,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-export default function StepOne() {
+interface StepOneProps {
+  setShowForm: (show: boolean) => void;
+}
+
+export default function StepOne({ setShowForm }: StepOneProps) {
   return (
     <div>
       <Card>
@@ -52,6 +58,13 @@ export default function StepOne() {
               <CardDescription>EMOJI</CardDescription>
             </CardHeader>
           </Card>
+        </CardContent>
+
+        <CardContent className="flex justify-between">
+          <Button variant="outline" onClick={() => setShowForm(false)}>
+            Voltar
+          </Button>
+          <Button>Próximo</Button>
         </CardContent>
       </Card>
     </div>

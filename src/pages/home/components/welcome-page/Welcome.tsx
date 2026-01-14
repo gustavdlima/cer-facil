@@ -16,7 +16,7 @@ interface WelcomeProps {
 
 export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
   if (showForm) {
-    return <CerForm />;
+    return <CerForm setShowForm={setShowForm} />;
   }
 
   return (
