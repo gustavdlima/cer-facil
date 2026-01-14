@@ -3,6 +3,7 @@ import StepOne from "./steps/StepOne";
 import StepTwo from "./steps/StepTwo";
 import StepThree from "./steps/StepThree";
 import StepFour from "./steps/StepFour";
+import StepIndicator from "./step-indicator/StepIndicator";
 
 interface CerFormProps {
   setShowForm: (show: boolean) => void;
@@ -13,6 +14,12 @@ export default function CerForm({ setShowForm }: CerFormProps) {
 
   return (
     <div id="cer-form" className="container mx-auto p-8">
+      <StepIndicator
+        currentStep={currentStep}
+        totalSteps={4}
+        onStepClick={setCurrentStep}
+      />
+
       {currentStep === 1 && (
         <StepOne setShowForm={setShowForm} onNext={() => setCurrentStep(2)} />
       )}
