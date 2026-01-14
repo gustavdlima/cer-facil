@@ -12,6 +12,21 @@ interface CerFormProps {
 export default function CerForm({ setShowForm }: CerFormProps) {
   const [currentStep, setCurrentStep] = useState(1);
 
+  const [formData, setFormData] = useState({
+    deficiencies: [] as string[],
+    ageGroup: "",
+  });
+
+  const handleStepOneNext = (selectedDeficiencies: string[]) => {
+    setFormData({ ...formData, deficiencies: selectedDeficiencies });
+    setCurrentStep(2);
+  };
+
+  const handleStepTwoNext = (ageGroup: string) => {
+    setFormData({ ...formData, ageGroup });
+    setCurrentStep(3);
+  };
+
   return (
     <div id="cer-form" className="container mx-auto p-8">
       <StepIndicator
@@ -21,12 +36,13 @@ export default function CerForm({ setShowForm }: CerFormProps) {
       />
 
       {currentStep === 1 && (
-        <StepOne setShowForm={setShowForm} onNext={() => setCurrentStep(2)} />
+        <StepOne setShowForm={setShowForm} onNext={handleStepOneNext} />
       )}
       {currentStep === 2 && (
         <StepTwo
+          selectedDeficiencies={formData.deficiencies}
           onBack={() => setCurrentStep(1)}
-          onNext={() => setCurrentStep(3)}
+          onNext={handleStepTwoNext}
         />
       )}
       {currentStep === 3 && (
