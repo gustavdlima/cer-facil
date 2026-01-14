@@ -67,7 +67,7 @@ export const dadosCers = [
     nome: "CER/CERPPOD",
     especialidades: "Física e Intelectual",
     endereco: "Rua João Soares, 426 Jardim Califórnia CEP: 58700-318",
-    cidade: "Patos", 
+    cidade: "Patos",
     email: "*****",
     telefone: "(83) 99345-7829"
   },
@@ -115,5 +115,14 @@ export const dadosCers = [
     cidade: "Catolé do Rocha",
     email: "*******",
     telefone: "******"
+  },
+  {
+    id: 14,
+    nome: "Oficina Ortopédica - FUNAD",
+    especialidades: "Ortopédica",
+    endereco: "R. João Teixeira de Carvalho, SN - Pedro Gondim CEP: 58031-220",
+    cidade: "João Pessoa",
+    email: "funad@funad.pb.gov.br",
+    telefone: "(83) 3243-7368"
   }
 ];

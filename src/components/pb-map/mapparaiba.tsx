@@ -30,7 +30,7 @@ const MapParaiba = () => {
       .then(data => setGeoData(data))
       .catch(err => console.error("Erro ao carregar mapa:", err));
   }, []);
-  
+
   // Aplicar o estilo de acordo com a região
   const aplicarEstilo = (feature, layer) => {
     const nomeCidade = feature.properties.name || feature.properties.NM_MUN || "Cidade Desconhecida";
@@ -88,28 +88,36 @@ const MapParaiba = () => {
     });
 
     // Adiciona uma etiqueta simples (Tooltip) que aparece ao passar o mouse
-  layer.bindTooltip(nameCity, { sticky: true }); 
-  const municipiosComCer = ["João Pessoa", "Campina Grande", "Sousa", "Patos", "Conde", "Guarabira", "Araruna", "Monteiro", "Piancó", "Catolé do Rocha", "Cajazeiras", "Serra Branca", "Princesa Isabel"];
-  
-  let popupContent = "";
+    layer.bindTooltip(nameCity, { sticky: true });
+    // Adiciona um popup que aparece ao clicar na cidade
+    const CersCity = dadosCers.filter(cer => cer.cidade === nameCity);
 
-  if (municipiosComCer.includes(nameCity)) {
-    popupContent = `
-              <div style="font-size: 14px;">
-                <strong>${nameCity}</strong><br/>
-                <em>Este é o município destaque! (Com CER)</em>
-              </div>`;
-    layer.bindPopup(popupContent);
-  } else {
-    popupContent = `
-            <div style="font-size: 14px;">
-              <strong>${nameCity}</strong><br/>
-              <em>Não há Centro de Reabilitação Especializado.</em>
-            </div>`;
-    layer.bindPopup(popupContent);
-  }
+    let popupContent = "";
 
-  
+    if (CersCity.length > 0) {
+      const listaCersHtml = CersCity.map(cer => `
+    <div style="margin-bottom: 12px; border-bottom: 1px solid #ddd; padding-bottom: 8px;">
+      <strong>${cer.nome}</strong><br/>
+      
+      <em>${cer.endereco || 'Endereço não disponível'}</em><br/>
+      
+      <span style="font-size: 13px; color: #555;">${cer.especialidades}</span>
+    </div>
+  `).join('');
+      popupContent = `
+        <div style="font-size: 14px; max-height: 250px; overflow-y: auto;">
+          ${listaCersHtml}
+        </div>`;
+      layer.bindPopup(popupContent);
+    } else {
+      // Caso não encontre nenhum CER na filtragem (ou cidade não esteja na lista)
+      popupContent = `
+        <div style="font-size: 14px;">
+          <strong>${nameCity}</strong><br/>
+          <em>Não há Centro de Reabilitação Especializado listado.</em>
+        </div>`;
+      layer.bindPopup(popupContent);
+    }
   }
 
   return (
@@ -134,40 +142,34 @@ const MapParaiba = () => {
           <Popup>João Pessoa</Popup>
         </Marker>
         <Marker position={[-7.224955, -35.896587]}>
-          <Popup>Campina Grande</Popup> 
+          <Popup>Campina Grande</Popup>
         </Marker>
-          <Marker position={[-6.768997, -38.230878]}>
-          <Popup>Sousa</Popup> 
+        <Marker position={[-6.768997, -38.230878]}>
+          <Popup>Sousa</Popup>
         </Marker>
-          <Marker position={[-7.020719, -37.278748]}>
-          <Popup>Patos</Popup> 
+        <Marker position={[-7.020719, -37.278748]}>
+          <Popup>Patos</Popup>
         </Marker>
-          <Marker position={[-7.262097, -34.912868]}>
-          <Popup>Conde</Popup> 
+        <Marker position={[-7.262097, -34.912868]}>
+          <Popup>Conde</Popup>
         </Marker>
-          <Marker position={[-6.854207, -35.476743]}>
-          <Popup>Guarabira</Popup> 
+        <Marker position={[-6.854207, -35.476743]}>
+          <Popup>Guarabira</Popup>
         </Marker>
-          <Marker position={[-6.531348, -35.741093]}>
-          <Popup>Araruna</Popup> 
+        <Marker position={[-6.531348, -35.741093]}>
+          <Popup>Araruna</Popup>
         </Marker>
-          <Marker position={[-7.894509, -37.123576]}>
-          <Popup>Monteiro</Popup> 
+        <Marker position={[-7.894509, -37.123576]}>
+          <Popup>Monteiro</Popup>
         </Marker>
-          <Marker position={[-7.197234, -37.924440]}>
-          <Popup>Piancó</Popup> 
+        <Marker position={[-7.197234, -37.924440]}>
+          <Popup>Piancó</Popup>
         </Marker>
-          <Marker position={[-6.342879, -37.748187]}>
-          <Popup>Catolé do Rocha</Popup> 
+        <Marker position={[-6.342879, -37.748187]}>
+          <Popup>Catolé do Rocha</Popup>
         </Marker>
-          <Marker position={[-6.889504, -38.556146]}>
-          <Popup>Cajazeiras</Popup> 
-        </Marker>
-          <Marker position={[-7.484412, -36.662841]}>
-          <Popup>Serra Branca</Popup> 
-        </Marker>
-          <Marker position={[-7.735527, -37.992131]}>
-          <Popup>Princesa Isabel</Popup> 
+        <Marker position={[-7.735527, -37.992131]}>
+          <Popup>Princesa Isabel</Popup>
         </Marker>
 
       </MapContainer>

@@ -9,7 +9,7 @@ export function App() {
     <>
       <Navbar />
       <Home />
-      <MapParaiba/>
+       <MapParaiba/>
     </>
   );
 }
