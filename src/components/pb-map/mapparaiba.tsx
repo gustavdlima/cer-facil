@@ -9,6 +9,8 @@ import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 import { MACROS_PB } from './macros/data';
 import { CORES_REGIOES } from './macros/data';
 import { dadosCers } from '../dadosCers/dadosCers.js';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 let DefaultIcon = L.icon({
   iconUrl: markerIcon,
@@ -22,6 +24,20 @@ const MapParaiba = () => {
   const position = [-7.15, -36.5]; // Centralizei melhor visualmente
   const zoomLevel = 8;
   const [geoData, setGeoData] = useState(null);
+  //Navegação
+  const navigate = useNavigate();
+
+  //Para poder clicar e navegar
+  useEffect(() => {
+    window.navegarParaCer = (id) => {
+      // Se necessário
+      navigate(`/detalhes/${id}`);
+    };
+
+    return () => {
+      delete window.navegarParaCer;
+    };
+  }, [navigate]);
 
   // Busca os dados do mapa
   useEffect(() => {
@@ -91,20 +107,42 @@ const MapParaiba = () => {
     layer.bindTooltip(nameCity, { sticky: true });
     // // Adds a popup that appears when the city is clicked
     const CersCity = dadosCers.filter(cer => cer.cidade === nameCity);
-
     let popupContent = "";
-
-    if (CersCity.length > 0) {
+   if (CersCity.length > 0) {
       const listaCersHtml = CersCity.map(cer => `
-    <div style="margin-bottom: 12px; border-bottom: 1px solid #ddd; padding-bottom: 8px;">
-      <strong>${cer.nome}</strong><br/>
-      
-      <em>${cer.endereco || 'Endereço não disponível'}</em><br/>
-         <em>${cer.cidade || 'Cidade não disponível'}</em><br/>
-      
-      <span style="font-size: 13px; color: #555;">${cer.especialidades}</span>
-    </div>
-  `).join('');
+        <div 
+          onclick="window.navegarParaCer('${cer.id}')"
+          style="
+            display: block;
+            margin-bottom: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 8px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            background-color: white; 
+          "
+          onmouseover="this.style.backgroundColor='#f0f0f0';"
+          onmouseout="this.style.backgroundColor='white';"
+        >
+          <strong style="color: black; font-size: 15px;">
+            ${cer.nome}
+          </strong><br/>
+
+          <div style="font-size: 12px; color: #666; margin-bottom: 4px;">
+            ${cer.cidade || 'Cidade não disponível'}
+          </div>
+          
+          <div style="font-size: 12px; color: #555; font-style: italic;">
+            ${cer.especialidades}
+          </div>
+          
+          <div style="margin-top: 8px; font-size: 11px; text-align: right; color: #007bff;">
+            Ver detalhes &rarr;
+          </div>
+        </div>
+      `).join('');
+
       popupContent = `
         <div style="font-size: 14px; max-height: 250px; overflow-y: auto;">
           ${listaCersHtml}
