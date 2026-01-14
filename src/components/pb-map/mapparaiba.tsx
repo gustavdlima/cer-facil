@@ -100,6 +100,7 @@ const MapParaiba = () => {
       <strong>${cer.nome}</strong><br/>
       
       <em>${cer.endereco || 'Endereço não disponível'}</em><br/>
+         <em>${cer.cidade || 'Cidade não disponível'}</em><br/>
       
       <span style="font-size: 13px; color: #555;">${cer.especialidades}</span>
     </div>
@@ -110,7 +111,7 @@ const MapParaiba = () => {
         </div>`;
       layer.bindPopup(popupContent);
     } else {
-      // Caso não encontre nenhum CER na filtragem (ou cidade não esteja na lista)
+      // If no CER is found
       popupContent = `
         <div style="font-size: 14px;">
           <strong>${nameCity}</strong><br/>
