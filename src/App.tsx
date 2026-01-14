@@ -17,6 +17,7 @@ export function App() {
 export default App;
 
 /*
+
 Namoral, 
 decora, anota, aprende... isso aí, deu trabalho bolar isso
 
