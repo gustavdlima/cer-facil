@@ -1,21 +1,21 @@
 // data.js
 export const CORES_REGIOES = [
-  '#2596be',
-  '#00568b', 
-  '#0096db',
-  '#f47920',
-  '#004b25',
-  '#1e88b5',
-  '#0277bd',
-  '#e57300',
-  '#00695c',
-  '#1976d2',
-  '#ff8f00',
-  '#2e7d32',
-  '#1565c0',
-  '#ef6c00',
-  '#388e3c',
-  '#0d47a1'
+  '#1E3A8A',  // Azul marinho profundo
+  '#DC2626',  // Vermelho vivo
+  '#059669',  // Verde esmeralda
+  '#D97706',  // Âmbar quente
+  '#580073',  // Violeta vibrante
+  '#EA580C',  // Laranja forte
+  '#0891B2',  // Ciano brilhante
+  '#573e3e',  // Marrom
+  '#10B981',  // Verde lima
+  '#F59E0B',  // Amarelo mostarda
+  '#8B5CF6',  // Roxo lilás
+  '#F97316',  // Laranja queimado
+  '#0EA5E9',  // Azul céu claro
+  '#BE123C',  // Rosa magenta
+  '#14B8A6',  // Turquesa teal
+  '#FBBF24'   // Amarelo ouro
 ];
 
 export const MACROS_PB = {

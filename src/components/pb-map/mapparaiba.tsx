@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { MapContainer, Marker, Popup, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L, { featureGroup } from 'leaflet';
-
-// Correção dos ícones padrão do Leaflet
+// Fix Leaflet default icons
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 import { MACROS_PB } from './macros/data';
@@ -21,16 +20,13 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 const MapParaiba = () => {
-  const position = [-7.15, -36.5]; // Centralizei melhor visualmente
+  const position = [-7.15, -36.5]; // Center of Paraíba
   const zoomLevel = 8;
   const [geoData, setGeoData] = useState(null);
-  //Navegação
   const navigate = useNavigate();
 
-  //Para poder clicar e navegar
-  useEffect(() => {
+  useEffect(() => { //click navigation handler
     window.navegarParaCer = (id) => {
-      // Se necessário
       navigate(`/detalhes/${id}`);
     };
 
@@ -39,7 +35,7 @@ const MapParaiba = () => {
     };
   }, [navigate]);
 
-  // Busca os dados do mapa
+  //Load Paraíba map GeoJSON data
   useEffect(() => {
     fetch('https://raw.githubusercontent.com/tbrugz/geodata-br/master/geojson/geojs-25-mun.json')
       .then(response => response.json())
@@ -47,7 +43,7 @@ const MapParaiba = () => {
       .catch(err => console.error("Erro ao carregar mapa:", err));
   }, []);
 
-  // Aplicar o estilo de acordo com a região
+  // Color region style based on MACROS_PB
   const aplicarEstilo = (feature, layer) => {
     const nomeCidade = feature.properties.name || feature.properties.NM_MUN || "Cidade Desconhecida";
 
@@ -68,18 +64,14 @@ const MapParaiba = () => {
     }
   };
 
-  // --- A MÁGICA ACONTECE AQUI ---
-  // Função que roda para CADA cidade (feature) do mapa
+  // Funcion to handle city interactions
   const onEachCity = (feature, layer) => {
-    // Tenta pegar o nome da cidade (pode variar dependendo do JSON)
     const nameCity = feature.properties.name || feature.properties.NM_MUN || "Cidade Desconhecida";
 
     layer.on({
-      // 1. Ao clicar na cidade
+    
       click: (event) => {
-        //alert(`Você clicou em: ${nomeCidade}`);
-        // Aqui você pode colocar lógica para abrir um modal, navegar para outra página, etc.
-        //console.log("Dados da cidade:", feature.properties);
+      ;
       },
 
       // 2. Mouse over 
@@ -92,14 +84,14 @@ const MapParaiba = () => {
         event.target.bringToFront(); // featured city
       },
 
-      // 3. Ao tirar o mouse (Volta ao normal)
+      // normalize style on mouse out
       mouseout: (event) => {
         event.target.setStyle({
           weight: 1,
           opacity: 1,
           color: 'white',
           fillOpacity: 1
-        }); // Reseta para o estilo original
+        }); // normalize style
       }
     });
 
@@ -172,7 +164,7 @@ const MapParaiba = () => {
           <GeoJSON
             data={geoData}
             style={aplicarEstilo}
-            onEachFeature={onEachCity} // <--- Aqui conectamos a função de clique
+            onEachFeature={onEachCity} //function click handler
           />
         )}
 
