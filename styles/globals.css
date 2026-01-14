@@ -121,3 +121,10 @@
     font-family: "Outfit", system-ui, -apple-system, sans-serif;
   }
 }
+
+/* Leaflet Map Styles */
+.leaflet-container {
+  height: 400px;
+  width: 100%;
+  border-radius: 0.5rem;
+}
