@@ -1,5 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 interface StepThreeProps {
   onBack: () => void;
@@ -11,11 +18,28 @@ export default function StepThree({ onBack, onNext }: StepThreeProps) {
     <div>
       <Card>
         <CardHeader>
-          <CardTitle>Step Three</CardTitle>
+          <CardTitle>Localização</CardTitle>
+          <CardDescription>
+            Precisamos da sua localização para encontrar o CER mais apropriado
+            para você.
+          </CardDescription>
         </CardHeader>
+
         <CardContent>
-          <p>Conteúdo do passo 3</p>
+          <div>
+            <Button>Permitir Localização</Button>
+
+            <div>Ou</div>
+            <div>
+              <label>Digite seu CEP:</label>
+              <div>
+                <input type="number" placeholder="00000-000" maxLength={9} />
+                <button>Buscar</button>
+              </div>
+            </div>
+          </div>
         </CardContent>
+
         <CardContent className="flex justify-between">
           <Button onClick={onBack}>Voltar</Button>
           <Button onClick={onNext}>Próximo</Button>

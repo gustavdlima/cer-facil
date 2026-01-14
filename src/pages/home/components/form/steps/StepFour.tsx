@@ -10,10 +10,10 @@ export default function StepFour({ onBack }: StepFourProps) {
     <div>
       <Card>
         <CardHeader>
-          <CardTitle>Qual deficiência(s) deseja buscar atendimento?</CardTitle>
+          <CardTitle>QResultados</CardTitle>
         </CardHeader>
         <CardContent>
-          <p>Você pode selecionar mais de uma opção</p>
+          <p>O melhor CER para você</p>
         </CardContent>
         <CardContent className="flex justify-between">
           <Button onClick={onBack}>Voltar</Button>
