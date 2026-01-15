@@ -56,9 +56,7 @@ export default function StepFour({
           </div>
 
           <div className="border-2 border-dashed border-primary/50 p-8 rounded-lg text-center">
-            <p className="text-muted-foreground mb-4">
-              📍 ÁREA DE RESULTADOS - IMPLEMENTAR AQUI
-            </p>
+            <p className="text-muted-foreground mb-4"></p>
             <p className="text-sm text-muted-foreground">
               Aqui você deve exibir:
             </p>
