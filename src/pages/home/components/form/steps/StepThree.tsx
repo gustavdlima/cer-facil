@@ -1,10 +1,10 @@
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useState, useEffect, useRef } from "react";
 import { MapPin, Search, Loader2 } from "lucide-react";
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
+import { useState, useCallback } from "react";
+import "@/lib/leaflet-config";
 
 import {
   Card,
@@ -21,6 +21,11 @@ interface StepThreeProps {
   onNext: (location: string) => void;
 }
 
+interface LocationState {
+  lat: number;
+  lng: number;
+}
+
 export default function StepThree({
   selectedDeficiencies = [],
   ageGroup = "",
@@ -28,89 +33,15 @@ export default function StepThree({
   onNext,
 }: StepThreeProps) {
   const [cep, setCep] = useState("");
-  const [location, setLocation] = useState("");
-  const [coordinates, setCoordinates] = useState<{
-    lat: number;
-    lon: number;
-  } | null>(null);
+  const [showMap, setShowMap] = useState(false);
+  const [location, setLocation] = useState<LocationState | null>(null);
   const [loading, setLoading] = useState(false);
-  const mapRef = useRef<L.Map | null>(null);
-  const mapContainerRef = useRef<HTMLDivElement>(null);
 
-  // Inicializar mapa quando coordenadas mudarem
-  useEffect(() => {
-    if (coordinates && mapContainerRef.current) {
-      // Destruir mapa anterior se existir
-      if (mapRef.current) {
-        mapRef.current.remove();
-      }
-
-      // Criar novo mapa
-      const map = L.map(mapContainerRef.current).setView(
-        [coordinates.lat, coordinates.lon],
-        15
-      );
-
-      // Adicionar camada de tiles do OpenStreetMap
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      }).addTo(map);
-
-      // Adicionar marcador
-      L.marker([coordinates.lat, coordinates.lon])
-        .addTo(map)
-        .bindPopup("Sua localização")
-        .openPopup();
-
-      mapRef.current = map;
-    }
-
-    // Cleanup ao desmontar
-    return () => {
-      if (mapRef.current) {
-        mapRef.current.remove();
-        mapRef.current = null;
-      }
-    };
-  }, [coordinates]);
-
-  const getCepFromCoordinates = async (lat: number, lon: number) => {
-    try {
-      const response = await fetch(
-        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&addressdetails=1`
-      );
-      const data = await response.json();
-
-      if (data.address && data.address.postcode) {
-        return data.address.postcode.replace("-", "");
-      }
-      return null;
-    } catch (error) {
-      console.error("Erro ao buscar CEP:", error);
-      return null;
-    }
-  };
-
-  const getCoordinatesFromCep = async (cepValue: string) => {
-    try {
-      const response = await fetch(
-        `https://nominatim.openstreetmap.org/search?postalcode=${cepValue}&country=Brazil&format=json`
-      );
-      const data = await response.json();
-
-      if (data && data.length > 0) {
-        return {
-          lat: parseFloat(data[0].lat),
-          lon: parseFloat(data[0].lon),
-        };
-      }
-      return null;
-    } catch (error) {
-      console.error("Erro ao buscar coordenadas:", error);
-      return null;
-    }
-  };
+  const formatCep = useCallback((value: string) => {
+    const numbers = value.replace(/\D/g, "");
+    if (numbers.length <= 5) return numbers;
+    return `${numbers.slice(0, 5)}-${numbers.slice(5, 8)}`;
+  }, []);
 
   const handleGeolocation = () => {
     if (navigator.geolocation) {
@@ -118,42 +49,70 @@ export default function StepThree({
       navigator.geolocation.getCurrentPosition(
         async (position) => {
           const lat = position.coords.latitude;
-          const lon = position.coords.longitude;
-          const loc = `${lat},${lon}`;
-          setLocation(loc);
-          setCoordinates({ lat, lon });
+          const lng = position.coords.longitude;
+          setLocation({ lat, lng });
+          setShowMap(true);
 
-          const foundCep = await getCepFromCoordinates(lat, lon);
-          if (foundCep) {
-            setCep(foundCep);
+          // Buscar CEP a partir das coordenadas
+          try {
+            const response = await fetch(
+              `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&addressdetails=1`
+            );
+            const data = await response.json();
+
+            if (data.address && data.address.postcode) {
+              setCep(data.address.postcode.replace(/\D/g, ""));
+            }
+          } catch (error) {
+            console.error("Erro ao buscar CEP:", error);
           }
           setLoading(false);
         },
         (error) => {
           console.error("Erro ao obter localização:", error);
+          alert("Não foi possível obter sua localização");
           setLoading(false);
         }
       );
+    } else {
+      alert("Geolocalização não é suportada pelo seu navegador");
     }
   };
 
   const handleCepSearch = async () => {
-    if (cep.length >= 8) {
-      setLoading(true);
-      const coords = await getCoordinatesFromCep(cep);
-      if (coords) {
-        setCoordinates(coords);
-        setLocation(`${coords.lat},${coords.lon}`);
-      } else {
-        setLocation(cep);
-      }
-      setLoading(false);
+    if (cep.length < 8) {
+      alert("Digite um CEP válido");
+      return;
     }
+
+    setLoading(true);
+    try {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/search?postalcode=${cep.replace(
+          /\D/g,
+          ""
+        )}&country=Brazil&format=json`
+      );
+      const data = await response.json();
+
+      if (data && data.length > 0) {
+        const lat = parseFloat(data[0].lat);
+        const lng = parseFloat(data[0].lon);
+        setLocation({ lat, lng });
+        setShowMap(true);
+      } else {
+        alert("Não foi possível encontrar o CEP");
+      }
+    } catch (error) {
+      console.error("Erro ao buscar CEP:", error);
+      alert("Erro ao buscar CEP");
+    }
+    setLoading(false);
   };
 
-  const handleNext = () => {
-    if (location) {
-      onNext(location);
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && cep.length >= 8) {
+      handleCepSearch();
     }
   };
 
@@ -182,16 +141,11 @@ export default function StepThree({
               disabled={loading}
             >
               {loading ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Buscando localização...
-                </>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               ) : (
-                <>
-                  <MapPin className="mr-2 h-4 w-4" />
-                  Permitir Localização
-                </>
+                <MapPin className="mr-2 h-4 w-4" />
               )}
+              Permitir Localização
             </Button>
 
             <div className="text-muted-foreground text-sm">Ou</div>
@@ -202,41 +156,69 @@ export default function StepThree({
                 <Input
                   id="cep"
                   type="text"
-                  placeholder={cep || "00000-000"}
+                  placeholder="00000-000"
                   maxLength={9}
-                  value={cep}
-                  onChange={(e) => setCep(e.target.value)}
+                  value={formatCep(cep)}
+                  onChange={(e) => setCep(e.target.value.replace(/\D/g, ""))}
+                  onKeyPress={handleKeyPress}
                 />
                 <Button
                   onClick={handleCepSearch}
                   variant="outline"
-                  disabled={loading}
+                  disabled={cep.length < 8 || loading}
                 >
-                  <Search className="h-4 w-4" />
+                  {loading ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <Search className="h-4 w-4" />
+                  )}
                 </Button>
               </div>
             </div>
-
-            {location && coordinates && (
-              <div className="w-full max-w-sm space-y-2">
-                <div className="text-sm text-green-600 text-center">
-                  ✓ Localização definida {cep && `(CEP: ${cep})`}
-                </div>
-                {/* Container do mapa Leaflet */}
-                <div
-                  ref={mapContainerRef}
-                  className="w-full h-[300px] rounded-lg border"
-                />
-              </div>
-            )}
           </div>
+
+          {showMap && (
+            <div className="w-full space-y-2">
+              <div className="text-sm text-green-600 text-center">
+                ✓ Localização definida
+              </div>
+
+              <div className="w-full h-[300px] rounded-lg overflow-hidden border">
+                <MapContainer
+                  center={
+                    location ? [location.lat, location.lng] : [51.505, -0.09]
+                  }
+                  zoom={15}
+                  scrollWheelZoom={true}
+                  style={{ height: "100%", width: "100%" }}
+                >
+                  <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  />
+                  {location && (
+                    <Marker position={[location.lat, location.lng]}>
+                      <Popup>Sua localização</Popup>
+                    </Marker>
+                  )}
+                </MapContainer>
+              </div>
+            </div>
+          )}
         </CardContent>
 
         <CardContent className="flex justify-between">
           <Button variant="outline" onClick={onBack}>
             Voltar
           </Button>
-          <Button onClick={handleNext} disabled={!location}>
+          <Button
+            onClick={() => {
+              if (location && !isNaN(location.lat) && !isNaN(location.lng)) {
+                onNext(`${location.lat},${location.lng}`);
+              }
+            }}
+            disabled={!location}
+          >
             Próximo
           </Button>
         </CardContent>
