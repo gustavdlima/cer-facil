@@ -57,9 +57,7 @@ export default function StepFour({
 
           <div className="border-2 border-dashed border-primary/50 p-8 rounded-lg text-center">
             <p className="text-muted-foreground mb-4"></p>
-            <p className="text-sm text-muted-foreground">
-              Aqui você deve exibir:
-            </p>
+            <p className="text-sm text-muted-foreground"></p>
             <ul className="text-sm text-muted-foreground text-left max-w-md mx-auto mt-2 space-y-1">
               <li>• Lista de CERs encontrados</li>
               <li>• Informações de cada CER (nome, endereço, telefone)</li>
