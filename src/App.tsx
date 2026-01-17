@@ -1,24 +1,22 @@
-import { useState } from "react";
-import "./index.css";
-import Home from "./pages/home/components/Home";
-import { Navbar } from "./components/Navbar/Navbar";
-import PbMap from "./components/pb-map/pb-map";
-import MapParaiba from "./components/pb-map/mapparaiba";
-import MapCaptions from "./components/pb-map/mapcaptions";
+import CersCards from "./cers-cards/CersCards";
+import NetworkInfo from "./network-info/NetworkInfo";
+import Welcome from "./welcome-page/Welcome";
 
-export function App() {
-  const [showForm, setShowForm] = useState(false);
-
-  return (
-    <>
-      {!showForm && <Navbar />}
-      <Home showForm={showForm} setShowForm={setShowForm} />
-      <Navbar />
-      <Home />
-      <MapParaiba/>
-      <MapCaptions/>
-    </>
-  );
+interface HomeProps {
+  showForm: boolean;
+  setShowForm: (show: boolean) => void;
 }
 
-export default App;
+export default function Home({ showForm, setShowForm }: HomeProps) {
+  return (
+    <div>
+      <Welcome showForm={showForm} setShowForm={setShowForm} />
+      {!showForm && (
+        <>
+          <NetworkInfo />
+          <CersCards />
+        </>
+      )}
+    </div>
+  );
+}
