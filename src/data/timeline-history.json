@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Antes de 2012",
+    "description": "Fragmentação dos serviços, atendimento isolado e pouca articulação entre os pontos de atenção.",
+    "color": "bg-green-500"
+  },
+  {
+    "id": 2,
+    "title": "2012 – Instituição da RCPD",
+    "description": "Integração ao SUS, criação da Rede de Atenção à Saúde e lançamento do Plano Viver sem Limite.",
+    "color": "bg-blue-500"
+  },
+  {
+    "id": 3,
+    "title": "Expansão dos serviços",
+    "description": "Ampliação dos centros de reabilitação, tecnologias assistivas e atenção especializada em todo território.",
+    "color": "bg-purple-500"
+  },
+  {
+    "id": 4,
+    "title": "Consolidação do cuidado integral",
+    "description": "Comunicação entre serviços, acompanhamento contínuo e foco nos direitos das pessoas com deficiência.",
+    "color": "bg-orange-500"
+  },
+  {
+    "id": 5,
+    "title": "Rede em construção (Atual)",
+    "description": "Aprimoramento constante, enfrentamento de desafios regionais e avanço na inclusão e acessibilidade.",
+    "color": "bg-gray-400"
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "basic",
+    "title": "Atenção Básica",
+    "description": "Porta de entrada da Rede de Cuidados à Pessoa com Deficiência, com foco na coordenação do cuidado, prevenção e promoção da saúde.",
+    "components": [
+      {
+        "id": "ubs",
+        "title": "Unidades Básicas de Saúde (UBS)",
+        "content": "As Unidades Básicas de Saúde são centros de atendimento primário à saúde, onde atuam equipes de Saúde da Família responsáveis por ações de promoção, prevenção, diagnóstico, tratamento e acompanhamento. As UBSs representam a principal porta de entrada para o Sistema Único de Saúde (SUS), atendendo necessidades individuais e coletivas da população."
+      },
+      {
+        "id": "emulti",
+        "title": "Equipes Multiprofissionais (eMulti)",
+        "content": "As Equipes Multiprofissionais (eMulti) são compostas por profissionais de diferentes áreas do conhecimento que atuam de forma complementar e integrada às equipes da Atenção Primária à Saúde. Elas compartilham a responsabilidade sobre a mesma população e território, fortalecendo a articulação com outros serviços de saúde e com setores como educação, assistência social, cultura, lazer e esporte."
+      },
+      {
+        "id": "odontologica",
+        "title": "Atenção Odontológica",
+        "content": "A Atenção Odontológica na Rede de Cuidados à Pessoa com Deficiência é planejada considerando as necessidades específicas de cada usuário, incluindo diagnóstico médico, condições de saúde e limitações funcionais. Envolve ações de promoção da saúde, prevenção, tratamento e coordenação do cuidado ao longo de toda a rede, garantindo encaminhamentos adequados e acompanhamento contínuo."
+      }
+    ]
+  },
+  {
+    "id": "rehabilitation",
+    "title": "Atenção Especializada em Reabilitação",
+    "description": "Conjunto de serviços especializados voltados à reabilitação e ao cuidado multiprofissional das pessoas com deficiência.",
+    "components": [
+      {
+        "id": "cer",
+        "title": "Centros Especializados em Reabilitação (CER)",
+        "content": "Os Centros Especializados em Reabilitação oferecem atenção integral e multiprofissional, incluindo diagnóstico, tratamento, concessão, adaptação e manutenção de tecnologias assistivas. Desenvolvem Projetos Terapêuticos Individuais e garantem o acesso aos serviços por meio de transporte adaptado, conforme a necessidade."
+      },
+      {
+        "id": "ceo",
+        "title": "Centros de Especialidades Odontológicas (CEO)",
+        "content": "Os Centros de Especialidades Odontológicas realizam atendimento odontológico especializado para pessoas com deficiência, atuando como referência municipal ou regional e oferecendo apoio técnico às equipes da Atenção Básica."
+      },
+      {
+        "id": "oficinas",
+        "title": "Oficinas Ortopédicas",
+        "content": "As Oficinas Ortopédicas são responsáveis pela confecção, adaptação e manutenção de órteses, próteses e meios auxiliares de locomoção, contribuindo para a mobilidade, funcionalidade e autonomia das pessoas com deficiência."
+      }
+    ]
+  },
+  {
+    "id": "hospital",
+    "title": "Atenção Hospitalar e de Urgência e Emergência",
+    "description": "Atendimento imediato e especializado às pessoas com deficiência em situações críticas de saúde.",
+    "components": [
+      {
+        "id": "urgencia",
+        "title": "Serviços Hospitalares, de Urgência e Emergência",
+        "content": "Os serviços hospitalares e de urgência e emergência garantem atendimento oportuno, seguro e adequado às pessoas com deficiência em situações agudas ou de risco, assegurando acessibilidade, cuidado especializado e continuidade do acompanhamento após a alta."
+      }
+    ]
+  }
+]

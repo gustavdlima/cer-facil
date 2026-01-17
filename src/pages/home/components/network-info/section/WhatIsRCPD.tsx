@@ -6,7 +6,7 @@ export default function WhatIsRCPD() {
       <h1 className="font-bold text-5xl sm:text-4xl border-b-5 pb-4 text-left mb-6">
         O que é a Rede de Cuidado à Pessoa com Deficiência?
       </h1>
-      
+
       <div className="flex gap-8 items-start">
         <div id="left" className="flex-1">
           <p className="text-left">
