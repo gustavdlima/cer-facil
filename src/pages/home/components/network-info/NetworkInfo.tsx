@@ -1,14 +1,6 @@
-import { Button } from "@/components/ui/button";
 import WhatIsRCPD from "./section/WhatIsRCPD";
 import HistoryTimeline from "./section/HistoryTimeline";
 import AttentionLevel from "./section/AttentionLevel";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 
 export default function NetworkInfo() {
   return (
