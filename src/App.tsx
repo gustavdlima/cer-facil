@@ -5,9 +5,12 @@ import { Navbar } from "./components/Navbar/Navbar";
 import MapParaiba from "./components/pb-map/mapparaiba";
 import MapCaptions from "./components/pb-map/mapcaptions";
 
-export function App() {
-  const [showForm, setShowForm] = useState(false);
+interface HomeProps {
+  showForm: boolean;
+  setShowForm: (show: boolean) => void;
+}
 
+export default function Home({ showForm, setShowForm }: HomeProps) {
   return (
     <>
       {!showForm && <Navbar />}
@@ -23,4 +26,3 @@ export function App() {
 }
 
 export default App;
-// teste
