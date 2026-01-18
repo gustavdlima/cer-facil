@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { MapContainer, Marker, Popup, GeoJSON } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import L, { featureGroup } from 'leaflet';
+import React, { useEffect, useState } from "react";
+import { MapContainer, Marker, Popup, GeoJSON } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import L, { featureGroup } from "leaflet";
 // Fix Leaflet default icons
-import markerIcon from 'leaflet/dist/images/marker-icon.png';
-import markerShadow from 'leaflet/dist/images/marker-shadow.png';
-import { MACROS_PB } from './macros/data';
-import { CORES_REGIOES } from './macros/data';
-import { dadosCers } from '../dadosCers/dadosCers.js';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
+import { MACROS_PB } from "./macros/data";
+import { CORES_REGIOES } from "./macros/data";
+import { dadosCers } from "../dadosCers/dadosCers.js";
+import { useNavigate } from "react-router-dom";
 
 let DefaultIcon = L.icon({
   iconUrl: markerIcon,
   shadowUrl: markerShadow,
   iconSize: [25, 41],
-  iconAnchor: [12, 41]
+  iconAnchor: [12, 41],
 });
 L.Marker.prototype.options.icon = DefaultIcon;
 
@@ -25,7 +24,8 @@ const MapParaiba = () => {
   const [geoData, setGeoData] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => { //click navigation handler
+  useEffect(() => {
+    //click navigation handler
     window.navegarParaCer = (id) => {
       navigate(`/detalhes/${id}`);
     };
@@ -37,28 +37,33 @@ const MapParaiba = () => {
 
   //Load Paraíba map GeoJSON data
   useEffect(() => {
-    fetch('https://raw.githubusercontent.com/tbrugz/geodata-br/master/geojson/geojs-25-mun.json')
-      .then(response => response.json())
-      .then(data => setGeoData(data))
-      .catch(err => console.error("Erro ao carregar mapa:", err));
+    fetch(
+      "https://raw.githubusercontent.com/tbrugz/geodata-br/master/geojson/geojs-25-mun.json",
+    )
+      .then((response) => response.json())
+      .then((data) => setGeoData(data))
+      .catch((err) => console.error("Erro ao carregar mapa:", err));
   }, []);
 
   // Color region style based on MACROS_PB
   const aplicarEstilo = (feature, layer) => {
-    const nomeCidade = feature.properties.name || feature.properties.NM_MUN || "Cidade Desconhecida";
+    const nomeCidade =
+      feature.properties.name ||
+      feature.properties.NM_MUN ||
+      "Cidade Desconhecida";
 
     for (const macroRegioes in MACROS_PB) {
       const macro = MACROS_PB[macroRegioes];
 
       for (const key in macro) {
         if (macro[key]["municipios"].includes(nomeCidade)) {
-          return ({
+          return {
             fillColor: CORES_REGIOES[key - 1],
             weight: 1,
             opacity: 1,
-            color: 'white',
-            fillOpacity: 1
-          })
+            color: "white",
+            fillOpacity: 1,
+          };
         }
       }
     }
@@ -66,20 +71,20 @@ const MapParaiba = () => {
 
   // Funcion to handle city interactions
   const onEachCity = (feature, layer) => {
-    const nameCity = feature.properties.name || feature.properties.NM_MUN || "Cidade Desconhecida";
+    const nameCity =
+      feature.properties.name ||
+      feature.properties.NM_MUN ||
+      "Cidade Desconhecida";
 
     layer.on({
+      click: (event) => {},
 
-      click: (event) => {
-        ;
-      },
-
-      // 2. Mouse over 
+      // 2. Mouse over
       mouseover: (event) => {
         event.target.setStyle({
           weight: 3,
-          color: '#f1c40f', // Yellow border
-          fillOpacity: 0.8
+          color: "#f1c40f", // Yellow border
+          fillOpacity: 0.8,
         });
         event.target.bringToFront(); // featured city
       },
@@ -89,19 +94,20 @@ const MapParaiba = () => {
         event.target.setStyle({
           weight: 1,
           opacity: 1,
-          color: 'white',
-          fillOpacity: 1
+          color: "white",
+          fillOpacity: 1,
         }); // normalize style
-      }
+      },
     });
 
     // Adds a simple tooltip that appears on hover
     layer.bindTooltip(nameCity, { sticky: true });
     // // Adds a popup that appears when the city is clicked
-    const CersCity = dadosCers.filter(cer => cer.cidade === nameCity);
+    const CersCity = dadosCers.filter((cer) => cer.cidade === nameCity);
     let popupContent = "";
     if (CersCity.length > 0) {
-      const listaCersHtml = CersCity.map(cer => `
+      const listaCersHtml = CersCity.map(
+        (cer) => `
         <div 
           onclick="window.navegarParaCer('${cer.id}')"
           style="
@@ -122,7 +128,7 @@ const MapParaiba = () => {
           </strong><br/>
 
           <div style="font-size: 12px; color: #666; margin-bottom: 4px;">
-            ${cer.cidade || 'Cidade não disponível'}
+            ${cer.cidade || "Cidade não disponível"}
           </div>
           
           <div style="font-size: 12px; color: #555; font-style: italic;">
@@ -133,7 +139,8 @@ const MapParaiba = () => {
             Ver detalhes &rarr;
           </div>
         </div>
-      `).join('');
+      `,
+      ).join("");
 
       popupContent = `
         <div style="font-size: 14px; max-height: 250px; overflow-y: auto;">
@@ -149,16 +156,23 @@ const MapParaiba = () => {
         </div>`;
       layer.bindPopup(popupContent);
     }
-  }
+  };
 
   return (
-    <div style={{ height: '500px', width: '100%', background: '#f4f4f4', borderRadius: '8px' }}>
+    <div
+      style={{
+        height: "500px",
+        width: "100%",
+        background: "#f4f4f4",
+        borderRadius: "8px",
+      }}
+    >
       <MapContainer
         center={position}
         zoom={zoomLevel}
         scrollWheelZoom={true}
-        style={{ height: '100%', width: '100%', background: 'transparent' }}>
-
+        style={{ height: "100%", width: "100%", background: "transparent" }}
+      >
         {/* GeoJSON com a interatividade adicionada */}
         {geoData && (
           <GeoJSON
@@ -193,7 +207,7 @@ const MapParaiba = () => {
         <Marker position={[-7.894509, -37.123576]}>
           <Popup>Monteiro</Popup>
         </Marker>
-        <Marker position={[-7.197234, -37.924440]}>
+        <Marker position={[-7.197234, -37.92444]}>
           <Popup>Piancó</Popup>
         </Marker>
         <Marker position={[-6.342879, -37.748187]}>
@@ -202,7 +216,6 @@ const MapParaiba = () => {
         <Marker position={[-7.735527, -37.992131]}>
           <Popup>Princesa Isabel</Popup>
         </Marker>
-
       </MapContainer>
     </div>
   );

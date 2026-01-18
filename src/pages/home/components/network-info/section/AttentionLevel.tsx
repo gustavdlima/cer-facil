@@ -1,5 +1,4 @@
 import attentionLevels from "@/data/attention-levels.json";
-import type { AttentionLevel } from "@/types/attention-level";
 
 import {
   Card,
@@ -33,6 +32,7 @@ export default function AttentionLevel() {
                 <CardTitle className="text-center text-2xl font-normal">
                   {level.title}
                 </CardTitle>
+
                 <CardDescription className="text-center">
                   {level.description}
                 </CardDescription>
