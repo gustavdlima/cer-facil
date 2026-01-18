@@ -10,7 +10,7 @@ interface HomeProps {
   setShowForm: (show: boolean) => void;
 }
 
-export default function Home({ showForm, setShowForm }: HomeProps) {
+export function App({ showForm, setShowForm }: HomeProps) {
   return (
     <>
       {!showForm && <Navbar />}
