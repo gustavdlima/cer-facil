@@ -17,10 +17,7 @@ export function App() {
           <MapParaiba />
           <MapCaptions />
         </>
-      )}
+      )} 
     </>
   );
 }
-
-export default App;
-// teste
