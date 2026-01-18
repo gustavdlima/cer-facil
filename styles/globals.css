@@ -44,8 +44,9 @@
 }
 
 :root {
+  /* OK rgb(219, 227, 227);  */
   --radius: 0.625rem; /* OK */
-  --background: rgb(219, 227, 227); /* OK */
+  --background: rgb(255, 255, 255); /* OK */
   --foreground: rgb(0 0 0); /* OK */
   --card: rgb(255, 255, 255); /* OK */
   --card-foreground: rgb(0 0 0); /* OK */
@@ -118,6 +119,10 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: "Outfit", system-ui, -apple-system, sans-serif;
+    font-family:
+      "Outfit",
+      system-ui,
+      -apple-system,
+      sans-serif;
   }
 }
