@@ -1,4 +1,4 @@
-import "/home/davi/Desktop/PET/cer-facil/src/index.css";
+import "../../../index.css";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import MapParaiba from "@/components/pb-map/mapparaiba";
