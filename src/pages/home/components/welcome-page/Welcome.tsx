@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
   Card,
   CardContent,
@@ -9,7 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 export default function Welcome() {
-  const scrollToNetworkInfo = () => {
+  /*const scrollToNetworkInfo = () => {
   const element = document.getElementById("network-info");
   if (element) {
     const navbarHeight = 64; // altura da navbar (h-16)
@@ -19,7 +20,7 @@ export default function Welcome() {
       behavior: "smooth"
     });
   }
-};
+};*/
 
   return (
     <div className="w-screen h-screen flex items-center justify-center p-8">
@@ -40,7 +41,8 @@ export default function Welcome() {
         </CardContent>
 
         <CardContent className="text-center">
-          <Button onClick={scrollToNetworkInfo}>Saber Mais</Button>
+          <Button><Link to="/network-info">Saber Mais</Link></Button>
+          {/*<Button onClick={scrollToNetworkInfo}>Saber Mais</Button>*/}
         </CardContent>
       </Card>
     </div>

@@ -3,13 +3,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import CersCards from "./cers-cards/CersCards";
 import NetworkInfo from "./network-info/NetworkInfo";
 import Welcome from "./welcome-page/Welcome";
+import MapParaiba from "@/components/pb-map/mapparaiba";
 
 export default function Home() {
   return (
     <div>
+      <MapParaiba/>
       <Welcome />
-      <NetworkInfo />
-      <CersCards />
+      {/*<NetworkInfo />*/}
+      {/*<CersCards />*/}
     </div>
   );
 }

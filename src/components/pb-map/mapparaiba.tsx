@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { MapContainer, Marker, Popup, GeoJSON } from 'react-leaflet';
+import MapCaptions from './mapcaptions.js';
 import 'leaflet/dist/leaflet.css';
 import L, { featureGroup } from 'leaflet';
 // Fix Leaflet default icons
@@ -152,58 +153,67 @@ const MapParaiba = () => {
   }
 
   return (
-    <div style={{ height: '500px', width: '100%', background: '#f4f4f4', borderRadius: '8px' }}>
-      <MapContainer
-        center={position}
-        zoom={zoomLevel}
-        scrollWheelZoom={true}
-        style={{ height: '100%', width: '100%', background: 'transparent' }}>
+    <div style={{background:'#f4f4f4'}} className='w-screen h-screen justify-center items-center flex flex-col pt-10'>
+      <div style={{ height: '500px', width: '100%', borderRadius: '8px' }}>
+        <MapContainer
+          center={position}
+          zoom={zoomLevel}
+          scrollWheelZoom={true}
+          style={{ height: '100%', width: '100%', background: 'transparent' }}
+          zoomControl={false}        
+          doubleClickZoom={false}    
+          scrollWheelZoom={false}    
+          boxZoom={false}            
+          touchZoom={false}         
+          dragging={false}     
+          keyboard={false}>
 
-        {/* GeoJSON com a interatividade adicionada */}
-        {geoData && (
-          <GeoJSON
-            data={geoData}
-            style={aplicarEstilo}
-            onEachFeature={onEachCity} //function click handler
-          />
-        )}
+          {/* GeoJSON com a interatividade adicionada */}
+          {geoData && (
+            <GeoJSON
+              data={geoData}
+              style={aplicarEstilo}
+              onEachFeature={onEachCity} //function click handler
+            />
+          )}
 
-        {/*Cities that have the cer*/}
-        <Marker position={[-7.115, -34.863]}>
-          <Popup>João Pessoa</Popup>
-        </Marker>
-        <Marker position={[-7.224955, -35.896587]}>
-          <Popup>Campina Grande</Popup>
-        </Marker>
-        <Marker position={[-6.768997, -38.230878]}>
-          <Popup>Sousa</Popup>
-        </Marker>
-        <Marker position={[-7.020719, -37.278748]}>
-          <Popup>Patos</Popup>
-        </Marker>
-        <Marker position={[-7.262097, -34.912868]}>
-          <Popup>Conde</Popup>
-        </Marker>
-        <Marker position={[-6.854207, -35.476743]}>
-          <Popup>Guarabira</Popup>
-        </Marker>
-        <Marker position={[-6.531348, -35.741093]}>
-          <Popup>Araruna</Popup>
-        </Marker>
-        <Marker position={[-7.894509, -37.123576]}>
-          <Popup>Monteiro</Popup>
-        </Marker>
-        <Marker position={[-7.197234, -37.924440]}>
-          <Popup>Piancó</Popup>
-        </Marker>
-        <Marker position={[-6.342879, -37.748187]}>
-          <Popup>Catolé do Rocha</Popup>
-        </Marker>
-        <Marker position={[-7.735527, -37.992131]}>
-          <Popup>Princesa Isabel</Popup>
-        </Marker>
-
-      </MapContainer>
+          {/*Cities that have the cer*/}
+          <Marker position={[-7.115, -34.863]}>
+            <Popup>João Pessoa</Popup>
+          </Marker>
+          <Marker position={[-7.224955, -35.896587]}>
+            <Popup>Campina Grande</Popup>
+          </Marker>
+          <Marker position={[-6.768997, -38.230878]}>
+            <Popup>Sousa</Popup>
+          </Marker>
+          <Marker position={[-7.020719, -37.278748]}>
+            <Popup>Patos</Popup>
+          </Marker>
+          <Marker position={[-7.262097, -34.912868]}>
+            <Popup>Conde</Popup>
+          </Marker>
+          <Marker position={[-6.854207, -35.476743]}>
+            <Popup>Guarabira</Popup>
+          </Marker>
+          <Marker position={[-6.531348, -35.741093]}>
+            <Popup>Araruna</Popup>
+          </Marker>
+          <Marker position={[-7.894509, -37.123576]}>
+            <Popup>Monteiro</Popup>
+          </Marker>
+          <Marker position={[-7.197234, -37.924440]}>
+            <Popup>Piancó</Popup>
+          </Marker>
+          <Marker position={[-6.342879, -37.748187]}>
+            <Popup>Catolé do Rocha</Popup>
+          </Marker>
+          <Marker position={[-7.735527, -37.992131]}>
+            <Popup>Princesa Isabel</Popup>
+          </Marker>
+        </MapContainer>
+      </div>
+      <MapCaptions/>
     </div>
   );
 };

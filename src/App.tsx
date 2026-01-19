@@ -10,8 +10,8 @@ export function App() {
     <>
       <Navbar />
       <Home />
-       <MapParaiba/>
-       <MapCaptions/>
+       {/*<MapParaiba/>
+       <MapCaptions/>*/}
     </>
   );
 }
