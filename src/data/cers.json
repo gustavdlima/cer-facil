@@ -15,6 +15,7 @@
     "localizacao": {
       "latitude": -7.115885053215442,
       "longitude": -34.84567292230965,
+      "googleMapsUrl": "https://maps.app.goo.gl/gKApu4krsX8RSG8u7",
       "cnes": 2343479
     }
   },
@@ -34,6 +35,7 @@
     "localizacao": {
       "latitude": -7.1164654561785925,
       "longitude": -34.86104710313134,
+      "googleMapsUrl": "https://maps.app.goo.gl/MqbmGFV2qznCvhFS8",
       "cnes": 2755718
     }
   },
@@ -53,6 +55,7 @@
     "localizacao": {
       "latitude": -7.260855669128239,
       "longitude": -34.910269040774466,
+      "googleMapsUrl": "https://maps.app.goo.gl/uCvLQtoaX6Ay9Wak6",
       "cnes": 5925207
     }
   },
@@ -72,6 +75,7 @@
     "localizacao": {
       "latitude": -6.856553668322056,
       "longitude": -35.48676177667847,
+      "googleMapsUrl": "https://maps.app.goo.gl/cqGs52MrNk3KpcBW9",
       "cnes": 3360415
     }
   },
@@ -91,6 +95,7 @@
     "localizacao": {
       "latitude": -6.538714358271043,
       "longitude": -35.74511436508894,
+      "googleMapsUrl": "https://maps.app.goo.gl/HktZz1ucq93ShcMy8",
       "cnes": 2608073
     }
   },
@@ -110,6 +115,7 @@
     "localizacao": {
       "latitude": -7.220769214036645,
       "longitude": -35.923900619771736,
+      "googleMapsUrl": "https://maps.app.goo.gl/N4DNf6CeewoC5ZUV7",
       "cnes": 2362619
     }
   },
@@ -129,6 +135,7 @@
     "localizacao": {
       "latitude": -7.237977146540875,
       "longitude": -35.87361327550724,
+      "googleMapsUrl": "https://maps.app.goo.gl/va4PL6z5Tdu8m67y8",
       "cnes": 2612747
     }
   },
@@ -148,6 +155,7 @@
     "localizacao": {
       "latitude": -7.022436928149719,
       "longitude": -37.271482944488525,
+      "googleMapsUrl": "https://maps.app.goo.gl/aWRWoWHxGiLpYqvW7",
       "cnes": 3015610
     }
   },
@@ -167,6 +175,7 @@
     "localizacao": {
       "latitude": -7.893351551410474,
       "longitude": -37.12127923965454,
+      "googleMapsUrl": "https://maps.app.goo.gl/r3diZ4KRcKFVU8qS6",
       "cnes": 6528880
     }
   },
@@ -186,6 +195,7 @@
     "localizacao": {
       "latitude": -7.734210913311654,
       "longitude": -38.00321102142334,
+      "googleMapsUrl": "https://maps.app.goo.gl/FbscQbFJ4A1jzj138",
       "cnes": 9562966
     }
   },
@@ -205,6 +215,7 @@
     "localizacao": {
       "latitude": -6.780643,
       "longitude": -38.24783,
+      "googleMapsUrl": "https://maps.app.goo.gl/pzF2j2RxqE9EnnSbA",
       "cnes": 9585370
     }
   },
@@ -224,6 +235,7 @@
     "localizacao": {
       "latitude": -7.1992828,
       "longitude": -37.9199047,
+      "googleMapsUrl": "",
       "cnes": 2609061
     }
   },
@@ -262,6 +274,7 @@
     "localizacao": {
       "latitude": -7.115885053215442,
       "longitude": -34.84567292230965,
+      "googleMapsUrl": "https://maps.app.goo.gl/vevWZY9XiMmV1Y3T8",
       "cnes": 2343479
     }
   },
@@ -281,6 +294,7 @@
     "localizacao": {
       "latitude": -7.114701031390794,
       "longitude": -34.86303895711899,
+      "googleMapsUrl": "https://maps.app.goo.gl/KBe5M3QArFx7d7n78",
       "cnes": 3871002
     }
   }
