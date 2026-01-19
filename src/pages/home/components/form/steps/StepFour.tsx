@@ -8,6 +8,7 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import cersData from "@/data/cers.json";
+import { Bold } from "lucide-react";
 
 interface StepFourProps {
   deficiencies?: string[];
@@ -18,7 +19,7 @@ interface StepFourProps {
 }
 
 interface MatchingResult {
-  cer: typeof cersData[0];
+  cer: (typeof cersData)[0];
   score: number;
   distancia: number;
   compatibilidade: number;
@@ -35,15 +36,22 @@ export default function StepFour({
   const [loading, setLoading] = useState(true);
 
   // Função para calcular distância real entre coordenadas (Haversine)
-  function calcularDistanciaReal(lat1: number, lng1: number, lat2: number, lng2: number): number {
+  function calcularDistanciaReal(
+    lat1: number,
+    lng1: number,
+    lat2: number,
+    lng2: number,
+  ): number {
     const R = 6371; // Raio da Terra em km
-    const dLat = (lat2 - lat1) * Math.PI / 180;
-    const dLng = (lng2 - lng1) * Math.PI / 180;
-    const a = 
-      Math.sin(dLat/2) * Math.sin(dLat/2) +
-      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
-      Math.sin(dLng/2) * Math.sin(dLng/2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    const dLat = ((lat2 - lat1) * Math.PI) / 180;
+    const dLng = ((lng2 - lng1) * Math.PI) / 180;
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos((lat1 * Math.PI) / 180) *
+        Math.cos((lat2 * Math.PI) / 180) *
+        Math.sin(dLng / 2) *
+        Math.sin(dLng / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     return R * c;
   }
 
@@ -54,30 +62,37 @@ export default function StepFour({
     }
 
     const matchedCERs = cersData
-      .map(cer => {
+      .map((cer) => {
         // Calcular compatibilidade com deficiências
-        const compatibilidade = deficiencies.filter(def => 
-          cer.especialidades.some(esp => 
-            esp.toLowerCase().includes(def.toLowerCase()) ||
-            def.toLowerCase().includes(esp.toLowerCase())
-          )
-        ).length / deficiencies.length;
-        
+        const compatibilidade =
+          deficiencies.filter((def) =>
+            cer.especialidades.some(
+              (esp) =>
+                esp.toLowerCase().includes(def.toLowerCase()) ||
+                def.toLowerCase().includes(esp.toLowerCase()),
+            ),
+          ).length / deficiencies.length;
+
         // Calcular distância real usando coordenadas GPS do usuário
         const distancia = calcularDistanciaReal(
-          userCoordinates.lat, 
-          userCoordinates.lng, 
-          cer.localizacao.latitude, 
-          cer.localizacao.longitude
+          userCoordinates.lat,
+          userCoordinates.lng,
+          cer.localizacao.latitude,
+          cer.localizacao.longitude,
         );
-        
+
         // Score baseado em compatibilidade (70%) e proximidade (30%)
-        const scoreDistancia = Math.max(0, 1 - (distancia / 200));
-        const score = (compatibilidade * 0.7) + (scoreDistancia * 0.3);
-        
-        return { cer, score, distancia: Math.round(distancia * 10) / 10, compatibilidade };
+        const scoreDistancia = Math.max(0, 1 - distancia / 200);
+        const score = compatibilidade * 0.7 + scoreDistancia * 0.3;
+
+        return {
+          cer,
+          score,
+          distancia: Math.round(distancia * 10) / 10,
+          compatibilidade,
+        };
       })
-      .filter(result => result.compatibilidade > 0)
+      .filter((result) => result.compatibilidade > 0)
       .sort((a, b) => b.score - a.score);
 
     setResults(matchedCERs);
@@ -99,7 +114,9 @@ export default function StepFour({
     <div className="space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle>Resultados da Busca</CardTitle>
+          <CardTitle className="text-2xl font-semibold">
+            Resultados da Busca
+          </CardTitle>
           <CardDescription>
             CERs ordenados por compatibilidade e proximidade
           </CardDescription>
@@ -107,11 +124,11 @@ export default function StepFour({
 
         <CardContent className="space-y-6">
           <div className="bg-muted p-4 rounded-lg space-y-2">
-            <h3 className="font-semibold text-lg">Dados da sua busca:</h3>
+            <h3 className="font-normal text-lg">Dados da sua busca:</h3>
 
             <div>
-              <strong>Deficiências:</strong>
-              <ul className="list-disc list-inside ml-4">
+              <p>Deficiências:</p>
+              <ul className="list-disc list-inside ml-4 text-normal">
                 {deficiencies.map((def, index) => (
                   <li key={index}>{def}</li>
                 ))}
@@ -119,14 +136,18 @@ export default function StepFour({
             </div>
 
             <div>
-              <strong>Faixa etária:</strong> {ageGroup}
+              <ul className="list-disc list-inside ml-4 font-normal">
+                Faixa etária:
+                <li>{ageGroup}</li>
+              </ul>
             </div>
 
             <div>
               <strong>Localização:</strong> {location}
               {userCoordinates && (
                 <span className="text-xs text-muted-foreground ml-2">
-                  ({userCoordinates.lat.toFixed(4)}, {userCoordinates.lng.toFixed(4)})
+                  ({userCoordinates.lat.toFixed(4)},{" "}
+                  {userCoordinates.lng.toFixed(4)})
                 </span>
               )}
             </div>
@@ -134,18 +155,24 @@ export default function StepFour({
 
           <div>
             <h3 className="font-semibold text-lg mb-4">
-              CERs Recomendados ({results.length} encontrado{results.length !== 1 ? 's' : ''})
+              CERs Recomendados ({results.length} encontrado
+              {results.length !== 1 ? "s" : ""})
             </h3>
-            
+
             {results.length === 0 ? (
               <div className="text-center p-8 text-muted-foreground border-2 border-dashed border-primary/50 rounded-lg">
                 <p>Nenhum CER encontrado para as deficiências selecionadas.</p>
-                <p className="text-sm mt-2">Tente ajustar os filtros ou entre em contato conosco.</p>
+                <p className="text-sm mt-2">
+                  Tente ajustar os filtros ou entre em contato conosco.
+                </p>
               </div>
             ) : (
               <div className="space-y-4">
                 {results.slice(0, 5).map((result, index) => (
-                  <Card key={result.cer.id} className="border-l-4 border-l-primary">
+                  <Card
+                    key={result.cer.id}
+                    className="border-l-4 border-l-primary"
+                  >
                     <CardContent className="p-4">
                       <div className="flex justify-between items-start">
                         <div className="flex-1">
@@ -153,37 +180,46 @@ export default function StepFour({
                             <span className="bg-secondary text-secondary-foreground px-2 py-1 rounded text-sm font-medium">
                               #{index + 1}
                             </span>
-                            <h4 className="font-semibold text-lg">{result.cer.nome}</h4>
+                            <h4 className="font-semibold text-lg">
+                              {result.cer.nome}
+                            </h4>
                           </div>
-                          
+
                           <p className="text-sm text-muted-foreground mb-2">
-                            {result.cer.endereco.rua}, {result.cer.endereco.numero} - {result.cer.endereco.bairro}
+                            {result.cer.endereco.rua},{" "}
+                            {result.cer.endereco.numero} -{" "}
+                            {result.cer.endereco.bairro}
                           </p>
                           <p className="text-sm text-muted-foreground mb-3">
                             {result.cer.cidade} - CEP: {result.cer.endereco.cep}
                           </p>
-                          
+
                           <div className="flex gap-4 text-sm mb-3">
-                            <span>📍 {result.distancia}km</span>
-                            <span>🎯 {(result.compatibilidade * 100).toFixed(0)}% compatível</span>
-                            <span>⭐ Score: {(result.score * 100).toFixed(0)}</span>
+                            <span>Disntância: {result.distancia}km</span>
                           </div>
-                          
+
                           <div>
-                            <p className="text-xs font-medium mb-1">Especialidades:</p>
+                            <p className="text-xs font-medium mb-1">
+                              Especialidades:
+                            </p>
                             <div className="flex flex-wrap gap-1">
-                              {result.cer.especialidades.map(esp => {
-                                const isMatch = deficiencies.some(def => 
-                                  esp.toLowerCase().includes(def.toLowerCase()) ||
-                                  def.toLowerCase().includes(esp.toLowerCase())
+                              {result.cer.especialidades.map((esp) => {
+                                const isMatch = deficiencies.some(
+                                  (def) =>
+                                    esp
+                                      .toLowerCase()
+                                      .includes(def.toLowerCase()) ||
+                                    def
+                                      .toLowerCase()
+                                      .includes(esp.toLowerCase()),
                                 );
                                 return (
-                                  <span 
-                                    key={esp} 
+                                  <span
+                                    key={esp}
                                     className={`px-2 py-1 rounded text-xs ${
-                                      isMatch 
-                                        ? 'bg-primary text-primary-foreground' 
-                                        : 'border border-border'
+                                      isMatch
+                                        ? "bg-primary text-primary-foreground"
+                                        : "border border-border"
                                     }`}
                                   >
                                     {esp}
@@ -193,13 +229,14 @@ export default function StepFour({
                             </div>
                           </div>
                         </div>
-                        
+
                         <div className="flex flex-col gap-2 ml-4">
-                          <Button size="sm" className="whitespace-nowrap">
-                            📞 {result.cer.telefone}
-                          </Button>
-                          <Button size="sm" variant="outline">
-                            📍 Ver no Mapa
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="whitespace-nowrap"
+                          >
+                            Saiba mais
                           </Button>
                         </div>
                       </div>
