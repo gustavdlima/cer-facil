@@ -123,12 +123,12 @@ export default function StepFour({
         </CardHeader>
 
         <CardContent className="space-y-6">
-          <div className="bg-muted p-4 rounded-lg space-y-2">
-            <h3 className="font-normal text-lg">Dados da sua busca:</h3>
+          <div className="bg-muted p-4 rounded-lg space-y-4">
+            <h3 className="font-semibold text-lg">Dados da busca</h3>
 
             <div>
-              <p>Deficiências:</p>
-              <ul className="list-disc list-inside ml-4 text-normal">
+              <p className="font-medium mb-1">Deficiências:</p>
+              <ul className="list-disc list-inside ml-4 text-sm text-muted-foreground">
                 {deficiencies.map((def, index) => (
                   <li key={index}>{def}</li>
                 ))}
@@ -136,20 +136,10 @@ export default function StepFour({
             </div>
 
             <div>
-              <ul className="list-disc list-inside ml-4 font-normal">
-                Faixa etária:
+              <p className="font-medium mb-1">Faixa etária:</p>
+              <ul className="list-disc list-inside ml-4 text-sm text-muted-foreground">
                 <li>{ageGroup}</li>
               </ul>
-            </div>
-
-            <div>
-              <strong>Localização:</strong> {location}
-              {userCoordinates && (
-                <span className="text-xs text-muted-foreground ml-2">
-                  ({userCoordinates.lat.toFixed(4)},{" "}
-                  {userCoordinates.lng.toFixed(4)})
-                </span>
-              )}
             </div>
           </div>
 
@@ -171,74 +161,70 @@ export default function StepFour({
                 {results.slice(0, 5).map((result, index) => (
                   <Card
                     key={result.cer.id}
-                    className="border-l-4 border-l-primary"
+                    className="border-l-4 border-l-primary max-w-2xl mx-auto"
                   >
                     <CardContent className="p-4">
-                      <div className="flex justify-between items-start">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2 mb-2">
-                            <span className="bg-secondary text-secondary-foreground px-2 py-1 rounded text-sm font-medium">
-                              #{index + 1}
-                            </span>
-                            <h4 className="font-semibold text-lg">
-                              {result.cer.nome}
-                            </h4>
-                          </div>
+                      <div className="mb-2 flex items-center gap-2">
+                        <span className="bg-secondary text-secondary-foreground px-2 py-1 rounded text-sm font-medium">
+                          #{index + 1}
+                        </span>
+                        <h4 className="font-normal text-lg">
+                          {result.cer.nome}
+                        </h4>
+                      </div>
 
-                          <p className="text-sm text-muted-foreground mb-2">
-                            {result.cer.endereco.rua},{" "}
-                            {result.cer.endereco.numero} -{" "}
-                            {result.cer.endereco.bairro}
-                          </p>
-                          <p className="text-sm text-muted-foreground mb-3">
-                            {result.cer.cidade} - CEP: {result.cer.endereco.cep}
-                          </p>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        <span className="font-medium text-foreground">
+                          Endereço:
+                        </span>{" "}
+                        {result.cer.endereco.rua}, {result.cer.endereco.numero}{" "}
+                        – {result.cer.endereco.bairro}, {result.cer.cidade} –
+                        CEP: {result.cer.endereco.cep}
+                      </p>
 
-                          <div className="flex gap-4 text-sm mb-3">
-                            <span>Disntância: {result.distancia}km</span>
-                          </div>
-
-                          <div>
-                            <p className="text-xs font-medium mb-1">
-                              Especialidades:
-                            </p>
-                            <div className="flex flex-wrap gap-1">
-                              {result.cer.especialidades.map((esp) => {
-                                const isMatch = deficiencies.some(
-                                  (def) =>
-                                    esp
-                                      .toLowerCase()
-                                      .includes(def.toLowerCase()) ||
-                                    def
-                                      .toLowerCase()
-                                      .includes(esp.toLowerCase()),
-                                );
-                                return (
-                                  <span
-                                    key={esp}
-                                    className={`px-2 py-1 rounded text-xs ${
-                                      isMatch
-                                        ? "bg-primary text-primary-foreground"
-                                        : "border border-border"
-                                    }`}
-                                  >
-                                    {esp}
-                                  </span>
-                                );
-                              })}
-                            </div>
-                          </div>
+                      <div className="space-y-2 mb-4">
+                        <div className="flex items-center gap-2 text-sm">
+                          <span className="font-medium">Distância:</span>
+                          <span className="px-2 py-1 rounded text-xs border border-border">
+                            {result.distancia} km
+                          </span>
                         </div>
 
-                        <div className="flex flex-col gap-2 ml-4">
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            className="whitespace-nowrap"
-                          >
-                            Saiba mais
-                          </Button>
+                        <div className="space-y-1">
+                          <span className="text-sm font-medium">
+                            Especialidades:
+                          </span>
+                          <div className="flex flex-wrap gap-2">
+                            {result.cer.especialidades.map((esp) => {
+                              const isMatch = deficiencies.some(
+                                (def) =>
+                                  esp
+                                    .toLowerCase()
+                                    .includes(def.toLowerCase()) ||
+                                  def.toLowerCase().includes(esp.toLowerCase()),
+                              );
+
+                              return (
+                                <span
+                                  key={esp}
+                                  className={`px-2 py-1 rounded text-xs ${
+                                    isMatch
+                                      ? "bg-primary text-primary-foreground"
+                                      : "border border-border"
+                                  }`}
+                                >
+                                  {esp}
+                                </span>
+                              );
+                            })}
+                          </div>
                         </div>
+                      </div>
+
+                      <div className="flex justify-center pt-2">
+                        <Button size="sm" variant="outline">
+                          Saiba mais
+                        </Button>
                       </div>
                     </CardContent>
                   </Card>
