@@ -16,6 +16,7 @@ interface StepFourProps {
   location?: string;
   userCoordinates?: { lat: number; lng: number } | null;
   onBack: () => void;
+  onFinish: () => void; 
 }
 
 interface MatchingResult {
@@ -31,6 +32,7 @@ export default function StepFour({
   location = "",
   userCoordinates,
   onBack,
+  onFinish, 
 }: StepFourProps) {
   const [results, setResults] = useState<MatchingResult[]>([]);
   const [loading, setLoading] = useState(true);
@@ -252,7 +254,9 @@ export default function StepFour({
           <Button variant="outline" onClick={onBack}>
             Voltar
           </Button>
-          <Button>Finalizar</Button>
+          <Button onClick={onFinish}>
+            Finalizar
+          </Button>
         </CardContent>
       </Card>
     </div>

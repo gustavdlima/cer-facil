@@ -64,6 +64,11 @@ export default function CerForm({ setShowForm }: CerFormProps) {
       console.error('Erro ao processar coordenadas:', error);
     }
   };
+  
+  const handleFinish = () => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    setShowForm(false);
+  };
 
   return (
     <div id="cer-form" className="container mx-auto p-8">
@@ -101,6 +106,7 @@ export default function CerForm({ setShowForm }: CerFormProps) {
           location={formData.location}
           userCoordinates={formData.coordinates}
           onBack={() => setCurrentStep(3)}
+          onFinish={handleFinish} // Usa a função que faz scroll + fecha
         />
       )}
     </div>
