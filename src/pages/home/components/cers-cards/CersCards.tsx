@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import dadosCers from "@/data/cers.json";
+import CERS from "@/data/cers.json";
 
 export default function CersCards() {
   return (
@@ -20,8 +20,8 @@ export default function CersCards() {
             justify-items-center
           "
         >
-          {(dadosCers as DadosCers[]).map((cer) => (
-            <Card key={cer.id} className="relative max-w-2xl mx-auto w-75 h-95">
+          {(CERS as DadosCers[]).map((cer) => (
+            <Card key={cer.id} id={`${cer.id}`} className="relative max-w-2xl mx-auto w-75 h-95 scroll-mt-20">
               <CardHeader>
                 <CardTitle className="text-left text-base font-normal">
                   {cer.nome}
