@@ -1,32 +1,37 @@
-import { MACROS_PB } from './macros/data';
-import { CORES_REGIOES } from './macros/data';
+import MICROS_PB from '../../data/micro.json';
+import CORES_REGIOES from '../../data/colors.json';
 
 function MapCaptions() {
   return (
-    <div className='grid grid-cols-8 p-10' style={{background:'#f4f4f4'}}>
-      {Object.entries(MACROS_PB).map(([macroId, macroObj]) =>
-        Object.entries(macroObj).map(([regiaoId, regiaoObj]) => (
-          <div key={`${macroId}-${regiaoId}`} className='col-span-1 flex items-center scale-80'>
-            
-            <div
-              className='w-4 h-4 rounded-sm align-middle flex-shrink-0'
-              style={{ backgroundColor: CORES_REGIOES[parseInt(regiaoId) - 1] }}
-            />
-
-            <h1
-              style={{
-                padding: '12px',
-                borderRadius: '8px',
-                color: 'black',
-                textAlign: 'center',
-                fontWeight: 'bold'
-              }}
+    <div className='flex justify-end w-full pr-10 pb-10'>
+      <div className='grid grid-cols-3 gap-x-6 gap-y-2 w-fit'>
+        {MICROS_PB.map((regiao) => {
+          const corObj = CORES_REGIOES[regiao.id - 1];
+          return (
+            <div 
+              key={regiao.id} 
+              className='flex items-center justify-end gap-2'
             >
-              {regiaoObj.nome}
-            </h1>
-          </div>
-        ))
-      )}
+              <span
+                style={{
+                  fontSize: '12px',
+                  color: '#333',
+                  whiteSpace: 'nowrap'
+                }}
+              >
+                {regiao.regiao}
+              </span>
+              
+              <div
+                className='w-3 h-3 rounded-[2px] flex-shrink-0 opacity-90'
+                style={{ 
+                  backgroundColor: corObj ? corObj.hex : '#CCCCCC' 
+                }}
+              />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
