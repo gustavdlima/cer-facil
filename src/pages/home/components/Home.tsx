@@ -13,6 +13,13 @@ interface HomeProps {
 
 export default function Home({ showForm, setShowForm, showFlow, setShowFlow }: HomeProps) {
   
+  if (showFlow[0]) {
+    return (
+      <div>
+        <CersCards showFlow={showFlow} setShowFlow={setShowFlow} />
+      </div>
+    );
+  }
   return (
     <div>
       <Welcome showForm={showForm} setShowForm={setShowForm} />

@@ -25,9 +25,14 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
   };
 
   return (
-    <div>
-      <Card className="w-1/2 ml-auto h-screen flex flex-col justify-between p-6 bg-white shadow-none border-none rounded-none">
-        <CardHeader className="w-full max-w-3xl">
+    <div className=" grid grid-cols-2">
+      <Card className="p-6 rounded-sm shadow-none border-0">
+        <CardHeader className="w-screen max-w-3xl justify-self-middle alin-middle">
+          <CardTitle>Informações Sobre o CER</CardTitle>
+        </CardHeader>
+      </Card>
+      <Card className="p-6 rounded-sm shadow-none border-0">
+        <CardHeader className="w-screen max-w-3xl justify-self-middle">
           <CardTitle>{FLUXOS[cerId - 1].title}</CardTitle>
           <CardContent className="overflow-y-auto p-4">
           
@@ -52,8 +57,8 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
             </ul>
           </div>
         </CardContent>
+        <Button className="bottom-5 w-30 justify-self-end" onClick={() => setShowFlow([false, 0])}>Voltar</Button>
         </CardHeader>
-        <Button className="bottom-5" onClick={() => setShowFlow([false, 0])}>Voltar</Button>
       </Card>
     </div>
   );
