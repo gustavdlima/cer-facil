@@ -1,21 +1,27 @@
 import CersCards from "./cers-cards/CersCards";
 import NetworkInfo from "./network-info/NetworkInfo";
 import Welcome from "./welcome-page/Welcome";
+import { useState } from "react";
+import MapParaiba from "@/components/pb-map/mapparaiba";
 
 interface HomeProps {
   showForm: boolean;
   setShowForm: (show: boolean) => void;
+  showFlow: boolean;
+  setShowFlow: (show: boolean) => void;
 }
 
-export default function Home({ showForm, setShowForm }: HomeProps) {
+export default function Home({ showForm, setShowForm, showFlow, setShowFlow }: HomeProps) {
+  
   return (
     <div>
       <Welcome showForm={showForm} setShowForm={setShowForm} />
       {!showForm && (
         <>
           <NetworkInfo />
-          <CersCards />
-        </>
+          <CersCards showFlow={showFlow} setShowFlow={setShowFlow} />
+          <MapParaiba />
+        </> 
       )}
     </div>
   );
