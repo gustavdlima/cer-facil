@@ -9,6 +9,7 @@
       "bairro": "Pedro Gondim",
       "cep": "58031-090"
     },
+    "textoExpandido": "A Coordenadoria de Triagem e Diagnóstico (CORDI) é o ponto nevrálgico de entrada, responsável pela avaliação inicial e encaminhamento interno. A partir deste diagnóstico, o usuário é direcionado para uma das coordenadorias finalísticas: a Coordenadoria de Atendimento à Pessoa com Deficiência Física (CODAFI)(Reabilitação motora, fisioterapia e acompanhamento médico), a Coordenadoria de Atendimento à Pessoa com Deficiência Intelectual (CODAM)(Estimulação cognitiva, suporte psicopedagógico e terapias ocupacionais), a Coordenadoria de Atendimento à Pessoa com Deficiência Visual (CODAVI)(Reabilitação visual, orientação, mobilidade e ensino de Braille.) ou a Coordenadoria de Atendimento à Pessoa com Deficiência Auditiva (CODAPA)(Fonoaudiologia, diagnóstico auditivo e reabilitação da fala.).",
     "cidade": "João Pessoa",
     "email": "funad@funad.pb.gov.br",
     "telefone": "(83) 3244-2451",
@@ -28,6 +29,7 @@
       "bairro": "Bairro dos Estados",
       "cep": "58030-070"
     },
+    "textoExpandido": "Especializado no atendimento a pessoas com deficiência visual, oferece programas de reabilitação, ensino de Braille, orientação e mobilidade, além de atendimento educacional especializado.",
     "cidade": "João Pessoa",
     "email": "contato@icpac.com.br",
     "telefone": "(83) 3244-6220",
@@ -47,6 +49,7 @@
       "bairro": "Loteamento Nossa Senhora",
       "cep": "58322-000"
     },
+    "textoExpandido": "Unidade voltada para reabilitação física e intelectual, com equipe multiprofissional e programas de inclusão social para crianças e adultos.",
     "cidade": "Conde",
     "email": "cer2conde.pb@gmail.com",
     "telefone": "(83) 3298-1130",
@@ -66,6 +69,7 @@
       "bairro": "Esplanada",
       "cep": "58200-028"
     },
+    "textoExpandido": "Centro especializado em condições neurológicas, oferecendo reabilitação para pessoas com lesões cerebrais, AVC, paralisia cerebral e outras condições neurofuncionais.",
     "cidade": "Guarabira",
     "email": "mmcer@gmail.com",
     "telefone": "(83) 99967-8987",
@@ -85,6 +89,7 @@
       "bairro": "Centro",
       "cep": "58233-000"
     },
+    "textoExpandido": "Foco em reabilitação auditiva e física, com serviços de fonoaudiologia, adaptação de próteses auditivas e terapias para recuperação motora.",
     "cidade": "Araruna",
     "email": "cer2ararunapb@gmail.com",
     "telefone": "(83) 99987-2744",
@@ -104,6 +109,7 @@
       "bairro": "Bodocongó",
       "cep": "58430-710"
     },
+    "textoExpandido": "Centro de referência regional que atende todas as especialidades de reabilitação com equipamentos modernos e equipe especializada.",
     "cidade": "Campina Grande",
     "email": "centrodereabilitacaocg@gmail.com",
     "telefone": "(83) 3077-1060",
@@ -123,6 +129,7 @@
       "bairro": "Catolé",
       "cep": "58410-205"
     },
+    "textoExpandido": "Entidade com longa trajetória no atendimento a pessoas com deficiência intelectual, oferecendo educação especial, terapias e programas de capacitação.",
     "cidade": "Campina Grande",
     "email": null,
     "telefone": "(83) 3337-2454",
@@ -142,6 +149,7 @@
       "bairro": "Jardim Califórnia",
       "cep": "58700-318"
     },
+    "textoExpandido": "Centro especializado em reabilitação física e intelectual, com programas específicos para cada faixa etária e necessidade.",
     "cidade": "Patos",
     "email": null,
     "telefone": "(83) 99345-7829",
@@ -161,6 +169,7 @@
       "bairro": "Centro",
       "cep": "58500-000"
     },
+    "textoExpandido": "Unidade focada em reabilitação motora para pessoas com limitações físicas, oferecendo fisioterapia, terapia ocupacional e acompanhamento médico.",
     "cidade": "Monteiro",
     "email": null,
     "telefone": "(83) 3351-1513",
@@ -180,6 +189,7 @@
       "bairro": "Alto da Bela Vista",
       "cep": "58755-000"
     },
+    "textoExpandido": "Oferece atendimento multidisciplinar para pessoas com deficiência física, intelectual e visual, com foco na inclusão social.",
     "cidade": "Princesa Isabel",
     "email": "cerprincesa@gmail.com",
     "telefone": "(83) 3457-2481",
@@ -199,6 +209,7 @@
       "bairro": "Augusto Braga",
       "cep": "58808-458"
     },
+    "textoExpandido": "Centro completo que atende todas as especialidades, servindo como referência para a região do sertão paraibano.",
     "cidade": "Sousa",
     "email": null,
     "telefone": "(83) 99144-8094",
@@ -218,6 +229,7 @@
       "bairro": "Centro",
       "cep": "58765-000"
     },
+    "textoExpandido": "Unidade de saúde que oferece serviços de reabilitação física e intelectual integrados a outros serviços médicos.",
     "cidade": "Piancó",
     "email": "cerpianco@gmail.com",
     "telefone": "(83) 99144-8094",
@@ -237,6 +249,7 @@
       "bairro": "Centro",
       "cep": "58884-000"
     },
+    "textoExpandido": "Especializado exclusivamente em reabilitação física, com programas personalizados para diferentes tipos de limitações motoras.",
     "cidade": "Catolé do Rocha",
     "email": null,
     "telefone": null,
@@ -256,6 +269,7 @@
       "bairro": "Pedro Gondim",
       "cep": "58031-220"
     },
+    "textoExpandido": "Setor especializado na confecção e adaptação de órteses, próteses e outros dispositivos de auxílio à mobilidade.",
     "cidade": "João Pessoa",
     "email": "funad@funad.pb.gov.br",
     "telefone": "(83) 3243-7368",
@@ -275,6 +289,7 @@
       "bairro": "Jaguaribe",
       "cep": "58031-220"
     },
+    "textoExpandido":"Unidade multiprofissional de reabilitação para pessoas com deficiência física e intelectual. Serviços: fisioterapia, terapia ocupacional, fonoaudiologia, estimulação cognitiva, adaptação postural e oficinas de inclusão.",
     "cidade": "João Pessoa",
     "email": "funad@funad.pb.gov.br",
     "telefone": null,
