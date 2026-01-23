@@ -1,8 +1,21 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import CERS from "@/data/cers.json";
+import Flow from "../user-flow/Flow";
 
-export default function CersCards() {
+interface CersCardsProps {
+  showFlow: boolean;
+  setShowFlow: (show: boolean) => void;
+}
+
+export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
+
+  if (showFlow[0]) {
+    return (
+      <Flow setShowFlow={setShowFlow} cerId={showFlow[1]} />
+    );
+  }
+
   return (
     <section id="cers-card" className="px-6 py-16">
       <div className="mx-auto max-w-5xl">
@@ -65,9 +78,7 @@ export default function CersCards() {
                   </p>
 
                   <div className="flex justify-center">
-                    <Button className="absolute bottom-5">
-                      Mais informações
-                    </Button>
+                    <Button className="absolute bottom-5" onClick={() => setShowFlow([true, cer.id])}>Mais Informações</Button>
                   </div>
                 </div>
               </CardContent>
