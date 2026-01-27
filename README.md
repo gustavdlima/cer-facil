@@ -1,8 +1,6 @@
-# CER Fácil
+# CER Fácil: Uma aplicação para ajudar pessoas a encontrarem CERs e Oficinas Ortopédicas na Paraíba
 
-CERS e Oficina Ortopédica
-
-## Tecnologias
+## Tecnologias (Stack)
 
 - **[Bun](https://bun.com)** - Runtime JavaScript ultrarrápido
 - **React 19** - Biblioteca para interfaces de usuário
@@ -15,7 +13,7 @@ CERS e Oficina Ortopédica
 Certifique-se de ter o **Bun** instalado em sua máquina:
 
 ```bash
-# Verificar se o Bun está instalado
+# Verificar se o Bun está instalado 
 bun --version
 
 # Se não tiver instalado, instale com:
@@ -52,18 +50,31 @@ O servidor estará disponível em `http://localhost:3000`
 ```
 cer-facil/
 ├── src/
-│   ├── components/        # Componentes reutilizáveis
+|   ├── assets/           # Assets
+|   |   └── images/       # Imagens do site
+│   ├── components/       # Componentes reutilizáveis
+|   |   ├── Navbar/       # Barra de navegação
+|   |   ├── pb-map/       # Componentes do mapa da Paraíba
 │   │   └── ui/           # Componentes shadcn/ui
+|   ├── data/             # Arquivos com informações do site
 │   ├── pages/            # Páginas da aplicação
 │   │   └── home/         # Página Home
 │   ├── lib/              # Utilitários e helpers
 │   ├── App.tsx           # Componente raiz
 │   ├── frontend.tsx      # Entry point React
+|   ├── index.css         # Estilos base da página
 │   ├── index.ts          # Servidor Bun
 │   └── index.html        # Template HTML
 ├── styles/               # Estilos globais
-└── package.json          # Dependências e scripts
+├── build.ts              # Build customizado para o Bun
+├── bun-env.d.ts          # Tipagem de variáveis de ambiente do Bun
+├── bun.lock              # Trava as versões das dependências
+├── bunfig.toml           # Configuração global do Bun
+├── package.json          # Dependências e scripts
+├── components.json       # Configuração do shadcn/ui
+└── tsconfig.json         # Configuração do TypeScript
 ```
+
 ## Erros Conhecidos
 
 ❌ Falha ao Carregar o Plugin Tailwind
