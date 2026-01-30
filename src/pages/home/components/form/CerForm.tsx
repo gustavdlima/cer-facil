@@ -9,28 +9,65 @@ interface CerFormProps {
   setShowForm: (show: boolean) => void;
 }
 
+interface FormData {
+  deficiencies: string[];
+  ageGroup: string;
+  location: string;
+  coordinates: { lat: number; lng: number } | null;
+}
+
 export default function CerForm({ setShowForm }: CerFormProps) {
   const [currentStep, setCurrentStep] = useState(1);
 
-  const [formData, setFormData] = useState({
-    deficiencies: [] as string[],
+  const [formData, setFormData] = useState<FormData>({
+    deficiencies: [],
     ageGroup: "",
     location: "",
+    coordinates: null,
   });
 
   const handleStepOneNext = (selectedDeficiencies: string[]) => {
-    setFormData({ ...formData, deficiencies: selectedDeficiencies });
+    setFormData(prev => ({ ...prev, deficiencies: selectedDeficiencies }));
     setCurrentStep(2);
   };
 
   const handleStepTwoNext = (ageGroup: string) => {
-    setFormData({ ...formData, ageGroup });
+    setFormData(prev => ({ ...prev, ageGroup }));
     setCurrentStep(3);
   };
 
   const handleStepThreeNext = (location: string) => {
-    setFormData({ ...formData, location });
-    setCurrentStep(4);
+    try {
+      const parts = location.split(',');
+      if (parts.length !== 2 || !parts[0] || !parts[1]) {
+        console.error('Formato de coordenadas inválido:', location);
+        return;
+      }
+
+      const lat = parseFloat(parts[0].trim());
+      const lng = parseFloat(parts[1].trim());
+      
+      if (isNaN(lat) || isNaN(lng)) {
+        console.error('Coordenadas inválidas:', location);
+        return;
+      }
+
+      const coordinates = { lat, lng };
+      
+      setFormData(prev => ({ 
+        ...prev, 
+        location: `${lat.toFixed(4)}, ${lng.toFixed(4)}`,
+        coordinates 
+      }));
+      setCurrentStep(4);
+    } catch (error) {
+      console.error('Erro ao processar coordenadas:', error);
+    }
+  };
+  
+  const handleFinish = () => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    setShowForm(false);
   };
 
   return (
@@ -67,7 +104,9 @@ export default function CerForm({ setShowForm }: CerFormProps) {
           deficiencies={formData.deficiencies}
           ageGroup={formData.ageGroup}
           location={formData.location}
+          userCoordinates={formData.coordinates}
           onBack={() => setCurrentStep(3)}
+          onFinish={handleFinish} // Usa a função que faz scroll + fecha
         />
       )}
     </div>

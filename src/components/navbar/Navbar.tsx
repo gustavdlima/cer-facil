@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 const scrollToNetworkInfo = () => {
   const element = document.getElementById("network-info");
   if (element) {
@@ -6,7 +7,7 @@ const scrollToNetworkInfo = () => {
     const elementPosition = element.offsetTop - navbarHeight;
     window.scrollTo({
       top: elementPosition,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   }
 };
@@ -14,9 +15,9 @@ const scrollToNetworkInfo = () => {
 const scrollToTop = () => {
   window.scrollTo({
     top: 0,
-    behavior: "smooth"
-  })
-}
+    behavior: "smooth",
+  });
+};
 
 export function Navbar() {
   const [showInicio, setShowInicio] = useState(false);
@@ -38,16 +39,28 @@ export function Navbar() {
             <h1 className="text-xl font-semibold">CER Fácil</h1>
           </div>
           <div className="flex items-center space-x-4">
-            <div onClick={scrollToTop} className={`text-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium cursor-pointer select-none transition-opacity duration-300 ${showInicio ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+            <div
+              onClick={scrollToTop}
+              className={`text-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium cursor-pointer select-none transition-opacity duration-300 ${showInicio ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+            >
               Início
             </div>
-            <div onClick={scrollToNetworkInfo} className="text-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium cursor-pointer select-none">
+            <div
+              onClick={scrollToNetworkInfo}
+              className="text-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium cursor-pointer select-none"
+            >
               Saber Mais
             </div>
-            <a href="#" className="text-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium cursor-pointer select-none">
+            <a
+              href="#"
+              className="text-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium cursor-pointer select-none"
+            >
               Contato
             </a>
-            <a href="#" className="text-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium cursor-pointer select-none">
+            <a
+              href="#"
+              className="text-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium cursor-pointer select-none"
+            >
               Sobre
             </a>
           </div>
