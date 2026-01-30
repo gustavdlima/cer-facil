@@ -92,10 +92,6 @@ export default function StepFour({
   }
 
   useEffect(() => {
-    console.log('Debug - deficiencies:', deficiencies);
-    console.log('Debug - location:', location);
-    console.log('Debug - userCoordinates:', userCoordinates);
-    
     if (!userCoordinates || !userCoordinates.lat || !userCoordinates.lng) {
       setLoading(false);
       return;
@@ -129,7 +125,6 @@ export default function StepFour({
                 // Mapear autismo para deficiência intelectual
                 ((defLower.includes('autista') || defLower.includes('autismo') || defLower.includes('espectro') || defLower.includes('tea')) && espLower.includes('intelectual'))
               );
-              console.log(`Debug - Checking '${def}' vs '${esp}': ${match}`);
               return match;
             });
             return hasMatch;
@@ -155,8 +150,6 @@ export default function StepFour({
         // Score baseado em compatibilidade (60%), proximidade (25%) e macrorregião (15%)
         const scoreDistancia = Math.max(0, 1 - distancia / 200);
         const score = compatibilidade * 0.6 + scoreDistancia * 0.25 + bonusMacroRegiao;
-
-        console.log(`Debug - CER: ${cer.nome}, Compatibilidade: ${compatibilidade}`);
         
         return {
           cer,
@@ -169,7 +162,6 @@ export default function StepFour({
       .filter((result) => {
         // Mostrar CERs com compatibilidade > 0 OU se não há deficiências selecionadas
         const shouldShow = result.compatibilidade > 0 || deficiencies.length === 0;
-        console.log(`Debug - ${result.cer.nome}: compatibilidade=${result.compatibilidade}, shouldShow=${shouldShow}`);
         return shouldShow;
       })
       .sort((a, b) => {
