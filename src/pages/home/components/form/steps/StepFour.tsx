@@ -8,7 +8,8 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import cersData from "@/data/cers.json";
-import { MACROS_PB } from "@/components/pb-map/macros/data.js";
+import macrosData from "@/data/macro.json";
+import microsData from "@/data/micro.json";
 import { Bold } from "lucide-react";
 
 interface StepFourProps {
@@ -39,14 +40,13 @@ export default function StepFour({
   const [results, setResults] = useState<MatchingResult[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Função para calcular distância real entre coordenadas (Haversine)
   function calcularDistanciaReal(
     lat1: number,
     lng1: number,
     lat2: number,
     lng2: number,
   ): number {
-    const R = 6371; // Raio da Terra em km
+    const R = 6371;
     const dLat = ((lat2 - lat1) * Math.PI) / 180;
     const dLng = ((lng2 - lng1) * Math.PI) / 180;
     const a =
@@ -59,36 +59,40 @@ export default function StepFour({
     return R * c;
   }
 
-  // Função para determinar a macrorregião do usuário baseada na localização
   function determinarMacroRegiao(userLocation: string): number | null {
     const locationLower = userLocation.toLowerCase().trim();
     
-    for (const [macroId, regioes] of Object.entries(MACROS_PB)) {
-      for (const regiao of Object.values(regioes)) {
-        if (regiao.municipios.some(municipio => 
-          municipio.toLowerCase() === locationLower
-        )) {
-          return parseInt(macroId);
-        }
-      }
-    }
-    return null;
+    const microRegiao = microsData.find((micro: any) =>
+      micro.municipios.some((municipio: string) =>
+        municipio.toLowerCase() === locationLower
+      )
+    );
+    
+    if (!microRegiao) return null;
+    
+    const macroRegiao = macrosData.find((macro: any) =>
+      macro.regiao.includes(microRegiao.regiao)
+    );
+    
+    return macroRegiao ? macroRegiao.id : null;
   }
 
-  // Função para obter a macrorregião de um CER baseada na cidade
   function getMacroRegiaoFromCidade(cidade: string): number | null {
     const cidadeLower = cidade.toLowerCase().trim();
     
-    for (const [macroId, regioes] of Object.entries(MACROS_PB)) {
-      for (const regiao of Object.values(regioes)) {
-        if (regiao.municipios.some(municipio => 
-          municipio.toLowerCase() === cidadeLower
-        )) {
-          return parseInt(macroId);
-        }
-      }
-    }
-    return null;
+    const microRegiao = microsData.find((micro: any) =>
+      micro.municipios.some((municipio: string) =>
+        municipio.toLowerCase() === cidadeLower
+      )
+    );
+    
+    if (!microRegiao) return null;
+    
+    const macroRegiao = macrosData.find((macro: any) =>
+      macro.regiao.includes(microRegiao.regiao)
+    );
+    
+    return macroRegiao ? macroRegiao.id : null;
   }
 
   useEffect(() => {
@@ -101,11 +105,9 @@ export default function StepFour({
 
     const matchedCERs = cersData
       .map((cer) => {
-        // Calcular compatibilidade com deficiências
         let compatibilidade = 0;
         
         if (deficiencies.length === 0) {
-          // Se não há deficiências selecionadas, mostrar todos os CERs
           compatibilidade = 1;
         } else {
           const matchingDeficiencies = deficiencies.filter((def) => {
@@ -122,7 +124,6 @@ export default function StepFour({
                 (defLower.includes('intelectual') && espLower.includes('intelectual')) ||
                 (defLower.includes('ortopedica') && espLower.includes('ortopédica')) ||
                 (defLower.includes('ortopédica') && espLower.includes('ortopédica')) ||
-                // Mapear autismo para deficiência intelectual
                 ((defLower.includes('autista') || defLower.includes('autismo') || defLower.includes('espectro') || defLower.includes('tea')) && espLower.includes('intelectual'))
               );
               return match;
@@ -133,7 +134,6 @@ export default function StepFour({
           compatibilidade = matchingDeficiencies.length / deficiencies.length;
         }
 
-        // Calcular distância real usando coordenadas GPS do usuário
         const distancia = calcularDistanciaReal(
           userCoordinates.lat,
           userCoordinates.lng,
@@ -141,13 +141,10 @@ export default function StepFour({
           cer.localizacao.longitude,
         );
 
-        // Determinar macrorregião do CER
         const cerMacroRegiao = getMacroRegiaoFromCidade(cer.cidade);
         
-        // Bonus por estar na mesma macrorregião
         const bonusMacroRegiao = userMacroRegiao && cerMacroRegiao === userMacroRegiao ? 0.2 : 0;
         
-        // Score baseado em compatibilidade (60%), proximidade (25%) e macrorregião (15%)
         const scoreDistancia = Math.max(0, 1 - distancia / 200);
         const score = compatibilidade * 0.6 + scoreDistancia * 0.25 + bonusMacroRegiao;
         
@@ -160,12 +157,10 @@ export default function StepFour({
         };
       })
       .filter((result) => {
-        // Mostrar CERs com compatibilidade > 0 OU se não há deficiências selecionadas
         const shouldShow = result.compatibilidade > 0 || deficiencies.length === 0;
         return shouldShow;
       })
       .sort((a, b) => {
-        // Priorizar CERs da mesma macrorregião
         if (userMacroRegiao) {
           const aSameMacro = a.macroRegiao === userMacroRegiao;
           const bSameMacro = b.macroRegiao === userMacroRegiao;
@@ -294,7 +289,6 @@ export default function StepFour({
                                   (defLower.includes('intelectual') && espLower.includes('intelectual')) ||
                                   (defLower.includes('ortopedica') && espLower.includes('ortopédica')) ||
                                   (defLower.includes('ortopédica') && espLower.includes('ortopédica')) ||
-                                  // Mapear autismo para deficiência intelectual
                                   ((defLower.includes('autista') || defLower.includes('autismo') || defLower.includes('espectro') || defLower.includes('tea')) && espLower.includes('intelectual'))
                                 );
                               });
