@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./index.css";
 import Home from "./pages/home/components/Home";
-import { Navbar } from "./components/Navbar/Navbar";
+import { Navbar } from "./components/navbar/Navbar";
 import MapParaiba from "./components/pb-map/mapparaiba";
 import MapCaptions from "./components/pb-map/mapcaptions";
 

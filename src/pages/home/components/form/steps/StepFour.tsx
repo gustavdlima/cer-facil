@@ -8,6 +8,7 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import cersData from "@/data/cers.json";
+import { MACROS_PB } from "@/components/pb-map/macros/data.js";
 import { Bold } from "lucide-react";
 
 interface StepFourProps {
@@ -24,6 +25,7 @@ interface MatchingResult {
   score: number;
   distancia: number;
   compatibilidade: number;
+  macroRegiao?: number | null;
 }
 
 export default function StepFour({
@@ -57,23 +59,84 @@ export default function StepFour({
     return R * c;
   }
 
+  // Função para determinar a macrorregião do usuário baseada na localização
+  function determinarMacroRegiao(userLocation: string): number | null {
+    const locationLower = userLocation.toLowerCase().trim();
+    
+    for (const [macroId, regioes] of Object.entries(MACROS_PB)) {
+      for (const regiao of Object.values(regioes)) {
+        if (regiao.municipios.some(municipio => 
+          municipio.toLowerCase() === locationLower
+        )) {
+          return parseInt(macroId);
+        }
+      }
+    }
+    return null;
+  }
+
+  // Função para obter a macrorregião de um CER baseada na cidade
+  function getMacroRegiaoFromCidade(cidade: string): number | null {
+    const cidadeLower = cidade.toLowerCase().trim();
+    
+    for (const [macroId, regioes] of Object.entries(MACROS_PB)) {
+      for (const regiao of Object.values(regioes)) {
+        if (regiao.municipios.some(municipio => 
+          municipio.toLowerCase() === cidadeLower
+        )) {
+          return parseInt(macroId);
+        }
+      }
+    }
+    return null;
+  }
+
   useEffect(() => {
+    console.log('Debug - deficiencies:', deficiencies);
+    console.log('Debug - location:', location);
+    console.log('Debug - userCoordinates:', userCoordinates);
+    
     if (!userCoordinates || !userCoordinates.lat || !userCoordinates.lng) {
       setLoading(false);
       return;
     }
 
+    const userMacroRegiao = determinarMacroRegiao(location);
+
     const matchedCERs = cersData
       .map((cer) => {
         // Calcular compatibilidade com deficiências
-        const compatibilidade =
-          deficiencies.filter((def) =>
-            cer.especialidades.some(
-              (esp) =>
-                esp.toLowerCase().includes(def.toLowerCase()) ||
-                def.toLowerCase().includes(esp.toLowerCase()),
-            ),
-          ).length / deficiencies.length;
+        let compatibilidade = 0;
+        
+        if (deficiencies.length === 0) {
+          // Se não há deficiências selecionadas, mostrar todos os CERs
+          compatibilidade = 1;
+        } else {
+          const matchingDeficiencies = deficiencies.filter((def) => {
+            const defLower = def.toLowerCase();
+            const hasMatch = cer.especialidades.some((esp) => {
+              const espLower = esp.toLowerCase();
+              const match = (
+                espLower.includes(defLower) ||
+                defLower.includes(espLower) ||
+                (defLower.includes('fisica') && espLower.includes('física')) ||
+                (defLower.includes('física') && espLower.includes('física')) ||
+                (defLower.includes('visual') && espLower.includes('visual')) ||
+                (defLower.includes('auditiva') && espLower.includes('auditiva')) ||
+                (defLower.includes('intelectual') && espLower.includes('intelectual')) ||
+                (defLower.includes('ortopedica') && espLower.includes('ortopédica')) ||
+                (defLower.includes('ortopédica') && espLower.includes('ortopédica')) ||
+                // Mapear autismo para deficiência intelectual
+                ((defLower.includes('autista') || defLower.includes('autismo') || defLower.includes('espectro') || defLower.includes('tea')) && espLower.includes('intelectual'))
+              );
+              console.log(`Debug - Checking '${def}' vs '${esp}': ${match}`);
+              return match;
+            });
+            return hasMatch;
+          });
+          
+          compatibilidade = matchingDeficiencies.length / deficiencies.length;
+        }
 
         // Calcular distância real usando coordenadas GPS do usuário
         const distancia = calcularDistanciaReal(
@@ -83,23 +146,46 @@ export default function StepFour({
           cer.localizacao.longitude,
         );
 
-        // Score baseado em compatibilidade (70%) e proximidade (30%)
+        // Determinar macrorregião do CER
+        const cerMacroRegiao = getMacroRegiaoFromCidade(cer.cidade);
+        
+        // Bonus por estar na mesma macrorregião
+        const bonusMacroRegiao = userMacroRegiao && cerMacroRegiao === userMacroRegiao ? 0.2 : 0;
+        
+        // Score baseado em compatibilidade (60%), proximidade (25%) e macrorregião (15%)
         const scoreDistancia = Math.max(0, 1 - distancia / 200);
-        const score = compatibilidade * 0.7 + scoreDistancia * 0.3;
+        const score = compatibilidade * 0.6 + scoreDistancia * 0.25 + bonusMacroRegiao;
 
+        console.log(`Debug - CER: ${cer.nome}, Compatibilidade: ${compatibilidade}`);
+        
         return {
           cer,
           score,
           distancia: Math.round(distancia * 10) / 10,
           compatibilidade,
+          macroRegiao: cerMacroRegiao ?? undefined,
         };
       })
-      .filter((result) => result.compatibilidade > 0)
-      .sort((a, b) => b.score - a.score);
+      .filter((result) => {
+        // Mostrar CERs com compatibilidade > 0 OU se não há deficiências selecionadas
+        const shouldShow = result.compatibilidade > 0 || deficiencies.length === 0;
+        console.log(`Debug - ${result.cer.nome}: compatibilidade=${result.compatibilidade}, shouldShow=${shouldShow}`);
+        return shouldShow;
+      })
+      .sort((a, b) => {
+        // Priorizar CERs da mesma macrorregião
+        if (userMacroRegiao) {
+          const aSameMacro = a.macroRegiao === userMacroRegiao;
+          const bSameMacro = b.macroRegiao === userMacroRegiao;
+          if (aSameMacro && !bSameMacro) return -1;
+          if (!aSameMacro && bSameMacro) return 1;
+        }
+        return b.score - a.score;
+      });
 
     setResults(matchedCERs);
     setLoading(false);
-  }, [deficiencies, userCoordinates]);
+  }, [deficiencies, userCoordinates, location]);
 
   if (loading) {
     return (
@@ -190,6 +276,11 @@ export default function StepFour({
                           <span className="px-2 py-1 rounded text-xs border border-border">
                             {result.distancia} km
                           </span>
+                          {result.macroRegiao === determinarMacroRegiao(location) && (
+                            <span className="px-2 py-1 rounded text-xs bg-green-100 text-green-800 border border-green-200">
+                              Sua região
+                            </span>
+                          )}
                         </div>
 
                         <div className="space-y-1">
@@ -198,13 +289,23 @@ export default function StepFour({
                           </span>
                           <div className="flex flex-wrap gap-2">
                             {result.cer.especialidades.map((esp) => {
-                              const isMatch = deficiencies.some(
-                                (def) =>
-                                  esp
-                                    .toLowerCase()
-                                    .includes(def.toLowerCase()) ||
-                                  def.toLowerCase().includes(esp.toLowerCase()),
-                              );
+                              const isMatch = deficiencies.some((def) => {
+                                const defLower = def.toLowerCase();
+                                const espLower = esp.toLowerCase();
+                                return (
+                                  espLower.includes(defLower) ||
+                                  defLower.includes(espLower) ||
+                                  (defLower.includes('fisica') && espLower.includes('física')) ||
+                                  (defLower.includes('física') && espLower.includes('física')) ||
+                                  (defLower.includes('visual') && espLower.includes('visual')) ||
+                                  (defLower.includes('auditiva') && espLower.includes('auditiva')) ||
+                                  (defLower.includes('intelectual') && espLower.includes('intelectual')) ||
+                                  (defLower.includes('ortopedica') && espLower.includes('ortopédica')) ||
+                                  (defLower.includes('ortopédica') && espLower.includes('ortopédica')) ||
+                                  // Mapear autismo para deficiência intelectual
+                                  ((defLower.includes('autista') || defLower.includes('autismo') || defLower.includes('espectro') || defLower.includes('tea')) && espLower.includes('intelectual'))
+                                );
+                              });
 
                               return (
                                 <span
