@@ -7,17 +7,12 @@ import MapCaptions from "./components/pb-map/mapcaptions";
 
 export function App() {
   const [showForm, setShowForm] = useState(false);
+  const [showFlow, setShowFlow] = useState(false);
 
   return (
     <>
-      {!showForm && <Navbar />}
-      <Home showForm={showForm} setShowForm={setShowForm} />
-      {!showForm && (
-        <>
-          <MapParaiba />
-          <MapCaptions />
-        </>
-      )} 
+      {(!showForm && !showFlow[0]) && <Navbar />}
+      <Home showForm={showForm} setShowForm={setShowForm} showFlow={showFlow} setShowFlow={setShowFlow} />
     </>
   );
 }
