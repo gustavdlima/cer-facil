@@ -90,3 +90,30 @@ sudo fuser -k 3000/tcp
 ```bash
 bun dev
 ```
+
+## Colaboradores(as) do Projeto
+
+### Tutores
+
+**Geraldo Eduardo Guedes de Brito**
+**Robson da Fonseca Neves**
+
+### Preceptores(as) e Orientadores(a) de Serviço
+
+**Gustavo Alves de Lima Martiins**
+**Hélio Soares da Silva**
+**Mércia de Lourdes Ferreira**
+**Weber Almeida Cavalcanti**
+
+### Monitores(as)
+
+**Ana Claudia de Araújo Coutinho**
+**Ana Rita de Oliveira Figueira**
+**Artie Luiz Gomes da Silva**
+**Beatriz Vitorio Melo Silva**
+**Darlan Berg Marcos da Silva**
+**Davi Berg Marcos da Silva**
+**Gustavo Henrique Verçosa Dias**
+**João Bosco Duarte Filho**
+**Maria Amanda Santos da Silva**
+**Stephanie Patriota dos Santos**
