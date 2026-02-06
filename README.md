@@ -1,4 +1,6 @@
-# CER Fácil: Uma aplicação para ajudar pessoas a encontrarem CERs e Oficinas Ortopédicas na Paraíba
+# CER Fácil
+
+Esse projeto surgiu da necessidade de fornecer às pessoas com deficiência informações claras e com linguagem acessível sobre como acessar os serviços dos Centros Especializados em Reabilitação (CERs) e Oficinas Ortopédicas (OPMs) da Paraíba. O principal objetivo é fazer com que as pessoas que necessitam dos serviços tenham à sua disposição um site onde poderão consultar como fazer o primeiro acesso no seu CER de referência.
 
 ## Tecnologias (Stack)
 
@@ -7,13 +9,21 @@
 - **TypeScript** - Superset JavaScript com tipagem estática
 - **Tailwind CSS 4** - Framework CSS utility-first
 - **shadcn/ui** - Componentes de UI acessíveis e customizáveis
+- **Leaflet & React Leaflet** - Mapas interativos
+
+## Funcionalidades
+
+- **Busca Personalizada**: Um formulário interativo no início da página ajuda o usuário a encontrar o CER ideal para sua necessidade.
+- **Mapa Interativo**: Visualização geográfica de todos os CERs e OPMs da Paraíba.
+- **Listagem Completa**: Cards informativos com detalhes de contato, endereço e especialidades de cada unidade.
+- **Informações da Rede**: Conteúdo educativo sobre a Rede de Cuidado à Pessoa com Deficiência.
 
 ## Pré-requisitos
 
 Certifique-se de ter o **Bun** instalado em sua máquina:
 
 ```bash
-# Verificar se o Bun está instalado 
+# Verificar se o Bun está instalado
 bun --version
 
 # Se não tiver instalado, instale com:
@@ -37,7 +47,7 @@ bun install
 
 ## Executando o Projeto
 
-Inicia o servidor de desenvolvimento com Hot Module Reload (HMR):
+Inicie o servidor de desenvolvimento com Hot Module Reload (HMR):
 
 ```bash
 bun dev
@@ -45,67 +55,38 @@ bun dev
 
 O servidor estará disponível em `http://localhost:3000`
 
-## Estrutura do Projeto
+## Troubleshooting / Erros Conhecidos
 
+### ❌ Falha ao Carregar o Plugin Tailwind
+
+Se você encontrar um erro indicando que o Bun não consegue localizar o plugin do Tailwind CSS (`bun-plugin-tailwind`), siga os passos abaixo:
+
+**Erro:**
 ```
-cer-facil/
-├── src/
-|   ├── assets/           # Assets
-|   |   └── images/       # Imagens do site
-│   ├── components/       # Componentes reutilizáveis
-|   |   ├── Navbar/       # Barra de navegação
-|   |   ├── pb-map/       # Componentes do mapa da Paraíba
-│   │   └── ui/           # Componentes shadcn/ui
-|   ├── data/             # Arquivos com informações do site
-│   ├── pages/            # Páginas da aplicação
-│   │   └── home/         # Página Home
-│   ├── lib/              # Utilitários e helpers
-│   ├── App.tsx           # Componente raiz
-│   ├── frontend.tsx      # Entry point React
-|   ├── index.css         # Estilos base da página
-│   ├── index.ts          # Servidor Bun
-│   └── index.html        # Template HTML
-├── styles/               # Estilos globais
-├── build.ts              # Build customizado para o Bun
-├── bun-env.d.ts          # Tipagem de variáveis de ambiente do Bun
-├── bun.lock              # Trava as versões das dependências
-├── bunfig.toml           # Configuração global do Bun
-├── package.json          # Dependências e scripts
-├── components.json       # Configuração do shadcn/ui
-└── tsconfig.json         # Configuração do TypeScript
-```
-
-## Erros Conhecidos
-
-❌ Falha ao Carregar o Plugin Tailwind
-Este erro impede que o servidor seja iniciado, pois o Bun não consegue localizar o plugin do Tailwind CSS.
-
-```
-Código do Erro
-error: Failed to load lugins for Bun.Server:
+error: Failed to load plugins for Bun.Server:
 error: Cannot find package 'bun-plugin-tailwind' from 'home/user/cer-facil'
-
 ```
 
-Como Corrigir:
+**Solução:**
 
-1- Garanta a Instalação Correta do Plugin:
+1. Garanta a instalação correta do plugin:
 
-```Bash
+```bash
 bun install bun-plugin-tailwind
 ```
-2- Libere a Porta 3000 (Se Necessário):
 
-```Bash
-# 1. Identifica qual processo está usando a porta 3000
+2. Se houver problemas com a porta 3000 ocupada:
+
+```bash
+# 1. Identifique qual processo está usando a porta
 sudo lsof -i :3000
 
-# 2. Encerra o processo usando a porta 3000
+# 2. Encerre o processo (se necessário)
 sudo fuser -k 3000/tcp
 ```
 
-Tente executar novamente
+3. Tente executar novamente:
 
-```Bash
+```bash
 bun dev
 ```
