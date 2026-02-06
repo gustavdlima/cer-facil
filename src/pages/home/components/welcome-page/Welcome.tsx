@@ -1,13 +1,6 @@
 import { Button } from "@/components/ui/button";
 import CerForm from "../form/CerForm";
-
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import SimpleMap from "@/components/pb-map/SimpleMap";
 
 interface WelcomeProps {
   showForm: boolean;
@@ -20,27 +13,32 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
   }
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center p-8">
-      <Card className="max-w-2xl">
-        <CardHeader className="text-center">
-          <CardTitle className="text-4xl font-bold">CER Fácil</CardTitle>
-          <CardDescription className="text-lg">
-            Conectamos pessoas com deficiência aos Centros de Reabilitação
-          </CardDescription>
-        </CardHeader>
+    <main className="min-h-screen flex items-center justify-center">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
+        {/* ESQUERDA — TEXTO */}
+        <div className="w-full md:w-1/3 py-12 flex flex-col justify-center gap-6">
+          <div>
+            <p className="text-2xl font-bold mb-4">
+              Conectamos pessoas com deficiência aos Centros de Reabilitação
+            </p>
+          </div>
 
-        <CardContent>
-          <p className="text-muted-foreground text-center leading-relaxed">
+          <p className="text-muted-foreground leading-relaxed text-lg">
             Seja bem-vindo ao CER Fácil. Aplicação voltada a facilitar o
             conhecimento e acesso aos Centros de Reabilitação (CERs) para
             pessoas com deficiência.
           </p>
-        </CardContent>
 
-        <CardContent className="text-center">
-          <Button onClick={() => setShowForm(true)}>Começar busca</Button>
-        </CardContent>
-      </Card>
-    </div>
+          <Button size="lg" onClick={() => setShowForm(true)} className="w-fit">
+            Começar busca
+          </Button>
+        </div>
+
+        {/* DIREITA — MAPA */}
+        <div className="w-full md:flex-1 h-[400px] md:h-[600px]">
+          <SimpleMap />
+        </div>
+      </div>
+    </main>
   );
 }

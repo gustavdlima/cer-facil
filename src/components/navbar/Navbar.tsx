@@ -36,30 +36,30 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <h1 className="text-xl font-semibold">CER Fácil</h1>
+            <h1 className="text-2xl font-semibold">CER Fácil</h1>
           </div>
           <div className="flex items-center space-x-4">
             <div
               onClick={scrollToTop}
-              className={`text-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium cursor-pointer select-none transition-opacity duration-300 ${showInicio ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+              className={`text-foreground hover:text-foreground px-3 py-2 rounded-md text-base font-medium cursor-pointer select-none transition-opacity duration-300 ${showInicio ? "opacity-100" : "opacity-0 pointer-events-none"}`}
             >
               Início
             </div>
             <div
               onClick={scrollToNetworkInfo}
-              className="text-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium cursor-pointer select-none"
+              className="text-foreground hover:text-foreground px-3 py-2 rounded-md text-base font-medium cursor-pointer select-none"
             >
               Saber Mais
             </div>
             <a
               href="#"
-              className="text-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium cursor-pointer select-none"
+              className="text-foreground hover:text-foreground px-3 py-2 rounded-md text-base font-medium cursor-pointer select-none"
             >
               Contato
             </a>
             <a
               href="#"
-              className="text-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium cursor-pointer select-none"
+              className="text-foreground hover:text-foreground px-3 py-2 rounded-md text-base font-medium cursor-pointer select-none"
             >
               Sobre
             </a>
