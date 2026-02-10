@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { MapContainer, Marker, Popup, GeoJSON } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
 import MICROS_PB from "../../data/micro.json";
 import CORES_REGIOES from "../../data/colors.json";
 import CERS from "../../data/cers.json";
+import MapCaptions from "./MapCaptions";
 
 const SimpleMap = () => {
   const position = [-7.2, -36.73];
@@ -55,6 +55,9 @@ const SimpleMap = () => {
           <strong style="font-size: 13px;">${cer.nome}</strong><br/>
           <div style="font-size: 11px; color: #666;">${cer.cidade}</div>
           <div style="font-size: 11px; color: #555; font-style: italic;">${cer.especialidades}</div>
+          <div style="margin-top: 8px; font-size: 11px; text-align: right; color: #007bff;" onclick="document.getElementById('${cer.id}').scrollIntoView({ behavior: 'smooth' })">
+            Ver detalhes &rarr;
+          </div>
         </div>
       `,
       ).join("");

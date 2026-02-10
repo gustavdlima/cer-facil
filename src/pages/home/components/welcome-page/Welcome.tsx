@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import CerForm from "../form/CerForm";
 import SimpleMap from "@/components/pb-map/SimpleMap";
+import MapCaptions from "@/components/pb-map/MapCaptions";
 
 interface WelcomeProps {
   showForm: boolean;
@@ -35,7 +36,10 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
         </div>
 
         {/* DIREITA — MAPA */}
-        <div className="w-full md:flex-1 h-[400px] md:h-[600px]">
+        <div className="w-full md:flex-1 h-[400px] md:h-[600px] relative">
+          <div className="absolute z-[1000] top-4 right-4 bg-white/80 backdrop-blur-sm rounded-md p-2 shadow-md border">
+            <MapCaptions />
+          </div>
           <SimpleMap />
         </div>
       </div>
