@@ -1,4 +1,5 @@
 import WhatIsRCPD from "./section/WhatIsRCPD";
+import KnowMoreAboutCers from "./section/knowMoreAboutCers";
 import HistoryTimeline from "./section/HistoryTimeline";
 import AttentionLevel from "./section/AttentionLevel";
 
@@ -8,6 +9,7 @@ export default function NetworkInfo() {
       <WhatIsRCPD />
       <HistoryTimeline />
       <AttentionLevel />
+      <KnowMoreAboutCers />
     </div>
   );
 }

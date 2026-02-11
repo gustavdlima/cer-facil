@@ -1,0 +1,29 @@
+#1 Quer Saber Mais Sobre os CERs?;
+
+#2 Conheça os Diferentes Tipos de CERs;
+
+#3 Descubra Mais Detalhes Sobre o Funcionamento dos CERs;
+
+#4 Tipos de CERs;
+
+#5 Os CER são classificados de acordo com a composição das modalidades de reabilitação que oferecem: CER II, CER III e CER IV. Eles podem ser organizados com a composição de duas, três ou quatro modalidades de reabilitação, que incluem: auditiva, física, intelectual e visual. Se constituem como serviços de atenção ambulatorial especializada, de abrangência regional e acesso regulado, que oferecem diagnóstico, tratamento, concessão, adaptação e manutenção de Tecnologia Assistiva, sendo referência para a Rede de Atenção à Saúde (RAS).;
+
+#6 CER II (Duas Modalidades): O CER II é projetado para atender a duas modalidades de reabilitação;
+
+#7 CER III (Três Modalidades): O CER III é organizado para oferecer três modalidades de reabilitação;
+
+#8 CER IV (Quatro Modalidades): O CER IV é a tipologia de maior complexidade, sendo organizado para atender às quatro modalidades de reabilitação: Auditiva, Física, Intelectual e Visual;
+
+#9 Aqui Estão Detalhes Sobre a Estrutura e Funcionamento dos CERs;
+
+#10 Horário de atendimento - 8 horas por dia, de segunda a sexta.;
+
+#11 Devem contar com um Responsável Técnico de nível superior, que atua na gestão administrativa, coordenação da equipe, articulação em rede e garantia do bom funcionamento do serviço.;
+
+#12 As equipes devem ser multiprofissionais, com profissionais presentes nos turnos da manhã e tarde, conforme cadastro no CNES.;
+
+#13 As atribuições comuns incluem acolhimento, anamnese, elaboração e reavaliação do PTS, avaliação de funcionalidade, atendimentos individuais ou em grupo, registros, participação em reuniões, criação de protocolos, articulação com a Rede de Cuidados e ações intersetoriais.;
+
+#14 O foco do atendimento é promover autonomia e participação social das pessoas com deficiência por meio de uma abordagem interdisciplinar envolvendo equipe, familiares e cuidadores.;
+
+#15 O CER deve, obrigatoriamente, fornecer cuidados desde o diagnóstico até a reabilitação, abrangendo todas as etapas do processo de habilitação/reabilitação. Os estabelecimentos devem garantir o funcionamento mínimo de 40 horas semanais, 5 dias por semana, durante os 12 meses do ano.;
