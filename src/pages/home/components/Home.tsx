@@ -1,8 +1,6 @@
 import CersCards from "./cers-cards/CersCards";
 import NetworkInfo from "./network-info/NetworkInfo";
 import Welcome from "./welcome-page/Welcome";
-import { useState } from "react";
-import MapParaiba from "@/components/pb-map/mapparaiba";
 
 interface HomeProps {
   showForm: boolean;
@@ -11,8 +9,12 @@ interface HomeProps {
   setShowFlow: (show: boolean) => void;
 }
 
-export default function Home({ showForm, setShowForm, showFlow, setShowFlow }: HomeProps) {
-  
+export default function Home({
+  showForm,
+  setShowForm,
+  showFlow,
+  setShowFlow,
+}: HomeProps) {
   if (showFlow[0]) {
     return (
       <div>
@@ -27,8 +29,7 @@ export default function Home({ showForm, setShowForm, showFlow, setShowFlow }: H
         <>
           <NetworkInfo />
           <CersCards showFlow={showFlow} setShowFlow={setShowFlow} />
-          <MapParaiba />
-        </> 
+        </>
       )}
     </div>
   );
