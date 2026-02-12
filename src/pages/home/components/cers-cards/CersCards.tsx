@@ -20,14 +20,14 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
   return (
     <section
       id="cers-card"
-      className="py-16 bg-[#022D77] w-screen relative left-[calc(-50vw+50%)] px-6"
+      className="py-16 bg-[var(--cor-5)] w-screen relative left-[calc(-50vw+50%)] px-6"
     >
 
       <div className="mx-auto max-w-[90%]">
         <div className="flex items-center w-full mb-12">
-          <div className="w-[40%] md:w-[35%] h-[2px] bg-white mr-6"></div>
+          <div className="w-[40%] md:w-[35%] h-[2px] bg-[var(--cor-4)] mr-6"></div>
           <h2
-            className="text-3xl font-bold text-white whitespace-nowrap"
+              className="text-3xl font-bold text-[var(--cor-4)] whitespace-nowrap"
           >
             REDE ESTADUAL DE REABILITAÇÃO
           </h2>
@@ -37,60 +37,43 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
           className="
                       grid
                       grid-cols-1       
-                      sm:grid-cols-2    
-                      md:grid-cols-3    
-                      lg:grid-cols-4    
-                      xl:grid-cols-5    
+                      sm:grid-cols-1    
+                      md:grid-cols-1    
+                      lg:grid-cols-2    
+                      xl:grid-cols-3  
                       gap-6             
                       justify-items-center
                     "
         >
-          {(CERS as DadosCers[]).map((cer) => (
-            <Card key={cer.id} id={`${cer.id}`} className="relative max-w-2xl mx-auto w-75 h-95 scroll-mt-20">
+          
+          {(CERS as DadosCers[]).map((cer, index) => (
+            <Card key={cer.id} id={`${cer.id}`}
+              style={{ backgroundColor: `var(--cor-${(index % 3) + 1})` } as React.CSSProperties}
+              className="relative max-w-2xl mx-auto w-90 h-120 scroll-mt-20 text-white border-none rounded-none itens-center">
+              <img
+                src={cer.image}
+                className="w-52"
+              />
+
               <CardHeader>
-                <CardTitle className="text-left text-base font-normal">
+                <CardTitle className="mt-45 text-xl text-left font-bold">
                   {cer.nome}
                 </CardTitle>
               </CardHeader>
 
               <CardContent>
-                <div className="space-y-3 text-sm">
+
+                <div className="space-y-3 text-lg ">
                   <p>
-                    <span className="font-normal">Especialidades:</span>{" "}
-                    <span className="text-muted-foreground">
+                    <span>Especialidades:</span>{" "}
+                    <span className=" font-bold text-muted-foreground text-white">
                       {cer.especialidades.join(", ")}
                     </span>
                   </p>
-
-                  <p>
-                    <span className="font-normal">Endereço:</span>{" "}
-                    <span className="text-muted-foreground">
-                      {cer.endereco.rua}, {cer.endereco.numero} –{" "}
-                      {cer.endereco.bairro} – {cer.cidade} – PB
-                    </span>
-                  </p>
-
-                  <p>
-                    <span className="font-normal">CEP:</span>{" "}
-                    <span className="text-muted-foreground">
-                      {cer.endereco.cep}
-                    </span>
-                  </p>
-
-                  <p>
-                    <span className="font-normal">Email:</span>{" "}
-                    <span className="text-muted-foreground">{cer.email}</span>
-                  </p>
-
-                  <p>
-                    <span className="font-normal">Telefone:</span>{" "}
-                    <span className="text-muted-foreground">
-                      {cer.telefone}
-                    </span>
-                  </p>
-
-                  <div className="flex justify-center">
-                    <Button className="absolute bottom-5" onClick={() => setShowFlow([true, cer.id])}>Mais Informações</Button>
+                  <div className="flex justify-end">
+                    <Button className="absolute bottom-5 bg-transparent hover:bg-[var(--cor-4)]" onClick={() => setShowFlow([true, cer.id])}> 
+                      <img src="https://www.svgrepo.com/show/425982/right-arrow.svg" alt="" className="w-5 h-5"/>
+                    </Button>
                   </div>
                 </div>
               </CardContent>

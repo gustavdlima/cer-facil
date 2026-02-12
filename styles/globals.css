@@ -42,6 +42,14 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 }
+:root {
+  /* Identidade visual PET */
+  --cor-1: #106894; /* Petróleo */
+  --cor-2: #3DA6DE; /* Azul Claro */
+  --cor-3: #E64F22; /* Laranja */
+  --cor-4: #DBDDDE; /*cinza*/
+  --cor-5: #022D77; /* Azul Profundo */
+}
 
 :root {
   /* OK rgb(219, 227, 227);  */
