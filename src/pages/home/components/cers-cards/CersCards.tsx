@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import CERS from "@/data/cers.json";
 import Flow from "../user-flow/Flow";
+import FunadImage from "@/assets/images/FUNAD.png";
 
 
 interface CersCardsProps {
@@ -50,10 +51,13 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
             <Card key={cer.id} id={`${cer.id}`}
               style={{ backgroundColor: `var(--cor-${(index % 3) + 1})` } as React.CSSProperties}
               className="relative max-w-2xl mx-auto w-90 h-120 scroll-mt-20 text-white border-none rounded-none itens-center">
-              <img
-                src={cer.image}
-                className="w-52"
-              />
+              {cer.id === 1 && (
+                <img
+                  src={FunadImage}
+                  alt="FUNAD"
+                  className="w-52"
+                />
+              )}
 
               <CardHeader>
                 <CardTitle className="mt-45 text-xl text-left font-bold">
