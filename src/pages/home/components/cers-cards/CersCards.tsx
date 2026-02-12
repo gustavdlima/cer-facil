@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import CERS from "@/data/cers.json";
 import Flow from "../user-flow/Flow";
 
+
 interface CersCardsProps {
   showFlow: boolean;
   setShowFlow: (show: boolean) => void;
@@ -17,21 +18,32 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
   }
 
   return (
-    <section id="cers-card" className="px-6 py-16">
-      <div className="mx-auto max-w-5xl">
-        <h2 className="text-3xl font-bold text-left mb-12">
-          Conheça os CER's da Paraíba
-        </h2>
+    <section
+      id="cers-card"
+      className="py-16 bg-[#022D77] w-screen relative left-[calc(-50vw+50%)] px-6"
+    >
+
+      <div className="mx-auto max-w-[90%]">
+        <div className="flex items-center w-full mb-12">
+          <div className="w-[40%] md:w-[35%] h-[2px] bg-white mr-6"></div>
+          <h2
+            className="text-3xl font-bold text-white whitespace-nowrap"
+          >
+            REDE ESTADUAL DE REABILITAÇÃO
+          </h2>
+        </div>
 
         <div
           className="
-            grid
-            grid-cols-1
-            sm:grid-cols-2
-            lg:grid-cols-3
-            gap-x-10 gap-y-10
-            justify-items-center
-          "
+                      grid
+                      grid-cols-1       
+                      sm:grid-cols-2    
+                      md:grid-cols-3    
+                      lg:grid-cols-4    
+                      xl:grid-cols-5    
+                      gap-6             
+                      justify-items-center
+                    "
         >
           {(CERS as DadosCers[]).map((cer) => (
             <Card key={cer.id} id={`${cer.id}`} className="relative max-w-2xl mx-auto w-75 h-95 scroll-mt-20">

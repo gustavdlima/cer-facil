@@ -9,6 +9,9 @@ export function App() {
 
   return (
     <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+      `}</style>
       {!showForm && !showFlow[0] && <Navbar />}
       <Home
         showForm={showForm}
