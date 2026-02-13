@@ -20,7 +20,7 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
     <main className="min-h-screen flex flex-col items-center justify-center pt-16 relative">
       {/* TÍTULO PRINCIPAL DESTACADO */}
       <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-8">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-black leading-tight">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-black leading-tight">
           Conectamos pessoas com deficiência aos{" "}
           <span className="text-[var(--cor-3)]">Centros de Reabilitação</span>
         </h1>
@@ -28,7 +28,7 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
 
       {/* TEXTO E BOTÕES */}
       <div className="w-full max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center gap-6">
-        <p className="text-muted-foreground leading-relaxed text-lg">
+        <p className="text-muted-foreground leading-relaxed text-xl">
           Seja bem-vindo ao CER Fácil. Aplicação voltada a facilitar o
           conhecimento e acesso aos Centros de Reabilitação (CERs)
         </p>
