@@ -13,6 +13,7 @@ interface DadosCers {
   id: number;
   nome: string;
   especialidades: string[];
+  cidade: string;
 }
 
 interface CersCardsProps {
@@ -43,12 +44,12 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
     return (
       <div
         key={cer.id}
-        className="bg-white p-8 rounded-2xl shadow-xl border border-blue-50 flex flex-row items-center transition-all hover:shadow-2xl hover:-translate-y-1 gap-8 w-full"
+        className="relative bg-white p-6 rounded-2xl shadow-xl border border-blue-50 flex flex-row items-center transition-all hover:shadow-2xl hover:-translate-y-1 gap-4 w-full min-h-[220px]"
       >
         {/* LADO DO ÍCONE (SVG) */}
         <div className="flex-shrink-0">
           <svg
-            className="h-16 w-16 md:h-20 md:w-20 text-[var(--cor-3)]"
+            className="h-12 w-12 md:h-14 md:w-14 text-[var(--cor-3)]"
             viewBox="0 0 32 32"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -71,66 +72,78 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
         </div>
 
         {/* LADO DO CONTEÚDO */}
-        <div className="flex flex-col space-y-4 text-left items-start w-full">
-          <h3 className="text-xl font-extrabold text-gray-900 leading-tight h-14 line-clamp-2">
+        <div className="flex flex-col space-y-3 text-left items-start w-full pr-6">
+          <h3 className="text-sm font-extrabold text-gray-900 leading-tight line-clamp-2 uppercase">
             {toTitleCase(cer.nome)}
           </h3>
           
-          <div className="border-l-4 pl-4 border-[var(--cor-1)]">
-            <p className="text-xs font-bold text-[var(--cor-1)] uppercase tracking-widest mb-1">
-              Especialidades
-            </p>
-            <p className="text-sm text-gray-600 line-clamp-2">
-              {cer.especialidades.join(", ")}
-            </p>
-            <p className="text-xs font-bold text-[var(--cor-1)] uppercase tracking-widest mb-1">
-              Cidade
-            </p>
-            <p className="text-sm text-gray-600 line-clamp-2">
-              {cer.cidade}
-            </p>
+          <div className="border-l-4 pl-3 border-[var(--cor-5)] space-y-2">
+            <div>
+              <p className="text-[10px] font-bold text-[var(--cor-5)] uppercase tracking-widest">
+                Especialidades
+              </p>
+              <p className="text-[11px] text-gray-600 line-clamp-2 leading-tight">
+                {cer.especialidades.join(", ")}
+              </p>
+            </div>
+            <div>
+              <p className="text-[10px] font-bold text-[var(--cor-5)] uppercase tracking-widest">
+                Cidade
+              </p>
+              <p className="text-[11px] text-gray-600">
+                {cer.cidade}
+              </p>
+            </div>
           </div>
-
-          <Button
-            className="bg-[var(--cor-3)] hover:opacity-90 text-white px-6 py-4 text-sm rounded-full shadow-md transition-transform active:scale-95 w-full mt-2"
-            onClick={() => setShowFlow([true, cer.id])}
-          >
-            Ver Detalhes
-          </Button>
         </div>
+
+        {/* BOTÃO COM SETA */}
+        <Button
+          variant="ghost"
+          className="absolute bottom-3 right-2 p-2 h-auto bg-transparent hover:bg-gray-50 transition-all opacity-100"
+          onClick={() => setShowFlow([true, cer.id])}
+        >
+          <img 
+            src="https://www.svgrepo.com/show/425982/right-arrow.svg" 
+            alt="Seta" 
+            className="w-5 h-5 block" 
+            style={{ filter: 'grayscale(100%)' }}
+          />
+        </Button>
       </div>
     );
   };
 
   return (
-    <section id="cers-card" className="py-20 overflow-hidden bg-[var(--cor-5)] w-screen">
+    <section id="cers-card" className="py-20 overflow-hidden bg-[var(--cor-5)] w-screen relative left-[calc(-50vw+50%)]">
       <div className="container mx-auto px-6 max-w-[1400px]">
-        {/* Título */}
-        <div className="flex items-center gap-8 mb-16">
-          <h2 className="text-2xl md:text-3xl font-black text-[var(--cor-4)] uppercase whitespace-nowrap">
+        
+        {/* TÍTULO COM LINHA CONTÍNUA CORRIGIDA */}
+        <div className="flex items-center w-full mb-16 gap-6">
+          <h2 className="text-2xl md:text-3xl font-black text-white uppercase whitespace-nowrap shrink-0">
             Rede Estadual de Reabilitação
           </h2>
-          <div className="h-[2px] w-full bg-gray-200"></div>
+          {/* A div abaixo ocupa o espaço restante e tem altura de 2px */}
+          <div className="flex-1 h-[3px] bg-[var(--cor-4)]"></div>
         </div>
 
-        {/* GRID DE DUAS COLUNAS - LISTA FIXA */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* GRID DE QUATRO COLUNAS - LISTA FIXA */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {fixos.map((cer) => renderCersRow(cer))}
         </div>
 
         {/* Accordion para unidades extras */}
         {restantes.length > 0 && (
-          <Accordion type="single" collapsible className="w-full mt-8">
+          <Accordion type="single" collapsible className="w-full mt-6">
             <AccordionItem value="grid-restante" className="border-none">
-              <AccordionContent className="overflow-visible">
-                {/* GRID DE DUAS COLUNAS - RESTANTE */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <AccordionContent className="overflow-visible pt-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                   {restantes.map((cer) => renderCersRow(cer))}
                 </div>
               </AccordionContent>
 
               <div className="flex justify-center mt-12">
-                <AccordionTrigger className="flex gap-3 items-center bg-white border border-gray-200 text-gray-800 px-12 py-4 rounded-full font-bold hover:bg-[var(--cor-1)] hover:text-white transition-all shadow-sm">
+                <AccordionTrigger className="flex gap-3 items-center bg-transparent text-white px-12 py-4 font-bold transition-all">
                   VER TODAS AS UNIDADES
                 </AccordionTrigger>
               </div>
