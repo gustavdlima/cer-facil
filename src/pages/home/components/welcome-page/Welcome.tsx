@@ -51,7 +51,7 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
         <p className="text-sm text-muted-foreground font-medium">
           Deslize para mais
         </p>
-        <ChevronDown className="w-6 h-6 text-primary animate-bounce group-hover:scale-110 transition-transform" />
+        <ChevronDown className="w-6 h-6 text-black animate-bounce group-hover:scale-110 transition-transform" />
       </div>
     </main>
   );
