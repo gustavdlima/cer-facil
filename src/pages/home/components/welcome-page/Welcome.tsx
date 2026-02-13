@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import CerForm from "../form/CerForm";
-import SimpleMap from "@/components/pb-map/SimpleMap";
-import MapCaptions from "@/components/pb-map/MapCaptions";
+import { ChevronDown } from "lucide-react";
 
 interface WelcomeProps {
   showForm: boolean;
@@ -9,39 +8,50 @@ interface WelcomeProps {
 }
 
 export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
+  const handleScrollDown = () => {
+    window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
+  };
+
   if (showForm) {
     return <CerForm setShowForm={setShowForm} />;
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center pt-16">
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
-        {/* ESQUERDA — TEXTO */}
-        <div className="w-full md:w-1/3 py-12 flex flex-col justify-center gap-6">
-          <div>
-            <p className="text-2xl font-bold mb-4">
-              Conectamos pessoas com deficiência aos Centros de Reabilitação
-            </p>
-          </div>
+    <main className="min-h-screen flex flex-col items-center justify-center pt-16 relative">
+      {/* TÍTULO PRINCIPAL DESTACADO */}
+      <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-8">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-black leading-tight">
+          Conectamos pessoas com deficiência aos{" "}
+          <span className="text-blue-600">Centros de Reabilitação</span>
+        </h1>
+      </div>
 
-          <p className="text-muted-foreground leading-relaxed text-lg">
-            Seja bem-vindo ao CER Fácil. Aplicação voltada a facilitar o
-            conhecimento e acesso aos Centros de Reabilitação (CERs) para
-            pessoas com deficiência.
-          </p>
+      {/* TEXTO E BOTÕES */}
+      <div className="w-full max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center gap-6">
+        <p className="text-muted-foreground leading-relaxed text-lg">
+          Seja bem-vindo ao CER Fácil. Aplicação voltada a facilitar o
+          conhecimento e acesso aos Centros de Reabilitação (CERs)
+        </p>
 
-          <Button size="lg" onClick={() => setShowForm(true)} className="w-fit">
+        <div className="flex flex-col sm:flex-row gap-3">
+          <Button size="lg" onClick={() => setShowForm(true)}>
             Começar busca
           </Button>
+          <Button size="lg" variant="outline" onClick={handleScrollDown}>
+            Conheça a rede
+          </Button>
         </div>
+      </div>
 
-        {/* DIREITA — MAPA */}
-        <div className="w-full md:flex-1 h-[400px] md:h-[600px] relative">
-          <div className="absolute z-[1000] top-4 right-4 bg-white/80 backdrop-blur-sm rounded-md p-2 shadow-md border">
-            <MapCaptions />
-          </div>
-          <SimpleMap interactive={false} />
-        </div>
+      {/* DESLIZE PARA MAIS */}
+      <div
+        onClick={handleScrollDown}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer group"
+      >
+        <p className="text-sm text-muted-foreground font-medium">
+          Deslize para mais
+        </p>
+        <ChevronDown className="w-6 h-6 text-primary animate-bounce group-hover:scale-110 transition-transform" />
       </div>
     </main>
   );
