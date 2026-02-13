@@ -22,7 +22,7 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
       <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-8">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-black leading-tight">
           Conectamos pessoas com deficiência aos{" "}
-          <span className="text-blue-600">Centros de Reabilitação</span>
+          <span className="text-[var(--cor-3)]">Centros de Reabilitação</span>
         </h1>
       </div>
 
@@ -46,12 +46,10 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
       {/* DESLIZE PARA MAIS */}
       <div
         onClick={handleScrollDown}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer group"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center cursor-pointer group"
       >
-        <p className="text-sm text-muted-foreground font-medium">
-          Deslize para mais
-        </p>
-        <ChevronDown className="w-6 h-6 text-black animate-bounce group-hover:scale-110 transition-transform" />
+        <p className="text-sm font-medium animate-bounce">Deslize para mais</p>
+        <ChevronDown className="animate-bounce group-hover:scale-110 transition-transform" />
       </div>
     </main>
   );
