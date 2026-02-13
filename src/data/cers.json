@@ -2,6 +2,7 @@
   {
     "id": 1,
     "nome": "FUNDAÇÃO CENTRO INTEGRADO DE APOIO AO PORTADOR DE DEFICIÊNCIA",
+    "image": "src/assets/images/funad.jpeg",
     "especialidades": ["Auditiva", "Física", "Intelectual", "Visual"],
     "endereco": {
       "rua": "Orestes Lisboa",
@@ -22,6 +23,7 @@
   {
     "id": 2,
     "nome": "INSTITUTO DOS CEGOS DA PARAÍBA ADALGISA CUNHA",
+    "image": "src/assets/images/institutoDosCegos.jpeg",
     "especialidades": ["Intelectual", "Visual"],
     "endereco": {
       "rua": "Avenida Santa Catarina",
@@ -42,6 +44,7 @@
   {
     "id": 3,
     "nome": "CENTRO DE REABILITAÇÃO ANTÔNIO DE SOUZA MARANHÃO",
+    "image": "src/assets/images/centroDeReabilitacaoAntonioDeSouza.jpeg",
     "especialidades": ["Física", "Intelectual"],
     "endereco": {
       "rua": "Rua Zilda Arns Neuman",
@@ -62,6 +65,7 @@
   {
     "id": 4,
     "nome": "COMPLEXO NEUROFUNCIONAL MARIA MOURA DE AQUINO",
+    "image": "src/assets/images/complexoNeurofuncionalMariaMoura.jpeg",
     "especialidades": ["Física", "Visual", "Intelectual"],
     "endereco": {
       "rua": "Rua Prefeito Manoel Lordão",
