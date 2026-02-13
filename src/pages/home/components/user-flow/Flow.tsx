@@ -25,16 +25,13 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
   };
 
   return (
-    <div className=" grid grid-cols-2">
-      <Card className="p-6 rounded-sm shadow-none border-0">
-        <CardHeader className="w-screen max-w-3xl justify-self-middle alin-middle">
-          <CardTitle>Informações Sobre o CER</CardTitle>
+    <div className="flex justify-center items-center min-h-screen px-4">
+      <div className="w-full max-w-7xl">
+        <CardHeader>
+          <CardTitle className="mb-6 text-center">Informações Sobre o CER</CardTitle>
+          <CardTitle className="text-center">{FLUXOS[cerId - 1].title}</CardTitle>
         </CardHeader>
-      </Card>
-      <Card className="p-6 rounded-sm shadow-none border-0">
-        <CardHeader className="w-screen max-w-3xl justify-self-middle">
-          <CardTitle>{FLUXOS[cerId - 1].title}</CardTitle>
-          <CardContent className="overflow-y-auto p-4">
+        <CardContent className="overflow-y-auto p-4">
           
           <div className="ml-2"> 
             {FLUXOS[cerId - 1].steps.map((step, index) => (
@@ -57,9 +54,10 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
             </ul>
           </div>
         </CardContent>
-        <Button className="bottom-5 w-30 justify-self-end" onClick={() => setShowFlow([false, 0])}>Voltar</Button>
-        </CardHeader>
-      </Card>
+        <div className="flex justify-center mt-4">
+          <Button onClick={() => setShowFlow([false, 0])}>Voltar</Button>
+        </div>
+      </div>
     </div>
   );
 }
