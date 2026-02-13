@@ -14,7 +14,7 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center">
+    <main className="min-h-screen flex items-center justify-center pt-16">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
         {/* ESQUERDA — TEXTO */}
         <div className="w-full md:w-1/3 py-12 flex flex-col justify-center gap-6">
@@ -40,7 +40,7 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
           <div className="absolute z-[1000] top-4 right-4 bg-white/80 backdrop-blur-sm rounded-md p-2 shadow-md border">
             <MapCaptions />
           </div>
-          <SimpleMap />
+          <SimpleMap interactive={false} />
         </div>
       </div>
     </main>
