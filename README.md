@@ -4,8 +4,6 @@ Esse projeto surgiu da necessidade de fornecer às pessoas com deficiência info
 
 ## Tecnologias Utilizadas
 
-Liste as tecnologias que você utilizou para elaborar o projeto.
-
 * [Bun](https://bun.sh) - Runtime JavaScript ultrarrápido (v1.x)
 * [React](https://react.dev) - Biblioteca para interfaces de usuário (v19)
 * [TypeScript](https://www.typescriptlang.org/) - Superset JavaScript com tipagem estática
@@ -16,14 +14,16 @@ Liste as tecnologias que você utilizou para elaborar o projeto.
 
 ## Dependências e Versões Necessárias
 
-Liste as dependências necessárias para rodar o projeto e as versões que você utilizou.
+* **Bun**: 1.3.6 (Instalar via `curl -fsSL https://bun.sh/install | bash`)
+* **React**: 19.2.1
+* **TypeScript**: 5.9.3
+* **Tailwind CSS**: 4.1.17
+* **shadcn/ui**: 0.10.10
+* **Leaflet**: 1.9.4
+* **React Leaflet**: 5.0.0
+* **Lucide React**: 0.562.0
 
-* **Bun**: Latest (Instalar via `curl -fsSL https://bun.sh/install | bash`)
-* **Git**: Para clonar o repositório
-
-## Como rodar o projeto ✅
-
-Descreva o passo a passo necessário para rodar sua aplicação.
+## Como Rodar o Projeto ✅
 
 1. Clone o repositório:
 
@@ -55,9 +55,12 @@ Informações importantes sobre a aplicação.
 * **Listagem Completa**: Detalhes de contato e especialidades de cada unidade.
 * **Informações da Rede**: Conteúdo educativo sobre a Rede de Cuidado à Pessoa com Deficiência.
 
-## ⚠️ Problemas enfrentados
+![alt text](image.png)
+![alt text](image.png)
+![alt text](image.png)
+![alt text](image.png)
 
-Liste os problemas que você enfrentou construindo a aplicação e como você resolveu cada um deles.
+## ⚠️ Problemas enfrentados
 
 ### Falha ao Carregar o Plugin Tailwind
 
@@ -83,9 +86,7 @@ sudo fuser -k 3000/tcp
 
 ## ⏭️ Próximos passos
 
-Descreva se você pretende, pensou ou gostaria de elaborar uma nova feature para o seu projeto.
-
-* Implementação de testes automatizados (em breve).
+* Implementação de testes com usuários.
 * Melhorias contínuas na acessibilidade e usabilidade.
 
 ## Colaboradores(as) do Projeto
