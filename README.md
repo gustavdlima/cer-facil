@@ -55,10 +55,10 @@ Informações importantes sobre a aplicação.
 * **Listagem Completa**: Detalhes de contato e especialidades de cada unidade.
 * **Informações da Rede**: Conteúdo educativo sobre a Rede de Cuidado à Pessoa com Deficiência.
 
-![alt text](image.png)
-![alt text](image.png)
-![alt text](image.png)
-![alt text](image.png)
+![formulário para preenchimento do tipo de deficiência](https://github.com/PET-Saude-Digital-GT-01-PCD/cer-facil/blob/b62762232283194f71f4fe0b1bde6014ac7524c6/src/assets/images/readme-images/Captura%20de%20tela%202026-02-16%20201237.png)
+![resultados da busca pelo cer de referência](https://github.com/PET-Saude-Digital-GT-01-PCD/cer-facil/blob/b62762232283194f71f4fe0b1bde6014ac7524c6/src/assets/images/readme-images/Captura%20de%20tela%202026-02-16%20201311.png)
+![mapa com as localizações dos cers](https://github.com/PET-Saude-Digital-GT-01-PCD/cer-facil/blob/b62762232283194f71f4fe0b1bde6014ac7524c6/src/assets/images/readme-images/Captura%20de%20tela%202026-02-16%20201417.png)
+![cards com informações sobre cada cer](https://github.com/PET-Saude-Digital-GT-01-PCD/cer-facil/blob/b62762232283194f71f4fe0b1bde6014ac7524c6/src/assets/images/readme-images/Captura%20de%20tela%202026-02-16%20201443.png)
 
 ## ⚠️ Problemas enfrentados
 
