@@ -1,7 +1,16 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import CERS from "@/data/cers.json";
 import Flow from "../user-flow/Flow";
+import {
+  ChevronRight,
+  Landmark,
+  Accessibility,
+  Ear,
+  Eye,
+  Brain,
+  Activity
+} from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -22,15 +31,21 @@ interface CersCardsProps {
 }
 
 export function toTitleCase(text: string): string {
+  if (!text) return "";
   return text
     .toLowerCase()
-    .split(' ')
-    .map(word => {
-      if (!word) return '';
-      return word.charAt(0).toUpperCase() + word.slice(1);
-    })
-    .join(' ');
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 }
+
+const especialidadeIconMap: { [key: string]: React.ElementType } = {
+  "Auditiva": Ear,
+  "Visual": Eye,
+  "Intelectual": Brain,
+  "Física": Accessibility,
+  "default": Landmark
+};
 
 export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
   if (showFlow[0]) {
@@ -44,42 +59,34 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
     return (
       <div
         key={cer.id}
-        className="relative bg-white p-6 rounded-2xl shadow-xl border border-blue-50 flex flex-row items-center transition-all hover:shadow-2xl hover:-translate-y-1 gap-4 w-full min-h-[220px]"
+        onClick={() => setShowFlow([true, cer.id])}
+        className="group relative bg-white p-5 rounded-2xl shadow-xl border border-blue-50 
+                   flex flex-col transition-all hover:shadow-2xl hover:-translate-y-1 
+                   w-full min-h-[240px]"
       >
-        {/* LADO DO ÍCONE (SVG) */}
-        <div className="flex-shrink-0">
-          <svg
-            className="h-12 w-12 md:h-14 md:w-14 text-[var(--cor-3)]"
-            viewBox="0 0 32 32"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M2 11L16 4L30 11" />
-            <path d="M5 11V26H27V11" />
-            <path d="M3 26H29" />
-            <path d="M1 29H31" />
-            <path d="M9 14V23" />
-            <path d="M13.5 14V23" />
-            <path d="M18.5 14V23" />
-            <path d="M23 14V23" />
-            <path d="M5 14H27" />
-            <path d="M5 23H27" />
-          </svg>
-        </div>
 
-        {/* LADO DO CONTEÚDO */}
-        <div className="flex flex-col space-y-3 text-left items-start w-full pr-6">
-          <h3 className="text-sm font-extrabold text-gray-900 leading-tight line-clamp-2 uppercase">
-            {toTitleCase(cer.nome)}
-          </h3>
-          
-          <div className="border-l-4 pl-3 border-[var(--cor-5)] space-y-2">
-            <div>
-              <p className="text-[10px] font-bold text-[var(--cor-5)] uppercase tracking-widest">
+        <h3 className="text-sm font-extrabold text-gray-900 leading-tight uppercase min-h-[60px] flex items-start">
+          {toTitleCase(cer.nome)}
+        </h3>
+
+        <div className="flex flex-row items-center gap-4 w-full mt-4">
+
+          <div className="grid grid-cols-2 gap-2 flex-shrink-0">
+            {cer.especialidades.map((especialidade, index) => {
+              const Icon = especialidadeIconMap[especialidade] || especialidadeIconMap["default"];
+              return (
+                <Icon
+                  key={index}
+                  className="h-6 w-6 text-[var(--cor-3)] opacity-90 group-hover:opacity-100 transition-opacity"
+                  strokeWidth={1.5}
+                />
+              );
+            })}
+          </div>
+
+          <div className="border-l-4 pl-3 border-[var(--cor-1)] space-y-2 w-full">
+            <div className="min-h-[40px]">
+              <p className="text-[10px] font-bold text-[var(--cor-1)] uppercase tracking-widest">
                 Especialidades
               </p>
               <p className="text-[11px] text-gray-600 line-clamp-2 leading-tight">
@@ -87,26 +94,25 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
               </p>
             </div>
             <div>
-              <p className="text-[10px] font-bold text-[var(--cor-5)] uppercase tracking-widest">
+              <p className="text-[10px] font-bold text-[var(--cor-1)] uppercase tracking-widest mb-1">
                 Cidade
               </p>
-              <p className="text-[11px] text-gray-600">
+              <span className="inline-block bg-[var(--cor-1)] text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider">
                 {cer.cidade}
-              </p>
+              </span>
             </div>
           </div>
         </div>
 
-        {/* BOTÃO COM SETA */}
         <Button
           variant="ghost"
-          className="absolute bottom-3 right-2 p-2 h-auto bg-transparent hover:bg-gray-50 transition-all opacity-100"
+          className="absolute bottom-3 right-2 p-2 h-auto bg-transparent hover:bg-gray-50 transition-all opacity-100 cursor-pointer"
           onClick={() => setShowFlow([true, cer.id])}
         >
-          <img 
-            src="https://www.svgrepo.com/show/425982/right-arrow.svg" 
-            alt="Seta" 
-            className="w-5 h-5 block" 
+          <img
+            src="https://www.svgrepo.com/show/425982/right-arrow.svg"
+            alt="Seta"
+            className="w-5 h-5 block"
             style={{ filter: 'grayscale(100%)' }}
           />
         </Button>
@@ -115,24 +121,23 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
   };
 
   return (
-    <section id="cers-card" className="py-20 overflow-hidden bg-[var(--cor-5)] w-screen relative left-[calc(-50vw+50%)]">
+    <section id="cers-card" className="py-20 overflow-hidden bg-[var(--cor-1)] w-screen relative left-[calc(-50vw+50%)]">
       <div className="container mx-auto px-6 max-w-[1400px]">
-        
-        {/* TÍTULO COM LINHA CONTÍNUA CORRIGIDA */}
+
         <div className="flex items-center w-full mb-16 gap-6">
           <h2 className="text-2xl md:text-3xl font-black text-white uppercase whitespace-nowrap shrink-0">
             Rede Estadual de Reabilitação
           </h2>
-          {/* A div abaixo ocupa o espaço restante e tem altura de 2px */}
           <div className="flex-1 h-[3px] bg-[var(--cor-4)]"></div>
         </div>
 
-        {/* GRID DE QUATRO COLUNAS - LISTA FIXA */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 
+                       md:grid-cols-2
+                       lg:grid-cols-4 
+                       gap-6">
           {fixos.map((cer) => renderCersRow(cer))}
         </div>
 
-        {/* Accordion para unidades extras */}
         {restantes.length > 0 && (
           <Accordion type="single" collapsible className="w-full mt-6">
             <AccordionItem value="grid-restante" className="border-none">
@@ -143,7 +148,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
               </AccordionContent>
 
               <div className="flex justify-center mt-12">
-                <AccordionTrigger className="flex gap-3 items-center bg-transparent text-white px-12 py-4 font-bold transition-all">
+                <AccordionTrigger className="flex gap-3 items-center bg-transparent text-white px-12 py-4 font-bold transition-all underline decoration-2 underline-offset-4 cursor-pointer hover:decoration-[var(--cor-4)]">
                   VER TODAS AS UNIDADES
                 </AccordionTrigger>
               </div>
