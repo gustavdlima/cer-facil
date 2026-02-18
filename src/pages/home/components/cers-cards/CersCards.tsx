@@ -57,13 +57,8 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
 
   const renderCersRow = (cer: DadosCers) => {
     return (
-      <div
-        key={cer.id}
-        onClick={() => setShowFlow([true, cer.id])}
-        className="group relative bg-white p-5 rounded-2xl shadow-xl border border-blue-50 
-                   flex flex-col transition-all hover:shadow-2xl hover:-translate-y-1 
-                   w-full min-h-[240px]"
-      >
+      <div key={cer.id} className="group relative bg-white p-5 rounded-2xl shadow-xl border border-blue-50 
+      flex flex-col transition-all hover:shadow-2xl hover:-translate-y-1 w-full min-h-[240px]">
 
         <h3 className="text-sm font-extrabold text-gray-900 leading-tight uppercase min-h-[60px] flex items-start">
           {toTitleCase(cer.nome)}
