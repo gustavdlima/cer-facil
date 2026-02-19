@@ -1,7 +1,8 @@
 [
   {
     "id": 1,
-    "nome": "FUNAD (Fundação Centro Integrado de Apoio ao Portador de Deficiência)",
+    "nome": "FUNDAÇÃO CENTRO INTEGRADO DE APOIO AO PORTADOR DE DEFICIÊNCIA",
+    "image": "src/assets/images/funad.jpeg",
     "especialidades": ["Auditiva", "Física", "Intelectual", "Visual"],
     "endereco": {
       "rua": "Orestes Lisboa",
@@ -21,7 +22,8 @@
   },
   {
     "id": 2,
-    "nome": "Instituto dos Cegos da Paraíba Adalgisa Cunha",
+    "nome": "INSTITUTO DOS CEGOS DA PARAÍBA ADALGISA CUNHA",
+    "image": "src/assets/images/institutoDosCegos.jpeg",
     "especialidades": ["Intelectual", "Visual"],
     "endereco": {
       "rua": "Avenida Santa Catarina",
@@ -41,7 +43,8 @@
   },
   {
     "id": 3,
-    "nome": "Centro de Reabilitação Antônio de Souza Maranhão",
+    "nome": "CENTRO DE REABILITAÇÃO ANTÔNIO DE SOUZA MARANHÃO",
+    "image": "src/assets/images/centroDeReabilitacaoAntonioDeSouza.jpeg",
     "especialidades": ["Física", "Intelectual"],
     "endereco": {
       "rua": "Rua Zilda Arns Neuman",
@@ -61,7 +64,8 @@
   },
   {
     "id": 4,
-    "nome": "Complexo Neurofuncional Maria Moura de Aquino",
+    "nome": "COMPLEXO NEUROFUNCIONAL MARIA MOURA DE AQUINO",
+    "image": "src/assets/images/complexoNeurofuncionalMariaMoura.jpeg",
     "especialidades": ["Física", "Visual", "Intelectual"],
     "endereco": {
       "rua": "Rua Prefeito Manoel Lordão",
@@ -81,7 +85,7 @@
   },
   {
     "id": 5,
-    "nome": "Centro de Reabilitação Dr José Dácio",
+    "nome": "CENTRO DE REABILITAÇÃO DR JOSÉ DÁCIO",
     "especialidades": ["Auditiva", "Física"],
     "endereco": {
       "rua": "Conjunto Helder Targino Maranhão",
@@ -101,7 +105,7 @@
   },
   {
     "id": 6,
-    "nome": "CER IV Centro Especializado em Reabilitação de Campina Grande",
+    "nome": "CER IV CENTRO ESPECIALIZADO EM REABILITAÇÃO DE CAMPINA GRANDE",
     "especialidades": ["Auditiva", "Física", "Intelectual", "Visual"],
     "endereco": {
       "rua": "Luiz Mota",
@@ -121,7 +125,7 @@
   },
   {
     "id": 7,
-    "nome": "Associação de Pais e Amigos dos Excepcionais – APAE de Campina Grande",
+    "nome": "ASSOCIAÇÃO DE PAIS E AMIGOS DOS EXCEPCIONAIS – APAE DE CAMPINA GRANDE",
     "especialidades": ["Física", "Intelectual"],
     "endereco": {
       "rua": "Rua Prof. Eutecia Vital Ribeiro",
@@ -161,7 +165,7 @@
   },
   {
     "id": 9,
-    "nome": "Centro de Reabilitação Motora",
+    "nome": "CENTRO DE REABILITAÇÃO MOTORA",
     "especialidades": ["Física", "Intelectual"],
     "endereco": {
       "rua": "Rua Dr. Gilverson de Araujo Cordeiro",
@@ -181,7 +185,7 @@
   },
   {
     "id": 10,
-    "nome": "Centro Especializado em Reabilitação Doutor Aloysio Pereira Lima",
+    "nome": "CENTRO ESPECIALIZADO EM REABILITAÇÃO DOUTOR ALOYSIO PEREIRA LIMA",
     "especialidades": ["Física", "Intelectual", "Visual"],
     "endereco": {
       "rua": "Rua Projetada",
@@ -201,7 +205,7 @@
   },
   {
     "id": 11,
-    "nome": "Reabilita Centro Especializado em Reabilitação de Sousa",
+    "nome": "REABILITA CENTRO ESPECIALIZADO EM REABILITAÇÃO DE SOUSA",
     "especialidades": ["Auditiva", "Física", "Intelectual", "Visual"],
     "endereco": {
       "rua": "Rua Adelino Josefa Rita de Cássia",
@@ -221,7 +225,7 @@
   },
   {
     "id": 12,
-    "nome": "Policlínica Dr. Antônio Quinho",
+    "nome": "POLICLÍNICA DR. ANTÔNIO QUINHO",
     "especialidades": ["Física", "Intelectual"],
     "endereco": {
       "rua": "Rua Antônio Lopes da Silva",
@@ -241,7 +245,7 @@
   },
   {
     "id": 13,
-    "nome": "Centro de Reabilitação Física",
+    "nome": "CENTRO DE REABILITAÇÃO FÍSICA",
     "especialidades": ["Física", "Intelectual"],
     "endereco": {
       "rua": "Rua Estevan Diniz",
@@ -260,7 +264,7 @@
   },
   {
     "id": 14,
-    "nome": "Oficina Ortopédica - FUNAD",
+    "nome": "OFICINA ORTOPÉDICA - FUNAD",
     "especialidades": ["Ortopédica"],
     "endereco": {
       "rua": "Rua João Teixeira de Carvalho",
@@ -280,7 +284,7 @@
   },
   {
     "id": 15,
-    "nome": "Centro de Reabilitação e Cuidado da Pessoa com Deficiência",
+    "nome": "CENTRO DE REABILITAÇÃO E CUIDADO DA PESSOA COM DEFICIÊNCIA",
     "especialidades": ["Física", "Intelectual"],
     "endereco": {
       "rua": "Rua Alberto Brito",
