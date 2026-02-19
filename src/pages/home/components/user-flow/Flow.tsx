@@ -138,8 +138,10 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
                 {FLUXOS[cerId - 1].steps.map((step, index) => {
                   const isEven = index % 2 === 0;
                   return (
-                    <div key={index} className={relative flex items-center justify-between w-full ${isEven ? 'flex-row' : 'flex-row-reverse'}}>
-
+                    <div
+                      key={index}
+                      className={`relative flex items-center justify-between w-full ${isEven ? 'flex-row' : 'flex-row-reverse'}`}
+                    >
                       <div className="w-[60%]">
                         <div className="bg-white p-3 rounded-lg shadow-md border border-gray-100 transition-all hover:shadow-lg">
                           <div className="flex items-center gap-2 mb-3">
