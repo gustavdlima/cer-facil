@@ -30,6 +30,7 @@ export default function Home({
         <>
           <CersCards showFlow={showFlow} setShowFlow={setShowFlow} />
           <NetworkInfo />
+          <Footnote />
         </>
       )}
     </div>
