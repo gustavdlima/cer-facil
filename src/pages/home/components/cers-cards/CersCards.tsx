@@ -64,7 +64,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
             {cer.especialidades.map((especialidade, index) => (
               <span 
                 key={index} 
-                className="px-2 py-1 bg-blue-50 rounded-md text-[var(--cor-1)] text-[10px] sm:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap"
+                className="px-2 py-1 bg-blue-50 rounded-md text-[var(--cor-1)] text-[9px] sm:text-[9px] font-bold uppercase tracking-wider whitespace-nowrap"
               >
                 {especialidade}
               </span>
