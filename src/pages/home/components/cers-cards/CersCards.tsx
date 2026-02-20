@@ -36,7 +36,6 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
     return <Flow setShowFlow={setShowFlow} cerId={showFlow[1]} />;
   }
 
-  // Ajustado para 3 cards iniciais
   const fixos = (CERS as DadosCers[]).slice(0, 3);
   const restantes = (CERS as DadosCers[]).slice(3);
 
@@ -46,26 +45,21 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
         key={cer.id} 
         className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 border-t-4 border-t-[var(--cor-1)] flex flex-col transition-all hover:shadow-xl hover:-translate-y-1 h-full min-h-[220px]"
       >
-        {/* Container que cresce para empurrar o rodapé para baixo */}
         <div className="flex-grow flex flex-col">
-          {/* Nome completo (sem line-clamp) */}
           <h3 
             className="font-bold text-lg text-black mb-4 leading-tight" 
           >
             {toTitleCase(cer.nome)}
           </h3>
 
-          {/* Cidade */}
           <div className="flex items-center text-gray-500 mb-6 mt-auto">
             <MapPin className="w-4 h-4 mr-1.5 flex-shrink-0 text-[var(--cor-3)]" />
             <span className="text-sm font-medium">{cer.cidade}</span>
           </div>
         </div>
 
-        {/* Rodapé com as Tags de Deficiência e Botão de Ação */}
         <div className="flex items-center justify-between border-t border-gray-100 pt-4 mt-auto">
           
-          {/* Container flex-wrap para suportar até 4 tags sem quebrar o layout */}
           <div className="flex flex-wrap gap-1.5 flex-1 pr-3">
             {cer.especialidades.map((especialidade, index) => (
               <span 
@@ -77,7 +71,6 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
             ))}
           </div>
 
-          {/* Botão com flex-shrink-0 para não ser esmagado pelas tags */}
           <Button
             variant="ghost"
             size="icon"
@@ -95,7 +88,6 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
     <section id="cers-card" className="px-6 py-20 bg-white relative">
       <div className="mx-auto max-w-6xl">
         
-        {/* Cabeçalho */}
         <div className="text-left mb-12">
           <h2 className="font-bold text-4xl mb-4 text-black">
             Rede Estadual de Reabilitação
@@ -103,17 +95,14 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
           <div className="w-24 h-1 bg-[var(--cor-3)] rounded-full"></div>
         </div>
 
-        {/* Grid Principal ajustado para lg:grid-cols-3 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {fixos.map((cer) => renderCersRow(cer))}
         </div>
 
-        {/* Accordion para os restantes */}
         {restantes.length > 0 && (
           <Accordion type="single" collapsible className="w-full mt-6">
             <AccordionItem value="grid-restante" className="border-none">
               <AccordionContent className="overflow-visible pt-4">
-                {/* Grid Restante ajustado para lg:grid-cols-3 */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {restantes.map((cer) => renderCersRow(cer))}
                 </div>
