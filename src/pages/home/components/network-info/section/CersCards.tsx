@@ -1,7 +1,6 @@
-import React from "react";
 import { Button } from "@/components/ui/button";
 import CERS from "@/data/cers.json";
-import Flow from "../user-flow/Flow";
+import Flow from "../../user-flow/Flow";
 import { MapPin, ArrowRight } from "lucide-react";
 import {
   Accordion,
@@ -41,14 +40,12 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
 
   const renderCersRow = (cer: DadosCers) => {
     return (
-      <div 
-        key={cer.id} 
+      <div
+        key={cer.id}
         className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 border-t-4 border-t-[var(--cor-1)] flex flex-col transition-all hover:shadow-xl hover:-translate-y-1 h-full min-h-[220px]"
       >
         <div className="flex-grow flex flex-col">
-          <h3 
-            className="font-bold text-lg text-black mb-4 leading-tight" 
-          >
+          <h3 className="font-bold text-lg text-black mb-4 leading-tight">
             {toTitleCase(cer.nome)}
           </h3>
 
@@ -59,11 +56,10 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
         </div>
 
         <div className="flex items-center justify-between border-t border-gray-100 pt-4 mt-auto">
-          
           <div className="flex flex-wrap gap-1.5 flex-1 pr-3">
             {cer.especialidades.map((especialidade, index) => (
-              <span 
-                key={index} 
+              <span
+                key={index}
                 className="px-2 py-1 bg-blue-50 rounded-md text-[var(--cor-1)] text-[9px] sm:text-[9px] font-bold uppercase tracking-wider whitespace-nowrap"
               >
                 {especialidade}
@@ -87,7 +83,6 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
   return (
     <section id="cers-card" className="px-6 py-20 bg-white relative">
       <div className="mx-auto max-w-6xl">
-        
         <div className="text-left mb-12">
           <h2 className="font-bold text-4xl mb-4 text-black">
             Rede Estadual de Reabilitação
