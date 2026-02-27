@@ -50,32 +50,33 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
     return <Flow setShowFlow={setShowFlow} cerId={showFlow[1]} />;
   }
 
-  const fixos = (CERS as DadosCers[]).slice(0, 3);
-  const restantes = (CERS as DadosCers[]).slice(3);
+  const fixos = (CERS as DadosCers[]).slice(0, 6);
+  const restantes = (CERS as DadosCers[]).slice(6);
 
   const renderCersRow = (cer: DadosCers) => {
     return (
       <div
         key={cer.id}
-        className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 border-t-4 border-t-[var(--cor-1)] flex flex-col transition-all hover:shadow-xl hover:-translate-y-1 h-full min-h-[220px]"
+        // Fundo branco sólido com borda superior em azul escuro para destaque no fundo azul geral
+        className="p-6 rounded-2xl shadow-xl bg-white flex flex-col transition-all hover:shadow-2xl hover:-translate-y-2 h-full min-h-[220px]"
       >
         <div className="flex-grow flex flex-col">
-          <h3 className="font-bold text-lg text-black mb-4 leading-tight">
+          <h3 className="font-bold text-xl text-slate-900 mb-4 leading-tight">
             {toTitleCase(cer.nome)}
           </h3>
 
-          <div className="flex items-center text-gray-500 mb-6 mt-auto">
-            <MapPin className="w-4 h-4 mr-1.5 flex-shrink-0 text-[var(--cor-3)]" />
-            <span className="text-sm font-medium">{cer.cidade}</span>
+          <div className="flex items-center text-slate-500 mb-6 mt-auto font-semibold">
+            <MapPin className="w-4 h-4 mr-1.5 flex-shrink-0 text-blue-600" />
+            <span className="text-sm">{cer.cidade}</span>
           </div>
         </div>
 
-        <div className="flex items-center justify-between border-t border-gray-100 pt-4 mt-auto">
-          <div className="flex flex-wrap gap-1.5 flex-1 pr-3">
+        <div className="flex items-center justify-between border-t border-slate-100 pt-4 mt-auto">
+          <div className="flex flex-wrap gap-2 flex-1 pr-3">
             {cer.especialidades.map((especialidade, index) => (
               <span
                 key={index}
-                className="px-2 py-1 bg-blue-50 rounded-md text-[var(--cor-1)] text-[9px] sm:text-[9px] font-bold uppercase tracking-wider whitespace-nowrap"
+                className="px-2.5 py-1 bg-blue-50 text-blue-700 rounded-lg text-[10px] font-extrabold uppercase tracking-widest"
               >
                 {especialidade}
               </span>
@@ -85,7 +86,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
           <Button
             variant="ghost"
             size="icon"
-            className="text-[var(--cor-3)] hover:text-white hover:bg-[var(--cor-3)] rounded-full transition-colors flex-shrink-0"
+            className="text-blue-600 hover:text-white hover:bg-blue-600 rounded-full transition-all duration-300 flex-shrink-0 bg-slate-50"
             onClick={() => {
               setShowFlow([true, cer.id]);
               setTimeout(handleScrollToSection, 100);
@@ -99,30 +100,30 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
   };
 
   return (
-    <section id="cers-card" className="px-6 py-20 bg-white relative">
+    <section id="cers-card" className="min-h-screen py-24 relative flex align-items-center bg-[#3b82f6]"> {/* Azul vibrante da imagem */}
       <div className="mx-auto max-w-6xl">
-        <div className="text-left mb-12">
-          <h2 className="font-bold text-4xl mb-4 text-black">
+        <div className="text-left mb-16">
+          <h2 className="font-bold text-4xl mb-4 text-white">
             Rede Estadual de Reabilitação
           </h2>
-          <div className="w-24 h-1 bg-[var(--cor-3)] rounded-full"></div>
+          <div className="w-24 h-1.5 bg-white rounded-full"></div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {fixos.map((cer) => renderCersRow(cer))}
         </div>
 
         {restantes.length > 0 && (
-          <Accordion type="single" collapsible className="w-full mt-6">
+          <Accordion type="single" collapsible className="w-full mt-8">
             <AccordionItem value="grid-restante" className="border-none">
-              <AccordionContent className="overflow-visible pt-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <AccordionContent className="overflow-visible">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                   {restantes.map((cer) => renderCersRow(cer))}
                 </div>
               </AccordionContent>
 
-              <div className="flex justify-center mt-8">
-                <AccordionTrigger className="flex gap-2 items-center text-black px-6 py-3 font-bold transition-all border border-gray-200 rounded-full hover:bg-gray-50 hover:text-[var(--cor-3)] data-[state=open]:hidden">
+              <div className="flex justify-center mt-12">
+                <AccordionTrigger className="flex gap-3 items-center text-white px-8 py-4 font-bold transition-all border-2 border-white/40 rounded-full hover:bg-white hover:text-blue-600 data-[state=open]:hidden shadow-lg">
                   Ver todas as unidades
                 </AccordionTrigger>
               </div>
