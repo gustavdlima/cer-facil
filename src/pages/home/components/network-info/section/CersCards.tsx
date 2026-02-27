@@ -31,6 +31,13 @@ export function toTitleCase(text: string): string {
 }
 
 export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
+  const handleScrollToSection = () => {
+    const section = document.getElementById("flow");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   if (showFlow[0]) {
     return <Flow setShowFlow={setShowFlow} cerId={showFlow[1]} />;
   }
@@ -71,7 +78,10 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
             variant="ghost"
             size="icon"
             className="text-[var(--cor-3)] hover:text-white hover:bg-[var(--cor-3)] rounded-full transition-colors flex-shrink-0"
-            onClick={() => setShowFlow([true, cer.id])}
+            onClick={() => {
+              setShowFlow([true, cer.id]);
+              setTimeout(handleScrollToSection, 100);
+            }}
           >
             <ArrowRight className="w-5 h-5" />
           </Button>
