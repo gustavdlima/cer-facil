@@ -5,15 +5,16 @@ import { ChevronDown, MapPin, Network, BookOpen } from "lucide-react";
 interface WelcomeProps {
   showForm: boolean;
   setShowForm: (show: boolean) => void;
+  setShowFlow: (show: [boolean, number]) => void;
 }
 
-export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
+export default function Welcome({ showForm, setShowForm, setShowFlow }: WelcomeProps) {
   const handleScrollDown = () => {
     window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
   };
 
   if (showForm) {
-    return <CerForm setShowForm={setShowForm} />;
+    return <CerForm setShowForm={setShowForm} setShowFlow={setShowFlow} />;
   }
 
   return (

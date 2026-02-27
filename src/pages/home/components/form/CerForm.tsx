@@ -7,6 +7,7 @@ import StepIndicator from "./step-indicator/StepIndicator";
 
 interface CerFormProps {
   setShowForm: (show: boolean) => void;
+  setShowFlow: (show: [boolean, number]) => void;
 }
 
 interface FormData {
@@ -16,7 +17,7 @@ interface FormData {
   coordinates: { lat: number; lng: number } | null;
 }
 
-export default function CerForm({ setShowForm }: CerFormProps) {
+export default function CerForm({ setShowForm, setShowFlow }: CerFormProps) {
   const [currentStep, setCurrentStep] = useState(1);
 
   const [formData, setFormData] = useState<FormData>({
@@ -82,6 +83,11 @@ export default function CerForm({ setShowForm }: CerFormProps) {
     }
   };
 
+  const handleShowFlow = (cerId: number) => {
+    setShowFlow([true, cerId]);
+    setShowForm(false);
+  };
+
   return (
     <div id="cer-form" className="w-full py-8">
       <div className="max-w-4xl mx-auto px-4 mb-8">
@@ -121,6 +127,7 @@ export default function CerForm({ setShowForm }: CerFormProps) {
           userCoordinates={formData.coordinates}
           onBack={() => setCurrentStep(3)}
           onFinish={handleFinish}
+          onShowFlow={handleShowFlow}
         />
       )}
     </div>

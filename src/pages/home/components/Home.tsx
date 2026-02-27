@@ -25,7 +25,7 @@ export default function Home({
   }
   return (
     <div>
-      <Welcome showForm={showForm} setShowForm={setShowForm} />
+      <Welcome showForm={showForm} setShowForm={setShowForm} setShowFlow={setShowFlow} />
       {!showForm && (
         <>
           <CersCards showFlow={showFlow} setShowFlow={setShowFlow} />

@@ -10,7 +10,7 @@ import {
 import cersData from "@/data/cers.json";
 import macrosData from "@/data/macro.json";
 import microsData from "@/data/micro.json";
-import { Bold } from "lucide-react";
+import { Bold, ArrowRight } from "lucide-react";
 
 interface StepFourProps {
   deficiencies?: string[];
@@ -18,7 +18,8 @@ interface StepFourProps {
   location?: string;
   userCoordinates?: { lat: number; lng: number } | null;
   onBack: () => void;
-  onFinish: () => void; 
+  onFinish: () => void;
+  onShowFlow?: (cerId: number) => void;
 }
 
 interface MatchingResult {
@@ -35,7 +36,8 @@ export default function StepFour({
   location = "",
   userCoordinates,
   onBack,
-  onFinish, 
+  onFinish,
+  onShowFlow,
 }: StepFourProps) {
   const [results, setResults] = useState<MatchingResult[]>([]);
   const [loading, setLoading] = useState(true);
@@ -287,6 +289,18 @@ export default function StepFour({
                               );
                             })}
                           </div>
+                        </div>
+                        
+                        <div className="flex justify-end mt-3">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="text-[var(--cor-3)] hover:text-white hover:bg-[var(--cor-3)] transition-colors"
+                            onClick={() => onShowFlow?.(result.cer.id)}
+                          >
+                            Ver mais informações
+                            <ArrowRight className="w-4 h-4 ml-1" />
+                          </Button>
                         </div>
                       </div>
                     </CardContent>
