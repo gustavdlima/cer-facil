@@ -6,8 +6,8 @@ import Footnote from "./footnote/Footnote";
 interface HomeProps {
   showForm: boolean;
   setShowForm: (show: boolean) => void;
-  showFlow: boolean;
-  setShowFlow: (show: boolean) => void;
+  showFlow: [boolean, number | null];
+  setShowFlow: (val: [boolean, number | null]) => void;
 }
 
 export default function Home({
@@ -28,8 +28,7 @@ export default function Home({
       <Welcome showForm={showForm} setShowForm={setShowForm} />
       {!showForm && (
         <>
-          <CersCards showFlow={showFlow} setShowFlow={setShowFlow} />
-          <NetworkInfo />
+          <NetworkInfo showFlow={showFlow} setShowFlow={setShowFlow} />
           <Footnote />
         </>
       )}
