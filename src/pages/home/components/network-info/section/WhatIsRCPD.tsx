@@ -4,18 +4,18 @@ export default function WhatIsRCPD() {
   const features = [
     {
       icon: Heart,
-      title: "Cuidado Integral",
-      desc: "A Rede de Cuidados à Pessoa com Deficiência tem como objetivo ampliar o acesso e qualificar o atendimento no Sistema Único de Saúde (SUS), oferecendo cuidado integral às pessoas com deficiência ao longo de todas as fases da vida.",
+      title: "Cuidado Para Todas as Idades",
+      desc: "A Rede de Cuidado à Pessoa com Deficiência tem o objetivo de ajudar Pessoas com Deficiência (PCDs) a acessar serviços de reabilitação dentro do SUS. Ela atende crianças, pré-adolescentes, adolescentes, adultos e idosos.",
     },
     {
       icon: Shield,
       title: "Prevenção",
-      desc: "A atuação da rede envolve ações de prevenção, identificação precoce e reabilitação, considerando diferentes tipos de deficiência e necessidades de cuidado.",
+      desc: "A rede também trabalha com a prevenção e descobrimento precoce de deficiências.",
     },
     {
       icon: Users,
-      title: "Acesso Universal",
-      desc: "Garantia de atendimento equitativo e acessível a todas as pessoas com deficiência, promovendo a inclusão e a igualdade de oportunidades no acesso aos serviços de saúde.",
+      title: "Disponível Para Todas as Pessoas com Deficiência",
+      desc: "A rede também tem o objetivo de garantir que qualquer pessoa, com qualquer deficiência, possa acessar serviços de saúde de qualidade.",
     },
   ];
 

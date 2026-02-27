@@ -3,11 +3,11 @@ import timelineData from "@/data/timeline-history.json";
 import { useState } from "react";
 
 const detailedMessages = [
-  "A Rede de Apoio à Pessoa com Deficiência foi estruturada no Brasil a partir da necessidade de superar um modelo de cuidado fragmentado, no qual os atendimentos eram pontuais e pouco articulados entre si.",
-  "Em 2012, no âmbito do Sistema Único de Saúde (SUS), a Rede de Cuidado à Pessoa com Deficiência (RCPD) foi oficialmente instituída como parte da Rede de Atenção à Saúde (RAS), integrada ao Plano Nacional dos Direitos da Pessoa com Deficiência — o Viver sem Limite.",
-  "Desde então, a rede vem sendo ampliada e aprimorada, incorporando novos serviços, fortalecendo a atenção básica, os centros especializados de reabilitação e a articulação com outras políticas públicas.",
-  "Essa evolução reflete uma mudança de perspectiva: do cuidado centrado apenas na deficiência para um cuidado centrado na pessoa e em seus direitos.",
-  "Hoje, a rede segue em constante construção, adaptando-se às demandas sociais, territoriais e às diferentes realidades das pessoas com deficiência no país.",
+  "A ideia da Rede de Apoio à Pessoa com Deficiência foi mudar isso e fazer com que cada pessoa pudesse ser atendida em um mesmo lugar, ou seja, o seu CER adequado às suas necessidades.",
+  "Em 2012, a rede foi criada por meio do plano Viver Sem Limite, que faz parte do Plano Nacional dos Direitos da Pessoa com Deficiência.",
+  "Desde então, vem sendo melhorada e mais serviços vem sendo disponibilizados. O que significa que os CERs também podem ajudar com serviços da Atenção Básica.",
+  "Com isso, o acompanhamento se torna melhor,  e faz com que o cuidado seja focado na pessoa e não somente na deficiência.",
+  "Hoje, a rede segue se adaptando às necessidades das Pessoas com Deficiência para que elas possam ter uma melhor qualidade de vida.",
 ];
 
 const circleColors = [
@@ -29,12 +29,12 @@ export default function HistoryTimeline() {
       <div className="max-w-6xl mx-auto">
         <div className="text-left mb-16">
           <h2 className="text-4xl font-bold mb-4 text-black">
-            História da Rede de Cuidado à Pessoa com Deficiência
+            História da Rede de Cuidado à Pessoa com Deficiência (RCPD)
           </h2>
           <div className="w-24 h-1 bg-[var(--cor-5)] rounded-full"></div>
           <p className="text-gray-600 mt-4 max-w-2xl">
-            Uma jornada de evolução e compromisso com os direitos das pessoas
-            com deficiência
+            Uma jornada de evolução e compromisso com os direitos das Pessoas
+            com Deficiência
           </p>
         </div>
 

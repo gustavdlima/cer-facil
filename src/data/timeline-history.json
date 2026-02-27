@@ -2,31 +2,31 @@
   {
     "id": 1,
     "title": "Antes de 2012",
-    "description": "Fragmentação dos serviços, atendimento isolado e pouca articulação entre os pontos de atenção.",
+    "description": "Os serviços de saúde para as Pessoas com Deficiência não conversavam entre si, ou seja, se uma pessoa precisasse ser atendidos por profissionais diferentes, ela teria que ir até lugares diferentes.",
     "color": "bg-green-500"
   },
   {
     "id": 2,
-    "title": "2012 – Instituição da RCPD",
-    "description": "Integração ao SUS, criação da Rede de Atenção à Saúde e lançamento do Plano Viver sem Limite.",
+    "title": "2012 - Criação da RCPD",
+    "description": "A rede que tinha acabado de ser criada foi integrada ao Sistema Único de Saúde (SUS).",
     "color": "bg-blue-500"
   },
   {
     "id": 3,
-    "title": "Expansão dos serviços",
-    "description": "Ampliação dos centros de reabilitação, tecnologias assistivas e atenção especializada em todo território.",
+    "title": "Expansão dos Serviços Oferecidos",
+    "description": "Aumento do número de CERs na Paraíba e na distribuição de equipamentos para auxiliar as Pessoas com Deficiência, como próteses, por exemplo.",
     "color": "bg-purple-500"
   },
   {
     "id": 4,
-    "title": "Consolidação do cuidado integral",
-    "description": "Comunicação entre serviços, acompanhamento contínuo e foco nos direitos das pessoas com deficiência.",
+    "title": "Consolidação do Cuidado Unificado",
+    "description": "Com a criação da rede, os diferentes serviços podem trabalhar juntos para que os direitos das Pessoas com Deficiência possam ser garantidos.",
     "color": "bg-orange-500"
   },
   {
     "id": 5,
-    "title": "Rede em construção (Atual)",
-    "description": "Aprimoramento constante, enfrentamento de desafios regionais e avanço na inclusão e acessibilidade.",
+    "title": "A RCPD Continua Melhorando (Atualmente)",
+    "description": "Desafios são superados e melhorias são feitas a todo momento.",
     "color": "bg-gray-400"
   }
 ]
