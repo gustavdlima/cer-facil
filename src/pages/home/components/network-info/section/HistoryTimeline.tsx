@@ -1,14 +1,5 @@
 import { Circle, Calendar } from "lucide-react";
 import timelineData from "@/data/timeline-history.json";
-import { useState } from "react";
-
-const detailedMessages = [
-  "A ideia da Rede de Apoio à Pessoa com Deficiência foi mudar isso e fazer com que cada pessoa pudesse ser atendida em um mesmo lugar, ou seja, o seu CER adequado às suas necessidades.",
-  "Em 2012, a rede foi criada por meio do plano Viver Sem Limite, que faz parte do Plano Nacional dos Direitos da Pessoa com Deficiência.",
-  "Desde então, vem sendo melhorada e mais serviços vem sendo disponibilizados. O que significa que os CERs também podem ajudar com serviços da Atenção Básica.",
-  "Com isso, o acompanhamento se torna melhor,  e faz com que o cuidado seja focado na pessoa e não somente na deficiência.",
-  "Hoje, a rede segue se adaptando às necessidades das Pessoas com Deficiência para que elas possam ter uma melhor qualidade de vida.",
-];
 
 const circleColors = [
   "bg-[var(--cor-1)]",
@@ -19,7 +10,6 @@ const circleColors = [
 ];
 
 export default function HistoryTimeline() {
-  const [expandedId, setExpandedId] = useState<string | null>(null);
 
   return (
     <section
@@ -57,10 +47,7 @@ export default function HistoryTimeline() {
                 </div>
                 <div className="flex-1">
                   <div
-                    className="bg-white p-6 rounded-xl shadow-lg border-2 border-gray-200 hover:border-[var(--cor-1)] transition-all cursor-pointer hover:shadow-xl group"
-                    onClick={() =>
-                      setExpandedId(expandedId === item.id ? null : item.id)
-                    }
+                    className="bg-white p-6 rounded-xl shadow-lg border-2 border-gray-200 hover:border-[var(--cor-1)] transition-all hover:shadow-xl"
                   >
                     <div className="flex items-center gap-3 mb-3">
                       <Calendar className="w-5 h-5 text-black" />
@@ -71,32 +58,20 @@ export default function HistoryTimeline() {
                     <p className="text-gray-700 font-medium mb-2">
                       {item.description}
                     </p>
-                    {expandedId === item.id && (
-                      <p className="text-gray-600 text-sm mt-4 leading-relaxed border-t pt-4 animate-in fade-in duration-300">
-                        {detailedMessages[index]}
-                      </p>
-                    )}
-                    <span className="text-xs text-black mt-2 block group-hover:underline hover:scale-105 transition-transform inline-block">
-                      {expandedId === item.id ? "Ver menos" : "Saiba mais"}
-                    </span>
                   </div>
                 </div>
               </div>
 
               {/* Desktop Layout */}
               <div
-                className={`hidden md:flex items-center w-full ${
-                  index % 2 === 0 ? "justify-start" : "justify-end"
-                }`}
+                className={`hidden md:flex items-center w-full ${index % 2 === 0 ? "justify-start" : "justify-end"
+                  }`}
               >
                 {index % 2 === 0 && (
                   <>
                     <div className="w-5/12 pr-8">
                       <div
-                        className="bg-white p-6 rounded-xl shadow-lg border-2 border-gray-200 hover:border-[var(--cor-1)] transition-all cursor-pointer hover:shadow-xl group"
-                        onClick={() =>
-                          setExpandedId(expandedId === item.id ? null : item.id)
-                        }
+                        className="bg-white p-6 rounded-xl shadow-lg border-2 border-gray-200 hover:border-[var(--cor-1)] transition-all hover:shadow-xl"
                       >
                         <div className="flex items-center gap-3 mb-3">
                           <Calendar className="w-5 h-5 text-black" />
@@ -107,14 +82,6 @@ export default function HistoryTimeline() {
                         <p className="text-gray-700 font-medium mb-2">
                           {item.description}
                         </p>
-                        {expandedId === item.id && (
-                          <p className="text-gray-600 text-sm mt-4 leading-relaxed border-t pt-4 animate-in fade-in duration-300">
-                            {detailedMessages[index]}
-                          </p>
-                        )}
-                        <span className="text-xs text-black mt-2 block group-hover:underline hover:scale-105 transition-transform inline-block">
-                          {expandedId === item.id ? "Ver menos" : "Saiba mais"}
-                        </span>
                       </div>
                     </div>
 
@@ -150,10 +117,7 @@ export default function HistoryTimeline() {
 
                     <div className="w-5/12 pl-8">
                       <div
-                        className="bg-white p-6 rounded-xl shadow-lg border-2 border-gray-200 hover:border-[var(--cor-1)] transition-all cursor-pointer hover:shadow-xl group"
-                        onClick={() =>
-                          setExpandedId(expandedId === item.id ? null : item.id)
-                        }
+                        className="bg-white p-6 rounded-xl shadow-lg border-2 border-gray-200 hover:border-[var(--cor-1)] transition-all hover:shadow-xl"
                       >
                         <div className="flex items-center gap-3 mb-3">
                           <Calendar className="w-5 h-5 text-black" />
@@ -164,14 +128,6 @@ export default function HistoryTimeline() {
                         <p className="text-gray-700 font-medium mb-2">
                           {item.description}
                         </p>
-                        {expandedId === item.id && (
-                          <p className="text-gray-600 text-sm mt-4 leading-relaxed border-t pt-4 animate-in fade-in duration-300">
-                            {detailedMessages[index]}
-                          </p>
-                        )}
-                        <span className="text-xs text-black mt-2 block group-hover:underline hover:scale-105 transition-transform inline-block">
-                          {expandedId === item.id ? "Ver menos" : "Saiba mais"}
-                        </span>
                       </div>
                     </div>
                   </>
