@@ -4,6 +4,7 @@ import ProfessionalsRoles from "./section/ProfessionalsRoles";
 import HistoryTimeline from "./section/HistoryTimeline";
 import AttentionLevel from "./section/AttentionLevel";
 import CersCards from "./section/CersCards";
+import WaveDivider from "../../../../components/WaveDivider";
 
 interface NetworkInfoProps {
   showFlow: [boolean, number | null];
@@ -16,33 +17,27 @@ export default function NetworkInfo({
 }: NetworkInfoProps) {
   return (
   <div id="network-info">  
-  {/* 1. Azul - Tecnologia e Informação */}
-  <div className="bg-[#3B82F6] text-white py-16 px-8">
+  <div className="bg-[#3B82F6] text-white pt-16">
     <WhatIsRCPD />
+    <WaveDivider primaryColor="#3B82F6" secondaryColor="#269ebc" />
   </div>
-
-  {/* 2. Laranja - Atenção e Ação */}
-  <div className="bg-[#F97316] text-white py-16 px-8">
+  <div className="bg-[#269ebc] text-white pt-16">
     <AttentionLevel />
+    <WaveDivider primaryColor="#269ebc" secondaryColor="#10B981" />
   </div>
-
-  {/* 3. Verde - Inclusão e Cuidado */}
-  <div className="bg-[#10B981] text-white py-16 px-8">
+  <div className="bg-[#10B981] text-white pt-16">
     <TypesOfCersAndDeficiencies />
+    <WaveDivider primaryColor="#10B981" secondaryColor="#3B82F6" />
   </div>
-
-  {/* 4. Azul - Cards da Rede (Repete a sequência) */}
-  <div className="bg-[#3B82F6] text-white py-16 px-8 shadow-inner">
+  <div className="bg-[#3B82F6] text-white pt-16">
     <CersCards showFlow={showFlow} setShowFlow={setShowFlow} />
+    <WaveDivider primaryColor="#3B82F6" secondaryColor="#269ebc" />
   </div>
-
-  {/* 5. Laranja - Linha do Tempo (Destaque Histórico) */}
-  <div className="bg-[#F97316] text-white py-16 px-8">
+  <div className="bg-[#269ebc] text-white pt-16">
     <HistoryTimeline />
+    <WaveDivider primaryColor="#269ebc" secondaryColor="#10B981" />
   </div>
-
-  {/* 6. Verde - Papéis Profissionais (Encerramento) */}
-  <div className="bg-[#10B981] text-white py-16 px-8 border-t border-white/20">
+  <div className="bg-[#10B981] text-white pt-16">
     <ProfessionalsRoles />
   </div>
   </div>

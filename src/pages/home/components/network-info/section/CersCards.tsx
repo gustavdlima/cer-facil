@@ -57,7 +57,6 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
     return (
       <div
         key={cer.id}
-        // Fundo branco sólido com borda superior em azul escuro para destaque no fundo azul geral
         className="p-6 rounded-2xl shadow-xl bg-white flex flex-col transition-all hover:shadow-2xl hover:-translate-y-2 h-full min-h-[220px]"
       >
         <div className="flex-grow flex flex-col">
@@ -76,7 +75,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
             {cer.especialidades.map((especialidade, index) => (
               <span
                 key={index}
-                className="px-2.5 py-1 bg-blue-50 text-blue-700 rounded-lg text-[10px] font-extrabold uppercase tracking-widest"
+                className="px-2.5 py-1 bg-blue-50 text-blue-700 rounded-lg text-[12px] font-extrabold uppercase tracking-widest"
               >
                 {especialidade}
               </span>
@@ -100,7 +99,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
   };
 
   return (
-    <section id="cers-card" className="min-h-screen py-24 relative flex align-items-center bg-[#3b82f6]"> {/* Azul vibrante da imagem */}
+    <section id="cers-card" className="min-h-screen py-24 px-8 relative flex align-items-center bg-[#3b82f6]"> {/* Azul vibrante da imagem */}
       <div className="mx-auto max-w-6xl">
         <div className="text-left mb-16">
           <h2 className="font-bold text-4xl mb-4 text-white">

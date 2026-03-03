@@ -3,6 +3,7 @@ import Welcome from "./welcome-page/Welcome";
 import Footnote from "./footnote/Footnote";
 // Adicione esta linha (ajuste o caminho se necessário):
 import CersCards from "./network-info/section/CersCards";
+import WaveDivider from "../../../components/WaveDivider";
 
 interface HomeProps {
   showForm: boolean;
@@ -29,6 +30,7 @@ export default function Home({
   return (
     <div>
       <Welcome showForm={showForm} setShowForm={setShowForm} />
+      <WaveDivider primaryColor="#ffffff" secondaryColor="#3B82F6" />
       {!showForm && (
         <>
           {/* Aqui ele é renderizado via NetworkInfo */}

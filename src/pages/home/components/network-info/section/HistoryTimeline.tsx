@@ -10,7 +10,6 @@ const detailedMessages = [
   "Hoje, a rede segue em constante construção, adaptando-se às demandas sociais, territoriais e às diferentes realidades das pessoas com deficiência no país.",
 ];
 
-/* Cores dos círculos usando o Azul Marinho do manual para contraste no laranja */
 const circleColors = [
   "bg-[#0a2d5e]",
   "bg-[#0a2d5e]",
@@ -25,18 +24,14 @@ export default function HistoryTimeline() {
   return (
     <section
       id="history-rcpd"
-      /* Removido o gradiente original para respeitar o fundo da seção pai */
       className="px-6 py-20 relative"
     >
       <div className="max-w-6xl mx-auto">
         <div className="text-left mb-16">
-          {/* Título em Branco para contraste no fundo laranja */}
           <h2 className="text-4xl font-bold mb-4 text-white">
             História da Rede de Cuidado à Pessoa com Deficiência
           </h2>
-          {/* Barra em Azul Marinho (institucional do manual) */}
-          <div className="w-24 h-2 bg-[#0a2d5e] rounded-full"></div>
-          {/* Texto de apoio em Branco com leve opacidade */}
+          <div className="w-24 h-2 bg-white rounded-full"></div>
           <p className="text-white/90 mt-4 max-w-2xl">
             Uma jornada de evolução e compromisso com os direitos das pessoas
             com deficiência
@@ -44,12 +39,11 @@ export default function HistoryTimeline() {
         </div>
 
         <div className="relative">
-          {/* Linha vertical em Branco para visibilidade no fundo laranja */}
           <div className="absolute left-8 md:left-1/2 md:transform md:-translate-x-1/2 top-0 bottom-0 w-1 bg-white/40" />
 
           {timelineData.map((item, index) => (
             <div key={item.id} className="relative flex items-center mb-10">
-              {/* Mobile Layout */}
+
               <div className="md:hidden flex items-start gap-4 w-full">
                 <div className="relative flex-shrink-0">
                   <div
@@ -63,7 +57,6 @@ export default function HistoryTimeline() {
                 </div>
                 <div className="flex-1">
                   <div
-                    /* Card branco com borda e hover em Azul Marinho */
                     className="bg-white p-6 rounded-xl shadow-lg border-2 border-gray-100 hover:border-[#0a2d5e] transition-all cursor-pointer hover:shadow-xl group"
                     onClick={() =>
                       setExpandedId(expandedId === item.id ? null : item.id)
@@ -83,15 +76,12 @@ export default function HistoryTimeline() {
                         {detailedMessages[index]}
                       </p>
                     )}
-                    {/* Texto "Saiba mais" em Laranja para destaque dentro do card */}
-                    <span className="text-xs text-[#F97316] font-bold mt-2 block group-hover:underline hover:scale-105 transition-transform inline-block">
+                    <span className="text-xs text-[#0a2d5e] font-bold mt-2 block group-hover:underline hover:scale-105 transition-transform inline-block">
                       {expandedId === item.id ? "Ver menos" : "Saiba mais"}
                     </span>
                   </div>
                 </div>
               </div>
-
-              {/* Desktop Layout */}
               <div
                 className={`hidden md:flex items-center w-full ${
                   index % 2 === 0 ? "justify-start" : "justify-end"
@@ -120,7 +110,7 @@ export default function HistoryTimeline() {
                             {detailedMessages[index]}
                           </p>
                         )}
-                        <span className="text-xs text-[#F97316] font-bold mt-2 block group-hover:underline hover:scale-105 transition-transform inline-block">
+                        <span className="text-xs text-[#0a2d5e] font-bold mt-2 block group-hover:underline hover:scale-105 transition-transform inline-block">
                           {expandedId === item.id ? "Ver menos" : "Saiba mais"}
                         </span>
                       </div>
@@ -177,7 +167,7 @@ export default function HistoryTimeline() {
                             {detailedMessages[index]}
                           </p>
                         )}
-                        <span className="text-xs text-[#F97316] font-bold mt-2 block group-hover:underline hover:scale-105 transition-transform inline-block">
+                        <span className="text-xs text-[#0a2d5e] font-bold mt-2 block group-hover:underline hover:scale-105 transition-transform inline-block">
                           {expandedId === item.id ? "Ver menos" : "Saiba mais"}
                         </span>
                       </div>

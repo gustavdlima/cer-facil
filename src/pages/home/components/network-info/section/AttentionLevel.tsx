@@ -19,11 +19,11 @@ import {
 
 const levelIcons = [Activity, Building2, Hospital];
 
-// Paleta de cores Quentes para harmonizar com o Laranja do fundo
+
 const levelColors = [
-  "bg-amber-400",   // Atenção Básica (Amarelo Solar)
-  "bg-orange-600",  // Atenção Especializada (Laranja Intenso)
-  "bg-red-800",     // Atenção Hospitalar (Vermelho Profundo/Vinho)
+  "bg-sky-400",   
+  "bg-sky-600",  
+  "bg-sky-800", 
 ];
 
 const levelBorders = [
@@ -33,9 +33,9 @@ const levelBorders = [
 ];
 
 const levelHovers = [
-  "hover:border-amber-400",
-  "hover:border-orange-500",
-  "hover:border-red-700",
+  "hover:border-sky-400",
+  "hover:border-sky-500",
+  "hover:border-sky-700",
 ];
 
 export default function AttentionLevel() {
@@ -45,15 +45,14 @@ export default function AttentionLevel() {
   return (
     <section
       id="attention-level"
-      className="px-6 py-20 relative" // Mantendo seu fundo laranja
+      className="px-6 py-20 relative" 
     >
       <div className="mx-auto max-w-6xl">
         <div className="text-left mb-16">
           <h2 className="text-4xl font-bold mb-4 text-white">
             Níveis de Atenção
           </h2>
-          {/* Linha branca para destacar no fundo escuro */}
-          <div className="w-24 h-1 bg-[var(--cor-5)] rounded-full"></div>
+          <div className="w-24 h-1 bg-white rounded-full"></div>
           <p className="text-orange-50 mt-4 max-w-2xl text-lg opacity-90">
             Estrutura integrada de cuidado em diferentes níveis de complexidade
           </p>
@@ -69,7 +68,6 @@ export default function AttentionLevel() {
                 onMouseEnter={() => setHoveredCard(level.id)}
                 onMouseLeave={() => setHoveredCard(null)}
               >
-                {/* Detalhe superior acompanhando a paleta quente */}
                 <div
                   className={`absolute top-0 left-0 right-0 h-2 ${levelColors[idx]} transition-all duration-300`}
                 ></div>
@@ -98,14 +96,12 @@ export default function AttentionLevel() {
                         value={component.id}
                         className="border-gray-100"
                       >
-                        {/* Texto do trigger mudando para um tom de laranja ao passar o mouse */}
-                        <AccordionTrigger className="text-sm font-bold text-gray-700 hover:text-orange-600 transition-colors py-4 no-underline hover:no-underline">
+                        <AccordionTrigger className="text-sm font-bold text-gray-700 hover:text-sky-600 transition-colors py-4 no-underline hover:no-underline">
                           <span className="flex items-center gap-3">
-                            <ChevronDown className={`w-4 h-4 transition-colors ${hoveredCard === level.id ? 'text-orange-500' : 'text-gray-400'}`} />
+                            <ChevronDown className={`w-4 h-4 transition-colors ${hoveredCard === level.id ? 'text-sky-500' : 'text-gray-400'}`} />
                             {component.title}
                           </span>
                         </AccordionTrigger>
-                        {/* Fundo do conteúdo com um bege bem clarinho para suavizar */}
                         <AccordionContent className="text-sm text-gray-600 leading-relaxed bg-orange-50/50 p-4 rounded-xl mt-1 border border-orange-100/30 text-justify">
                           {component.content}
                         </AccordionContent>

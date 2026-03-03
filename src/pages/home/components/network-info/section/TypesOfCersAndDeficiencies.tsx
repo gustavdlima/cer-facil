@@ -51,7 +51,7 @@ export default function TypesOfCersAndDeficiencies() {
                 {/* Seção de Deficiências */}
                 <div className="text-left mb-16">
                     <h2 className="text-4xl font-bold mb-4 text-white">Tipos de Deficiência</h2>
-                    <div className="w-24 h-1 bg-white/50 rounded-full"></div>
+                    <div className="w-24 h-1 bg-white rounded-full"></div>
                     <p className="text-white mt-4 max-w-2xl text-lg opacity-90">Entenda as particularidades de cada modalidade atendida pela rede de cuidados.</p>
                 </div>
 
