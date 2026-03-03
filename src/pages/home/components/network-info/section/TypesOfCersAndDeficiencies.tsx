@@ -2,7 +2,7 @@ import { Building2, Accessibility, Ear, Eye, Brain, Puzzle } from 'lucide-react'
 
 export default function TypesOfCersAndDeficiencies() {
     return (
-        <section id="types-of-cer-deficiencies" className="px-6 py-24 bg-[#10b981]">
+        <section id="types-of-cer-deficiencies" className="px-6 py-24 bg-[var(--cor-bg-3)]">
             <div className="mx-auto max-w-6xl">
 
                 {/* Cabeçalho da Seção */}
@@ -26,12 +26,12 @@ export default function TypesOfCersAndDeficiencies() {
                             ].map((cer) => (
                                 <div key={cer.id} className="group flex items-center p-5 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
                                     {/* Ícone em Verde Esmeralda Escuro */}
-                                    <div className="bg-emerald-50 text-emerald-600 p-3 rounded-xl mr-4 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
+                                    <div className="bg-[color-mix(in_srgb,var(--cor-bg-3),white_90%)] text-[color-mix(in_srgb,var(--cor-bg-3),black_30%)] p-3 rounded-xl mr-4 group-hover:bg-[var(--cor-bg-3)] group-hover:text-white transition-all duration-300">
                                         <Building2 size={24} />
                                     </div>
                                     <div>
-                                        <h3 className="font-bold text-emerald-950 text-lg">CER {cer.id}</h3>
-                                        <p className="text-emerald-700/70 text-sm font-medium">{cer.desc}</p>
+                                        <h3 className="font-bold text-black text-lg">CER {cer.id}</h3>
+                                        <p className="text-[color-mix(in_srgb,var(--cor-bg-3),black_20%)] text-sm font-medium">{cer.desc}</p>
                                     </div>
                                 </div>
                             ))}
@@ -68,11 +68,11 @@ export default function TypesOfCersAndDeficiencies() {
                             className={`bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ${idx === 4 ? 'md:col-span-2 lg:col-span-1' : ''}`}
                         >
                             {/* Ícone agora em tons de Verde Esmeralda para total harmonia */}
-                            <div className="text-emerald-600 mb-6 flex justify-center bg-emerald-50 w-20 h-20 items-center mx-auto rounded-full group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
+                            <div className="text-[color-mix(in_srgb,var(--cor-bg-3),black_30%)] mb-6 flex justify-center bg-[color-mix(in_srgb,var(--cor-bg-3),white_90%)] w-20 h-20 items-center mx-auto rounded-full group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
                                 {item.icon}
                             </div>
-                            <h3 className="font-bold text-xl text-emerald-950 mb-3 text-center">{item.title}</h3>
-                            <p className="text-emerald-800/80 text-sm text-center leading-relaxed font-medium">
+                            <h3 className="font-bold text-xl text-black mb-3 text-center">{item.title}</h3>
+                            <p className="text-[color-mix(in_srgb,var(--cor-bg-3),black_20%)] text-sm text-center leading-relaxed font-medium">
                                 {item.text}
                             </p>
                         </div>

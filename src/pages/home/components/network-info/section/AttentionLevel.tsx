@@ -21,21 +21,21 @@ const levelIcons = [Activity, Building2, Hospital];
 
 
 const levelColors = [
-  "bg-sky-400",   
-  "bg-sky-600",  
-  "bg-sky-800", 
+  "bg-[color-mix(in_srgb,var(--cor-bg-2),white_20%)]",   
+  "bg-[color-mix(in_srgb,var(--cor-bg-2),white_0%)]",  
+  "bg-[color-mix(in_srgb,var(--cor-bg-2),black_20%)]", 
 ];
 
 const levelBorders = [
-  "border-amber-100",
-  "border-orange-100",
-  "border-red-100",
+  "border-[color-mix(in_srgb,var(--cor-bg-2),white_50%)]",   
+  "border-[color-mix(in_srgb,var(--cor-bg-2),white_30%)]",  
+  "border-[color-mix(in_srgb,var(--cor-bg-2),white_10%)]", 
 ];
 
 const levelHovers = [
-  "hover:border-sky-400",
-  "hover:border-sky-500",
-  "hover:border-sky-700",
+  "hover:border-[color-mix(in_srgb,var(--cor-bg-2),white_20%)]",
+  "hover:border-[color-mix(in_srgb,var(--cor-bg-2),white_0%)]",  
+  "hover:border-[color-mix(in_srgb,var(--cor-bg-2),black_20%)]", 
 ];
 
 export default function AttentionLevel() {
@@ -96,13 +96,13 @@ export default function AttentionLevel() {
                         value={component.id}
                         className="border-gray-100"
                       >
-                        <AccordionTrigger className="text-sm font-bold text-gray-700 hover:text-sky-600 transition-colors py-4 no-underline hover:no-underline">
+                        <AccordionTrigger className="text-sm font-bold text-gray-700 hover:text-[var(--cor-bg-2)] transition-colors py-4 no-underline hover:no-underline">
                           <span className="flex items-center gap-3">
-                            <ChevronDown className={`w-4 h-4 transition-colors ${hoveredCard === level.id ? 'text-sky-500' : 'text-gray-400'}`} />
+                            <ChevronDown className={`w-4 h-4 transition-colors ${hoveredCard === level.id ? 'text-[var(--cor-bg-2)]' : 'text-gray-400'}`} />
                             {component.title}
                           </span>
                         </AccordionTrigger>
-                        <AccordionContent className="text-sm text-gray-600 leading-relaxed bg-orange-50/50 p-4 rounded-xl mt-1 border border-orange-100/30 text-justify">
+                        <AccordionContent className="text-sm text-gray-600 leading-relaxed bg-[color-mix(in_srgb,var(--cor-bg-2),white_95%)] p-4 rounded-xl mt-1 border border-orange-100/30 text-justify">
                           {component.content}
                         </AccordionContent>
                       </AccordionItem>

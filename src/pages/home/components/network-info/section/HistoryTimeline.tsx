@@ -11,11 +11,11 @@ const detailedMessages = [
 ];
 
 const circleColors = [
-  "bg-[#0a2d5e]",
-  "bg-[#0a2d5e]",
-  "bg-[#0a2d5e]",
-  "bg-[#0a2d5e]",
-  "bg-[#0a2d5e]",
+  "bg-[color-mix(in_srgb,var(--cor-bg-2),black_60%)]",
+  "bg-[color-mix(in_srgb,var(--cor-bg-2),black_60%)]",
+  "bg-[color-mix(in_srgb,var(--cor-bg-2),black_60%)]",
+  "bg-[color-mix(in_srgb,var(--cor-bg-2),black_60%)]",
+  "bg-[color-mix(in_srgb,var(--cor-bg-2),black_60%)]",
 ];
 
 export default function HistoryTimeline() {
@@ -57,14 +57,14 @@ export default function HistoryTimeline() {
                 </div>
                 <div className="flex-1">
                   <div
-                    className="bg-white p-6 rounded-xl shadow-lg border-2 border-gray-100 hover:border-[#0a2d5e] transition-all cursor-pointer hover:shadow-xl group"
+                    className="bg-white p-6 rounded-xl shadow-lg border-2 border-gray-100 hover:border-[color-mix(in_srgb,var(--cor-bg-2),black_60%)] transition-all cursor-pointer hover:shadow-xl group"
                     onClick={() =>
                       setExpandedId(expandedId === item.id ? null : item.id)
                     }
                   >
                     <div className="flex items-center gap-3 mb-3">
-                      <Calendar className="w-5 h-5 text-[#0a2d5e]" />
-                      <h3 className="text-xl font-bold text-[#0a2d5e]">
+                      <Calendar className="w-5 h-5 text-[color-mix(in_srgb,var(--cor-bg-2),black_40%)]" />
+                      <h3 className="text-xl font-bold text-[color-mix(in_srgb,var(--cor-bg-2),black_40%)]">
                         {item.title}
                       </h3>
                     </div>
@@ -76,7 +76,7 @@ export default function HistoryTimeline() {
                         {detailedMessages[index]}
                       </p>
                     )}
-                    <span className="text-xs text-[#0a2d5e] font-bold mt-2 block group-hover:underline hover:scale-105 transition-transform inline-block">
+                    <span className="text-xs text-[color-mix(in_srgb,var(--cor-bg-2),black_40%)] font-bold mt-2 block group-hover:underline hover:scale-105 transition-transform inline-block">
                       {expandedId === item.id ? "Ver menos" : "Saiba mais"}
                     </span>
                   </div>
@@ -91,14 +91,14 @@ export default function HistoryTimeline() {
                   <>
                     <div className="w-5/12 pr-8">
                       <div
-                        className="bg-white p-6 rounded-xl shadow-lg border-2 border-gray-100 hover:border-[#0a2d5e] transition-all cursor-pointer hover:shadow-xl group"
+                        className="bg-white p-6 rounded-xl shadow-lg border-2 border-gray-100 hover:border-[color-mix(in_srgb,var(--cor-bg-2),black_60%)] transition-all cursor-pointer hover:shadow-xl group"
                         onClick={() =>
                           setExpandedId(expandedId === item.id ? null : item.id)
                         }
                       >
                         <div className="flex items-center gap-3 mb-3">
-                          <Calendar className="w-5 h-5 text-[#0a2d5e]" />
-                          <h3 className="text-xl font-bold text-[#0a2d5e]">
+                          <Calendar className="w-5 h-5 text-[color-mix(in_srgb,var(--cor-bg-2),black_40%)]" />
+                          <h3 className="text-xl font-bold text-[color-mix(in_srgb,var(--cor-bg-2),black_40%)]">
                             {item.title}
                           </h3>
                         </div>
@@ -110,7 +110,7 @@ export default function HistoryTimeline() {
                             {detailedMessages[index]}
                           </p>
                         )}
-                        <span className="text-xs text-[#0a2d5e] font-bold mt-2 block group-hover:underline hover:scale-105 transition-transform inline-block">
+                        <span className="text-xs text-[color-mix(in_srgb,var(--cor-bg-2),black_40%)] font-bold mt-2 block group-hover:underline hover:scale-105 transition-transform inline-block">
                           {expandedId === item.id ? "Ver menos" : "Saiba mais"}
                         </span>
                       </div>
@@ -148,14 +148,14 @@ export default function HistoryTimeline() {
 
                     <div className="w-5/12 pl-8">
                       <div
-                        className="bg-white p-6 rounded-xl shadow-lg border-2 border-gray-100 hover:border-[#0a2d5e] transition-all cursor-pointer hover:shadow-xl group"
+                        className="bg-white p-6 rounded-xl shadow-lg border-2 border-gray-100 hover:border-[color-mix(in_srgb,var(--cor-bg-2),black_60%)] transition-all cursor-pointer hover:shadow-xl group"
                         onClick={() =>
                           setExpandedId(expandedId === item.id ? null : item.id)
                         }
                       >
                         <div className="flex items-center gap-3 mb-3">
-                          <Calendar className="w-5 h-5 text-[#0a2d5e]" />
-                          <h3 className="text-xl font-bold text-[#0a2d5e]">
+                          <Calendar className="w-5 h-5 text-[color-mix(in_srgb,var(--cor-bg-2),black_40%)]" />
+                          <h3 className="text-xl font-bold text-[color-mix(in_srgb,var(--cor-bg-2),black_40%)]">
                             {item.title}
                           </h3>
                         </div>
@@ -167,7 +167,7 @@ export default function HistoryTimeline() {
                             {detailedMessages[index]}
                           </p>
                         )}
-                        <span className="text-xs text-[#0a2d5e] font-bold mt-2 block group-hover:underline hover:scale-105 transition-transform inline-block">
+                        <span className="text-xs text-[color-mix(in_srgb,var(--cor-bg-2),black_40%)] font-bold mt-2 block group-hover:underline hover:scale-105 transition-transform inline-block">
                           {expandedId === item.id ? "Ver menos" : "Saiba mais"}
                         </span>
                       </div>

@@ -18,7 +18,6 @@ export default function Home({
   showFlow,
   setShowFlow,
 }: HomeProps) {
-  // Quando showFlow[0] é true, o React precisa saber o que é <CersCards />
   if (showFlow[0]) {
     return (
       <div>
@@ -30,10 +29,9 @@ export default function Home({
   return (
     <div>
       <Welcome showForm={showForm} setShowForm={setShowForm} />
-      <WaveDivider primaryColor="#ffffff" secondaryColor="#3B82F6" />
       {!showForm && (
         <>
-          {/* Aqui ele é renderizado via NetworkInfo */}
+          <WaveDivider primaryColor="#ffffff" secondaryColor="var(--cor-bg-1)" />
           <NetworkInfo showFlow={showFlow} setShowFlow={setShowFlow} />
           <Footnote />
         </>

@@ -65,7 +65,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
           </h3>
 
           <div className="flex items-center text-slate-500 mb-6 mt-auto font-semibold">
-            <MapPin className="w-4 h-4 mr-1.5 flex-shrink-0 text-blue-600" />
+            <MapPin className="w-4 h-4 mr-1.5 flex-shrink-0 text-[var(--cor-bg-1)]" />
             <span className="text-sm">{cer.cidade}</span>
           </div>
         </div>
@@ -75,7 +75,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
             {cer.especialidades.map((especialidade, index) => (
               <span
                 key={index}
-                className="px-2.5 py-1 bg-blue-50 text-blue-700 rounded-lg text-[12px] font-extrabold uppercase tracking-widest"
+                className="px-2.5 py-1 bg-[var(--cor-bg-1)]/30 text-[var(--cor-bg-1)] rounded-lg text-[12px] font-extrabold uppercase tracking-widest"
               >
                 {especialidade}
               </span>
@@ -85,7 +85,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
           <Button
             variant="ghost"
             size="icon"
-            className="text-blue-600 hover:text-white hover:bg-blue-600 rounded-full transition-all duration-300 flex-shrink-0 bg-slate-50"
+            className="text-[var(--cor-bg-1)] hover:text-white hover:bg-[var(--cor-bg-1)] rounded-full transition-all duration-300 flex-shrink-0 bg-slate-50"
             onClick={() => {
               setShowFlow([true, cer.id]);
               setTimeout(handleScrollToSection, 100);
@@ -99,7 +99,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
   };
 
   return (
-    <section id="cers-card" className="min-h-screen py-24 px-8 relative flex align-items-center bg-[#3b82f6]"> {/* Azul vibrante da imagem */}
+    <section id="cers-card" className="min-h-screen py-24 px-8 relative flex align-items-center bg-[var(--cor-bg-1)]"> {/* Azul vibrante da imagem */}
       <div className="mx-auto max-w-6xl">
         <div className="text-left mb-16">
           <h2 className="font-bold text-4xl mb-4 text-white">
@@ -122,7 +122,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
               </AccordionContent>
 
               <div className="flex justify-center mt-12">
-                <AccordionTrigger className="flex gap-3 items-center text-white px-8 py-4 font-bold transition-all border-2 border-white/40 rounded-full hover:bg-white hover:text-blue-600 data-[state=open]:hidden shadow-lg">
+                <AccordionTrigger className="flex gap-3 items-center text-white px-8 py-4 font-bold transition-all border-2 border-white/40 rounded-full hover:bg-white hover:text-[var(--cor-bg-1)] data-[state=open]:hidden shadow-lg">
                   Ver todas as unidades
                 </AccordionTrigger>
               </div>
