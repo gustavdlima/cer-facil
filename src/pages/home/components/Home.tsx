@@ -3,6 +3,7 @@ import Welcome from "./welcome-page/Welcome";
 import Footnote from "./footnote/Footnote";
 // Adicione esta linha (ajuste o caminho se necessário):
 import CersCards from "./network-info/section/CersCards";
+import WaveDivider from "../../../components/WaveDivider";
 
 interface HomeProps {
   showForm: boolean;
@@ -17,7 +18,6 @@ export default function Home({
   showFlow,
   setShowFlow,
 }: HomeProps) {
-  // Quando showFlow[0] é true, o React precisa saber o que é <CersCards />
   if (showFlow[0]) {
     return (
       <div>
@@ -31,7 +31,7 @@ export default function Home({
       <Welcome showForm={showForm} setShowForm={setShowForm} />
       {!showForm && (
         <>
-          {/* Aqui ele é renderizado via NetworkInfo */}
+          <WaveDivider primaryColor="#ffffff" secondaryColor="var(--cor-bg-1)" />
           <NetworkInfo showFlow={showFlow} setShowFlow={setShowFlow} />
           <Footnote />
         </>
