@@ -10,7 +10,8 @@ import {
 import cersData from "@/data/cers.json";
 import macrosData from "@/data/macro.json";
 import microsData from "@/data/micro.json";
-import { Bold } from "lucide-react";
+import Flow from "../../user-flow/Flow";
+import { ArrowRight } from "lucide-react";
 
 interface StepFourProps {
   deficiencies?: string[];
@@ -39,6 +40,7 @@ export default function StepFour({
 }: StepFourProps) {
   const [results, setResults] = useState<MatchingResult[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showFlow, setShowFlow] = useState<[boolean, number | null]>([false, null]);
 
   function calcularDistanciaReal(
     lat1: number,
@@ -174,6 +176,10 @@ export default function StepFour({
     setLoading(false);
   }, [deficiencies, userCoordinates, location]);
 
+  if (showFlow[0] && showFlow[1]) {
+    return <Flow setShowFlow={setShowFlow} cerId={showFlow[1]} />;
+  }
+
   if (loading) {
     return (
       <Card>
@@ -204,7 +210,6 @@ export default function StepFour({
         </CardHeader>
 
         <CardContent className="space-y-4">
-
           <div>
             <h3 className="font-semibold text-base mb-3 text-[var(--cor-5)]">
               {results.length} CER{results.length !== 1 ? "s" : ""} Recomendado{results.length !== 1 ? "s" : ""}
@@ -243,51 +248,26 @@ export default function StepFour({
                         {result.cer.endereco.rua}, {result.cer.endereco.numero} – {result.cer.endereco.bairro}, {result.cer.cidade}
                       </p>
 
-                      <div className="pl-11 space-y-2">
-                        {result.macroRegiao === determinarMacroRegiao(location) && (
-                          <span className="inline-block px-2 py-1 rounded text-xs bg-green-100 text-green-800 border border-green-200 font-medium">
-                            ✓ Sua região
-                          </span>
-                        )}
-                        
-                        <div>
-                          <span className="text-xs font-semibold text-[var(--cor-5)] block mb-1">
-                            Especialidades:
-                          </span>
-                          <div className="flex flex-wrap gap-1.5">
-                            {result.cer.especialidades.map((esp) => {
-                              const isMatch = deficiencies.some((def) => {
-                                const defLower = def.toLowerCase();
-                                const espLower = esp.toLowerCase();
-                                return (
-                                  espLower.includes(defLower) ||
-                                  defLower.includes(espLower) ||
-                                  (defLower.includes('fisica') && espLower.includes('física')) ||
-                                  (defLower.includes('física') && espLower.includes('física')) ||
-                                  (defLower.includes('visual') && espLower.includes('visual')) ||
-                                  (defLower.includes('auditiva') && espLower.includes('auditiva')) ||
-                                  (defLower.includes('intelectual') && espLower.includes('intelectual')) ||
-                                  (defLower.includes('ortopedica') && espLower.includes('ortopédica')) ||
-                                  (defLower.includes('ortopédica') && espLower.includes('ortopédica')) ||
-                                  ((defLower.includes('autista') || defLower.includes('autismo') || defLower.includes('espectro') || defLower.includes('tea')) && espLower.includes('intelectual'))
-                                );
-                              });
-
-                              return (
-                                <span
-                                  key={esp}
-                                  className={`px-2 py-0.5 rounded-full text-xs font-medium ${
-                                    isMatch
-                                      ? "bg-[var(--cor-1)] text-white"
-                                      : "bg-gray-100 text-gray-700 border border-gray-300"
-                                  }`}
-                                >
-                                  {esp}
-                                </span>
-                              );
-                            })}
-                          </div>
+                      <div className="pl-11 flex items-center justify-between">
+                        <div className="flex flex-wrap gap-2">
+                          {result.cer.especialidades.map((esp, idx) => (
+                            <span
+                              key={idx}
+                              className="px-2.5 py-1 bg-[var(--cor-1)]/20 text-[var(--cor-5)] rounded-lg text-xs font-bold"
+                            >
+                              {esp}
+                            </span>
+                          ))}
                         </div>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="text-[var(--cor-1)] hover:text-white hover:bg-[var(--cor-1)] transition-all"
+                          onClick={() => setShowFlow([true, result.cer.id])}
+                        >
+                          Saiba mais
+                          <ArrowRight className="w-4 h-4 ml-1" />
+                        </Button>
                       </div>
                     </CardContent>
                   </Card>
