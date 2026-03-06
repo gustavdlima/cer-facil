@@ -23,9 +23,9 @@ interface CersCardsProps {
 
 export function toTitleCase(text: string): string {
   if (!text) return "";
-  
-  const romanNumerals = ['II', 'III', 'IV'];
-  
+
+  const romanNumerals = ["II", "III", "IV"];
+
   return text
     .toLowerCase()
     .split(" ")
@@ -99,7 +99,12 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
   };
 
   return (
-    <section id="cers-card" className="min-h-screen py-24 px-8 relative flex align-items-center bg-[var(--cor-bg-1)]"> {/* Azul vibrante da imagem */}
+    <section
+      id="cers-card"
+      className="min-h-screen py-24 px-8 relative flex align-items-center"
+    >
+      {" "}
+      {/* Azul vibrante da imagem */}
       <div className="mx-auto max-w-6xl">
         <div className="text-left mb-16">
           <h2 className="font-bold text-4xl mb-4 text-white">

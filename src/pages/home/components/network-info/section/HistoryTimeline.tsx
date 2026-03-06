@@ -22,17 +22,14 @@ export default function HistoryTimeline() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   return (
-    <section
-      id="history-rcpd"
-      className="px-6 py-20 relative"
-    >
+    <section id="history-rcpd" className="px-6 py-20 relative">
       <div className="max-w-6xl mx-auto">
         <div className="text-left mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-white">
+          <h2 className="text-4xl font-bold mb-4">
             História da Rede de Cuidado à Pessoa com Deficiência
           </h2>
           <div className="w-24 h-2 bg-white rounded-full"></div>
-          <p className="text-white/90 mt-4 max-w-2xl">
+          <p className=" mt-4 max-w-2xl">
             Uma jornada de evolução e compromisso com os direitos das pessoas
             com deficiência
           </p>
@@ -43,7 +40,6 @@ export default function HistoryTimeline() {
 
           {timelineData.map((item, index) => (
             <div key={item.id} className="relative flex items-center mb-10">
-
               <div className="md:hidden flex items-start gap-4 w-full">
                 <div className="relative flex-shrink-0">
                   <div

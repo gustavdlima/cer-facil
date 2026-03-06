@@ -2,10 +2,7 @@ import { Building2 } from "lucide-react";
 
 export default function TypesOfCers() {
   return (
-    <section
-      id="types-of-cer-deficiencies"
-      className="px-6 py-24 bg-[var(--cor-bg-3)]"
-    >
+    <section id="types-of-cer-deficiencies" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         {/* Cabeçalho da Seção */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
