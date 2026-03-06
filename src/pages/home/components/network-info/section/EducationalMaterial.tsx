@@ -84,30 +84,34 @@ export default function MaterialEducational() {
         </div>
 
         <div className="relative">
-          <div className="grid md:grid-cols-2 gap-8 items-center bg-white rounded-2xl shadow-lg p-8">
-            <div>
-              <div className="flex items-start gap-3 mb-4">
-                <BookOpen className="w-6 h-6 text-[var(--cor-bg-3)] flex-shrink-0 mt-1" />
-                <h3 className="font-bold text-gray-900 text-xl">
-                  {materials[currentIndex].title}
-                </h3>
+          <div className="bg-white rounded-2xl shadow-lg p-8">
+            <div className="flex flex-col md:flex-row gap-8 items-start">
+              <div className="flex-1 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-start gap-3 mb-4">
+                    <BookOpen className="w-6 h-6 text-[var(--cor-bg-3)] flex-shrink-0 mt-1" />
+                    <h3 className="font-bold text-gray-900 text-xl">
+                      {materials[currentIndex].title}
+                    </h3>
+                  </div>
+                  <p className="text-gray-600 leading-relaxed mb-6 text-justify">
+                    {materials[currentIndex].description}
+                  </p>
+                </div>
+                <a
+                  href={materials[currentIndex].url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-[var(--cor-bg-3)] text-white px-6 py-3 rounded-full font-semibold hover:bg-[color-mix(in_srgb,var(--cor-bg-3),black_20%)] transition-colors duration-300 w-fit"
+                >
+                  Acessar Material
+                  <ExternalLink className="w-4 h-4" />
+                </a>
               </div>
-              <p className="text-gray-600 leading-relaxed mb-6 text-justify">
-                {materials[currentIndex].description}
-              </p>
-              <a
-                href={materials[currentIndex].url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[var(--cor-bg-3)] text-white px-6 py-3 rounded-full font-semibold hover:bg-[color-mix(in_srgb,var(--cor-bg-3),black_20%)] transition-colors duration-300"
-              >
-                Acessar Material
-                <ExternalLink className="w-4 h-4" />
-              </a>
-            </div>
-            <div>
-              <div className="bg-gradient-to-br from-[var(--cor-bg-3)]/10 to-[var(--cor-bg-3)]/5 p-8 rounded-2xl flex items-center justify-center min-h-[200px]">
-                <BookOpen className="w-24 h-24 text-[var(--cor-bg-3)]/30" />
+              <div className="w-full md:w-[280px] flex-shrink-0">
+                <div className="bg-gradient-to-br from-[var(--cor-bg-3)]/10 to-[var(--cor-bg-3)]/5 p-6 rounded-2xl flex items-center justify-center h-[380px]">
+                  <BookOpen className="w-24 h-24 text-[var(--cor-bg-3)]/30" />
+                </div>
               </div>
             </div>
           </div>
