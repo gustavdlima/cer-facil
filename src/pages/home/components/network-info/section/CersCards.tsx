@@ -1,8 +1,8 @@
+import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import CERS from "@/data/cers.json";
 import Flow from "../../user-flow/Flow";
-import { MapPin, ArrowRight, Map, Filter, X } from "lucide-react";
-import { useState } from "react";
+import { MapPin, ArrowRight, Filter, X } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -41,9 +41,31 @@ export function toTitleCase(text: string): string {
     .join(" ");
 }
 
+const FILTER_OPTIONS = ["Física", "Auditiva", "Visual", "Intelectual"] as const;
+
+type FilterOption = (typeof FILTER_OPTIONS)[number];
+
+const normalizeText = (text: string): string =>
+  text
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+
+const getFilterFromSpecialty = (specialty: string): FilterOption | null => {
+  const normalized = normalizeText(specialty);
+
+  if (normalized.includes("audit")) return "Auditiva";
+  if (normalized.includes("visual")) return "Visual";
+  if (normalized.includes("intelect")) return "Intelectual";
+  if (/f.*sica/.test(normalized) || normalized.includes("fisica")) {
+    return FILTER_OPTIONS[0];
+  }
+
+  return null;
+};
+
 export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
-  const [activeFilters, setActiveFilters] = useState<string[]>([]);
-  const [showMap, setShowMap] = useState(false);
+  const [activeFilters, setActiveFilters] = useState<FilterOption[]>([]);
 
   const handleScrollToSection = () => {
     const section = document.getElementById("flow");
@@ -56,16 +78,11 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
     return <Flow setShowFlow={setShowFlow} cerId={showFlow[1]} />;
   }
 
-  const filterOptions = [
-    { id: "Física", label: "Física" },
-    { id: "Auditiva", label: "Auditiva" },
-    { id: "Visual", label: "Visual" },
-    { id: "Intelectual", label: "Intelectual" },
-  ];
-
-  const toggleFilter = (id: string) => {
+  const toggleFilter = (filter: FilterOption) => {
     setActiveFilters((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+      prev.includes(filter)
+        ? prev.filter((item) => item !== filter)
+        : [...prev, filter]
     );
   };
 
@@ -73,14 +90,20 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
     setActiveFilters([]);
   };
 
-  const filteredCERS = activeFilters.length === 0
-    ? CERS
-    : (CERS as DadosCers[]).filter((cer) =>
-        cer.especialidades.some((esp) => activeFilters.includes(esp))
-      );
+  const filteredCers = useMemo(() => {
+    const allCers = CERS as DadosCers[];
+    if (activeFilters.length === 0) return allCers;
 
-  const fixos = filteredCERS.slice(0, 6);
-  const restantes = filteredCERS.slice(6);
+    return allCers.filter((cer) =>
+      cer.especialidades.some((especialidade) => {
+        const mappedFilter = getFilterFromSpecialty(especialidade);
+        return mappedFilter ? activeFilters.includes(mappedFilter) : false;
+      })
+    );
+  }, [activeFilters]);
+
+  const fixos = filteredCers.slice(0, 6);
+  const restantes = filteredCers.slice(6);
 
   const renderCersRow = (cer: DadosCers) => {
     return (
@@ -140,26 +163,29 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
           <div className="w-24 h-1.5 bg-white rounded-full"></div>
         </div>
 
-        <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm mb-8">
-          <div className="flex items-center gap-2 mb-4 text-black font-semibold uppercase text-sm tracking-wider">
+        <div className="bg-white p-6 rounded-2xl shadow-sm mb-10">
+          <div className="flex items-center gap-2 mb-4 text-slate-900 font-semibold uppercase text-sm tracking-wider">
             <Filter size={18} />
-            <span>Filtrar por Especialidade:</span>
+            <span>Filtrar por deficiência:</span>
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
-            {filterOptions.map((option) => {
-              const isActive = activeFilters.includes(option.id);
+            {FILTER_OPTIONS.map((option) => {
+              const isActive = activeFilters.includes(option);
               return (
                 <button
-                  key={option.id}
-                  onClick={() => toggleFilter(option.id)}
-                  className={`px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-200 border-2 ${
-                    isActive
-                      ? "bg-[var(--cor-bg-1)] border-[var(--cor-bg-1)]/90 text-white shadow-md"
-                      : "bg-white border-[var(--cor-bg-1)]/30 text-[var(--cor-bg-1)]/80 hover:border-[var(--cor-bg-1)] hover:text-[var(--cor-bg-1)]"
-                  }`}
+                  key={option}
+                  onClick={() => toggleFilter(option)}
+                  className={`
+                    px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-200 border-2
+                    ${
+                      isActive
+                        ? "bg-[var(--cor-bg-1)] border-[var(--cor-bg-1)] text-white shadow-md shadow-blue-100"
+                        : "bg-white border-[var(--cor-bg-1)]/30 text-[var(--cor-bg-1)] hover:border-[var(--cor-bg-1)] hover:text-[var(--cor-bg-1)]"
+                    }
+                  `}
                 >
-                  {option.label}
+                  {option}
                   {isActive && <X size={14} className="inline ml-2 mb-0.5" />}
                 </button>
               );
@@ -168,7 +194,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
             {activeFilters.length > 0 && (
               <button
                 onClick={clearFilters}
-                className="ml-2 text-slate-400 hover:text-red-500 text-sm font-medium transition-colors"
+                className="ml-2 text-slate-500 hover:text-red-500 text-sm font-medium transition-colors"
               >
                 Limpar tudo
               </button>
@@ -176,33 +202,15 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
           </div>
         </div>
 
-        <Accordion type="single" collapsible className="w-full mb-8">
-          <AccordionItem value="map" className="border-none">
-            <div className="flex justify-center mb-4">
-              <AccordionTrigger
-                onClick={() => setShowMap(!showMap)}
-                className="flex gap-3 items-center text-white px-8 py-4 font-bold transition-all border-2 border-white/40 rounded-full hover:bg-white hover:text-[var(--cor-bg-1)] shadow-lg"
-              >
-                <Map className="w-5 h-5" />
-                {showMap ? "Ocultar Mapa" : "Ver Mapa Interativo"}
-              </AccordionTrigger>
-            </div>
-            <AccordionContent>
-              <div className="bg-white rounded-2xl shadow-2xl p-8">
-                <div className="h-[500px] rounded-xl overflow-hidden border-2 border-slate-100">
-                  <SimpleMap interactive={true} />
-                </div>
-                <div className="mt-4">
-                  <MapCaptions />
-                </div>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {fixos.map((cer) => renderCersRow(cer))}
-        </div>
+        {filteredCers.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {fixos.map((cer) => renderCersRow(cer))}
+          </div>
+        ) : (
+          <div className="py-12 text-center text-slate-300 bg-white/10 rounded-xl border-2 border-dashed border-white/40 shadow-sm">
+            Nenhuma unidade encontrada para essa combinação de filtros.
+          </div>
+        )}
 
         {restantes.length > 0 && (
           <Accordion type="single" collapsible className="w-full mt-8">
