@@ -167,7 +167,7 @@ export default function MaterialEducational() {
   };
 
   return (
-    <section className="px-6 py-24">
+    <section id="educational-material" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <div className="text-left mb-8">
           <h2 className="text-4xl font-bold mb-4 text-slate-900">
