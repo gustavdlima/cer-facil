@@ -161,13 +161,14 @@ export default function Rodape() {
 
             <div className="overflow-y-auto pr-2 space-y-6 flex-1 text-justify">
               <p className="text-sm leading-relaxed text-gray-600">
-                A estrutura operacional do projeto é fundamentada em Grupos de
-                Aprendizagem Tutorial (GTs). No caso da UFPB, foram estabelecidos
-                12 GTs, que atuam como as unidades executoras das atividades de
-                ensino, pesquisa e extensão. Cada GT é composto por uma equipe
+                O PET-Saúde: Informação e Saúde Digital UFPB é uma iniciativa que integra ensino, serviço e comunidade na Universidade Federal da Paraíba. 
+                O programa foca na transformação digital do SUS, composto por uma equipe
                 multiprofissional e interdisciplinar, reunindo tutores
                 (docentes), preceptores (profissionais do serviço) e monitores
-                (estudantes de graduação). Esta composição visa garantir que o
+                (estudantes de graduação).
+                A estrutura operacional do projeto é fundamentada em 12 Grupos de
+                Aprendizagem Tutorial (GTs), que atuam como as unidades executoras das atividades de
+                ensino, pesquisa e extensão, se dividindo em eixos temáticos específicos que visam garantir que o
                 aprendizado ocorra de forma situada, partindo dos problemas reais
                 enfrentados pelos serviços de saúde digital no estado.
               </p>
@@ -178,7 +179,11 @@ export default function Rodape() {
                   GT-01 PCD
                 </h3>
                 <p className="text-sm leading-relaxed text-gray-600">
-                  O GT-01 PCD concentra suas ações no fortalecimento da assistência digital voltada às pessoas com deficiência. Os professores responsáveis por este grupo são o Prof. Dra. Eduardo e o Prof. Robson, do departamento de fisioterapia.
+                  O GT-01 PCD concentra suas ações no fortalecimento da assistência digital voltada às pessoas com deficiência. A acessibilidade digital é tratada como um imperativo ético e legal, fundamentado 
+                  na Lei Brasileira de Inclusão (LBI). Garantir que os sistemas de informação do SUS sejam plenamente
+                  acessíveis não é apenas uma meta tecnológica, mas uma questão de direitos humanos que o GT-01 assume como missão institucional. Tem parceria com a Secretaria de Estado da Saúde da Paraíba e a FUNAD - Fundação Centro Integrado de Apoio à Pessoa com Deficiência.
+                  Os professores responsáveis por este grupo são o Prof. Dra. Eduardo e o Prof. Robson,
+                  do departamento de fisioterapia. Dentre os alunos estão integrantes do curso de Fisioterapia, Terapia Ocupacional, Ciência da Computação, Ciência de Dados e Engenharia da Computação.
                 </p>
               </div>
 
@@ -188,10 +193,12 @@ export default function Rodape() {
                   Por que fizemos essa aplicação?
                 </h3>
                 <p className="text-sm leading-relaxed text-gray-600">
-                  Esta aplicação foi criada para organizar informações essenciais do
-                  projeto em um único ambiente. A proposta é tornar os dados mais
-                  acessíveis, apoiar o acompanhamento das iniciativas e estimular a
-                  continuidade das ações de ensino, pesquisa e extensão.
+                  A aplicação foi criada para reduzir uma dificuldade comum de pessoas com deficiência e suas famílias: encontrar informações claras, 
+                  organizadas e acessíveis sobre como iniciar o atendimento nos Centros Especializados em Reabilitação (CERs) e Oficinas Ortopédicas (OPMs) da Paraíba
+                  . Muitas vezes, os dados estão dispersos, com linguagem técnica e pouco direcionamento prático. Por isso, o sistema reúne em um só lugar orientações
+                  objetivas sobre o primeiro acesso, além de oferecer busca personalizada, mapa interativo e detalhes das unidades de referência. Assim, a aplicação 
+                  fortalece a autonomia dos usuários, facilita o caminho até o cuidado e contribui para ampliar o acesso à Rede de Cuidados da Pessoa com Deficiência.
+                  
                 </p>
               </div>
             </div>
@@ -209,4 +216,5 @@ export default function Rodape() {
       )}
     </footer>
   );
+
 }
