@@ -14,6 +14,13 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
     }
   };
 
+  const handleScrollToEducationalMaterial = () => {
+    const section = document.getElementById("educational-material");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   if (showForm) {
     return <CerForm setShowForm={setShowForm} />;
   }
@@ -58,9 +65,7 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
         </div>
 
         <div
-          onClick={() => {
-            /* Lógica para material educativo */
-          }}
+          onClick={handleScrollToEducationalMaterial}
           className="flex flex-col items-center p-8 bg-white border-2 border-gray-100 rounded-2xl shadow-sm hover:shadow-xl hover:border-emerald-500 transition-all cursor-pointer group text-center"
         >
           <div className="p-4 bg-emerald-50 rounded-full mb-4 group-hover:bg-emerald-500 transition-colors">
