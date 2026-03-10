@@ -23,19 +23,26 @@ interface CersCardsProps {
 
 export function toTitleCase(text: string): string {
   if (!text) return "";
-  
-  const romanNumerals = ['II', 'III', 'IV'];
-  
-  return text
-    .toLowerCase()
-    .split(" ")
-    .map((word) => {
-      if (romanNumerals.includes(word.toUpperCase())) {
-        return word.toUpperCase();
-      }
-      return word.charAt(0).toUpperCase() + word.slice(1);
-    })
-    .join(" ");
+
+  const conectores = ["de", "da", "do", "dos", "das", "e", "ao", "aos", "para", "com"];
+
+  return text.split(" - ").map((parte) => {
+    const palavras = parte.split(" ");
+
+    if (palavras.length <= 2 && parte.length <= 8) {
+      return parte.toUpperCase();
+    }
+
+    return palavras
+      .map((word, index) => {
+        const lowerWord = word.toLowerCase();
+        if (conectores.includes(lowerWord) && index !== 0) {
+          return lowerWord;
+        }
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      })
+      .join(" ");
+  }).join(" - ");
 }
 
 export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
@@ -99,7 +106,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
   };
 
   return (
-    <section id="cers-card" className="min-h-screen py-24 px-8 relative flex align-items-center bg-[var(--cor-bg-1)]"> {/* Azul vibrante da imagem */}
+    <section id="cers-card" className="min-h-screen py-24 px-8 relative flex items-center bg-[var(--cor-bg-1)]">
       <div className="mx-auto max-w-6xl">
         <div className="text-left mb-16">
           <h2 className="font-bold text-4xl mb-4 text-white">
