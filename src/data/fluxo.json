@@ -84,7 +84,7 @@
     },
     {
         "id": "3",
-        "title": "Centro de Reabilitação Antônio de Souza Maranhão",
+        "title": "CER II - Centro de Reabilitação Antônio de Souza Maranhão",
         "steps": [
             {
                 "id": 1,
@@ -152,7 +152,6 @@
     {
         "id": "5",
         "title": "CER II - Centro de Reabilitação Dr. José Dácio",
-        "address": "R. Maria do Carmo Brandão, Araruna - PB",
         "steps": [
             {
                 "id": 1,
@@ -221,19 +220,6 @@
     {
         "id": "7",
         "title": "CER II - Associação de Pais e Amigos dos Excepcionais (APAE)",
-        "contact": {
-            "phones": [
-                "(83) 3315-8700",
-                "(83) 98807-9318"
-            ],
-            "email": "apaecampinagrande@gmail.com"
-        },
-        "operating_hours": {
-            "days": "Segunda a Sexta-feira",
-            "morning": "07:30 às 11:30",
-            "afternoon": "13:30 às 17:30",
-            "break": "11:30 às 13:30"
-        },
         "steps": [
             {
                 "id": 1,
@@ -263,12 +249,7 @@
             "Comprovante de residência atualizado",
             "Encaminhamento médico ou de profissional da rede de saúde",
             "Relatório clínico ou funcional (quando houver)",
-            "Laudos médicos com CID (se disponíveis)",
-            "Exames e relatórios terapêuticos anteriores",
-            "Receitas médicas em uso",
-            "Caderneta de Saúde da Criança",
-            "Documentos do responsável legal",
-            "Telefones de contato atualizados (próprio e alternativo)"
+            "Laudos médicos com CID (se disponíveis)"
         ]
     },
     {
@@ -327,21 +308,14 @@
                 "description": "Sendo identificado o perfil adequado na triagem, o paciente segue para o fluxo de atendimento especializado e início das terapias."
             }
         ],
-        "documents": {
-            "crianças": [
-                "Cartão do SUS ou CPF",
-                "Comprovante de residência",
-                "Caderneta de vacina",
-                "Documento dos responsáveis",
-                "Encaminhamento"
-            ],
-            "adultos": [
-                "Cartão do SUS ou CPF",
-                "RG",
-                "Comprovante de residência",
-                "Encaminhamento"
-            ]
-        }
+        "documents": [
+            "Cartão do SUS ou CPF",
+            "Comprovante de residência",
+            "Caderneta de vacina (para crianças)",
+            "Documento dos responsáveis (para crianças)",
+            "RG (para adultos)",
+            "Encaminhamento"
+        ]
     },
     {
         "id": "10",
@@ -373,183 +347,170 @@
             "CPF",
             "Cartão do SUS"
         ]
+    },
+    {
+        "id": "11",
+        "title": "CER IV - REABILITA CENTRO ESPECIALIZADO EM REABILITAÇÃO DE SOUSA",
+        "steps": [
+            {
+                "id": 1,
+                "title": "Agendamento da Triagem",
+                "description": "O primeiro passo para o acesso ao serviço é agendar a triagem. Isso pode ser feito de forma presencial na unidade ou solicitando através do e-mail: cerivsousa@gmail.com."
+            },
+            {
+                "id": 2,
+                "title": "Cadastro do Usuário",
+                "description": "Para efetivar o agendamento, é necessário realizar um cadastro. Apresente presencialmente ou envie por e-mail seus documentos pessoais e um número de telefone para contato."
+            },
+            {
+                "id": 3,
+                "title": "Acolhimento e Triagem",
+                "description": "Na data e horário agendados, o paciente será acolhido no serviço e passará pela etapa de triagem. Esta avaliação é obrigatória para ser encaminhado às especialidades ofertadas pelo CER IV."
+            },
+            {
+                "id": 4,
+                "title": "Início das Terapias",
+                "description": "Após a conclusão da triagem, o usuário é direcionado para as terapias específicas de reabilitação conforme o seu quadro clínico."
+            }
+        ],
+        "documents": [
+            "RG",
+            "CPF",
+            "Cartão do SUS (Cartão Nacional de Saúde)",
+            "Comprovante de Residência"
+        ]
+    },
+    {
+        "id": "12",
+        "title": "CER II - Policlínica Dr. Antônio Quinho",
+        "steps": [
+            {
+                "id": 1,
+                "title": "Fluxo e Meios de Acesso",
+                "description": "O acesso ao serviço ocorre tanto por Demanda Espontânea (porta aberta) quanto através de encaminhamento pelas Unidades Básicas de Saúde (UBS)."
+            },
+            {
+                "id": 2,
+                "title": "Atendimento na UBS (Opcional)",
+                "description": "Caso o acesso seja via rede primária, dirija-se à sua UBS de referência para passar por consulta e obter o encaminhamento médico."
+            },
+            {
+                "id": 3,
+                "title": "Comparecimento ao CER II",
+                "description": "Vá até a unidade portando o encaminhamento e toda a documentação necessária para realizar o cadastro."
+            },
+            {
+                "id": 4,
+                "title": "Triagem e Avaliação",
+                "description": "Com os documentos entregues, o paciente passará pela triagem inicial com a equipe para iniciar o acompanhamento e as terapias."
+            }
+        ],
+        "documents": [
+            "Documentos pessoais (RG e CPF)",
+            "Encaminhamento da UBS",
+            "Relatório da escola (obrigatório no caso de crianças em idade escolar)"
+        ]
+    },
+    {
+        "id": "13",
+        "title": "CER II - Vitória Pereira de Oliveira",
+        "steps": [
+            {
+                "id": 1,
+                "title": "Fluxo e Meios de Acesso",
+                "description": "O acesso ocorre por Demanda Espontânea (livre) para os pacientes residentes em Catolé do Rocha. Para usuários de outros municípios pactuados, o acesso é feito mediante encaminhamento."
+            },
+            {
+                "id": 2,
+                "title": "Moradores de Catolé do Rocha",
+                "description": "Dirija-se diretamente à unidade com sua documentação para solicitar o atendimento, sem necessidade de agendamento prévio na regulação."
+            },
+            {
+                "id": 3,
+                "title": "Pacientes de Outros Municípios",
+                "description": "Procure a Secretaria de Saúde da sua cidade para obter o encaminhamento oficial antes de se deslocar ao CER II."
+            },
+            {
+                "id": 4,
+                "title": "Acolhimento e Triagem",
+                "description": "Ao chegar à unidade com os documentos em mãos, o paciente passará por uma avaliação inicial para dar andamento às terapias necessárias."
+            }
+        ],
+        "documents": [
+            "Documentos pessoais (RG e CPF)",
+            "CNS (Cartão Nacional de Saúde / Cartão SUS)",
+            "Laudos e exames (se existirem)"
+        ]
+    },
+    {
+        "id": "14",
+        "title": "Oficina Ortopédica - FUNAD",
+        "steps": [
+            {
+                "id": 1,
+                "title": "Prescrição na Rede Básica",
+                "description": "Dirija-se à sua USF (Unidade de Saúde da Família) ou médico do SUS. Você precisa de um Laudo/Prescrição Médica contendo o CID e a descrição técnica do equipamento ou órtese/prótese necessária."
+            },
+            {
+                "id": 2,
+                "title": "Abertura de Processo",
+                "description": "Com o laudo em mãos, dirija-se ao setor de Protocolo/Triagem da FUNAD (Setor CAD) ou realize o pré-agendamento online (se disponível no período) para abrir o processo administrativo de solicitação."
+            },
+            {
+                "id": 3,
+                "title": "Avaliação e Medidas",
+                "description": "Após o agendamento, o paciente passará por uma avaliação com Fisioterapeuta ou Terapeuta Ocupacional na Oficina para a tirada de medidas (molde) e prescrição final do dispositivo sob medida."
+            },
+            {
+                "id": 4,
+                "title": "Confecção e Prova",
+                "description": "O dispositivo entrará em produção. Em alguns casos (como próteses), o paciente será chamado para provas intermediárias antes da entrega final."
+            },
+            {
+                "id": 5,
+                "title": "Entrega e Treinamento",
+                "description": "Na data marcada, o paciente recebe o equipamento e passa por um treinamento rápido ou orientações de uso e conservação com a equipe técnica."
+            }
+        ],
+        "documents": [
+            "RG e CPF (do Paciente e do Responsável)",
+            "Cartão do SUS (Cartão Nacional de Saúde)",
+            "Comprovante de Residência atualizado (com CEP)",
+            "Laudo Médico do SUS (Original, datado e assinado, com CID 10)",
+            "Registro de Nascimento (para menores)",
+            "Exames de imagem (Raio-X, em casos de escoliose ou dismetria de membros, se solicitado)"
+        ]
+    },
+    {
+        "id": "15",
+        "title": "CER II - Centro de Reabilitação Dr. Severino Lopes",
+        "steps": [
+            {
+                "id": 1,
+                "title": "Fluxo / Meios de Acesso",
+                "description": "A unidade funciona por Demanda Espontânea (Porta Aberta). Não é necessário agendamento prévio via regulação municipal para solicitar o atendimento inicial."
+            },
+            {
+                "id": 2,
+                "title": "Compareça à Unidade",
+                "description": "Dirija-se diretamente à recepção do CER II em Jaguaribe (Rua Alberto de Brito, S/N) portando o encaminhamento médico e seus documentos pessoais para abertura de prontuário."
+            },
+            {
+                "id": 3,
+                "title": "Triagem Multiprofissional",
+                "description": "Após a apresentação da documentação, o paciente passará por uma avaliação com a equipe técnica para definir a necessidade clínica e o plano de reabilitação."
+            },
+            {
+                "id": 4,
+                "title": "Início do Tratamento",
+                "description": "Com base na triagem, o paciente é inserido na grade de atendimento para as terapias indicadas (Fisioterapia, Fonoaudiologia, TO, etc.) conforme a disponibilidade."
+            }
+        ],
+        "documents": [
+            "Cartão SUS",
+            "RG",
+            "Comprovante de residência",
+            "Encaminhamento médico"
+        ]
     }
 ]
-},
-{
-"id": "11",
-"title": "Centro de Reabilitação Dr. Luiz Gonzaga de Oliveira",
-"steps": [
-    {
-        "id": 1,
-        "title": "Busque a Atenção Básica",
-        "description": "Procure a Unidade Básica de Saúde (UBS) do seu bairro ou cidade. É necessário passar por uma consulta médica para obter o encaminhamento (Laudo) solicitando a reabilitação."
-    },
-    {
-        "id": 2,
-        "title": "Organize a Documentação",
-        "description": "Reúna os documentos pessoais e o laudo médico. Para deficiências auditivas ou visuais, é recomendável anexar exames complementares (como audiometria ou laudo oftalmológico) se já possuir."
-    },
-    {
-        "id": 3,
-        "title": "Encaminhe para Regulação",
-        "description": "Entregue a documentação na Secretaria de Saúde do seu município (Setor de Regulação/Marcação). O pedido será inserido no sistema estadual ou pactuado para a vaga no CER IV."
-    },
-    {
-        "id": 4,
-        "title": "Aguarde o Agendamento",
-        "description": "A equipe do CER IV entrará em contato (geralmente via Secretaria de Saúde do seu município) informando a data da Triagem/Avaliação Global para iniciar o tratamento."
-    }
-],
-"documents": [
-    "RG e CPF (do Paciente e do Responsável, se houver)",
-    "Cartão do SUS (Cartão Nacional de Saúde)",
-    "Comprovante de Residência atualizado",
-    "Encaminhamento Médico da UBS (com CID e justificativa clínica)",
-    "Laudo Médico Específico (Oftalmológico ou Otorrinolaringológico, se aplicável)",
-    "Registro de Nascimento (para menores)",
-    "Exames complementares recentes (se houver)"
-]
-},
-{
-"id": "12",
-"title": "Policlínica Dr. Antônio Quinho",
-"steps": [
-    {
-        "id": 1,
-        "title": "Atendimento na Unidade Básica",
-        "description": "Dirija-se à sua Unidade Básica de Saúde (UBS) ou PSF em Piancó (ou na sua cidade de origem, caso seja de outro município da região). Consulte um médico para solicitar o laudo de reabilitação."
-    },
-    {
-        "id": 2,
-        "title": "Documentação e Laudo Médico",
-        "description": "Certifique-se de que o médico descreva o diagnóstico e o CID (Código Internacional de Doenças) no encaminhamento. Reúna seus documentos pessoais e cartão do SUS."
-    },
-    {
-        "id": 3,
-        "title": "Regulação via Secretaria de Saúde",
-        "description": "Entregue a documentação na Secretaria Municipal de Saúde de Piancó (Central de Marcação/Regulação). O pedido será inserido no sistema para agendamento da triagem."
-    },
-    {
-        "id": 4,
-        "title": "Triagem Multiprofissional",
-        "description": "Após a confirmação da vaga pela regulação, você será informado da data para comparecer ao CER II. Nesta etapa, a equipe avaliará o paciente para definir as terapias necessárias."
-    }
-],
-"documents": [
-    "RG e CPF (do Paciente e do Responsável, se for menor ou dependente)",
-    "Cartão do SUS (Cartão Nacional de Saúde)",
-    "Comprovante de Residência atualizado",
-    "Encaminhamento Médico da Atenção Básica (Solicitação de Reabilitação)",
-    "Laudo Médico com CID e justificativa clínica",
-    "Registro de Nascimento (para menores)",
-    "Exames complementares (Raio-X, Tomografia ou outros, se houver)"
-]
-},
-{
-"id": "13",
-"title": "Centro de Reabilitação Física",
-"steps": [
-    {
-        "id": 1,
-        "title": "Atendimento na Atenção Básica",
-        "description": "Dirija-se à sua Unidade Básica de Saúde (UBS) ou PSF. Você deve passar por uma consulta médica para obter o Encaminhamento (Laudo) solicitando a reabilitação."
-    },
-    {
-        "id": 2,
-        "title": "Documentação e Laudo Médico",
-        "description": "O médico deve especificar o diagnóstico e o CID (Código Internacional de Doenças) no encaminhamento. Organize os documentos pessoais do paciente e do responsável."
-    },
-    {
-        "id": 3,
-        "title": "Regulação (Secretaria de Saúde)",
-        "description": "Leve a documentação à Secretaria Municipal de Saúde (na Rua Estevam Diniz, S/N) ou entregue na própria UBS para inserção no sistema de regulação (SISREG)."
-    },
-    {
-        "id": 4,
-        "title": "Triagem e Início",
-        "description": "Após a liberação da vaga pela regulação, você será informado sobre o dia da avaliação multiprofissional. O CER II funciona integrado à rede municipal, muitas vezes anexo à Policlínica ou Centro de Saúde."
-    }
-],
-"documents": [
-    "RG e CPF (do Paciente e do Responsável, se for menor ou dependente)",
-    "Cartão do SUS (Cartão Nacional de Saúde)",
-    "Comprovante de Residência atualizado",
-    "Encaminhamento Médico da UBS (com solicitação de parecer especializado/reabilitação)",
-    "Laudo Médico com CID",
-    "Registro de Nascimento (para menores)"
-]
-},
-{
-"id": "14",
-"title": "Oficina Ortopédica - FUNAD",
-"steps": [
-    {
-        "id": 1,
-        "title": "Prescrição na Rede Básica",
-        "description": "Dirija-se à sua USF (Unidade de Saúde da Família) ou médico do SUS. Você precisa de um Laudo/Prescrição Médica contendo o CID e a descrição técnica do equipamento ou órtese/prótese necessária."
-    },
-    {
-        "id": 2,
-        "title": "Abertura de Processo",
-        "description": "Com o laudo em mãos, dirija-se ao setor de Protocolo/Triagem da FUNAD (Setor CAD) ou realize o pré-agendamento online (se disponível no período) para abrir o processo administrativo de solicitação."
-    },
-    {
-        "id": 3,
-        "title": "Avaliação e Medidas",
-        "description": "Após o agendamento, o paciente passará por uma avaliação com Fisioterapeuta ou Terapeuta Ocupacional na Oficina para a tirada de medidas (molde) e prescrição final do dispositivo sob medida."
-    },
-    {
-        "id": 4,
-        "title": "Confecção e Prova",
-        "description": "O dispositivo entrará em produção. Em alguns casos (como próteses), o paciente será chamado para provas intermediárias antes da entrega final."
-    },
-    {
-        "id": 5,
-        "title": "Entrega e Treinamento",
-        "description": "Na data marcada, o paciente recebe o equipamento e passa por um treinamento rápido ou orientações de uso e conservação com a equipe técnica."
-    }
-],
-"documents": [
-    "RG e CPF (do Paciente e do Responsável)",
-    "Cartão do SUS (Cartão Nacional de Saúde)",
-    "Comprovante de Residência atualizado (com CEP)",
-    "Laudo Médico do SUS (Original, datado e assinado, com CID 10)",
-    "Registro de Nascimento (para menores)",
-    "Exames de imagem (Raio-X, em casos de escoliose ou dismetria de membros, se solicitado)"
-]
-},
-{
-"id": "15",
-"title": "Centro de Reabilitação Dr. Severino Lopes",
-"steps": [
-    {
-        "id": 1,
-        "title": "Providencie o Laudo Médico",
-        "description": "Antes de ir ao centro, passe por uma consulta na sua USF (Unidade de Saúde da Família) para obter um encaminhamento ou laudo médico indicando a necessidade de reabilitação."
-    },
-    {
-        "id": 2,
-        "title": "Compareça ao Serviço",
-        "description": "Dirija-se diretamente à recepção do CER II em Jaguaribe (Rua Alberto de Brito, S/N) portando seus documentos pessoais e o laudo. A unidade realiza o cadastro e agendamento da triagem."
-    },
-    {
-        "id": 3,
-        "title": "Triagem Multiprofissional",
-        "description": "No dia agendado, o paciente passará por uma avaliação com a equipe (fisioterapeutas, terapeutas ocupacionais, etc.) para definir o plano de cuidados (PTS)."
-    },
-    {
-        "id": 4,
-        "title": "Início do Tratamento",
-        "description": "Após a triagem, o paciente é inserido na grade de horários para as terapias, que podem ser individuais ou coletivas, dependendo da necessidade clínica."
-    }
-],
-"documents": [
-    "RG e CPF (do Paciente e do Responsável, se houver)",
-    "Cartão do SUS (Cartão Nacional de Saúde)",
-    "Comprovante de Residência atualizado (de João Pessoa)",
-    "Laudo ou Encaminhamento Médico (com CID e justificativa)",
-    "Exames complementares (caso possua, para auxiliar na avaliação)",
-    "Registro de Nascimento (para menores)"
-]
-}
