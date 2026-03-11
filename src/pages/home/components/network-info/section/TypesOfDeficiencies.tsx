@@ -34,6 +34,7 @@ export default function TypesOfDeficiencies() {
       <div className="mx-auto max-w-6xl">
         <div className="text-left mb-16">
           <h2 className="text-4xl font-bold mb-4">Tipos de Deficiência</h2>
+            <div className="w-20 h-1.5 bg-[var(--cor-bg-1)] rounded-full mb-6"></div>
           <div className="w-24 h-1 bg-white rounded-full"></div>
           <p className="mt-4 max-w-2xl text-lg opacity-90">
             Entenda as particularidades de cada modalidade atendida pela rede de

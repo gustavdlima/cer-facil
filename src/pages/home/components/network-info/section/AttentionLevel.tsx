@@ -46,7 +46,7 @@ export default function AttentionLevel() {
       <div className="mx-auto max-w-6xl">
         <div className="text-left mb-16">
           <h2 className="text-4xl font-bold mb-4">Níveis de Atenção</h2>
-          <div className="w-24 h-1 bg-white rounded-full"></div>
+            <div className="w-20 h-1.5 bg-[var(--cor-bg-1)] rounded-full mb-6"></div>
           <p className="text-50 mt-4 max-w-2xl text-lg opacity-90">
             Estrutura integrada de cuidado em diferentes níveis de complexidade
           </p>
