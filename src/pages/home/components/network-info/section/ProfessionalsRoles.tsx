@@ -26,7 +26,6 @@ export default function ProfessionalsRoles() {
             prof.service.some(id => activeFilters.includes(id))
         );
 
-    // Divisão dos dados: 6 visíveis, o resto no accordion
     const iniciais = filteredProfessionals.slice(0, 6);
     const restantes = filteredProfessionals.slice(6);
 
@@ -79,7 +78,6 @@ export default function ProfessionalsRoles() {
     return (
         <section className="px-6 py-24 pt-0 font-sans">
             <div className="mx-auto max-w-6xl">
-                {/* Título e Filtros (Mantidos como estavam) */}
                 <div className="text-left mb-12">
                     <h2 className="text-4xl font-bold mb-4 text-white leading-tight">Equipe Multiprofissional</h2>
                     <div className="w-20 h-1.5 bg-white rounded-full mb-6"></div>
@@ -112,15 +110,12 @@ export default function ProfessionalsRoles() {
                     </div>
                 </div>
 
-                {/* Grid de Profissionais */}
                 {filteredProfessionals.length > 0 ? (
                     <div className="flex flex-col gap-4">
-                        {/* Grid Inicial (3 colunas no desktop) */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
                             {iniciais.map((prof) => renderProfessionalCard(prof))}
                         </div>
-
-                        {/* Accordion para o Restante */}
+                        
                         {restantes.length > 0 && (
                             <Accordion type="single" collapsible className="w-full">
                                 <AccordionItem value="grid-restante" className="border-none">
