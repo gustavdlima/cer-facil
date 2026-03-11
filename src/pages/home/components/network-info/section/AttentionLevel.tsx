@@ -20,21 +20,21 @@ import {
 const levelIcons = [Activity, Building2, Hospital];
 
 const levelColors = [
-  "bg-[color-mix(in_srgb,var(--cor-bg-2),white_20%)]",
-  "bg-[color-mix(in_srgb,var(--cor-bg-2),white_0%)]",
-  "bg-[color-mix(in_srgb,var(--cor-bg-2),black_20%)]",
+  "bg-[color-mix(in_srgb,var(--cor-bg-1),white_20%)]",
+  "bg-[color-mix(in_srgb,var(--cor-bg-1),white_0%)]",
+  "bg-[color-mix(in_srgb,var(--cor-bg-1),black_20%)]",
 ];
 
 const levelBorders = [
-  "border-[color-mix(in_srgb,var(--cor-bg-2),white_50%)]",
-  "border-[color-mix(in_srgb,var(--cor-bg-2),white_30%)]",
-  "border-[color-mix(in_srgb,var(--cor-bg-2),white_10%)]",
+  "border-[color-mix(in_srgb,var(--cor-bg-1),white_50%)]",
+  "border-[color-mix(in_srgb,var(--cor-bg-1),white_30%)]",
+  "border-[color-mix(in_srgb,var(--cor-bg-1),white_10%)]",
 ];
 
 const levelHovers = [
-  "hover:border-[color-mix(in_srgb,var(--cor-bg-2),white_20%)]",
-  "hover:border-[color-mix(in_srgb,var(--cor-bg-2),white_0%)]",
-  "hover:border-[color-mix(in_srgb,var(--cor-bg-2),black_20%)]",
+  "hover:border-[color-mix(in_srgb,var(--cor-bg-1),white_20%)]",
+  "hover:border-[color-mix(in_srgb,var(--cor-bg-1),white_0%)]",
+  "hover:border-[color-mix(in_srgb,var(--cor-bg-1),black_20%)]",
 ];
 
 export default function AttentionLevel() {
@@ -90,15 +90,15 @@ export default function AttentionLevel() {
                         value={component.id}
                         className="border-gray-100"
                       >
-                        <AccordionTrigger className="text-sm font-bold text-gray-700 hover:text-[var(--cor-bg-2)] transition-colors py-4 no-underline hover:no-underline">
+                        <AccordionTrigger className="text-sm font-bold text-gray-700 hover:text-[var(--cor-bg-1)] transition-colors py-4 no-underline hover:no-underline">
                           <span className="flex items-center gap-3">
                             <ChevronDown
-                              className={`w-4 h-4 transition-colors ${hoveredCard === level.id ? "text-[var(--cor-bg-2)]" : "text-gray-400"}`}
+                              className={`w-4 h-4 transition-colors ${hoveredCard === level.id ? "text-[var(--cor-bg-1)]" : "text-gray-400"}`}
                             />
                             {component.title}
                           </span>
                         </AccordionTrigger>
-                        <AccordionContent className="text-sm text-gray-600 leading-relaxed bg-[color-mix(in_srgb,var(--cor-bg-2),white_95%)] p-4 rounded-xl mt-1 border border-orange-100/30 text-justify">
+                        <AccordionContent className="text-sm text-gray-600 leading-relaxed bg-[color-mix(in_srgb,var(--cor-bg-1),white_95%)] p-4 rounded-xl mt-1 border border-orange-100/30 text-justify">
                           {component.content}
                         </AccordionContent>
                       </AccordionItem>
