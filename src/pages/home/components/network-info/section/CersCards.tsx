@@ -108,21 +108,22 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
   const renderCersRow = (cer: DadosCers) => {
     return (
       <div
+        tabIndex={0}
         key={cer.id}
-        className="p-6 rounded-2xl shadow-xl bg-white flex flex-col transition-all hover:shadow-2xl hover:-translate-y-2 h-full min-h-[220px]"
+        className="p-6 rounded-2xl shadow-xl bg-white flex flex-col transition-all hover:shadow-2xl hover:-translate-y-2 h-full min-h-[220px] focus-within:border-[var(--cor-bg-1)] focus-within:border-5"
       >
         <div className="flex-grow flex flex-col">
-          <h3 className="font-bold text-xl text-slate-900 mb-4 leading-tight">
+          <h3 className="font-bold text-xl text-slate-900 mb-4 leading-tight focus-within:border-[var(--cor-bg-1)] focus-within:border-5" tabIndex={0}>
             {toTitleCase(cer.nome)}
           </h3>
 
-          <div className="flex items-center text-slate-500 mb-6 mt-auto font-semibold">
+          <div className="flex items-center text-slate-500 mb-6 mt-auto font-semibold focus-within:border-[var(--cor-bg-1)] focus-within:border-5" tabIndex={0}>
             <MapPin className="w-4 h-4 mr-1.5 flex-shrink-0 text-[var(--cor-bg-1)]" />
             <span className="text-sm">{cer.cidade}</span>
           </div>
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 pt-4 mt-auto">
+        <div className="flex items-center justify-between border-t border-slate-100 pt-4 mt-auto focus-within:border-[var(--cor-bg-1)] focus-within:border-5" tabIndex={0}>
           <div className="flex flex-wrap gap-2 flex-1 pr-3">
             {cer.especialidades.map((especialidade, index) => (
               <span
@@ -135,6 +136,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
           </div>
 
           <Button
+          tabIndex={0}
             variant="ghost"
             size="icon"
             className="text-[var(--cor-bg-1)] hover:text-white hover:bg-[var(--cor-bg-1)] rounded-full transition-all duration-300 flex-shrink-0 bg-slate-50"
@@ -157,13 +159,13 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
     >
       <div className="mx-auto max-w-6xl w-full">
         <div className="text-left mb-8">
-          <h2 className="font-bold text-4xl mb-4 text-white">
+          <h2 className="font-bold text-4xl mb-4 text-white" tabIndex={0}>
             Rede Estadual de Reabilitação
           </h2>
           <div className="w-24 h-1.5 bg-white rounded-full"></div>
         </div>
 
-        <div className="bg-white p-6 rounded-2xl shadow-sm mb-10">
+        <div className="bg-white p-6 rounded-2xl shadow-sm mb-10 focus-within:border-[var(--cor-bg-1)] focus-within:border-5" tabIndex={0}>
           <div className="flex items-center gap-2 mb-4 text-slate-900 font-semibold uppercase text-sm tracking-wider">
             <Filter size={18} />
             <span>Filtrar por deficiência:</span>
@@ -177,11 +179,11 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
                   key={option}
                   onClick={() => toggleFilter(option)}
                   className={`
-                    px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-200 border-2
+                    px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-200 border-1 focus-within:border-5
                     ${
                       isActive
                         ? "bg-[var(--cor-bg-1)] border-[var(--cor-bg-1)] text-white shadow-md shadow-blue-100"
-                        : "bg-white border-[var(--cor-bg-1)]/30 text-[var(--cor-bg-1)] hover:border-[var(--cor-bg-1)] hover:text-[var(--cor-bg-1)]"
+                        : "bg-white border-[var(--cor-bg-1)] text-[var(--cor-bg-1)] hover:border-[var(--cor-bg-1)] hover:text-[var(--cor-bg-1)]"
                     }
                   `}
                 >
@@ -215,8 +217,8 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
         {restantes.length > 0 && (
           <Accordion type="single" collapsible className="w-full mt-8">
             <AccordionItem value="grid-restante" className="border-none">
-              <AccordionContent className="overflow-visible">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              <AccordionContent className="overflow-visible" >
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" tabIndex={0}>
                   {restantes.map((cer) => renderCersRow(cer))}
                 </div>
               </AccordionContent>

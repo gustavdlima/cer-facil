@@ -26,7 +26,7 @@ export default function WhatIsRCPD() {
     >
       <div className="mx-auto max-w-6xl">
         <div className="text-left mb-16">
-          <h2 className="font-bold text-4xl mb-4 text-white">
+          <h2 className="font-bold text-4xl mb-4 text-white" tabIndex={0}>
             O que é a Rede de Cuidado à Pessoa com Deficiência (RCPD)?
           </h2>
           <div className="w-24 h-1 bg-white rounded-full"></div>
@@ -38,13 +38,13 @@ export default function WhatIsRCPD() {
               key={idx}
               className={`grid md:grid-cols-2 gap-12 items-center ${idx % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
             >
-              <div className={`${idx % 2 === 1 ? 'md:order-2' : ''}`}>
+              <div className={`${idx % 2 === 1 ? 'md:order-2' : ''}`} tabIndex={0}>
                 <div className="bg-white p-10 rounded-2xl shadow-2xl flex flex-col items-center text-center transition-transform hover:scale-105 duration-300">
                   <feature.icon className="w-16 h-16 text-[color-mix(in_srgb,var(--cor-bg-1),black_20%)] mb-4" />
                   <h3 className="font-bold text-gray-900 text-2xl">{feature.title}</h3>
                 </div>
               </div>
-              <div className={`${idx % 2 === 1 ? 'md:order-1' : ''}`}>
+              <div className={`${idx % 2 === 1 ? 'md:order-1' : ''}`} tabIndex={0}>
                 <p className="text-xl leading-relaxed text-blue-50 font-medium">
                   {feature.desc}
                 </p>

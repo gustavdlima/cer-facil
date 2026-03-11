@@ -38,12 +38,12 @@ export default function ProfessionalsRoles() {
         <section className="px-6 py-24 pt-0 font-sans">
             <div className="mx-auto max-w-6xl">
                 <div className="text-left mb-12">
-                    <h2 className="text-4xl font-bold mb-4 text-white leading-tight">
+                    <h2 className="text-4xl font-bold mb-4 text-white leading-tight" tabIndex={0}>
                         Equipe Multiprofissional
                     </h2>
                     <div className="w-20 h-1.5 bg-white rounded-full mb-6"></div>
                     
-                    <div className="bg-white border border-[color-mix(in_srgb,var(--cor-bg-3),black_30%)] p-6 rounded-2xl shadow-sm">
+                    <div className="bg-white border border-[color-mix(in_srgb,var(--cor-bg-3),black_30%)] p-6 rounded-2xl shadow-sm focus-within:border-[var(--cor-bg-1)] focus-within:border-5" tabIndex={0}>
                         <div className="flex items-center gap-2 mb-4 text-black font-semibold uppercase text-sm tracking-wider">
                             <Filter size={18} />
                             <span>Filtrar por Especialidade:</span>
@@ -57,7 +57,7 @@ export default function ProfessionalsRoles() {
                                         key={option.id}
                                         onClick={() => toggleFilter(option.id)}
                                         className={`
-                                            px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-200 border-2
+                                            px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-200 border-2 focus-within:border-5
                                             ${isActive 
                                                 ? "bg-[var(--cor-bg-3)] border-[var(--cor-bg-3)]/90 text-white shadow-md shadow-emerald-100" 
                                                 : "bg-white border-[var(--cor-bg-3)]/30 text-[var(--cor-bg-3)]/80 hover:border-[var(--cor-bg-3)] hover:text-[var(--cor-bg-3)]"}
@@ -88,7 +88,7 @@ export default function ProfessionalsRoles() {
                             return (
                                 <div
                                     key={prof.professional}
-                                    className={`border rounded-xl transition-all duration-300 h-fit bg-white ${
+                                    className={`border rounded-xl transition-all duration-300 h-fit bg-white focus-within:border-[var(--cor-bg-1)] focus-within:border-5 ${
                                         isOpen 
                                         ? "border-[var(--cor-bg-3)] shadow-xl ring-1 ring-emerald-50 scale-[1.01]" 
                                         : "border-slate-100 shadow-sm hover:border-emerald-200 hover:shadow-md"

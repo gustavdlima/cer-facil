@@ -40,21 +40,23 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
       </div>
 
       <div className="w-full max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div
+        <button
+          tabIndex={0}
           onClick={() => setShowForm(true)}
-          className="flex flex-col items-center p-8 bg-white border-2 border-gray-100 rounded-2xl shadow-sm hover:shadow-xl hover:border-[var(--cor-3)] transition-all cursor-pointer group text-center"
+          className="flex flex-col items-center p-8 bg-white border-2 border-gray-100 rounded-2xl shadow-sm hover:shadow-xl hover:border-[var(--cor-3)] focus-within:border-[var(--cor-3)] focus-within:border-5 transition-all cursor-pointer group text-center"
         >
           <div className="p-4 bg-orange-50 rounded-full mb-4 group-hover:bg-[var(--cor-3)] transition-colors">
             <MapPin className="w-8 h-8 text-[var(--cor-3)] group-hover:text-white" />
           </div>
-          <h3 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-gray-900">
             Encontrar CER Mais Próximo
-          </h3>
-        </div>
+          </h2>
+        </button>
 
-        <div
+        <button
+          tabIndex={0}
           onClick={handleScrollToSection}
-          className="flex flex-col items-center p-8 bg-white border-2 border-gray-100 rounded-2xl shadow-sm hover:shadow-xl hover:border-blue-500 transition-all cursor-pointer group text-center"
+          className="flex flex-col items-center p-8 bg-white border-2 border-gray-100 rounded-2xl shadow-sm hover:shadow-xl hover:border-blue-500 focus-within:border-blue-500 focus-within:border-5 transition-all cursor-pointer group text-center"
         >
           <div className="p-4 bg-blue-50 rounded-full mb-4 group-hover:bg-blue-500 transition-colors">
             <Network className="w-8 h-8 text-blue-500 group-hover:text-white" />
@@ -62,11 +64,12 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
           <h3 className="text-xl font-bold text-gray-900">
             Conheça a Rede CER de Cuidado à Pessoa Com Deficiência
           </h3>
-        </div>
+        </button>
 
-        <div
+        <button
+          tabIndex={0}
           onClick={handleScrollToEducationalMaterial}
-          className="flex flex-col items-center p-8 bg-white border-2 border-gray-100 rounded-2xl shadow-sm hover:shadow-xl hover:border-emerald-500 transition-all cursor-pointer group text-center"
+          className="flex flex-col items-center p-8 bg-white border-2 border-gray-100 rounded-2xl shadow-sm hover:shadow-xl hover:border-emerald-500 focus-within:border-emerald-500 focus-within:border-5 transition-all cursor-pointer group text-center"
         >
           <div className="p-4 bg-emerald-50 rounded-full mb-4 group-hover:bg-emerald-500 transition-colors">
             <BookOpen className="w-8 h-8 text-emerald-500 group-hover:text-white" />
@@ -74,18 +77,7 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
           <h3 className="text-xl font-bold text-gray-900">
             Tenha Acesso ao Nosso Material Educativo
           </h3>
-        </div>
-      </div>
-
-      {/* DESLIZE PARA MAIS */}
-      <div
-        onClick={handleScrollToSection}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center cursor-pointer group"
-      >
-        <p className="text-sm font-medium animate-bounce text-gray-400 group-hover:text-[var(--cor-3)] mb-1">
-          Deslize para saber mais
-        </p>
-        <ChevronDown className="w-6 h-6 animate-bounce text-gray-400 group-hover:text-[var(--cor-3)]" />
+        </button>
       </div>
     </main>
   );

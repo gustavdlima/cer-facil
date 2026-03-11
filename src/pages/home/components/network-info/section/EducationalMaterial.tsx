@@ -170,11 +170,11 @@ export default function MaterialEducational() {
     <section id="educational-material" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <div className="text-left mb-8">
-          <h2 className="text-4xl font-bold mb-4 text-slate-900">
+          <h2 className="text-4xl font-bold mb-4 text-slate-900 focus-within:border-[var(--cor-bg-1)] focus-within:border-5" tabIndex={0}>
             Material Educativo
           </h2>
           <div className="w-24 h-1 bg-[var(--cor-bg-3)] rounded-full"></div>
-          <p className="text-slate-600 mt-4 max-w-4xl text-lg leading-relaxed">
+          <p className="text-slate-600 mt-4 max-w-4xl text-lg leading-relaxed focus-within:border-[var(--cor-bg-1)] focus-within:border-5" tabIndex={0}>
             Acesse publicações, guias e cartilhas sobre direitos, saúde e
             inclusão das pessoas com deficiência.
           </p>
@@ -183,7 +183,7 @@ export default function MaterialEducational() {
         <div className="flex gap-4 mb-4">
           <button
             onClick={() => handleTabChange("user")}
-            className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+            className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 focus-within:border-[var(--cor-bg-1)] focus-within:border-5 ${
               activeTab === "user"
                 ? "bg-[var(--cor-bg-3)] text-white shadow-lg"
                 : "bg-slate-100 text-slate-600 hover:bg-slate-200"
@@ -194,7 +194,7 @@ export default function MaterialEducational() {
           </button>
           <button
             onClick={() => handleTabChange("professional")}
-            className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+            className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 focus-within:border-[var(--cor-bg-1)] focus-within:border-5 ${
               activeTab === "professional"
                 ? "bg-[var(--cor-bg-3)] text-white shadow-lg"
                 : "bg-slate-100 text-slate-600 hover:bg-slate-200"
@@ -206,7 +206,7 @@ export default function MaterialEducational() {
         </div>
 
         <div className="relative">
-          <div className="bg-white rounded-2xl shadow-lg p-8">
+          <div className="bg-white rounded-2xl shadow-lg p-8 focus-within:border-[var(--cor-bg-1)] focus-within:border-5" tabIndex={0}>
             <div className="flex flex-col md:flex-row gap-8 items-start">
               <div className="flex-1 flex flex-col justify-between">
                 <div>

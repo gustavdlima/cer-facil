@@ -25,11 +25,11 @@ export default function HistoryTimeline() {
     <section id="history-rcpd" className="px-6 py-20 relative">
       <div className="max-w-6xl mx-auto">
         <div className="text-left mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-slate-900">
+          <h2 className="text-4xl font-bold mb-4 text-slate-900 focus-within:border-[var(--cor-bg-1)] focus-within:border-5" tabIndex={0}>
             História da Rede de Cuidado à Pessoa com Deficiência
           </h2>
           <div className="w-24 h-2 bg-[var(--cor-bg-3)] rounded-full"></div>
-          <p className=" text-slate-600 mt-4 max-w-2xl text-lg">
+          <p className=" text-slate-600 mt-4 max-w-2xl text-lg focus-within:border-[var(--cor-bg-1)] focus-within:border-5" tabIndex={0}>
             Uma jornada de evolução e compromisso com os direitos das pessoas
             com deficiência
           </p>
@@ -39,7 +39,7 @@ export default function HistoryTimeline() {
           <div className="absolute left-8 md:left-1/2 md:transform md:-translate-x-1/2 top-0 bottom-0 w-1 bg-slate-200" />
 
           {timelineData.map((item, index) => (
-            <div key={item.id} className="relative flex items-center mb-10">
+            <div key={item.id} className="relative flex items-center mb-10 focus-within:border-[var(--cor-bg-1)] focus-within:border-5" tabIndex={0}>
               <div className="md:hidden flex items-start gap-4 w-full">
                 <div className="relative flex-shrink-0">
                   <div

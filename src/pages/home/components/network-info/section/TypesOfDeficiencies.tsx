@@ -33,15 +33,13 @@ export default function TypesOfDeficiencies() {
     <section id="types-of-deficiencies" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <div className="text-left mb-16">
-          <h2 className="text-4xl font-bold mb-4">Tipos de Deficiência</h2>
+          <h2 className="text-4xl font-bold mb-4 focus-within:border-[var(--cor-bg-1)] focus-within:border-5" tabIndex={0}>Tipos de Deficiência</h2>
           <div className="w-24 h-1 bg-white rounded-full"></div>
-          <p className="mt-4 max-w-2xl text-lg opacity-90">
+          <p className="mt-4 max-w-2xl text-lg opacity-90 focus-within:border-[var(--cor-bg-1)] focus-within:border-5" tabIndex={0}>
             Entenda as particularidades de cada modalidade atendida pela rede de
             cuidados.
           </p>
         </div>
-
-        {/* MUDANÇA AQUI: Trocamos Grid por Flex e justify-center */}
         <div className="flex flex-wrap justify-center gap-6">
           {items.map((item, idx) => (
             <div
@@ -51,12 +49,14 @@ export default function TypesOfDeficiencies() {
               <div className="text-[color-mix(in_srgb,var(--cor-bg-3),black_30%)] mb-6 flex justify-center bg-[color-mix(in_srgb,var(--cor-bg-3),white_90%)] w-20 h-20 items-center rounded-full transition-all duration-300">
                 {item.icon}
               </div>
-              <h3 className="font-bold text-xl text-black mb-3 text-center">
-                {item.title}
-              </h3>
-              <p className="text-[color-mix(in_srgb,var(--cor-bg-3),black_20%)] text-sm text-center leading-relaxed font-medium">
-                {item.text}
-              </p>
+              <div className="text-center">
+                <p className="inline font-bold text-xl text-black mb-3 text-center focus-within:border-[var(--cor-bg-1)] focus-within:border-5" tabIndex={0}>
+                  {item.title}
+                </p> <br />
+                <p className="inline text-[color-mix(in_srgb,var(--cor-bg-3),black_20%)] text-sm text-center leading-relaxed font-medium focus-within:border-[var(--cor-bg-1)] focus-within:border-5" tabIndex={0}>
+                  {item.text}
+                </p>
+              </div>
             </div>
           ))}
         </div>
