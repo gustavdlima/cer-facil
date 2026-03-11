@@ -28,7 +28,7 @@ export default function NetworkInfo({
       {/* Branco */}
       <div className="bg-white pt-16">
         <AttentionLevel />
-        <WaveBottom color="var(--cor-bg-2)" />
+        <WaveBottom color="var(--cor-bg-1)" />
       </div>
 
       {/* Azul Petróleo */}
@@ -40,7 +40,7 @@ export default function NetworkInfo({
       {/* Branco */}
       <div className="bg-white pt-16">
         <TypesOfDeficiencies />
-        <WaveBottom color="var(--cor-bg-2)" />
+        <WaveBottom color="var(--cor-bg-1)" />
       </div>
 
       {/* Azul Petróleo */}
@@ -52,7 +52,7 @@ export default function NetworkInfo({
       {/* Branco */}
       <div className="bg-white pt-16">
         <HistoryTimeline />
-        <WaveBottom color="var(--cor-bg-2)" />
+        <WaveBottom color="var(--cor-bg-1)" />
       </div>
 
       {/* Azul Petróleo */}
