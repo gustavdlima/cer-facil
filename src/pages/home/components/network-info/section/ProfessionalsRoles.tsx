@@ -57,7 +57,7 @@ export default function ProfessionalsRoles() {
                     className="w-full text-left px-6 py-5 flex items-center justify-between select-none"
                 >
                     <span className={`font-bold text-sm transition-colors ${isOpen ? "text-[var(--cor-bg-1)]" : "text-slate-800"}`}>
-                        <span className={`inline-block w-2.5 h-2.5 rounded-full mr-3 bg-[var(--cor-bg-1)]/50`} />
+                        <span className={`inline-block w-2.5 h-2.5 rounded-full mr-3 bg-[var(--cor-bg-1)]`} />
                         {prof.professional}
                     </span>
                     <ChevronDown
