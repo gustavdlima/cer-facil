@@ -17,7 +17,7 @@ interface FlowProps {
 }
 
 export default function Flow({ setShowFlow, cerId }: FlowProps) {
-  // Pega as informações baseadas no ID passado
+
   const fluxoInfo = FLUXOS[cerId - 1];
   const cerInfo = CERS[cerId - 1];
 
@@ -34,9 +34,7 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
       id="flow"
       className="px-6 py-8 min-h-[80vh] flex items-start justify-center bg-gradient-to-b from-white to-blue-50/30 relative"
     >
-      {/* Container reduzido para max-w-3xl para melhor leitura em coluna única */}
       <div className="mx-auto max-w-3xl w-full">
-        {/* CABEÇALHO DA SEÇÃO */}
         <div className="text-left mb-6 flex justify-between items-end">
           <div>
             <h2 className="font-bold text-2xl md:text-3xl mb-2 text-black leading-tight">
@@ -54,15 +52,12 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
           </Button>
         </div>
 
-        {/* ESTRUTURA DE COLUNA ÚNICA (Stack Vertical) */}
         <div className="flex flex-col gap-5">
-          {/* 1. Card Principal de Apresentação */}
           <div className="bg-white p-5 rounded-xl shadow-md border border-blue-100 flex flex-col items-center text-center">
             <Icone className="w-10 h-10 text-[var(--cor-bg-1)] mb-3" />
             <h3 className="font-bold text-lg mb-2">{fluxoInfo?.title}</h3>
           </div>
 
-          {/* 2. Card de Contato e Endereço */}
           <div className="bg-white p-5 rounded-xl shadow-md border border-blue-100 space-y-4">
             <h3 className="font-bold text-lg border-b border-gray-100 pb-2 mb-3">
               Contato e Localização
@@ -80,7 +75,6 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
               </div>
             )}
 
-            {/* Telefones e Emails lado a lado para economizar espaço vertical */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {cerInfo?.telefone && (
                 <div>
@@ -118,14 +112,13 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
             </div>
           </div>
 
-          {/* 3. Card do Passo a Passo (Timeline) */}
           <div className="bg-white p-5 rounded-xl shadow-md border border-blue-100">
             <h3 className="font-bold text-lg mb-4">Passo a Passo</h3>
 
             <div className="relative border-l-2 border-blue-100 ml-3 space-y-4">
               {fluxoInfo?.steps.map((step: any, index: number) => (
                 <div key={index} className="relative pl-6">
-                  {/* Indicador circular da timeline */}
+
                   <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white border-[3px] border-[var(--cor-bg-1)] shadow-sm" />
 
                   <div className="bg-gray-50/50 p-3 rounded-lg border border-gray-100 transition-all hover:shadow-sm hover:border-blue-100">
@@ -144,7 +137,6 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
             </div>
           </div>
 
-          {/* 4. Card de Documentos Necessários */}
           <div className="bg-white p-5 rounded-xl shadow-md border border-blue-100">
             <h3 className="font-bold text-lg mb-3">Documentos Necessários</h3>
             <ul className="space-y-2">
