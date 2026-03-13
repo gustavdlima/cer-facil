@@ -113,7 +113,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
       >
         <div className="flex-grow flex flex-col">
           <h3 className="font-bold text-xl text-slate-900 mb-4 leading-tight">
-            {toTitleCase(cer.nome)}
+            {(cer.nome)}
           </h3>
 
           <div className="flex items-center text-slate-500 mb-6 mt-auto font-semibold">
