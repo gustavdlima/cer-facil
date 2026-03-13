@@ -192,13 +192,13 @@ export default function StepFour({
   }
 
   return (
-    <div className="w-full">
-      <Card className="border-2 border-[var(--cor-1)] shadow-2xl max-w-4xl mx-auto">
+    <div aria-label="formulário, página 4" className="w-full">
+      <Card className="border-2 border-[var(--cor-1)] shadow-2xl max-w-4xl mx-auto" tabIndex={0}>
         <CardHeader>
-          <CardTitle className="text-xl text-[var(--cor-5)] font-bold">
+          <CardTitle className="text-xl text-[var(--cor-5)] font-bold" tabIndex={0}>
             Resultados da Busca
           </CardTitle>
-          <CardDescription className="text-base">
+          <CardDescription className="text-base" tabIndex={0}>
             CERs ordenados por compatibilidade e proximidade
           </CardDescription>
           
@@ -227,29 +227,29 @@ export default function StepFour({
                 {results.slice(0, 5).map((result, index) => (
                   <Card
                     key={result.cer.id}
-                    className="border-2 border-[var(--cor-2)]/40 hover:border-[var(--cor-1)] hover:shadow-lg transition-all"
+                    className="border-2 border-[var(--cor-2)]/40 hover:border-[var(--cor-1)] hover:shadow-lg transition-all" tabIndex={0}
                   >
                     <CardContent className="p-4">
                       <div className="flex items-start justify-between mb-3">
                         <div className="flex items-center gap-3">
-                          <span className="bg-[var(--cor-1)] text-white px-3 py-1 rounded-full text-sm font-bold">
+                          <span aria-label={`resultado ${index + 1}`} className="bg-[var(--cor-1)] text-white px-3 py-1 rounded-full text-sm font-bold">
                             #{index + 1}
                           </span>
                           <h4 className="font-bold text-base text-[var(--cor-5)]">
                             {result.cer.nome}
                           </h4>
                         </div>
-                        <span className="px-2 py-1 rounded-full text-xs bg-blue-100 text-blue-800 font-medium">
+                        <span aria-label={`a ${result.distancia} quilômetros de distância`} className="px-2 py-1 rounded-full text-xs bg-blue-100 text-blue-800 font-medium">
                           {result.distancia} km
                         </span>
                       </div>
 
-                      <p className="text-sm text-muted-foreground mb-3 pl-11">
+                      <p aria-label={`localizado na ${result.cer.endereco.rua} ${result.cer.endereco.numero} no bairro ${result.cer.endereco.bairro} em ${result.cer.cidade}`} className="text-sm text-muted-foreground mb-3 pl-11">
                         {result.cer.endereco.rua}, {result.cer.endereco.numero} – {result.cer.endereco.bairro}, {result.cer.cidade}
                       </p>
 
                       <div className="pl-11 flex items-center justify-between">
-                        <div className="flex flex-wrap gap-2">
+                        <div aria-label={`especializado em reabilitação ${result.cer.especialidades.join(" ")}`} className="flex flex-wrap gap-2">
                           {result.cer.especialidades.map((esp, idx) => (
                             <span
                               key={idx}
