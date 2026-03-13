@@ -7,7 +7,6 @@ import susDigital from "@/assets/images/sus-digital.png";
 import { Instagram, AtSign, Github, Info, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-
 const socialButtons = [
   {
     Icon: Instagram,
@@ -63,12 +62,12 @@ export default function Rodape() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center mb-8">
             {/* ESQUERDA: Informações e Redes */}
             <div className="md:col-span-5 flex flex-col items-start gap-4">
-              <div tabIndex={0}>
+              <div>
                 <h2 className="font-bold text-2xl text-slate-900 mb-1">
                   PET-Saúde Digital
                 </h2>
                 <div className="w-12 h-1 bg-[var(--cor-bg-1)] rounded-full mb-3"></div>
-                <p className="text-sm text-slate-600 leading-relaxed">
+                <p className="text-lg text-slate-600 leading-relaxed">
                   Acompanhe nossas ações e saiba mais sobre as iniciativas de
                   inclusão digital voltadas para Pessoas com Deficiência.
                 </p>
@@ -79,14 +78,13 @@ export default function Rodape() {
                   {socialButtons.map((button) => {
                     const Icon = button.Icon;
                     const content = (
-                      <Icon className="h-4 w-4" aria-hidden="true" />
+                      <Icon className="h-6 w-6" aria-hidden="true" />
                     );
                     const classes =
-                      "flex h-8 w-8 items-center justify-center rounded-full bg-[var(--cor-bg-1)]/10 text-[var(--cor-bg-1)] transition-colors hover:bg-[var(--cor-bg-1)] hover:text-white";
+                      "flex h-10 w-10 items-center justify-center rounded-full bg-[var(--cor-bg-1)]/10 text-[var(--cor-bg-1)] transition-colors hover:bg-[var(--cor-bg-1)] hover:text-white";
 
                     return button.href ? (
                       <a
-                        aria-label={button.alt}
                         key={button.alt}
                         href={button.href}
                         target="_blank"
@@ -111,7 +109,7 @@ export default function Rodape() {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="text-[var(--cor-bg-1)] border-[var(--cor-bg-1)] hover:text-white hover:bg-[var(--cor-bg-1)] rounded-full font-bold transition-all h-8 text-xs"
+                  className="text-[var(--cor-bg-1)] border-[var(--cor-bg-1)] hover:text-white hover:bg-[var(--cor-bg-1)] rounded-full font-bold transition-all h-10 text-md"
                   onClick={() => setIsAboutModalOpen(true)}
                 >
                   <Info className="w-3.5 h-3.5 mr-1.5" />
@@ -122,7 +120,7 @@ export default function Rodape() {
 
             {/* DIREITA: Logos dos Colaboradores */}
             <div className="md:col-span-7 flex flex-col md:items-end w-full">
-              <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">
+              <h3 className="text-lg font-bold text-slate-500 uppercase tracking-widest mb-4">
                 Realização & Colaboradores
               </h3>
 
@@ -132,17 +130,18 @@ export default function Rodape() {
                     key={logo.alt}
                     src={logo.src}
                     alt={logo.alt}
-                    className="h-7 sm:h-9 object-contain grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100"
+                    className="h-16 h-16 sm:h-18 object-contain grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100"
                   />
                 ))}
               </div>
             </div>
           </div>
 
-  
           <div className="pt-6 border-t border-slate-200">
-            <p className="text-center text-xs font-medium text-slate-500">
-              &copy; 2026 Copyright - PET-Saúde/Informação e Saúde Digital no SUS/PB.            </p>
+            <p className="text-center text-md font-medium text-slate-500">
+              &copy; 2026 Copyright - PET-Saúde/Informação e Saúde Digital no
+              SUS/PB.{" "}
+            </p>
           </div>
         </div>
       </footer>

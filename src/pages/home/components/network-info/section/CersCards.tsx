@@ -137,23 +137,21 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
       >
         <div className="flex-grow flex flex-col">
           <h2
-            className="font-bold text-xl text-slate-900 mb-4 leading-tight ">
+            className="font-bold text-2xl text-slate-900 mb-4 leading-tight ">
             {toTitleCase(cer.nome)}
           </h2>
 
-          <div className="flex items-center text-slate-500 mb-6 mt-auto font-semibold ">
-            <MapPin className="w-4 h-4 mr-1.5 flex-shrink-0 text-[var(--cor-bg-1)]" />
-            <span aria-hidden="true" className="text-sm">{cer.cidade}</span>
+          <div className="flex items-center text-slate-500 mb-6 mt-auto font-semibold">
+            <MapPin className="w-6 h-6 mr-1.5 flex-shrink-0 text-[var(--cor-bg-1)]" />
+            <span className="text-xl">{cer.cidade}</span>
           </div>
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 pt-4 mt-auto ">
+        <div className="flex items-center justify-between border-t border-slate-100 pt-4 mt-auto">
           <div className="flex flex-wrap gap-2 flex-1 pr-3">
             {cer.especialidades.map((especialidade, index) => (
               <span
-                aria-hidden="true"
-                key={index}
-                className="px-2.5 py-1 bg-[var(--cor-bg-1)]/30 text-[var(--cor-bg-1)] rounded-lg text-[12px] font-extrabold uppercase tracking-widest"
+                className="px-3 py-1 border-2 border-[var(--cor-bg-1)]/30 text-[var(--cor-bg-1)] rounded-full font-bold text-[16px] inline-block"
               >
                 {especialidade}
               </span>
@@ -161,9 +159,11 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
           </div>
 
           <Button
+            variant="ghost"
+            size="icon"
             className="text-[var(--cor-bg-1)] hover:text-white hover:bg-[var(--cor-bg-1)] rounded-full transition-all duration-300 flex-shrink-0 bg-slate-50"
           >
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-10 h-10" />
           </Button>
         </div>
       </div>
@@ -172,22 +172,21 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
 
   return (
     <section
-      aria-label="seção de rede estadual de reabilitação"
       id="cers-card"
       className="min-h-screen py-24 px-8 relative flex align-items-center"
     >
       <div className="mx-auto max-w-6xl w-full">
         <div className="text-left mb-8">
-          <h1 className="font-bold text-4xl mb-4 text-white">
+          <h2 className="font-bold text-4xl mb-4 text-white">
             Rede Estadual de Reabilitação
-          </h1>
+          </h2>
           <div className="w-24 h-1.5 bg-white rounded-full"></div>
         </div>
 
-        <div aria-label="filtro por deficiência" className="bg-white p-6 rounded-2xl shadow-sm mb-10 " tabIndex={0}>
+        <div className="bg-white p-6 rounded-2xl shadow-sm mb-10">
           <div className="flex items-center gap-2 mb-4 text-slate-900 font-semibold uppercase text-sm tracking-wider">
-            <Filter size={18} />
-            <span>Filtrar por deficiência:</span>
+            <Filter size={24} />
+            <span className="text-xl">Filtrar por deficiência:</span>
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
@@ -198,7 +197,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
                   key={option}
                   onClick={() => toggleFilter(option)}
                   className={`
-                  px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-200 
+                  px-6 py-2.5 rounded-full font-bold text-xl transition-all duration-200 
                   border-2 focus:ring-4 focus:ring-[var(--cor-bg-1)]/30
                   flex items-center justify-center gap-2 
                   ${isActive
@@ -229,7 +228,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
             {activeFilters.length > 0 && (
               <button
                 onClick={clearFilters}
-                className="ml-2 text-slate-500 hover:text-red-500 text-sm font-medium transition-colors"
+                className="ml-2 text-slate-500 hover:text-red-500 text-lg font-medium transition-colors"
               >
                 Limpar tudo
               </button>
@@ -250,14 +249,14 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
         {restantes.length > 0 && (
           <Accordion type="single" collapsible className="w-full mt-8">
             <AccordionItem value="grid-restante" className="border-none">
-              <AccordionContent className="overflow-visible" >
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" tabIndex={0}>
+              <AccordionContent className="overflow-visible">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                   {restantes.map((cer) => renderCersRow(cer))}
                 </div>
               </AccordionContent>
 
               <div className="flex justify-center mt-12">
-                <AccordionTrigger className="flex gap-3 items-center text-white px-8 py-4 font-bold transition-all border-2 border-white/40 rounded-full hover:bg-white hover:text-[var(--cor-bg-1)] data-[state=open]:hidden shadow-lg">
+                <AccordionTrigger className="text-xl flex gap-3 items-center text-white px-8 py-4 font-bold transition-all border-2 border-white/40 rounded-full hover:bg-white hover:text-[var(--cor-bg-1)] data-[state=open]:hidden shadow-lg [&>svg]:w-6 [&>svg]:h-6">
                   Ver todas as unidades
                 </AccordionTrigger>
               </div>
