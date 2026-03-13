@@ -127,7 +127,7 @@ export default function ProfessionalsRoles() {
 
                                     <div className="flex justify-center mt-12">
                                         <AccordionTrigger className="flex gap-3 items-center text-white px-8 py-4 font-bold transition-all border-2 border-white/40 rounded-full hover:bg-white hover:text-[var(--cor-bg-1)] data-[state=open]:hidden shadow-lg">
-                                            Ver todas as unidades
+                                            Ver mais
                                         </AccordionTrigger>
                                     </div>
                                 </AccordionItem>
