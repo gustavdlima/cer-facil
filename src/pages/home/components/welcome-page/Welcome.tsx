@@ -65,7 +65,7 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
             <Network className="w-8 h-8 text-[var(--cor-bg-1)] group-hover:text-white" />
           </div>
           <h2 aria-hidden="true" className="text-xl font-bold text-gray-900">
-            Conheça a Rede CER de Cuidado à Pessoa Com Deficiência
+            Conheça a Rede CER de Cuidado
           </h2>
         </button>
 
@@ -79,7 +79,7 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
             <BookOpen className="w-8 h-8 text-[var(--cor-bg-1)] group-hover:text-white" />
           </div>
           <h2 aria-hidden="true" className="text-xl font-bold text-gray-900">
-            Tenha Acesso a Materiais Educativoa
+            Tenha Acesso a Materiais Educativos
           </h2>
         </button>
       </section>
