@@ -42,10 +42,15 @@ export default function AttentionLevel() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
   return (
-    <section aria-label="seção de níveis de atenção" id="attention-level" className="px-6 py-20 relative">
+    <section
+      aria-label="seção de níveis de atenção"
+      id="attention-level"
+      className="px-6 py-20 relative"
+    >
       <div className="mx-auto max-w-6xl">
         <div className="text-left mb-16">
           <h1 className="text-4xl font-bold mb-4">Níveis de Atenção</h1>
+          <div className="w-24 h-1 bg-[var(--cor-bg-1)] rounded-full"></div>
           <div className="w-24 h-1 bg-white rounded-full"></div>
           <p className="text-50 mt-4 max-w-2xl text-lg opacity-90">
             Estrutura integrada de cuidado em diferentes níveis de complexidade
@@ -78,7 +83,10 @@ export default function AttentionLevel() {
                   <CardTitle className="text-2xl font-bold text-gray-900 mb-2  ">
                     {level.title}
                   </CardTitle>
-                  <CardDescription className="text-gray-500 text-sm leading-relaxed px-4  " tabIndex={0}>
+                  <CardDescription
+                    className="text-gray-500 text-sm leading-relaxed px-4  "
+                    tabIndex={0}
+                  >
                     {level.description}
                   </CardDescription>
                 </CardHeader>
@@ -99,10 +107,11 @@ export default function AttentionLevel() {
                             {component.title}
                           </span>
                         </AccordionTrigger>
-                        <AccordionContent role="none" className="text-sm text-gray-600 leading-relaxed bg-[color-mix(in_srgb,var(--cor-bg-2),white_95%)] p-4 rounded-xl mt-1 border border-orange-100/30 text-justify">
-                          <span>
-                            {component.content}
-                          </span>
+                        <AccordionContent
+                          role="none"
+                          className="text-sm text-gray-600 leading-relaxed bg-[color-mix(in_srgb,var(--cor-bg-2),white_95%)] p-4 rounded-xl mt-1 border border-orange-100/30 text-justify"
+                        >
+                          <span>{component.content}</span>
                         </AccordionContent>
                       </AccordionItem>
                     ))}
