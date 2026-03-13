@@ -55,9 +55,9 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
             className="flex flex-col items-center p-8 bg-white border-2 border-gray-100 rounded-2xl shadow-sm hover:shadow-xl hover:border-[var(--cor-bg-1)] transition-all cursor-pointer group text-center"
           >
             <div className="p-4 bg-[var(--cor-bg-1)]/10 rounded-full mb-4 group-hover:bg-[var(--cor-bg-1)] transition-colors">
-              <MapPin className="w-8 h-8 text-[var(--cor-bg-1)] group-hover:text-white" />
+              <MapPin className="w-12 h-12 text-[var(--cor-bg-1)] group-hover:text-white" />
             </div>
-            <h3 className="text-xl font-bold text-gray-900">
+            <h3 className="text-3xl font-bold text-gray-900">
               Busque o CER Mais Próximo
             </h3>
           </div>
@@ -66,9 +66,9 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
             className="flex flex-col items-center p-8 bg-white border-2 border-gray-100 rounded-2xl shadow-sm hover:shadow-xl hover:border-[var(--cor-bg-1)] transition-all cursor-pointer group text-center"
           >
             <div className="p-4 bg-[var(--cor-bg-1)]/10 rounded-full mb-4 group-hover:bg-[var(--cor-bg-1)] transition-colors">
-              <Network className="w-8 h-8 text-[var(--cor-bg-1)] group-hover:text-white" />
+              <Network className="w-12 h-12 text-[var(--cor-bg-1)] group-hover:text-white" />
             </div>
-            <h2 aria-hidden="true" className="text-xl font-bold text-gray-900">
+            <h2 aria-hidden="true" className="text-3xl font-bold text-gray-900">
               Conheça a Rede CER de Cuidado
             </h2>
           </div>{" "}
@@ -78,9 +78,9 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
             className="flex flex-col items-center p-8 bg-white border-2 border-gray-100 rounded-2xl shadow-sm hover:shadow-xl hover:border-[var(--cor-bg-1)] transition-all cursor-pointer group text-center"
           >
             <div className="p-4 bg-[var(--cor-bg-1)]/10 rounded-full mb-4 group-hover:bg-[var(--cor-bg-1)] transition-colors">
-              <BookOpen className="w-8 h-8 text-[var(--cor-bg-1)] group-hover:text-white" />
+              <BookOpen className="w-12 h-12 text-[var(--cor-bg-1)] group-hover:text-white" />
             </div>
-            <h2 aria-hidden="true" className="text-xl font-bold text-gray-900">
+            <h2 aria-hidden="true" className="text-3xl font-bold text-gray-900">
               Tenha Acesso a Materiais Educativos
             </h2>
           </div>{" "}

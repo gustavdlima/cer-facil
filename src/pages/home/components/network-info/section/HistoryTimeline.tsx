@@ -29,7 +29,7 @@ export default function HistoryTimeline() {
             História da Rede de Cuidado à Pessoa com Deficiência
           </h2>
           <div className="w-24 h-2 bg-[var(--cor-bg-1)] rounded-full"></div>
-          <p className=" text-slate-600 mt-4 max-w-2xl text-lg">
+          <p className=" text-slate-600 mt-4 max-w-2xl text-2xl">
             Uma jornada de evolução e compromisso com os direitos das pessoas
             com deficiência
           </p>
@@ -59,20 +59,20 @@ export default function HistoryTimeline() {
                     }
                   >
                     <div className="flex items-center gap-3 mb-3">
-                      <Calendar className="w-5 h-5 text-[var(--cor-bg-1)]" />
-                      <h3 className="text-xl font-bold text-[var(--cor-bg-1)]">
+                      <Calendar className="w-8 h-8 text-[var(--cor-bg-1)]" />
+                      <h3 className="text-2xl font-bold text-[var(--cor-bg-1)]">
                         {item.title}
                       </h3>
                     </div>
-                    <p className="text-slate-700 font-medium mb-2">
+                    <p className="text-slate-700 font-medium mb-2 text-xl">
                       {item.description}
                     </p>
                     {expandedId === item.id && (
-                      <p className="text-slate-600 text-sm mt-4 leading-relaxed border-t border-slate-100 pt-4 animate-in fade-in duration-300">
+                      <p className="text-slate-600 text-x1 mt-4 leading-relaxed border-t border-slate-100 pt-4 animate-in fade-in duration-300">
                         {detailedMessages[index]}
                       </p>
                     )}
-                    <span className="text-xs text-[var(--cor-bg-1)] font-bold mt-2 block group-hover:underline hover:scale-105 transition-transform inline-block">
+                    <span className="text-lg text-[var(--cor-bg-1)] font-bold mt-2 block group-hover:underline hover:scale-105 transition-transform inline-block">
                       {expandedId === item.id ? "Ver menos" : "Saiba mais"}
                     </span>
                   </div>
@@ -93,20 +93,20 @@ export default function HistoryTimeline() {
                         }
                       >
                         <div className="flex items-center gap-3 mb-3">
-                          <Calendar className="w-5 h-5 text-[var(--cor-bg-1)]" />
-                          <h3 className="text-xl font-bold text-[var(--cor-bg-1)]">
+                          <Calendar className="w-10 h-10 text-[var(--cor-bg-1)]" />
+                          <h3 className="text-2xl font-bold text-[var(--cor-bg-1)]">
                             {item.title}
                           </h3>
                         </div>
-                        <p className="text-slate-700 font-medium mb-2">
+                        <p className="text-slate-700 font-medium text-xl mb-2">
                           {item.description}
                         </p>
                         {expandedId === item.id && (
-                          <p className="text-slate-600 text-sm mt-4 leading-relaxed border-t border-slate-100 pt-4 animate-in fade-in duration-300">
+                          <p className="text-slate-600 text-xl mt-4 leading-relaxed border-t border-slate-100 pt-4 animate-in fade-in duration-300">
                             {detailedMessages[index]}
                           </p>
                         )}
-                        <span className="text-xs text-[var(--cor-bg-1)] font-bold mt-2 block group-hover:underline hover:scale-105 transition-transform inline-block">
+                        <span className="text-lg text-[var(--cor-bg-1)] font-bold mt-2 block group-hover:underline hover:scale-105 transition-transform inline-block">
                           {expandedId === item.id ? "Ver menos" : "Saiba mais"}
                         </span>
                       </div>
@@ -150,20 +150,20 @@ export default function HistoryTimeline() {
                         }
                       >
                         <div className="flex items-center gap-3 mb-3">
-                          <Calendar className="w-5 h-5 text-[var(--cor-bg-1)]" />
-                          <h3 className="text-xl font-bold text-[var(--cor-bg-1)]">
+                          <Calendar className="w-10 h-10 text-[var(--cor-bg-1)]" />
+                          <h3 className="text-2xl font-bold text-[var(--cor-bg-1)]">
                             {item.title}
                           </h3>
                         </div>
-                        <p className="text-slate-700 font-medium mb-2">
+                        <p className="text-slate-700 font-medium  text-xl mb-2">
                           {item.description}
                         </p>
                         {expandedId === item.id && (
-                          <p className="text-slate-600 text-sm mt-4 leading-relaxed border-t border-slate-100 pt-4 animate-in fade-in duration-300">
+                          <p className="text-slate-600 text-xl mt-4 leading-relaxed border-t border-slate-100 pt-4 animate-in fade-in duration-300">
                             {detailedMessages[index]}
                           </p>
                         )}
-                        <span className="text-xs text-[var(--cor-bg-1)] font-bold mt-2 block group-hover:underline hover:scale-105 transition-transform inline-block">
+                        <span className="text-lg text-[var(--cor-bg-1)] font-bold mt-2 block group-hover:underline hover:scale-105 transition-transform inline-block">
                           {expandedId === item.id ? "Ver menos" : "Saiba mais"}
                         </span>
                       </div>

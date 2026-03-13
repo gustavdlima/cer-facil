@@ -112,13 +112,13 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
         className="p-6 rounded-2xl shadow-xl bg-white flex flex-col transition-all hover:shadow-2xl hover:-translate-y-2 h-full min-h-[220px]"
       >
         <div className="flex-grow flex flex-col">
-          <h3 className="font-bold text-xl text-slate-900 mb-4 leading-tight">
+          <h3 className="font-bold text-2xl text-slate-900 mb-4 leading-tight">
             {(cer.nome)}
           </h3>
 
           <div className="flex items-center text-slate-500 mb-6 mt-auto font-semibold">
-            <MapPin className="w-4 h-4 mr-1.5 flex-shrink-0 text-[var(--cor-bg-1)]" />
-            <span className="text-sm">{cer.cidade}</span>
+            <MapPin className="w-6 h-6 mr-1.5 flex-shrink-0 text-[var(--cor-bg-1)]" />
+            <span className="text-xl">{cer.cidade}</span>
           </div>
         </div>
 
@@ -126,7 +126,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
           <div className="flex flex-wrap gap-2 flex-1 pr-3">
             {cer.especialidades.map((especialidade, index) => (
               <span
-                className="px-3 py-1 border-2 border-[var(--cor-bg-1)]/30 text-[var(--cor-bg-1)] rounded-full font-bold text-[11px] inline-block"
+                className="px-3 py-1 border-2 border-[var(--cor-bg-1)]/30 text-[var(--cor-bg-1)] rounded-full font-bold text-[16px] inline-block"
               >
                 {especialidade}
               </span>
@@ -142,7 +142,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
               setTimeout(handleScrollToSection, 100);
             }}
           >
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-10 h-10" />
           </Button>
         </div>
       </div>
@@ -164,8 +164,8 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
 
         <div className="bg-white p-6 rounded-2xl shadow-sm mb-10">
           <div className="flex items-center gap-2 mb-4 text-slate-900 font-semibold uppercase text-sm tracking-wider">
-            <Filter size={18} />
-            <span>Filtrar por deficiência:</span>
+            <Filter size={24} />
+            <span className="text-xl">Filtrar por deficiência:</span>
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
@@ -176,7 +176,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
                   key={option}
                   onClick={() => toggleFilter(option)}
                   className={`
-                    px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-200 border-2
+                    px-6 py-2.5 rounded-full font-bold text-xl transition-all duration-200 border-2
                     ${isActive
                       ? "bg-[var(--cor-bg-1)] border-[var(--cor-bg-1)] text-white shadow-md shadow-blue-100"
                       : "bg-white border-[var(--cor-bg-1)]/30 text-[var(--cor-bg-1)] hover:border-[var(--cor-bg-1)] hover:text-[var(--cor-bg-1)]"
@@ -192,7 +192,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
             {activeFilters.length > 0 && (
               <button
                 onClick={clearFilters}
-                className="ml-2 text-slate-500 hover:text-red-500 text-sm font-medium transition-colors"
+                className="ml-2 text-slate-500 hover:text-red-500 text-lg font-medium transition-colors"
               >
                 Limpar tudo
               </button>
@@ -220,7 +220,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
               </AccordionContent>
 
               <div className="flex justify-center mt-12">
-                <AccordionTrigger className="flex gap-3 items-center text-white px-8 py-4 font-bold transition-all border-2 border-white/40 rounded-full hover:bg-white hover:text-[var(--cor-bg-1)] data-[state=open]:hidden shadow-lg">
+                <AccordionTrigger className="text-xl flex gap-3 items-center text-white px-8 py-4 font-bold transition-all border-2 border-white/40 rounded-full hover:bg-white hover:text-[var(--cor-bg-1)] data-[state=open]:hidden shadow-lg [&>svg]:w-6 [&>svg]:h-6">
                   Ver todas as unidades
                 </AccordionTrigger>
               </div>

@@ -4,17 +4,17 @@ export default function TypesOfDeficiencies() {
   const items = [
     {
       title: "Deficiência Física",
-      icon: <Accessibility className="w-10 h-10" />,
+      icon: <Accessibility className="w-12 h-12" />,
       text: "Alterações no corpo que podem comprometer a mobilidade ou a coordenação.",
     },
     {
       title: "Deficiência Auditiva",
-      icon: <Ear className="w-10 h-10" />,
+      icon: <Ear className="w-12 h-12" />,
       text: "Perda parcial ou total da audição, podendo exigir aparelhos auditivos.",
     },
     {
       title: "Deficiência Visual",
-      icon: <Eye className="w-10 h-10" />,
+      icon: <Eye className="w-12 h-12" />,
       text: "Desde a baixa visão até a cegueira total, envolvendo apoios como Braille.",
     },
     {
@@ -42,7 +42,7 @@ export default function TypesOfDeficiencies() {
           </h1>
           <div className="w-24 h-1 bg-[var(--cor-bg-1)] rounded-full"></div>
           <p
-            className="mt-4 max-w-2xl text-lg opacity-90 focus-within:border-[var(--cor-bg-1)] focus-within:border-5"
+            className="mt-4 max-w-2xl text-2xl opacity-90 focus-within:border-[var(--cor-bg-1)] focus-within:border-5"
             tabIndex={0}
           >
             Entenda as particularidades de cada modalidade atendida pela rede de
@@ -61,7 +61,7 @@ export default function TypesOfDeficiencies() {
                 {item.icon}
               </div>
               <div className="text-center">
-                <p className="inline font-bold text-xl text-black mb-3 text-center focus-within:border-[var(--cor-bg-1)] focus-within:border-5">
+                <p className="inline font-bold text-2xl text-black mb-3 text-center focus-within:border-[var(--cor-bg-1)] focus-within:border-5">
                   {item.title}
                 </p>{" "}
                 <br />

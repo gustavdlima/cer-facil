@@ -174,7 +174,7 @@ export default function MaterialEducational() {
             Material Educativo
           </h2>
           <div className="w-24 h-1 bg-[var(--cor-bg-1)] rounded-full"></div>
-          <p className="text-slate-600 mt-4 max-w-4xl text-lg leading-relaxed">
+          <p className="text-slate-600 mt-4 max-w-4xl text-2xl leading-relaxed">
             Acesse publicações, guias e cartilhas sobre direitos, saúde e
             inclusão das pessoas com deficiência.
           </p>
@@ -183,24 +183,24 @@ export default function MaterialEducational() {
         <div className="flex gap-4 mb-4">
           <button
             onClick={() => handleTabChange("user")}
-            className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+            className={`text-xl flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
               activeTab === "user"
                 ? "bg-[var(--cor-bg-1)] text-white shadow-lg"
                 : "bg-slate-100 text-slate-600 hover:bg-slate-200"
             }`}
           >
-            <Users className="w-5 h-5" />
+            <Users className="w-8 h-8" />
             Usuário
           </button>
           <button
             onClick={() => handleTabChange("professional")}
-            className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+            className={`text-xl flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
               activeTab === "professional"
                 ? "bg-[var(--cor-bg-1)] text-white shadow-lg"
                 : "bg-slate-100 text-slate-600 hover:bg-slate-200"
             }`}
           >
-            <Briefcase className="w-5 h-5" />
+            <Briefcase className="w-8 h-8" />
             Profissional
           </button>
         </div>
@@ -208,15 +208,15 @@ export default function MaterialEducational() {
         <div>
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <div className="flex flex-col md:flex-row gap-8 items-start">
-              <div className="flex-1 flex flex-col justify-between">
+              <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
                   <div className="flex items-start gap-3 mb-4">
-                    <BookOpen className="w-6 h-6 text-[var(--cor-bg-1)] flex-shrink-0 mt-1" />
-                    <h3 className="font-bold text-gray-900 text-xl">
+                    <BookOpen className="w-10 h-10 text-[var(--cor-bg-1)] flex-shrink-0 mt-1" />
+                    <h3 className="my-auto font-bold text-gray-900 text-2xl">
                       {materials[currentIndex].title}
                     </h3>
                   </div>
-                  <p className="text-gray-600 leading-relaxed mb-6 text-justify">
+                  <p className="text-xl text-gray-600 leading-relaxed mb-6 text-justify">
                     {materials[currentIndex].description}
                   </p>
                 </div>
@@ -224,10 +224,10 @@ export default function MaterialEducational() {
                   href={materials[currentIndex].url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[var(--cor-bg-1)] text-white px-6 py-3 rounded-full font-semibold hover:bg-[color-mix(in_srgb,var(--cor-bg-1),black_20%)] transition-colors duration-300 w-fit"
+                  className="text-xl inline-flex items-center gap-2 bg-[var(--cor-bg-1)] text-white px-6 py-3 rounded-full font-semibold hover:bg-[color-mix(in_srgb,var(--cor-bg-1),black_20%)] transition-colors duration-300 w-fit"
                 >
                   Acessar Material
-                  <ExternalLink className="w-4 h-4" />
+                  <ExternalLink className="w-6 h-6" />
                 </a>
               </div>
               <div className="w-full md:w-[280px] flex-shrink-0">
@@ -244,21 +244,21 @@ export default function MaterialEducational() {
             <button
               onClick={prevSlide}
               disabled={currentIndex === 0}
-              className="flex items-center gap-2 px-6 py-3 bg-slate-100 text-slate-700 rounded-full font-semibold hover:bg-slate-200 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-16 h-16 flex items-center gap-2 px-6 py-3 bg-slate-100 text-slate-700 rounded-full font-semibold hover:bg-slate-200 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               aria-label="Material anterior"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-8 h-8" />
               Anterior
             </button>
 
             <button
               onClick={nextSlide}
               disabled={currentIndex === materials.length - 1}
-              className="flex items-center gap-2 px-6 py-3 bg-[var(--cor-bg-1)] text-white-700 rounded-full font-semibold hover:bg-[var(--cor-5)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-16 h-16 flex items-center gap-2 px-6 py-3 bg-[var(--cor-bg-1)] text-white-700 rounded-full font-semibold hover:bg-[var(--cor-5)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               aria-label="Próximo material"
             >
               Próximo
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-8 h-8" />
             </button>
           </div>
         </div>

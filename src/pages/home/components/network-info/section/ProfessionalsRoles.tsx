@@ -36,6 +36,7 @@ export default function ProfessionalsRoles() {
         );
     };
 
+
     const clearFilters = () => {
         setActiveFilters([]);
         setOpenProf(null);
