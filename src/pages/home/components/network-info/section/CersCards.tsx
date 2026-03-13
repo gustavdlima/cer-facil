@@ -108,26 +108,28 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
   const renderCersRow = (cer: DadosCers) => {
     return (
       <div
-        aria-label={`CER ${cer.nome}, localizado em ${cer.cidade}, especializado em ${cer.especialidades.join(", ")}`}
-        tabIndex={0}
         key={cer.id}
-        className="p-6 rounded-2xl shadow-xl bg-white flex flex-col transition-all hover:shadow-2xl hover:-translate-y-2 h-full min-h-[220px] focus-within:border-[var(--cor-bg-1)] focus-within:border-5"
+        className="p-6 rounded-2xl shadow-xl bg-white flex flex-col transition-all hover:shadow-2xl hover:-translate-y-2 h-full min-h-[220px]"
       >
         <div className="flex-grow flex flex-col">
-          <h3 className="font-bold text-xl text-slate-900 mb-4 leading-tight focus-within:border-[var(--cor-bg-1)] focus-within:border-5">
+          <h2 
+          aria-label={`CER ${cer.nome}, localizado em ${cer.cidade}, especializado em reabilitação ${cer.especialidades.join(", ")}`}
+          tabIndex={0}
+          className="font-bold text-xl text-slate-900 mb-4 leading-tight ">
             {toTitleCase(cer.nome)}
-          </h3>
+          </h2>
 
-          <div className="flex items-center text-slate-500 mb-6 mt-auto font-semibold focus-within:border-[var(--cor-bg-1)] focus-within:border-5">
+          <div className="flex items-center text-slate-500 mb-6 mt-auto font-semibold ">
             <MapPin className="w-4 h-4 mr-1.5 flex-shrink-0 text-[var(--cor-bg-1)]" />
-            <span className="text-sm">{cer.cidade}</span>
+            <span aria-hidden="true" className="text-sm">{cer.cidade}</span>
           </div>
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 pt-4 mt-auto focus-within:border-[var(--cor-bg-1)] focus-within:border-5">
+        <div className="flex items-center justify-between border-t border-slate-100 pt-4 mt-auto ">
           <div className="flex flex-wrap gap-2 flex-1 pr-3">
             {cer.especialidades.map((especialidade, index) => (
               <span
+                aria-hidden="true"
                 key={index}
                 className="px-2.5 py-1 bg-[var(--cor-bg-1)]/30 text-[var(--cor-bg-1)] rounded-lg text-[12px] font-extrabold uppercase tracking-widest"
               >
@@ -156,19 +158,19 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
 
   return (
     <section
-      aria-label="rede estadual de reabilitação"
+      aria-label="seção de rede estadual de reabilitação"
       id="cers-card"
       className="min-h-screen py-24 px-8 relative flex align-items-center"
     >
       <div className="mx-auto max-w-6xl w-full">
         <div className="text-left mb-8">
-          <h2 className="font-bold text-4xl mb-4 text-white">
+          <h1 className="font-bold text-4xl mb-4 text-white">
             Rede Estadual de Reabilitação
-          </h2>
+          </h1>
           <div className="w-24 h-1.5 bg-white rounded-full"></div>
         </div>
 
-        <div aria-label="filtro por deficiência" className="bg-white p-6 rounded-2xl shadow-sm mb-10 focus-within:border-[var(--cor-bg-1)] focus-within:border-5" tabIndex={0}>
+        <div aria-label="filtro por deficiência" className="bg-white p-6 rounded-2xl shadow-sm mb-10 " tabIndex={0}>
           <div className="flex items-center gap-2 mb-4 text-slate-900 font-semibold uppercase text-sm tracking-wider">
             <Filter size={18} />
             <span>Filtrar por deficiência:</span>

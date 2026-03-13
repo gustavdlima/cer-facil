@@ -31,13 +31,13 @@ export default function StepOne({ setShowForm, onNext }: StepOneProps) {
   };
 
   return (
-    <div className="w-full">
+    <div aria-label="formulário, página 1" className="w-full">
       <Card className="border-2 border-[var(--cor-1)] shadow-2xl max-w-4xl mx-auto">
         <CardHeader>
           <CardTitle className="text-xl text-[var(--cor-5)] font-bold" tabIndex={0}>
             Qual deficiência(s) deseja buscar atendimento?
           </CardTitle>
-          <CardDescription className="text-base">
+          <CardDescription className="text-base" tabIndex={0}>
             Você pode selecionar mais de uma opção
           </CardDescription>
         </CardHeader>

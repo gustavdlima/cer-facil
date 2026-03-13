@@ -37,9 +37,9 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
       <div className="mx-auto max-w-3xl w-full">
         <div className="text-left mb-6 flex justify-between items-end">
           <div>
-            <h2 className="font-bold text-2xl md:text-3xl mb-2 text-black leading-tight" tabIndex={0}>
+            <h1 className="font-bold text-2xl md:text-3xl mb-2 text-black leading-tight" tabIndex={0}>
               Como conseguir seu atendimento
-            </h2>
+            </h1>
             <div className="w-16 h-1 bg-[var(--cor-3)] rounded-full"></div>
           </div>
           <Button
@@ -54,10 +54,9 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
         <div className="flex flex-col gap-5">
           <div className="bg-white p-5 rounded-xl shadow-md border border-blue-100 flex flex-col items-center text-center" tabIndex={0}>
             <Icone className="w-10 h-10 text-[var(--cor-3)] mb-3" />
-            <h3 className="font-bold text-lg mb-2">{fluxoInfo?.title}</h3>
+            <h2 className="font-bold text-lg mb-2">{fluxoInfo?.title}</h2>
           </div>
-
-          <div className="bg-white p-5 rounded-xl shadow-md border border-blue-100 space-y-4" tabIndex={0}>
+          <div aria-label="contato e localização" className="bg-white p-5 rounded-xl shadow-md border border-blue-100 space-y-4" tabIndex={0}>
             <h3 className="font-bold text-lg border-b border-gray-100 pb-2 mb-3">
               Contato e Localização
             </h3>
@@ -83,7 +82,6 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
                   </p>
                 </div>
               )}
-
               {cerInfo?.email && (
                 <div tabIndex={0}>
                   <p className="text-xs font-bold text-[var(--cor-3)] uppercase tracking-widest mb-1 flex items-center gap-2">
@@ -107,17 +105,12 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
               </p>
             </div>
           </div>
-
-          {/* 3. Card do Passo a Passo (Timeline) */}
-          <div role="list" className="bg-white p-5 rounded-xl shadow-md border border-blue-100" tabIndex={0}>
+          <div aria-label="passo a passo" className="bg-white p-5 rounded-xl shadow-md border border-blue-100" tabIndex={0}>
             <h3 className="font-bold text-lg mb-4">Passo a Passo</h3>
-
             <div className="relative border-l-2 border-blue-100 ml-3 space-y-4">
               {fluxoInfo?.steps.map((step: any, index: number) => (
                 <div key={index} className="relative pl-6" tabIndex={0}>
-                  {/* Indicador circular da timeline */}
                   <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white border-[3px] border-[var(--cor-3)] shadow-sm" />
-
                   <div className="bg-gray-50/50 p-3 rounded-lg border border-gray-100 transition-all hover:shadow-sm hover:border-blue-100">
                     <div className="flex items-center gap-2 mb-1">
                       <Calendar className="w-4 h-4 text-[var(--cor-3)]" />
@@ -133,9 +126,7 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
               ))}
             </div>
           </div>
-
-          {/* 4. Card de Documentos Necessários */}
-          <div className="bg-white p-5 rounded-xl shadow-md border border-blue-100" tabIndex={0}>
+          <div aria-label="documentos nescessários" className="bg-white p-5 rounded-xl shadow-md border border-blue-100" tabIndex={0}>
             <h3 className="font-bold text-lg mb-3">Documentos Necessários</h3>
             <ul className="space-y-2">
               {fluxoInfo?.documents.map((doc: string, i: number) => (
@@ -153,8 +144,6 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
             </ul>
           </div>
         </div>
-
-        {/* Botão Voltar Mobile */}
         <div className="mt-6 flex justify-center md:hidden">
           <Button
             size="sm"

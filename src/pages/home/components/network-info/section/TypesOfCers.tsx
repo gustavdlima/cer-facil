@@ -2,16 +2,16 @@
 
 export default function TypesOfCers() {
   return (
-    <section aria-label="conheça os diferentes tipos de CER" className="px-6 py-24">
+    <section aria-label="seção de conheça os diferentes tipos de CER" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         {/* Cabeçalho da Seção */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
           <div>
             <div className="text-left mb-16">
               {/* Texto principal agora em Branco para contraste no Verde */}
-              <h2 className="text-4xl font-bold mb-4 text-white">
+              <h1 className="text-4xl font-bold mb-4 text-white">
                 Conheça os Diferentes <br /> Tipos de CERs
-              </h2>
+              </h1>
               <div className="w-24 h-1 bg-white rounded-full"></div>
               <p className="text-white mt-6 max-w-2xl text-lg leading-relaxed opacity-90" tabIndex={0}>
                 Os Centros Especializados em Reabilitação (CER) são unidades de
@@ -38,16 +38,16 @@ export default function TypesOfCers() {
                 <div
                   tabIndex={0}
                   key={cer.id}
-                  className="group flex items-center p-5 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 focus-within:border-[var(--cor-bg-1)] focus-within:border-5"
+                  className="group flex items-center p-5 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <div className="bg-[color-mix(in_srgb,var(--cor-bg-3),white_90%)] text-[color-mix(in_srgb,var(--cor-bg-3),black_30%)] p-3 rounded-xl mr-4 group-hover:bg-[var(--cor-bg-3)] group-hover:text-white transition-all duration-300">
                     <Building2 size={24} />
                   </div>
                   <div>
-                    <p className="inline font-bold text-black text-lg focus-within:border-[var(--cor-bg-1)] focus-within:border-5">
+                    <p className="inline font-bold text-black text-lg">
                       CER {cer.id}
                     </p> <br />
-                    <p className="inline text-[color-mix(in_srgb,var(--cor-bg-3),black_20%)] text-sm font-medium focus-within:border-[var(--cor-bg-1)] focus-within:border-5">
+                    <p className="inline text-[color-mix(in_srgb,var(--cor-bg-3),black_20%)] text-sm font-medium">
                       {cer.desc}
                     </p>
                   </div>

@@ -167,12 +167,12 @@ export default function MaterialEducational() {
   };
 
   return (
-    <section id="educational-material" className="px-6 py-24">
+    <section aria-label="seção de material educativo" id="educational-material" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <div className="text-left mb-8">
-          <h2 className="text-4xl font-bold mb-4 text-slate-900 focus-within:border-[var(--cor-bg-1)] focus-within:border-5" tabIndex={0}>
+          <h1 className="text-4xl font-bold mb-4 text-slate-900 focus-within:border-[var(--cor-bg-1)] focus-within:border-5">
             Material Educativo
-          </h2>
+          </h1>
           <div className="w-24 h-1 bg-[var(--cor-bg-3)] rounded-full"></div>
           <p className="text-slate-600 mt-4 max-w-4xl text-lg leading-relaxed focus-within:border-[var(--cor-bg-1)] focus-within:border-5" tabIndex={0}>
             Acesse publicações, guias e cartilhas sobre direitos, saúde e

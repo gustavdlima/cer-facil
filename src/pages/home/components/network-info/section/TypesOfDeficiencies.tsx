@@ -30,10 +30,10 @@ export default function TypesOfDeficiencies() {
   ];
 
   return (
-    <section aria-label="tipos de deficiências" id="types-of-deficiencies" className="px-6 py-24">
+    <section aria-label="seção de tipos de deficiências" id="types-of-deficiencies" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <div className="text-left mb-16">
-          <h2 className="text-4xl font-bold mb-4 focus-within:border-[var(--cor-bg-1)] focus-within:border-5">Tipos de Deficiência</h2>
+          <h1 className="text-4xl font-bold mb-4 focus-within:border-[var(--cor-bg-1)] focus-within:border-5">Tipos de Deficiência</h1>
           <div className="w-24 h-1 bg-white rounded-full"></div>
           <p className="mt-4 max-w-2xl text-lg opacity-90 focus-within:border-[var(--cor-bg-1)] focus-within:border-5" tabIndex={0}>
             Entenda as particularidades de cada modalidade atendida pela rede de
@@ -55,7 +55,7 @@ export default function TypesOfDeficiencies() {
                 <p className="inline font-bold text-xl text-black mb-3 text-center focus-within:border-[var(--cor-bg-1)] focus-within:border-5">
                   {item.title}
                 </p> <br />
-                <p className="inline text-[color-mix(in_srgb,var(--cor-bg-3),black_20%)] text-sm text-center leading-relaxed font-medium focus-within:border-[var(--cor-bg-1)] focus-within:border-5">
+                <p aria-hidden="true" className="inline text-[color-mix(in_srgb,var(--cor-bg-3),black_20%)] text-sm text-center leading-relaxed font-medium focus-within:border-[var(--cor-bg-1)] focus-within:border-5">
                   {item.text}
                 </p>
               </div>

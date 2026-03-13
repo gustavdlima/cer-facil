@@ -61,7 +61,7 @@ export default function Rodape() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center mb-8">
             {/* ESQUERDA: Informações e Redes */}
             <div className="md:col-span-5 flex flex-col items-start gap-4">
-              <div>
+              <div tabIndex={0}>
                 <h2 className="font-bold text-2xl text-slate-900 mb-1">
                   PET-Saúde Digital
                 </h2>
@@ -84,6 +84,7 @@ export default function Rodape() {
 
                     return button.href ? (
                       <a
+                        aria-label={button.alt}
                         key={button.alt}
                         href={button.href}
                         target="_blank"

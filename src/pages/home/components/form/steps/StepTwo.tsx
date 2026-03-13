@@ -26,7 +26,7 @@ export default function StepTwo({ selectedDeficiencies = [], onBack, onNext }: S
   };
 
   return (
-    <div className="w-full">
+    <div aria-label="formulário, página 2" className="w-full">
       <Card className="border-2 border-[var(--cor-1)] shadow-2xl max-w-4xl mx-auto">
         <CardHeader>
           <CardTitle className="text-xl text-[var(--cor-5)] font-bold" tabIndex={0}>

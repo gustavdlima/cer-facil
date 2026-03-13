@@ -21,7 +21,6 @@ const circleColors = [
 export default function HistoryTimeline() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
-  // Função para permitir interação via teclado (Enter e Espaço)
   const handleKeyDown = (e: React.KeyboardEvent, id: string) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
@@ -30,24 +29,23 @@ export default function HistoryTimeline() {
   };
 
   return (
-    <section id="history-rcpd" className="px-6 py-20 relative" aria-labelledby="history-title">
+    <section aria-label="seção de história da rede de cuidado à pessoa com deficiência" id="history-rcpd" className="px-6 py-20 relative" aria-labelledby="history-title">
       <div className="max-w-6xl mx-auto">
         <div className="text-left mb-16">
-          {/* Removido tabIndex: Títulos são navegáveis por leitores via atalhos de títulos, não via Tab */}
-          <h2 id="history-title" className="text-4xl font-bold mb-4 text-slate-900" tabIndex={0}>
+          <h1 id="history-title" className="text-4xl font-bold mb-4 text-slate-900">
             História da Rede de Cuidado à Pessoa com Deficiência
-          </h2>
+          </h1>
           <div className="w-24 h-2 bg-[var(--cor-bg-3)] rounded-full" aria-hidden="true"></div>
           <p className="text-slate-600 mt-4 max-w-2xl text-lg" tabIndex={0}>
             Uma jornada de evolução e compromisso com os direitos das pessoas com deficiência
           </p>
         </div>
 
-        <div className="relative" role="list" aria-label="Linha do tempo histórica">
-          <div className="absolute left-8 md:left-1/2 md:transform md:-translate-x-1/2 top-0 bottom-0 w-1 bg-slate-200" aria-hidden="true" />
+        <div aria-label="Linha do tempo histórica" className="relative" role="list" tabIndex={0}>
+          <div className="absolute left-8 md:left-1/2 md:transform md:-translate-x-1/2 top-0 bottom-0 w-1 bg-slate-200"/>
 
           {timelineData.map((item, index) => (
-            <div key={item.id} className="relative flex items-center mb-10" role="listitem">
+            <div key={item.id} className="relative flex items-center mb-10">
               <div className="md:hidden flex items-start gap-4 w-full">
                 <div className="relative flex-shrink-0">
                   <div
@@ -61,17 +59,15 @@ export default function HistoryTimeline() {
                   <div
                     className="bg-white p-6 rounded-xl shadow-lg border-2 border-slate-100 hover:border-[var(--cor-bg-3)] focus:ring-4 focus:ring-blue-200 outline-none transition-all cursor-pointer hover:shadow-xl group"
                     tabIndex={0}
-                    role="button"
                     aria-expanded={expandedId === item.id}
-                    aria-label={`${item.title}. Clique para ler mais sobre ${item.description}`}
                     onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
                     onKeyDown={(e) => handleKeyDown(e, item.id)}
                   >
                     <div className="flex items-center gap-3 mb-3">
                       <Calendar className="w-5 h-5 text-[var(--cor-bg-3)]" aria-hidden="true" />
-                      <h3 className="text-xl font-bold text-[var(--cor-bg-3)]">
+                      <h2 className="text-xl font-bold text-[var(--cor-bg-3)]">
                         {item.title}
-                      </h3>
+                      </h2>
                     </div>
                     <p className="text-slate-700 font-medium mb-2" tabIndex={0}>
                       {item.description}
@@ -94,19 +90,18 @@ export default function HistoryTimeline() {
                       <div
                         className="bg-white p-6 rounded-xl shadow-lg border-2 border-slate-100 hover:border-[var(--cor-bg-3)] focus:ring-4 focus:ring-blue-200 outline-none transition-all cursor-pointer hover:shadow-xl group"
                         tabIndex={0}
-                        role="button"
                         aria-expanded={expandedId === item.id}
-                        aria-label={`${item.title}. Clique para ler mais sobre ${item.description}`}
+                        aria-label={`${item.title}, ${item.description}`}
                         onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
                         onKeyDown={(e) => handleKeyDown(e, item.id)}
                       >
                         <div className="flex items-center gap-3 mb-3">
                           <Calendar className="w-5 h-5 text-[var(--cor-bg-3)]" aria-hidden="true" />
-                          <h3 className="text-xl font-bold text-[var(--cor-bg-3)]">
+                          <h2 className="text-xl font-bold text-[var(--cor-bg-3)]" aria-hidden="true">
                             {item.title}
-                          </h3>
+                          </h2>
                         </div>
-                        <p className="text-slate-700 font-medium mb-2">
+                        <p className="text-slate-700 font-medium mb-2" aria-hidden="true">
                           {item.description}
                         </p>
                         {expandedId === item.id && (
@@ -140,19 +135,18 @@ export default function HistoryTimeline() {
                       <div
                         className="bg-white p-6 rounded-xl shadow-lg border-2 border-slate-100 hover:border-[var(--cor-bg-3)] focus:ring-4 focus:ring-blue-200 outline-none transition-all cursor-pointer hover:shadow-xl group"
                         tabIndex={0}
-                        role="button"
                         aria-expanded={expandedId === item.id}
-                        aria-label={`${item.title}. Clique para ler mais sobre ${item.description}`}
+                        aria-label={`${item.title}, ${item.description}`}
                         onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
                         onKeyDown={(e) => handleKeyDown(e, item.id)}
                       >
                         <div className="flex items-center gap-3 mb-3">
                           <Calendar className="w-5 h-5 text-[var(--cor-bg-3)]" aria-hidden="true" />
-                          <h3 className="text-xl font-bold text-[var(--cor-bg-3)]">
+                          <h2 className="text-xl font-bold text-[var(--cor-bg-3)]" aria-hidden="true">
                             {item.title}
-                          </h3>
+                          </h2>
                         </div>
-                        <p className="text-slate-700 font-medium mb-2">
+                        <p className="text-slate-700 font-medium mb-2" aria-hidden="true">
                           {item.description}
                         </p>
                         {expandedId === item.id && (
