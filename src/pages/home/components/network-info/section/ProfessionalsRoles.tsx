@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { ChevronDown, Filter, X } from "lucide-react";
 import professionals from "../../../../../data/professionals-functions.json";
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export default function ProfessionalsRoles() {
     const [activeFilters, setActiveFilters] = useState<number[]>([]);
@@ -32,6 +38,40 @@ export default function ProfessionalsRoles() {
     const clearFilters = () => {
         setActiveFilters([]);
         setOpenProf(null);
+    };
+
+    // Função auxiliar para renderizar cada card
+    const renderProfessionalCard = (prof: any) => {
+        const isOpen = openProf === prof.professional;
+        return (
+            <div
+                key={prof.professional}
+                className={`border rounded-xl transition-all duration-300 h-fit bg-white ${isOpen
+                        ? "border-[var(--cor-bg-1)] shadow-xl ring-1 ring-emerald-50 scale-[1.01]"
+                        : "border-slate-100 shadow-sm hover:border-emerald-200 hover:shadow-md"
+                    }`}
+            >
+                <button
+                    onClick={() => setOpenProf(isOpen ? null : prof.professional)}
+                    className="w-full text-left px-6 py-5 flex items-center justify-between select-none"
+                >
+                    <span className={`font-bold text-sm transition-colors ${isOpen ? "text-[var(--cor-bg-1)]" : "text-slate-800"}`}>
+                        <span className={`inline-block w-2.5 h-2.5 rounded-full mr-3 bg-[var(--cor-bg-1)]`} />
+                        {prof.professional}
+                    </span>
+                    <ChevronDown
+                        className={`transition-transform duration-300 ${isOpen ? "rotate-180 text-[var(--cor-bg-1)]" : "text-slate-400"}`}
+                        size={18}
+                    />
+                </button>
+
+                <div className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}>
+                    <div className="px-6 pb-6 pt-2 text-slate-600 text-xs leading-relaxed border-t border-slate-50 text-justify">
+                        {prof.description}
+                    </div>
+                </div>
+            </div>
+        );
     };
 
     return (
@@ -71,19 +111,25 @@ export default function ProfessionalsRoles() {
 
                             {activeFilters.length > 0 && (
                                 <button
-                                    onClick={clearFilters}
-                                    className="ml-2 text-slate-400 hover:text-red-500 text-sm font-medium transition-colors"
+                                    key={option.id}
+                                    onClick={() => toggleFilter(option.id)}
+                                    className={`px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-200 border-2 ${activeFilters.includes(option.id)
+                                            ? "bg-[var(--cor-bg-1)] border-[var(--cor-bg-1)] text-white shadow-md"
+                                            : "bg-white border-[var(--cor-bg-1)]/30 text-[var(--cor-bg-1)] hover:border-[var(--cor-bg-1)]"
+                                        }`}
                                 >
+                                    {option.label}
+                                    {activeFilters.includes(option.id) && <X size={14} className="inline ml-2" />}
+                                </button>
+                            ))}
+                            {activeFilters.length > 0 && (
+                                <button onClick={clearFilters} className="ml-2 text-slate-400 hover:text-red-500 text-sm font-medium">
                                     Limpar tudo
                                 </button>
                             )}
                         </div>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
-                    {filteredProfessionals.length > 0 ? (
-                        filteredProfessionals.map((prof) => {
-                            const isOpen = openProf === prof.professional;
 
                             return (
                                 <div
@@ -115,16 +161,22 @@ export default function ProfessionalsRoles() {
                                         <div className="px-6 pb-6 pt-2 text-slate-600 text-sm leading-relaxed border-t border-slate-50 text-justify">
                                             {prof.description}
                                         </div>
+                                    </AccordionContent>
+
+                                    <div className="flex justify-center mt-12">
+                                        <AccordionTrigger className="flex gap-3 items-center text-white px-8 py-4 font-bold transition-all border-2 border-white/40 rounded-full hover:bg-white hover:text-[var(--cor-bg-1)] data-[state=open]:hidden shadow-lg">
+                                            Veja mais
+                                        </AccordionTrigger>
                                     </div>
-                                </div>
-                            );
-                        })
-                    ) : (
-                        <div className="col-span-full py-12 text-center text-slate-400 bg-white rounded-xl border-2 border-dashed border-slate-100 shadow-sm">
-                            Nenhum profissional encontrado para essa combinação de filtros.
-                        </div>
-                    )}
-                </div>
+                                </AccordionItem>
+                            </Accordion>
+                        )}
+                    </div>
+                ) : (
+                    <div className="py-12 text-center text-slate-400 bg-white rounded-xl border-2 border-dashed border-slate-100">
+                        Nenhum profissional encontrado.
+                    </div>
+                )}
             </div>
         </section>
     );

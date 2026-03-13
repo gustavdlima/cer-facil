@@ -48,7 +48,7 @@ export default function TypesOfDeficiencies() {
               key={idx}
               className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 w-full sm:w-[350px] flex flex-col items-center"
             >
-              <div className="text-[color-mix(in_srgb,var(--cor-bg-3),black_30%)] mb-6 flex justify-center bg-[color-mix(in_srgb,var(--cor-bg-3),white_90%)] w-20 h-20 items-center rounded-full transition-all duration-300">
+              <div className="text-[color-mix(in_srgb,var(--cor-bg-1),black_30%)] mb-6 flex justify-center bg-[color-mix(in_srgb,var(--cor-bg-1),white_90%)] w-20 h-20 items-center rounded-full transition-all duration-300">
                 {item.icon}
               </div>
               <div className="text-center">

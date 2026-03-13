@@ -11,11 +11,11 @@ const detailedMessages = [
 ];
 
 const circleColors = [
-  "bg-[var(--cor-bg-3)]",
-  "bg-[var(--cor-bg-3)]",
-  "bg-[var(--cor-bg-3)]",
-  "bg-[var(--cor-bg-3)]",
-  "bg-[var(--cor-bg-3)]",
+  "bg-[var(--cor-bg-1)]",
+  "bg-[var(--cor-bg-1)]",
+  "bg-[var(--cor-bg-1)]",
+  "bg-[var(--cor-bg-1)]",
+  "bg-[var(--cor-bg-1)]",
 ];
 
 export default function HistoryTimeline() {
