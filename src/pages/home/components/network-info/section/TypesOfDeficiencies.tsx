@@ -4,17 +4,17 @@ export default function TypesOfDeficiencies() {
   const items = [
     {
       title: "Deficiência Física",
-      icon: <Accessibility className="w-10 h-10" />,
+      icon: <Accessibility className="w-12 h-12" />,
       text: "Alterações no corpo que podem comprometer a mobilidade ou a coordenação.",
     },
     {
       title: "Deficiência Auditiva",
-      icon: <Ear className="w-10 h-10" />,
+      icon: <Ear className="w-12 h-12" />,
       text: "Perda parcial ou total da audição, podendo exigir aparelhos auditivos.",
     },
     {
       title: "Deficiência Visual",
-      icon: <Eye className="w-10 h-10" />,
+      icon: <Eye className="w-12 h-12" />,
       text: "Desde a baixa visão até a cegueira total, envolvendo apoios como Braille.",
     },
     {
@@ -35,7 +35,7 @@ export default function TypesOfDeficiencies() {
         <div className="text-left mb-16">
           <h2 className="text-4xl font-bold mb-4">Tipos de Deficiência</h2>
           <div className="w-24 h-1 bg-white rounded-full"></div>
-          <p className="mt-4 max-w-2xl text-lg opacity-90">
+          <p className="mt-4 max-w-2xl text-2xl opacity-90">
             Entenda as particularidades de cada modalidade atendida pela rede de
             cuidados.
           </p>
@@ -51,10 +51,10 @@ export default function TypesOfDeficiencies() {
               <div className="text-[color-mix(in_srgb,var(--cor-bg-3),black_30%)] mb-6 flex justify-center bg-[color-mix(in_srgb,var(--cor-bg-3),white_90%)] w-20 h-20 items-center rounded-full transition-all duration-300">
                 {item.icon}
               </div>
-              <h3 className="font-bold text-xl text-black mb-3 text-center">
+              <h3 className="font-bold text-2xl text-black mb-3 text-center">
                 {item.title}
               </h3>
-              <p className="text-[color-mix(in_srgb,var(--cor-bg-3),black_20%)] text-sm text-center leading-relaxed font-medium">
+              <p className="text-[color-mix(in_srgb,var(--cor-bg-3),black_20%)] text-xl text-center leading-relaxed font-medium">
                 {item.text}
               </p>
             </div>

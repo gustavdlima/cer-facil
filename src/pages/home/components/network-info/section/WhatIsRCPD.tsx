@@ -40,12 +40,12 @@ export default function WhatIsRCPD() {
             >
               <div className={`${idx % 2 === 1 ? 'md:order-2' : ''}`}>
                 <div className="bg-white p-10 rounded-2xl shadow-2xl flex flex-col items-center text-center transition-transform hover:scale-105 duration-300">
-                  <feature.icon className="w-16 h-16 text-[color-mix(in_srgb,var(--cor-bg-1),black_20%)] mb-4" />
-                  <h3 className="font-bold text-gray-900 text-2xl">{feature.title}</h3>
+                  <feature.icon className="w-20 h-20 text-[color-mix(in_srgb,var(--cor-bg-1),black_20%)] mb-4" />
+                  <h3 className="font-bold text-gray-900 text-3xl">{feature.title}</h3>
                 </div>
               </div>
               <div className={`${idx % 2 === 1 ? 'md:order-1' : ''}`}>
-                <p className="text-xl leading-relaxed text-blue-50 font-medium">
+                <p className="text-2xl leading-relaxed text-blue-50 font-medium">
                   {feature.desc}
                 </p>
               </div>

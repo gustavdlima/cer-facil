@@ -45,9 +45,9 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
           className="flex flex-col items-center p-8 bg-white border-2 border-gray-100 rounded-2xl shadow-sm hover:shadow-xl hover:border-[var(--cor-3)] transition-all cursor-pointer group text-center"
         >
           <div className="p-4 bg-orange-50 rounded-full mb-4 group-hover:bg-[var(--cor-3)] transition-colors">
-            <MapPin className="w-8 h-8 text-[var(--cor-3)] group-hover:text-white" />
+            <MapPin className="w-12 h-12 text-[var(--cor-3)] group-hover:text-white" />
           </div>
-          <h3 className="text-xl font-bold text-gray-900">
+          <h3 className="text-3xl font-bold text-gray-900">
             Encontrar CER Mais Próximo
           </h3>
         </div>
@@ -57,9 +57,9 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
           className="flex flex-col items-center p-8 bg-white border-2 border-gray-100 rounded-2xl shadow-sm hover:shadow-xl hover:border-blue-500 transition-all cursor-pointer group text-center"
         >
           <div className="p-4 bg-blue-50 rounded-full mb-4 group-hover:bg-blue-500 transition-colors">
-            <Network className="w-8 h-8 text-blue-500 group-hover:text-white" />
+            <Network className="w-12 h-12 text-blue-500 group-hover:text-white" />
           </div>
-          <h3 className="text-xl font-bold text-gray-900">
+          <h3 className="text-3xl font-bold text-gray-900">
             Conheça a Rede CER de Cuidado à Pessoa Com Deficiência
           </h3>
         </div>
@@ -69,9 +69,9 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
           className="flex flex-col items-center p-8 bg-white border-2 border-gray-100 rounded-2xl shadow-sm hover:shadow-xl hover:border-emerald-500 transition-all cursor-pointer group text-center"
         >
           <div className="p-4 bg-emerald-50 rounded-full mb-4 group-hover:bg-emerald-500 transition-colors">
-            <BookOpen className="w-8 h-8 text-emerald-500 group-hover:text-white" />
+            <BookOpen className="w-12 h-12 text-emerald-500 group-hover:text-white" />
           </div>
-          <h3 className="text-xl font-bold text-gray-900">
+          <h3 className="text-3xl font-bold text-gray-900">
             Tenha Acesso ao Nosso Material Educativo
           </h3>
         </div>

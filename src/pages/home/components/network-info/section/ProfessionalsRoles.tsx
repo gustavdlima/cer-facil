@@ -45,8 +45,8 @@ export default function ProfessionalsRoles() {
                     
                     <div className="bg-white border border-[color-mix(in_srgb,var(--cor-bg-3),black_30%)] p-6 rounded-2xl shadow-sm">
                         <div className="flex items-center gap-2 mb-4 text-black font-semibold uppercase text-sm tracking-wider">
-                            <Filter size={18} />
-                            <span>Filtrar por Especialidade:</span>
+                            <Filter size={24} />
+                            <span className="text-xl">Filtrar por Especialidade:</span>
                         </div>
                         
                         <div className="flex flex-wrap items-center gap-3">
@@ -57,7 +57,7 @@ export default function ProfessionalsRoles() {
                                         key={option.id}
                                         onClick={() => toggleFilter(option.id)}
                                         className={`
-                                            px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-200 border-2
+                                            px-6 py-2.5 rounded-full font-bold text-xl transition-all duration-200 border-2
                                             ${isActive 
                                                 ? "bg-[var(--cor-bg-3)] border-[var(--cor-bg-3)]/90 text-white shadow-md shadow-emerald-100" 
                                                 : "bg-white border-[var(--cor-bg-3)]/30 text-[var(--cor-bg-3)]/80 hover:border-[var(--cor-bg-3)] hover:text-[var(--cor-bg-3)]"}
@@ -72,7 +72,7 @@ export default function ProfessionalsRoles() {
                             {activeFilters.length > 0 && (
                                 <button
                                     onClick={clearFilters}
-                                    className="ml-2 text-slate-400 hover:text-red-500 text-sm font-medium transition-colors"
+                                    className="ml-2 text-slate-400 hover:text-red-500 text-lg font-medium transition-colors"
                                 >
                                     Limpar tudo
                                 </button>
@@ -98,18 +98,18 @@ export default function ProfessionalsRoles() {
                                         onClick={() => setOpenProf(isOpen ? null : prof.professional)}
                                         className="w-full text-left px-6 py-5 flex items-center justify-between select-none"
                                     >
-                                        <span className={`font-bold transition-colors ${isOpen ? "text-[var(--cor-bg-3)]" : "text-slate-800"}`}>
+                                        <span className={`text-2xl font-bold transition-colors ${isOpen ? "text-[var(--cor-bg-3)]" : "text-slate-800"}`}>
                                             <span className={`inline-block w-2.5 h-2.5 rounded-full mr-3 bg-[var(--cor-bg-3)]/50`} />
                                             {prof.professional}
                                         </span>
                                         <ChevronDown
                                             className={`transition-transform duration-300 ${isOpen ? "rotate-180 text-[var(--cor-bg-3)]/50" : "text-slate-400"}`}
-                                            size={20}
+                                            size={24}
                                         />
                                     </button>
 
                                     <div className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}>
-                                        <div className="px-6 pb-6 pt-2 text-slate-600 text-sm leading-relaxed border-t border-slate-50 text-justify">
+                                        <div className="px-6 pb-6 pt-2 text-slate-600 text-xl leading-relaxed border-t border-slate-50 text-justify">
                                             {prof.description}
                                         </div>
                                     </div>

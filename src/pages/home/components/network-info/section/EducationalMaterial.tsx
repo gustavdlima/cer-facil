@@ -174,7 +174,7 @@ export default function MaterialEducational() {
             Material Educativo
           </h2>
           <div className="w-24 h-1 bg-[var(--cor-bg-3)] rounded-full"></div>
-          <p className="text-slate-600 mt-4 max-w-4xl text-lg leading-relaxed">
+          <p className="text-slate-600 mt-4 max-w-4xl text-2xl leading-relaxed">
             Acesse publicações, guias e cartilhas sobre direitos, saúde e
             inclusão das pessoas com deficiência.
           </p>
@@ -183,24 +183,24 @@ export default function MaterialEducational() {
         <div className="flex gap-4 mb-4">
           <button
             onClick={() => handleTabChange("user")}
-            className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+            className={`text-xl flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
               activeTab === "user"
                 ? "bg-[var(--cor-bg-3)] text-white shadow-lg"
                 : "bg-slate-100 text-slate-600 hover:bg-slate-200"
             }`}
           >
-            <Users className="w-5 h-5" />
+            <Users className="w-8 h-8" />
             Usuário
           </button>
           <button
             onClick={() => handleTabChange("professional")}
-            className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+            className={`text-xl flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
               activeTab === "professional"
                 ? "bg-[var(--cor-bg-3)] text-white shadow-lg"
                 : "bg-slate-100 text-slate-600 hover:bg-slate-200"
             }`}
           >
-            <Briefcase className="w-5 h-5" />
+            <Briefcase className="w-8 h-8" />
             Profissional
           </button>
         </div>
@@ -211,12 +211,12 @@ export default function MaterialEducational() {
               <div className="flex-1 flex flex-col justify-between">
                 <div>
                   <div className="flex items-start gap-3 mb-4">
-                    <BookOpen className="w-6 h-6 text-[var(--cor-bg-3)] flex-shrink-0 mt-1" />
-                    <h3 className="font-bold text-gray-900 text-xl">
+                    <BookOpen className="w-10 h-10 text-[var(--cor-bg-3)] flex-shrink-0 mt-1" />
+                    <h3 className="my-auto font-bold text-gray-900 text-2xl">
                       {materials[currentIndex].title}
                     </h3>
                   </div>
-                  <p className="text-gray-600 leading-relaxed mb-6 text-justify">
+                  <p className="text-xl text-gray-600 leading-relaxed mb-6 text-justify">
                     {materials[currentIndex].description}
                   </p>
                 </div>
@@ -224,10 +224,10 @@ export default function MaterialEducational() {
                   href={materials[currentIndex].url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[var(--cor-bg-3)] text-white px-6 py-3 rounded-full font-semibold hover:bg-[color-mix(in_srgb,var(--cor-bg-3),black_20%)] transition-colors duration-300 w-fit"
+                  className="text-xl inline-flex items-center gap-2 bg-[var(--cor-bg-3)] text-white px-6 py-3 rounded-full font-semibold hover:bg-[color-mix(in_srgb,var(--cor-bg-3),black_20%)] transition-colors duration-300 w-fit"
                 >
                   Acessar Material
-                  <ExternalLink className="w-4 h-4" />
+                  <ExternalLink className="w-6 h-6" />
                 </a>
               </div>
               <div className="w-full md:w-[280px] flex-shrink-0">
@@ -242,18 +242,18 @@ export default function MaterialEducational() {
 
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white text-[var(--cor-bg-3)] p-3 rounded-full shadow-lg hover:bg-[var(--cor-bg-3)] hover:text-white transition-all duration-300"
+            className="w-16 h-16 absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white text-[var(--cor-bg-3)] p-3 rounded-full shadow-lg hover:bg-[var(--cor-bg-3)] hover:text-white transition-all duration-300"
             aria-label="Material anterior"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-8 h-8" />
           </button>
 
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white text-[var(--cor-bg-3)] p-3 rounded-full shadow-lg hover:bg-[var(--cor-bg-3)] hover:text-white transition-all duration-300"
+            className="w-16 h-16 absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white text-[var(--cor-bg-3)] p-3 rounded-full shadow-lg hover:bg-[var(--cor-bg-3)] hover:text-white transition-all duration-300"
             aria-label="Próximo material"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-8 h-8" />
           </button>
         </div>
 
