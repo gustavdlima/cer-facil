@@ -7,6 +7,30 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Accessibility, Ear, Eye, Brain, Puzzle } from "lucide-react";
+
+const icons = [
+    {
+        title: "Física",
+        icon: <Accessibility className="w-5 h-5" />,
+    },
+    {
+        title: "Auditiva",
+        icon: <Ear className="w-5 h-5" />,
+    },
+    {
+        title: "Visual",
+        icon: <Eye className="w-5 h-5" />,
+    },
+    {
+        title: "Intelectual",
+        icon: <Brain className="w-5 h-5" />,
+    },
+    {
+        title: "TEA",
+        icon: <Puzzle className="w-5 h-5" />,
+    },
+];
 
 export default function ProfessionalsRoles() {
     const [activeFilters, setActiveFilters] = useState<number[]>([]);
@@ -48,8 +72,8 @@ export default function ProfessionalsRoles() {
             <div
                 key={prof.professional}
                 className={`border rounded-xl transition-all duration-300 h-fit bg-white ${isOpen
-                        ? "border-[var(--cor-bg-1)] shadow-xl ring-1 ring-emerald-50 scale-[1.01]"
-                        : "border-slate-100 shadow-sm hover:border-emerald-200 hover:shadow-md"
+                    ? "border-[var(--cor-bg-1)] shadow-xl ring-1 ring-emerald-50 scale-[1.01]"
+                    : "border-slate-100 shadow-sm hover:border-emerald-200 hover:shadow-md"
                     }`}
             >
                 <button
@@ -83,7 +107,7 @@ export default function ProfessionalsRoles() {
                     <div className="w-20 h-1.5 bg-white rounded-full mb-6"></div>
 
                     <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
-                        <div className="flex items-center gap-2 mb-4 text-black font-semibold uppercase text-sm tracking-wider">
+                        <div aria-label="filtro por deficiência"className="flex items-center gap-2 mb-4 text-black font-semibold uppercase text-sm tracking-wider" tabIndex={0}>
                             <Filter size={18} />
                             <span>Filtrar por Especialidade:</span>
                         </div>
@@ -93,12 +117,18 @@ export default function ProfessionalsRoles() {
                                     key={option.id}
                                     onClick={() => toggleFilter(option.id)}
                                     className={`px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-200 border-2 ${activeFilters.includes(option.id)
-                                            ? "bg-[var(--cor-bg-1)] border-[var(--cor-bg-1)] text-white shadow-md"
-                                            : "bg-white border-[var(--cor-bg-1)]/30 text-[var(--cor-bg-1)] hover:border-[var(--cor-bg-1)]"
+                                        ? "bg-[var(--cor-bg-1)] border-[var(--cor-bg-1)] text-white shadow-md"
+                                        : "bg-white border-[var(--cor-bg-1)]/30 text-[var(--cor-bg-1)] hover:border-[var(--cor-bg-1)]"
                                         }`}
                                 >
-                                    {option.label}
-                                    {activeFilters.includes(option.id) && <X size={14} className="inline ml-2" />}
+                                    <span className="flex items-center justify-center gap-2">
+                                        <span aria-hidden="true">
+                                            {icons.find((icon) => icon.title === option.label)?.icon}
+                                        </span>
+
+                                        {option.label}
+                                        {activeFilters.includes(option.id) && <X size={14} className="inline ml-2" />}
+                                    </span>
                                 </button>
                             ))}
                             {activeFilters.length > 0 && (
@@ -112,7 +142,6 @@ export default function ProfessionalsRoles() {
 
                 {filteredProfessionals.length > 0 ? (
                     <div className="flex flex-col gap-4">
-
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
                             {iniciais.map((prof) => renderProfessionalCard(prof))}
                         </div>

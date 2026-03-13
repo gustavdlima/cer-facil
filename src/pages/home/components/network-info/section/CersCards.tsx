@@ -9,8 +9,26 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import SimpleMap from "@/components/pb-map/SimpleMap";
-import MapCaptions from "@/components/pb-map/MapCaptions";
+import { Accessibility, Ear, Eye, Brain } from "lucide-react";
+
+const icons = [
+  {
+    title: "Física",
+    icon: <Accessibility className="w-5 h-5" />,
+  },
+  {
+    title: "Auditiva",
+    icon: <Ear className="w-5 h-5" />,
+  },
+  {
+    title: "Visual",
+    icon: <Eye className="w-5 h-5" />,
+  },
+  {
+    title: "Intelectual",
+    icon: <Brain className="w-5 h-5" />,
+  },
+];
 
 interface DadosCers {
   id: number;
@@ -108,13 +126,20 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
   const renderCersRow = (cer: DadosCers) => {
     return (
       <div
+        aria-label={`CER ${cer.nome}, localizado em ${cer.cidade}, especializado em reabilitação ${cer.especialidades.join(", ")}, clique para ver como conseguir atendimento`}
+        tabIndex={0}
+        onClick={() => {
+          setShowFlow([true, cer.id]);
+          setTimeout(handleScrollToSection, 100);
+        }}
         key={cer.id}
         className="p-6 rounded-2xl shadow-xl bg-white flex flex-col transition-all hover:shadow-2xl hover:-translate-y-2 h-full min-h-[220px]"
       >
         <div className="flex-grow flex flex-col">
-          <h3 className="font-bold text-2xl text-slate-900 mb-4 leading-tight">
-            {(cer.nome)}
-          </h3>
+          <h2
+            className="font-bold text-2xl text-slate-900 mb-4 leading-tight ">
+            {toTitleCase(cer.nome)}
+          </h2>
 
           <div className="flex items-center text-slate-500 mb-6 mt-auto font-semibold">
             <MapPin className="w-6 h-6 mr-1.5 flex-shrink-0 text-[var(--cor-bg-1)]" />
@@ -137,10 +162,6 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
             variant="ghost"
             size="icon"
             className="text-[var(--cor-bg-1)] hover:text-white hover:bg-[var(--cor-bg-1)] rounded-full transition-all duration-300 flex-shrink-0 bg-slate-50"
-            onClick={() => {
-              setShowFlow([true, cer.id]);
-              setTimeout(handleScrollToSection, 100);
-            }}
           >
             <ArrowRight className="w-10 h-10" />
           </Button>
@@ -176,15 +197,30 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
                   key={option}
                   onClick={() => toggleFilter(option)}
                   className={`
-                    px-6 py-2.5 rounded-full font-bold text-xl transition-all duration-200 border-2
-                    ${isActive
+                  px-6 py-2.5 rounded-full font-bold text-xl transition-all duration-200 
+                  border-2 focus:ring-4 focus:ring-[var(--cor-bg-1)]/30
+                  flex items-center justify-center gap-2 
+                  ${isActive
                       ? "bg-[var(--cor-bg-1)] border-[var(--cor-bg-1)] text-white shadow-md shadow-blue-100"
-                      : "bg-white border-[var(--cor-bg-1)]/30 text-[var(--cor-bg-1)] hover:border-[var(--cor-bg-1)] hover:text-[var(--cor-bg-1)]"
+                      : "bg-white border-[var(--cor-bg-1)] text-[var(--cor-bg-1)] hover:bg-slate-50"
                     }
                   `}
                 >
-                  {option}
-                  {isActive && <X size={14} className="inline ml-2 mb-0.5" />}
+                  <span className="flex items-center justify-center gap-2">
+                    <span aria-hidden="true">
+                      {icons.find((icon) => icon.title === option)?.icon}
+                    </span>
+
+                    {option}
+
+                    {isActive && (
+                      <X
+                        size={14}
+                        className="ml-1"
+                        aria-hidden="true"
+                      />
+                    )}
+                  </span>
                 </button>
               );
             })}

@@ -170,11 +170,11 @@ export default function MaterialEducational() {
     <section id="educational-material" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <div className="text-left mb-8">
-          <h2 className="text-4xl font-bold mb-4 text-slate-900">
+          <h1 className="text-4xl font-bold mb-4 text-slate-900">
             Material Educativo
-          </h2>
+          </h1>
           <div className="w-24 h-1 bg-[var(--cor-bg-1)] rounded-full"></div>
-          <p className="text-slate-600 mt-4 max-w-4xl text-2xl leading-relaxed">
+          <p className="text-slate-600 mt-4 max-w-4xl text-2xl leading-relaxed focus-within:border-[var(--cor-bg-1)] focus-within:border-5" tabIndex={0}>
             Acesse publicações, guias e cartilhas sobre direitos, saúde e
             inclusão das pessoas com deficiência.
           </p>
