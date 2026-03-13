@@ -254,7 +254,7 @@ export default function MaterialEducational() {
             <button
               onClick={nextSlide}
               disabled={currentIndex === materials.length - 1}
-              className="flex items-center gap-2 px-6 py-3 bg-[var(--cor-bg-1)] text-white-700 rounded-full font-semibold hover:bg-[var(--cor-bg-3)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex items-center gap-2 px-6 py-3 bg-[var(--cor-bg-1)] text-white-700 rounded-full font-semibold hover:bg-[var(--cor-5)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               aria-label="Próximo material"
             >
               Próximo
