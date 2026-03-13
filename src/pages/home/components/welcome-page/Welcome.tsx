@@ -29,13 +29,14 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
     <main className="min-h-screen flex flex-col items-center justify-center pt-16 pb-32 relative bg-white">
       <section aria-label="cabeçalho" className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-black leading-tight" tabIndex={0}>
-          Aproximamos as pessoas com deficiência, seus familiares e
-          profissionais de saúde aos{" "}
+          Aproximamos você aos {" "}
           <span className="text-[var(--cor-bg-1)]">Centros De Reabilitação</span>
+          <span> da Paraíba.</span>
           <br />
           <span className="block mt-6 text-3xl md:text-4xl font-semibold text-gray-800">
-            Seja bem-vindo ao Seu CER.
+            Profissionais da Saúde, Pessoas com Deficiência e Familiares.
           </span>
+          <span className="block mt-6 text-3xl md:text-4xl font-semibold text-gray-800">Boas-vindas ao Seu Cer.</span>
         </h1>
       </section>
 
