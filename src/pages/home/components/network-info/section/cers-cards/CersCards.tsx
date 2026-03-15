@@ -69,7 +69,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
   return (
     <section
       id="cers-card"
-      className="min-h-screen py-24 px-8 relative flex align-items-center bg-slate-900" // Adicionado bg provisório baseado no "text-white" do seu título
+      className="min-h-screen py-24 px-8 relative flex align-items-center bg-[--var(bg-cor-1)]" // Adicionado bg provisório baseado no "text-white" do seu título
     >
       <div className="mx-auto max-w-6xl w-full">
         {/* Cabeçalho */}

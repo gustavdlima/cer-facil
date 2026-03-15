@@ -29,7 +29,6 @@ export default function TypesOfCers() {
                 >
                   <div
                     aria-hidden="true"
-                    // Adicionado flex-shrink-0 para o ícone não amassar em telas menores
                     className="bg-[color-mix(in_srgb,var(--cor-bg-1),white_90%)] text-[color-mix(in_srgb,var(--cor-bg-1),black_30%)] p-3 rounded-xl mr-4 group-hover:bg-[var(--cor-bg-1)] group-hover:text-white transition-all duration-300 flex-shrink-0"
                   >
                     <Building2 size={48} />
