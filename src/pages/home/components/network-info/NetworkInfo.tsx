@@ -6,7 +6,7 @@ import AttentionLevel from "./section/AttentionLevel";
 import CersCards from "./section/CersCards";
 import { WaveBottom, WaveTop } from "@/components/wave-divider";
 import TypesOfCers from "./section/TypesOfCers";
-import EducationalMaterial from "./section/EducationalMaterial";
+import EducationalMaterial from "./section/educational-material/EducationalMaterial";
 
 interface NetworkInfoProps {
   showFlow: [boolean, number | null];

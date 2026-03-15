@@ -100,7 +100,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
     setActiveFilters((prev) =>
       prev.includes(filter)
         ? prev.filter((item) => item !== filter)
-        : [...prev, filter]
+        : [...prev, filter],
     );
   };
 
@@ -116,7 +116,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
       cer.especialidades.some((especialidade) => {
         const mappedFilter = getFilterFromSpecialty(especialidade);
         return mappedFilter ? activeFilters.includes(mappedFilter) : false;
-      })
+      }),
     );
   }, [activeFilters]);
 
@@ -136,8 +136,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
         className="p-6 rounded-2xl shadow-xl bg-white flex flex-col transition-all hover:shadow-2xl hover:-translate-y-2 h-full min-h-[220px]"
       >
         <div className="flex-grow flex flex-col">
-          <h2
-            className="font-bold text-2xl text-slate-900 mb-4 leading-tight ">
+          <h2 className="font-bold text-2xl text-slate-900 mb-4 leading-tight ">
             {toTitleCase(cer.nome)}
           </h2>
 
@@ -150,9 +149,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
         <div className="flex items-center justify-between border-t border-slate-100 pt-4 mt-auto">
           <div className="flex flex-wrap gap-2 flex-1 pr-3">
             {cer.especialidades.map((especialidade, index) => (
-              <span
-                className="px-3 py-1 border-2 border-[var(--cor-bg-1)]/30 text-[var(--cor-bg-1)] rounded-full font-bold text-[16px] inline-block"
-              >
+              <span className="px-3 py-1 border-2 border-[var(--cor-bg-1)]/30 text-[var(--cor-bg-1)] rounded-full font-bold text-[16px] inline-block">
                 {especialidade}
               </span>
             ))}
@@ -200,10 +197,11 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
                   px-6 py-2.5 rounded-full font-bold text-xl transition-all duration-200 
                   border-2 focus:ring-4 focus:ring-[var(--cor-bg-1)]/30
                   flex items-center justify-center gap-2 
-                  ${isActive
+                  ${
+                    isActive
                       ? "bg-[var(--cor-bg-1)] border-[var(--cor-bg-1)] text-white shadow-md shadow-blue-100"
                       : "bg-white border-[var(--cor-bg-1)] text-[var(--cor-bg-1)] hover:bg-slate-50"
-                    }
+                  }
                   `}
                 >
                   <span className="flex items-center justify-center gap-2">
@@ -214,11 +212,7 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
                     {option}
 
                     {isActive && (
-                      <X
-                        size={14}
-                        className="ml-1"
-                        aria-hidden="true"
-                      />
+                      <X size={14} className="ml-1" aria-hidden="true" />
                     )}
                   </span>
                 </button>
