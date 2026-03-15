@@ -3,7 +3,7 @@ import TypesOfDeficiencies from "./section/TypesOfDeficiencies";
 import ProfessionalsRoles from "./section/professionals-roles/ProfessionalsRoles";
 import HistoryTimeline from "./section/history-timeline/HistoryTimeline";
 import AttentionLevel from "./section/attention-level/AttentionLevel";
-import CersCards from "./section/CersCards";
+import CersCards from "./section/cers-cards/CersCards";
 import { WaveBottom, WaveTop } from "@/components/wave-divider";
 import TypesOfCers from "./section/TypesOfCers";
 import EducationalMaterial from "./section/educational-material/EducationalMaterial";

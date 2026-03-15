@@ -43,7 +43,7 @@ export default function ProfessionalsRoles() {
   };
 
   return (
-    <section className="px-6 py-24 pt-0 font-sans bg-slate-900">
+    <section className="px-6 py-24 pt-0 font-sans bg-[--var(bg-color-1)]">
       <div className="mx-auto max-w-6xl">
         {/* Cabeçalho e Filtros */}
         <header className="text-left mb-12">
