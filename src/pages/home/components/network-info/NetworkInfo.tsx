@@ -1,7 +1,7 @@
 import WhatIsRCPD from "./section/WhatIsRCPD";
 import TypesOfDeficiencies from "./section/TypesOfDeficiencies";
 import ProfessionalsRoles from "./section/ProfessionalsRoles";
-import HistoryTimeline from "./section/HistoryTimeline";
+import HistoryTimeline from "./section/history-timeline/HistoryTimeline";
 import AttentionLevel from "./section/AttentionLevel";
 import CersCards from "./section/CersCards";
 import { WaveBottom, WaveTop } from "@/components/wave-divider";
