@@ -1,4 +1,3 @@
-// src/data/attention-levels.data.ts
 import { Activity, Building2, Hospital, LucideIcon } from "lucide-react";
 
 export interface AttentionComponent {

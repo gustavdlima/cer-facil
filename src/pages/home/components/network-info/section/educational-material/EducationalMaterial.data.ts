@@ -1,5 +1,3 @@
-// src/data/educational-materials.data.ts
-
 import lbiImg from "@/assets/images/educational-material/Lei Brasileira de Inclusão (LBI).png";
 import capacitismoImg from "@/assets/images/educational-material/Cartilha Capacitismo.png";
 import acessibilidadeImg from "@/assets/images/educational-material/Guia de Acessibilidade Comunicacional.png";

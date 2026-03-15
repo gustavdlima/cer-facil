@@ -3,13 +3,14 @@ import { Button } from "@/components/ui/button";
 import CERS from "@/data/cers.json";
 import Flow from "../../user-flow/Flow";
 import { MapPin, ArrowRight, Filter, X } from "lucide-react";
+import { Accessibility, Ear, Eye, Brain } from "lucide-react";
+
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Accessibility, Ear, Eye, Brain } from "lucide-react";
 
 const icons = [
   {

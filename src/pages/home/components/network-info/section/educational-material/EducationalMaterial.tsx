@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   BookOpen,
   ExternalLink,
@@ -6,7 +8,7 @@ import {
   Users,
   Briefcase,
 } from "lucide-react";
-import { useState } from "react";
+
 import {
   userMaterials,
   professionalMaterials,
