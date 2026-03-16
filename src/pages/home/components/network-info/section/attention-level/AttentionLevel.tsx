@@ -35,7 +35,6 @@ export default function AttentionLevel() {
             return (
               <Card
                 key={level.id}
-                // Adicionamos 'group' aqui para que os filhos saibam quando o Card está em hover
                 className={`flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-3 border-2 bg-white ${level.borderClass} ${level.hoverClass} relative overflow-hidden group rounded-2xl`}
               >
                 <div
@@ -51,11 +50,12 @@ export default function AttentionLevel() {
                     </div>
                   </div>
                   <CardTitle className="text-2xl font-bold text-gray-900 mb-2">
-                    {level.title}
+                    <h3>
+                      {level.title}
+                    </h3>
                   </CardTitle>
                   <CardDescription
                     className="text-gray-500 text-xl leading-relaxed px-4"
-                    tabIndex={0}
                   >
                     {level.description}
                   </CardDescription>
@@ -75,13 +75,11 @@ export default function AttentionLevel() {
                             aria-hidden="true"
                             className="flex items-center gap-3 text-left"
                           >
-                            {/* O uso de group-hover:text-[var(--cor-bg-1)] elimina a necessidade do useState! */}
                             <ChevronDown className="w-4 h-4 transition-colors text-gray-400 group-hover:text-[var(--cor-bg-1)] flex-shrink-0" />
                             {component.title}
                           </span>
                         </AccordionTrigger>
                         <AccordionContent
-                          role="none"
                           className="text-xl text-gray-600 leading-relaxed bg-[color-mix(in_srgb,var(--cor-bg-2),white_95%)] p-4 rounded-xl mt-1 border border-orange-100/30 text-justify"
                         >
                           <span>{component.content}</span>
