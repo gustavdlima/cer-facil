@@ -46,7 +46,7 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
             É um prazer ter você aqui no Seu CER.
           </span>
         </h1>
-        <div className="w-full max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+        <nav aria-label="menu principal de ações" className="w-full max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
           <button
             onClick={() => setShowForm(true)}
             className="focus-within:border-10 focus-within:border-[var(--cor-destaque)] flex flex-col items-center p-8 bg-white border-2 border-gray-100 rounded-2xl shadow-sm hover:shadow-xl hover:border-[var(--cor-bg-1)] transition-all cursor-pointer group text-center"
@@ -80,7 +80,7 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
               Tenha Acesso a Materiais Educativos
             </span>
           </button>{" "}
-        </div>{" "}
+        </nav>{" "}
       </section>
     </main>
   );

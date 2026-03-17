@@ -208,8 +208,10 @@ export default function StepFour({
     <div className="w-full">
       <Card className="border-2 border-[var(--cor-bg-1)] shadow-2xl max-w-4xl mx-auto">
         <CardHeader>
-          <CardTitle className="text-3xl text-[var(--cor-bg-1)] font-bold">
-            Resultados da Busca
+          <CardTitle asChild className="text-3xl text-[var(--cor-bg-1)] font-bold">
+            <h2>
+              Resultados da Busca 
+            </h2>
           </CardTitle>
           <CardDescription className="text-2xl">
             CERs ordenados por compatibilidade e proximidade

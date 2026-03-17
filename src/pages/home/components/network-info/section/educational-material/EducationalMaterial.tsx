@@ -62,7 +62,7 @@ export default function MaterialEducational() {
         </header>
 
         {/* Abas */}
-        <div className="flex gap-4 mb-4">
+        <div role="tablist" aria-label="tipo de material" className="flex gap-4 mb-4">
           <button
             aria-label="clique para filtrar por materiais voltados a usuários da rede de cuidado à pessoas com deficiência"
             onClick={() => handleTabChange("user")}

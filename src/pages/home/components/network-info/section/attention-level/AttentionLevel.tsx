@@ -70,9 +70,9 @@ export default function AttentionLevel() {
                       <AccordionItem
                         key={component.id}
                         value={component.id}
-                        className="border-gray-100"
+                        className="focus-within:border-10 focus-within:border-[var(--cor-destaque)] border-gray-100"
                       >
-                        <AccordionTrigger className="focus-within:border-10 focus-within:border-[var(--cor-bg-1)] text-xl font-bold text-gray-700 hover:text-[var(--cor-bg-1)] transition-colors py-4">
+                        <AccordionTrigger className="text-xl font-bold text-gray-700 hover:text-[var(--cor-bg-1)] transition-colors py-4">
                           {component.title}
                         </AccordionTrigger>
                         <AccordionContent

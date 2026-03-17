@@ -21,13 +21,12 @@ export default function TypesOfDeficiencies() {
         </header>
 
         {/* Lista de Cards */}
-        <ul aria-label="lista dos tipos de deficiências" className="flex flex-wrap justify-center gap-6">
+        <div className="flex flex-wrap justify-center gap-6">
           {deficienciesData.map((item) => {
             const Icon = item.icon;
 
             return (
-              <li
-                aria-label={`${item.title}, ${item.text}`}
+              <div
                 key={item.id}
                 className="group bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 w-full sm:w-[350px] flex flex-col items-center focus:outline-none focus:ring-4 focus:ring-[var(--cor-bg-1)]/50"
               >
@@ -39,17 +38,17 @@ export default function TypesOfDeficiencies() {
                 </div>
 
                 <div className="text-center flex-1 flex flex-col">
-                  <span className="font-bold text-2xl text-slate-900 mb-3 group-hover:text-[var(--cor-bg-1)] group-focus:text-[var(--cor-bg-1)] transition-colors">
+                  <h3 className="font-bold text-2xl text-slate-900 mb-3 group-hover:text-[var(--cor-bg-1)] group-focus:text-[var(--cor-bg-1)] transition-colors">
                     {item.title}
-                  </span>
+                  </h3>
                   <span className="text-slate-600 text-sm leading-relaxed font-medium">
                     {item.text}
                   </span>
                 </div>
-              </li>
+              </div>
             );
           })}
-        </ul>
+        </div>
       </div>
     </section>
   );
