@@ -43,10 +43,13 @@ export default function MaterialEducational() {
   };
 
   return (
-    <section id="educational-material" className="px-6 py-24">
+    <section
+      aria-labelledby="edu-mat"
+      id="educational-material" 
+      className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <header className="text-left mb-8">
-          <h2 className="text-4xl font-bold mb-4 text-slate-900">
+          <h2 id="edu-mat" className="text-4xl font-bold mb-4 text-slate-900">
             Material Educativo
           </h2>
           <div className="w-24 h-1 bg-[var(--cor-bg-1)] rounded-full"></div>
@@ -149,7 +152,7 @@ export default function MaterialEducational() {
         </div>
 
         {/* Indicadores (Dots) */}
-        <div className="flex justify-center gap-2 mt-8 flex-wrap">
+        <nav className="flex justify-center gap-2 mt-8 flex-wrap">
           {materials.map((_, idx) => (
             <button
               key={idx}
@@ -161,7 +164,7 @@ export default function MaterialEducational() {
               aria-label={`Ir para material ${idx + 1}`}
             />
           ))}
-        </div>
+        </nav>
       </div>
     </section>
   );

@@ -3,13 +3,16 @@ import { cerTypesData, cerImageCover } from "./TypesOfCers.data";
 
 export default function TypesOfCers() {
   return (
-    <section id="types-of-cer-deficiencies" className="px-6 py-24">
+    <section 
+      aria-labelledby="cer-types"
+      id="types-of-cer-deficiencies" 
+      className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
           {/* Coluna de Texto e Cards */}
           <div>
             <header className="text-left mb-16">
-              <h2 className="text-4xl font-bold mb-4 text-white">
+              <h2 id="cer-types" className="text-4xl font-bold mb-4 text-white">
                 Conheça os Diferentes <br /> Tipos de CERs
               </h2>
               <div className="w-24 h-1 bg-white rounded-full"></div>

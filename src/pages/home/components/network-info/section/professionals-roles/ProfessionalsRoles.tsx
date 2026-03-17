@@ -43,11 +43,13 @@ export default function ProfessionalsRoles() {
   };
 
   return (
-    <section className="px-6 py-24 pt-0 font-sans bg-[--var(bg-color-1)]">
+    <section
+      aria-labelledby="prof-roles"
+      className="px-6 py-24 pt-0 font-sans bg-[--var(bg-color-1)]">
       <div className="mx-auto max-w-6xl">
         {/* Cabeçalho e Filtros */}
         <header className="text-left mb-12">
-          <h2 className="text-4xl font-bold mb-4 text-white leading-tight">
+          <h2 id="prof-roles" className="text-4xl font-bold mb-4 text-white leading-tight">
             Equipe Multiprofissional
           </h2>
           <div className="w-20 h-1.5 bg-white rounded-full mb-6"></div>
@@ -56,7 +58,6 @@ export default function ProfessionalsRoles() {
             <div
               aria-label="filtro por especialidade"
               className="flex items-center gap-2 mb-4 text-black font-semibold uppercase text-xl tracking-wider"
-              tabIndex={0}
             >
               <Filter size={18} />
               <span>Filtrar por Especialidade:</span>
@@ -206,9 +207,9 @@ function ProfessionalCard({
         }`}
       >
         <div className="overflow-hidden">
-          <div className="px-6 pb-6 pt-2 text-slate-600 text-xl leading-relaxed border-t border-slate-50">
+          <p className="px-6 pb-6 pt-2 text-slate-600 text-xl leading-relaxed border-t border-slate-50">
             {prof.description}
-          </div>
+          </p>
         </div>
       </div>
     </div>

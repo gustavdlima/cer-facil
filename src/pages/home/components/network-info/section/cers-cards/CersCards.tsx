@@ -68,13 +68,14 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
 
   return (
     <section
+      aria-labelledby="cards"
       id="cers-card"
       className="min-h-screen py-24 px-8 relative flex align-items-center bg-[--var(bg-cor-1)]" // Adicionado bg provisório baseado no "text-white" do seu título
     >
       <div className="mx-auto max-w-6xl w-full">
         {/* Cabeçalho */}
         <header className="text-left mb-8">
-          <h2 className="font-bold text-4xl mb-4 text-white">
+          <h2 id="cards" className="font-bold text-4xl mb-4 text-white">
             Rede Estadual de Reabilitação
           </h2>
           <div className="w-24 h-1.5 bg-white rounded-full"></div>
@@ -100,16 +101,12 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
                   aria-checked={isActive}
                   key={option.id}
                   onClick={() => toggleFilter(option.id)}
-                  className={`
-                    px-6 py-2.5 rounded-full font-bold text-xl transition-all duration-200 
-                    border-2 focus:ring-4 focus:ring-[var(--cor-destaque)]
-                    flex items-center justify-center gap-2
+                  className={`focus-within:border-10 focus-within:border-[var(--cor-destaque)] flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-xl transition-all duration-200 border-2 
                     ${
                       isActive
-                        ? "bg-[var(--cor-bg-1)] border-[var(--cor-bg-1)] text-white shadow-md shadow-blue-100"
-                        : "bg-white border-[var(--cor-bg-1)] text-[var(--cor-bg-1)] hover:bg-slate-50"
-                    }
-                  `}
+                        ? "bg-[var(--cor-bg-1)] border-[var(--cor-bg-1)] text-white shadow-md"
+                        : "bg-white border-[var(--cor-bg-1)]/30 text-[var(--cor-bg-1)] hover:border-[var(--cor-bg-1)]"
+                    }`}
                 >
                   <Icon className="w-5 h-5" aria-hidden="true" />
                   {option.label}

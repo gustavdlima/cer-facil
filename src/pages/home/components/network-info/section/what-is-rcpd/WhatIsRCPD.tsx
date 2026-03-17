@@ -3,13 +3,13 @@ import { featuresData } from "./WhatIsRCPD.data.ts";
 export default function WhatIsRCPD() {
   return (
     <section
-      id="what-is-rcpd"
-      className="px-6 py-20 relative bg-[var(--cor-bg-1)]"
-    >
+      aria-labelledby="rcpd" 
+      id="what-is-rcpd" 
+      className="px-6 py-20 relative bg-[var(--cor-bg-1)]">
       <div className="mx-auto max-w-6xl">
         {/* Cabeçalho */}
         <header className="text-left mb-16">
-          <h2 className="font-bold text-4xl mb-4 text-white">
+          <h2 id="rcpd" className="font-bold text-4xl mb-4 text-white">
             O que é a Rede de Cuidado à Pessoa com Deficiência (RCPD)?
           </h2>
           <div className="w-24 h-1.5 bg-white rounded-full"></div>

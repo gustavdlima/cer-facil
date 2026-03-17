@@ -18,10 +18,13 @@ import {
 
 export default function AttentionLevel() {
   return (
-    <section id="attention-level" className="px-6 py-20 relative">
+    <section 
+      aria-labelledby="att-level" 
+      id="attention-level" 
+      className="px-6 py-20 relative">
       <div className="mx-auto max-w-6xl">
         <header className="text-left mb-16">
-          <h2 className="text-4xl font-bold mb-4">Níveis de Atenção</h2>
+          <h2 id="att-level" className="text-4xl font-bold mb-4">Níveis de Atenção</h2>
           <div className="w-20 h-1.5 bg-[var(--cor-bg-1)] rounded-full mb-6"></div>
           <p className="text-slate-600 mt-4 max-w-2xl text-2xl opacity-90">
             Estrutura integrada de cuidado em diferentes níveis de complexidade
@@ -65,7 +68,6 @@ export default function AttentionLevel() {
                   <Accordion type="single" collapsible className="w-full">
                     {level.components.map((component) => (
                       <AccordionItem
-                        
                         key={component.id}
                         value={component.id}
                         className="border-gray-100"

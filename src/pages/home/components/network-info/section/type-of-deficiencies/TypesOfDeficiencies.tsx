@@ -3,15 +3,14 @@ import { deficienciesData } from "./TypesOfDeficiencies.data.ts";
 export default function TypesOfDeficiencies() {
   return (
     <section
+      aria-labelledby="deficiencies"
       id="types-of-deficiencies"
-      className="px-6 py-24 bg-slate-50" // Adicionado um fundo sutil para destacar os cards brancos
+      className="px-6 py-24"
     >
       <div className="mx-auto max-w-6xl">
         {/* Cabeçalho */}
         <header className="text-left mb-16">
-          <h2
-            className="text-4xl font-bold mb-4 text-slate-900"
-          >
+          <h2 id="deficiencies" className="text-4xl font-bold mb-4 text-slate-900">
             Tipos de Deficiência
           </h2>
           <div className="w-24 h-1.5 bg-[var(--cor-bg-1)] rounded-full mb-6"></div>

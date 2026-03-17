@@ -16,12 +16,14 @@ export default function HistoryTimeline() {
   };
 
   return (
-    <section className="px-6 py-20 relative bg-slate-50">
+    <section
+      aria-labelledby="hist-timeline"
+      className="px-6 py-20 relative bg-slate-50">
       <div className="max-w-6xl mx-auto">
         <header className="text-left mb-16">
-          <h3 className="text-4xl font-bold mb-4 text-slate-900">
+          <h2 id="hist-timeline" className="text-4xl font-bold mb-4 text-slate-900">
             História da Rede de Cuidado à Pessoa com Deficiência
-          </h3>
+          </h2>
           <div
             className="w-24 h-2 bg-[var(--cor-bg-1)] rounded-full"
             aria-hidden="true"
