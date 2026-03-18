@@ -36,7 +36,6 @@ export default function StepThree({
   const [showMap, setShowMap] = useState(false);
   const [location, setLocation] = useState<LocationState | null>(null);
   const [loading, setLoading] = useState(false);
-  const [locationPermission, setLocationPermission] = useState(false);
 
   const formatCep = useCallback((value: string) => {
     const numbers = value.replace(/\D/g, "");
@@ -121,18 +120,14 @@ export default function StepThree({
     <div className="w-full">
       <Card className="border-2 border-[var(--cor-bg-1)] shadow-2xl max-w-4xl mx-auto">
         <CardHeader>
-          <CardTitle asChild className="text-3xl text-[var(--cor-bg-1)] font-bold">
-            <h2>
-              Localização
-            </h2>
-          </CardTitle>
+          <CardTitle className="text-3xl text-[var(--cor-bg-1)] font-bold">Localização</CardTitle>
           <CardDescription className="text-2xl">
             Precisamos da sua localização para encontrar o CER mais apropriado
             para você.
           </CardDescription>
           {selectedDeficiencies.length > 0 && (
-            <CardDescription aria-hidden="true" className="text-xl">
-              Deficiência(s): {selectedDeficiencies.join(", ")} | Idade:{" "}
+            <CardDescription className="text-xl">
+              Deficiências: {selectedDeficiencies.join(", ")} | Idade:{" "}
               {ageGroup}
             </CardDescription>
           )}
@@ -141,10 +136,7 @@ export default function StepThree({
         <CardContent className="space-y-4">
           <div className="flex flex-col items-center gap-3">
             <Button
-              onClick={() => {
-                handleGeolocation();
-                setLocationPermission(true);
-              }}
+              onClick={handleGeolocation}
               className="w-full max-w-sm bg-[var(--cor-bg-1)] hover:brightness-110 transition-all text-2xl py-8"
               disabled={loading}
             >
@@ -155,7 +147,7 @@ export default function StepThree({
               )}
               Permitir Localização
             </Button>
-            
+
             <div className="text-muted-foreground text-2xl">Ou</div>
 
             <div className="w-full max-w-sm space-y-2">
@@ -188,12 +180,12 @@ export default function StepThree({
           </div>
 
           {showMap && (
-            <div aria-hidden="true" className="w-full space-y-2">
+            <div className="w-full space-y-2">
               <div className="text-xl text-green-600 text-center font-semibold">
                 ✓ Localização definida
               </div>
 
-              <div aria-hidden="true" className="w-full h-[250px] rounded-lg overflow-hidden border">
+              <div className="w-full h-[250px] rounded-lg overflow-hidden border">
                 <MapContainer
                   center={
                     location ? [location.lat, location.lng] : [51.505, -0.09]

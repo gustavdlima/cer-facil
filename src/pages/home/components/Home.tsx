@@ -1,7 +1,8 @@
 import NetworkInfo from "./network-info/NetworkInfo";
 import Welcome from "./welcome-page/Welcome";
 import Footnote from "./footnote/Footnote";
-import CersCards from "./network-info/section/cers-cards/CersCards";
+// Adicione esta linha (ajuste o caminho se necessário):
+import CersCards from "./network-info/section/CersCards";
 import { WaveBottom } from "@/components/wave-divider";
 
 interface HomeProps {
