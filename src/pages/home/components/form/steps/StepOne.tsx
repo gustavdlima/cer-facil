@@ -16,17 +16,15 @@ interface StepOneProps {
 }
 
 export default function StepOne({ setShowForm, onNext }: StepOneProps) {
-  const [selected, setSelected] = useState<string[]>([]);
+  const [selected, setSelected] = useState<string | null>(null);
 
   const toggleSelection = (id: string) => {
-    setSelected((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
-    );
+    setSelected((prev) => (prev === id ? null : id));
   };
 
   const handleNext = () => {
-    if (selected.length > 0) {
-      onNext(selected);
+    if (selected) {
+      onNext([selected]);
     }
   };
 
@@ -38,7 +36,7 @@ export default function StepOne({ setShowForm, onNext }: StepOneProps) {
             Para qual deficiência deseja buscar atendimento?
           </CardTitle>
           <CardDescription className="text-2xl">
-            Você pode selecionar mais de uma opção
+            Escolha uma opção
           </CardDescription>
         </CardHeader>
 
@@ -46,26 +44,23 @@ export default function StepOne({ setShowForm, onNext }: StepOneProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-2">
             <Card
               onClick={() => toggleSelection("fisica")}
-              className={`cursor-pointer transition-all hover:shadow-2xl border-2 ${
-                selected.includes("fisica")
+              className={`cursor-pointer transition-all hover:shadow-2xl border-2 ${selected == ("fisica")
                   ? "border-[var(--cor-bg-1)] border-4 bg-[var(--cor-bg-1)]/15 shadow-xl"
                   : "border-[var(--cor-bg-1)]/40 hover:border-[var(--cor-bg-1)]"
-              }`}
+                }`}
             >
               <CardHeader className="flex flex-row items-center gap-3 p-4">
                 <div
-                  className={`p-3 rounded-full border-2 ${
-                    selected.includes("fisica")
+                  className={`p-3 rounded-full border-2 ${selected == ("fisica")
                       ? "bg-[var(--cor-bg-1)] border-[var(--cor-bg-1)]"
                       : "bg-[var(--cor-bg-1)]/20 border-[var(--cor-bg-1)]"
-                  }`}
+                    }`}
                 >
                   <Accessibility
-                    className={`h-12 w-12 ${
-                      selected.includes("fisica")
+                    className={`h-12 w-12 ${selected == ("fisica")
                         ? "text-white"
                         : "text-[var(--cor-bg-1)]"
-                    }`}
+                      }`}
                   />
                 </div>
                 <CardTitle className="text-2xl">Deficiência Física</CardTitle>
@@ -74,26 +69,23 @@ export default function StepOne({ setShowForm, onNext }: StepOneProps) {
 
             <Card
               onClick={() => toggleSelection("auditiva")}
-              className={`cursor-pointer transition-all hover:shadow-2xl border-2 ${
-                selected.includes("auditiva")
+              className={`cursor-pointer transition-all hover:shadow-2xl border-2 ${selected == ("auditiva")
                   ? "border-[var(--cor-bg-1)] border-4 bg-[var(--cor-bg-1)]/15 shadow-xl scale-[1.02]"
                   : "border-[var(--cor-bg-1)]/40 hover:border-[var(--cor-bg-1)]"
-              }`}
+                }`}
             >
               <CardHeader className="flex flex-row items-center gap-3 p-4">
                 <div
-                  className={`p-3 rounded-full border-2 ${
-                    selected.includes("auditiva")
+                  className={`p-3 rounded-full border-2 ${selected == ("auditiva")
                       ? "bg-[var(--cor-bg-1)] border-[var(--cor-bg-1)]"
                       : "bg-[var(--cor-bg-1)]/20 border-[var(--cor-bg-1)]"
-                  }`}
+                    }`}
                 >
                   <Ear
-                    className={`h-12 w-12 ${
-                      selected.includes("auditiva")
+                    className={`h-12 w-12 ${selected == ("auditiva")
                         ? "text-white"
                         : "text-[var(--cor-bg-1)]"
-                    }`}
+                      }`}
                   />
                 </div>
                 <CardTitle className="text-2xl">Deficiência Auditiva</CardTitle>
@@ -102,26 +94,23 @@ export default function StepOne({ setShowForm, onNext }: StepOneProps) {
 
             <Card
               onClick={() => toggleSelection("visual")}
-              className={`cursor-pointer transition-all hover:shadow-2xl border-2 ${
-                selected.includes("visual")
+              className={`cursor-pointer transition-all hover:shadow-2xl border-2 ${selected == ("visual")
                   ? "border-[var(--cor-bg-1)] border-4 bg-[var(--cor-bg-1)]/15 shadow-xl scale-[1.02]"
                   : "border-[var(--cor-bg-1)]/40 hover:border-[var(--cor-bg-1)]"
-              }`}
+                }`}
             >
               <CardHeader className="flex flex-row items-center gap-3 p-4">
                 <div
-                  className={`p-3 rounded-full border-2 ${
-                    selected.includes("visual")
+                  className={`p-3 rounded-full border-2 ${selected == ("visual")
                       ? "bg-[var(--cor-bg-1)] border-[var(--cor-bg-1)]"
                       : "bg-[var(--cor-bg-1)]/20 border-[var(--cor-bg-1)]"
-                  }`}
+                    }`}
                 >
                   <Eye
-                    className={`h-12 w-12 ${
-                      selected.includes("visual")
+                    className={`h-12 w-12 ${selected == ("visual")
                         ? "text-white"
                         : "text-[var(--cor-bg-1)]"
-                    }`}
+                      }`}
                   />
                 </div>
                 <CardTitle className="text-2xl">Deficiência Visual</CardTitle>
@@ -130,26 +119,23 @@ export default function StepOne({ setShowForm, onNext }: StepOneProps) {
 
             <Card
               onClick={() => toggleSelection("intelectual")}
-              className={`cursor-pointer transition-all hover:shadow-2xl border-2 ${
-                selected.includes("intelectual")
+              className={`cursor-pointer transition-all hover:shadow-2xl border-2 ${selected == ("intelectual")
                   ? "border-[var(--cor-bg-1)] border-4 bg-[var(--cor-bg-1)]/15 shadow-xl scale-[1.02]"
                   : "border-[var(--cor-bg-1)]/40 hover:border-[var(--cor-bg-1)]"
-              }`}
+                }`}
             >
               <CardHeader className="flex flex-row items-center gap-3 p-4">
                 <div
-                  className={`p-3 rounded-full border-2 ${
-                    selected.includes("intelectual")
+                  className={`p-3 rounded-full border-2 ${selected == ("intelectual")
                       ? "bg-[var(--cor-bg-1)] border-[var(--cor-bg-1)]"
                       : "bg-[var(--cor-bg-1)]/20 border-[var(--cor-bg-1)]"
-                  }`}
+                    }`}
                 >
                   <Brain
-                    className={`h-12 w-12 ${
-                      selected.includes("intelectual")
+                    className={`h-12 w-12 ${selected == ("intelectual")
                         ? "text-white"
                         : "text-[var(--cor-bg-1)]"
-                    }`}
+                      }`}
                   />
                 </div>
                 <CardTitle className="text-2xl">
@@ -162,26 +148,23 @@ export default function StepOne({ setShowForm, onNext }: StepOneProps) {
           <div className="flex justify-center">
             <Card
               onClick={() => toggleSelection("tea")}
-              className={`cursor-pointer transition-all hover:shadow-2xl border-2 w-full md:w-1/2 ${
-                selected.includes("tea")
+              className={`cursor-pointer transition-all hover:shadow-2xl border-2 w-full md:w-1/2 ${selected == ("tea")
                   ? "border-[var(--cor-bg-1)] border-4 bg-[var(--cor-bg-1)]/15 shadow-xl scale-[1.02]"
                   : "border-[var(--cor-bg-1)]/40 hover:border-[var(--cor-bg-1)]"
-              }`}
+                }`}
             >
               <CardHeader className="flex flex-row items-center gap-3 p-4">
                 <div
-                  className={`p-3 rounded-full border-2 ${
-                    selected.includes("tea")
+                  className={`p-3 rounded-full border-2 ${selected == ("tea")
                       ? "bg-[var(--cor-bg-1)] border-[var(--cor-bg-1)]"
                       : "bg-[var(--cor-bg-1)]/20 border-[var(--cor-bg-1)]"
-                  }`}
+                    }`}
                 >
                   <Puzzle
-                    className={`h-12 w-12 ${
-                      selected.includes("tea")
+                    className={`h-12 w-12 ${selected == ("tea")
                         ? "text-white"
                         : "text-[var(--cor-bg-1)]"
-                    }`}
+                      }`}
                   />
                 </div>
                 <CardTitle className="text-2xl">
@@ -203,11 +186,11 @@ export default function StepOne({ setShowForm, onNext }: StepOneProps) {
           </Button>
           <Button
             onClick={handleNext}
-            disabled={selected.length === 0}
+            disabled={!selected}
             size="lg"
             className="px-8 py-5 text-2xl min-w-[160px] border-2 border-[var(--cor-1)] hover:bg-[var(--cor-bg-1)]"
           >
-            Próximo {selected.length > 0 && `(${selected.length})`}
+            Próximo
           </Button>
         </CardContent>
       </Card>

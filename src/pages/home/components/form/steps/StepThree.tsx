@@ -1,9 +1,9 @@
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { MapPin, Search, Loader2 } from "lucide-react";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import "@/lib/leaflet-config";
 
 import {
@@ -13,6 +13,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+
+function MapUpdater({ center }: { center: [number, number] }) {
+  const map = useMap();
+  useEffect(() => {
+    map.flyTo(center, 18);
+  }, [center, map]);
+  return null;
+}
 
 interface StepThreeProps {
   selectedDeficiencies?: string[];
@@ -53,7 +61,6 @@ export default function StepThree({
           setLocation({ lat, lng });
           setShowMap(true);
 
-          // Buscar CEP a partir das coordenadas
           try {
             const response = await fetch(
               `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&addressdetails=1`
@@ -80,20 +87,40 @@ export default function StepThree({
   };
 
   const handleCepSearch = async () => {
-    if (cep.length < 8) {
+    const cleanCep = cep.replace(/\D/g, "");
+    if (cleanCep.length < 8) {
       alert("Digite um CEP válido");
       return;
     }
 
     setLoading(true);
     try {
-      const response = await fetch(
-        `https://nominatim.openstreetmap.org/search?postalcode=${cep.replace(
-          /\D/g,
-          ""
-        )}&country=Brazil&format=json`
-      );
-      const data = await response.json();
+      const viaCepResponse = await fetch(`https://viacep.com.br/ws/${cleanCep}/json/`);
+      const viaCepData = await viaCepResponse.json();
+
+      if (viaCepData.erro) {
+        alert("CEP não encontrado.");
+        setLoading(false);
+        return;
+      }
+
+      const { logradouro, bairro, localidade, uf } = viaCepData;
+
+      const structuredQuery = `street=${encodeURIComponent(logradouro)}&city=${encodeURIComponent(localidade)}&state=${encodeURIComponent(uf)}&country=Brazil&format=json`;
+      let nominatimResponse = await fetch(`https://nominatim.openstreetmap.org/search?${structuredQuery}`);
+      let data = await nominatimResponse.json();
+
+      if (!data || data.length === 0) {
+        const freeQuery = encodeURIComponent(`${logradouro}, ${bairro}, ${localidade}, ${uf}, Brazil`);
+        nominatimResponse = await fetch(`https://nominatim.openstreetmap.org/search?q=${freeQuery}&format=json`);
+        data = await nominatimResponse.json();
+      }
+
+      if (!data || data.length === 0) {
+        const cityQuery = `city=${encodeURIComponent(localidade)}&state=${encodeURIComponent(uf)}&country=Brazil&format=json`;
+        nominatimResponse = await fetch(`https://nominatim.openstreetmap.org/search?${cityQuery}`);
+        data = await nominatimResponse.json();
+      }
 
       if (data && data.length > 0) {
         const lat = parseFloat(data[0].lat);
@@ -101,17 +128,17 @@ export default function StepThree({
         setLocation({ lat, lng });
         setShowMap(true);
       } else {
-        alert("Não foi possível encontrar o CEP");
+        alert("Não foi possível encontrar as coordenadas para este CEP no mapa.");
       }
     } catch (error) {
       console.error("Erro ao buscar CEP:", error);
-      alert("Erro ao buscar CEP");
+      alert("Erro de conexão ao buscar o mapa.");
     }
     setLoading(false);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && cep.length >= 8) {
+    if (e.key === "Enter" && cep.replace(/\D/g, "").length >= 8) {
       handleCepSearch();
     }
   };
@@ -166,7 +193,7 @@ export default function StepThree({
                 <Button
                   onClick={handleCepSearch}
                   variant="outline"
-                  disabled={cep.length < 8 || loading}
+                  disabled={cep.replace(/\D/g, "").length < 8 || loading}
                   className="h-16 px-4"
                 >
                   {loading ? (
@@ -179,7 +206,7 @@ export default function StepThree({
             </div>
           </div>
 
-          {showMap && (
+          {showMap && location && (
             <div className="w-full space-y-2">
               <div className="text-xl text-green-600 text-center font-semibold">
                 ✓ Localização definida
@@ -187,10 +214,8 @@ export default function StepThree({
 
               <div className="w-full h-[250px] rounded-lg overflow-hidden border">
                 <MapContainer
-                  center={
-                    location ? [location.lat, location.lng] : [51.505, -0.09]
-                  }
-                  zoom={15}
+                  center={[location.lat, location.lng]}
+                  zoom={16}
                   scrollWheelZoom={true}
                   style={{ height: "100%", width: "100%" }}
                 >
@@ -198,11 +223,12 @@ export default function StepThree({
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                   />
-                  {location && (
-                    <Marker position={[location.lat, location.lng]}>
-                      <Popup>Sua localização</Popup>
-                    </Marker>
-                  )}
+                
+                  <MapUpdater center={[location.lat, location.lng]} />
+                  
+                  <Marker position={[location.lat, location.lng]}>
+                    <Popup>Localização encontrada</Popup>
+                  </Marker>
                 </MapContainer>
               </div>
             </div>
