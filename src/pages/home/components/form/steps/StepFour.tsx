@@ -177,9 +177,9 @@ export default function StepFour({
 
   const getBadgeCobertura = (nivel: number) => {
     switch (nivel) {
-      case 1: return { text: "Pertence a sua região", color: "bg-blue-100 text-blue-800" };
-      case 2: return { text: "Pertence a Micro-região", color: "bg-blue-100 text-blue-800" };
-      case 3: return { text: "CER de Referência", color: "bg-blue-100 text-blue-800" };
+      case 1: return { text: "Pertence a sua região", color: "bg-[var(--cor-bg-1)]/10 text-[var(--cor-bg-1)] border border-[var(--cor-bg-1)]/30" };
+      case 2: return { text: "Pertence a Micro-região", color: "bg-[var(--cor-bg-1)]/10 text-[var(--cor-bg-1)] border border-[var(--cor-bg-1)]/30" };
+      case 3: return { text: "CER de Referência", color: "bg-[var(--cor-bg-1)]/10 text-[var(--cor-bg-1)] border border-[var(--cor-bg-1)]/30" };
       default: return { text: "", color: "" };
     }
   };
@@ -211,20 +211,18 @@ export default function StepFour({
                 return (
                   <Card key={result.cer.id} className="border-2 border-[var(--cor-bg-1)]/30">
                     <CardContent className="p-5">
-                      <div className="flex justify-between items-start mb-2">
-                        <div className="flex gap-3 items-center">
-                          <span className="bg-[var(--cor-bg-1)] text-white w-8 h-8 flex items-center justify-center rounded-full font-bold">
-                            {index + 1}
-                          </span>
-                          <h4 className="font-bold text-2xl text-[var(--cor-bg-1)]">{result.cer.nome}</h4>
-                        </div>
-                        <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase ${badge.color}`}>
+                      <div className="flex gap-3 items-center mb-2">
+                        <span className="bg-[var(--cor-bg-1)] text-white w-8 h-8 flex items-center justify-center rounded-full font-bold flex-shrink-0">
+                          {index + 1}
+                        </span>
+                        <h4 className="font-bold text-2xl text-[var(--cor-bg-1)]">{result.cer.nome}</h4>
+                      </div>
+                      <div className="pl-11 flex items-center gap-3 text-lg text-muted-foreground mb-4">
+                        <p>{result.cer.endereco.rua}, {result.cer.endereco.numero} - {result.cer.cidade}</p>
+                        <span className={`px-3 py-1 rounded-full text-sm font-semibold whitespace-nowrap ${badge.color}`}>
                           {badge.text}
                         </span>
                       </div>
-                      <p className="pl-11 text-lg text-muted-foreground mb-4">
-                        {result.cer.endereco.rua}, {result.cer.endereco.numero} - {result.cer.cidade}
-                      </p>
                       <div className="pl-11 flex justify-between items-center">
                         <div className="flex flex-wrap gap-2">
                           {result.cer.especialidades.map((esp, i) => (
@@ -235,9 +233,9 @@ export default function StepFour({
                         </div>
                         <Button
                           onClick={() => setShowFlow([true, result.cer.id])}
-                          className="bg-[var(--cor-bg-1)] hover:bg-[var(--cor-bg-1)]/90 text-white"
+                          className="bg-[var(--cor-bg-1)] hover:bg-[var(--cor-bg-1)]/90 text-white flex items-center justify-center gap-2"
                         >
-                          Ver Fluxo <ArrowRight className="ml-2 h-4 w-4" />
+                          Ver Fluxo <ArrowRight className="h-4 w-4" />
                         </Button>
                       </div>
                     </CardContent>
