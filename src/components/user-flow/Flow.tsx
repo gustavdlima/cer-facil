@@ -10,6 +10,8 @@ import {
   Phone,
   Mail,
   Clock,
+  Globe,
+  Instagram,
 } from "lucide-react";
 
 interface FlowProps {
@@ -124,6 +126,40 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
                   >
                     {cerInfo.email}
                   </p>
+                </div>
+              )}
+
+              {cerInfo?.site && (
+                <div>
+                  <h5 className="text-xl font-bold text-[var(--cor-bg-1)] uppercase tracking-widest mb-1 flex items-center gap-2">
+                    <Globe className="w-6 h-6" /> Site
+                  </h5>
+                  <a
+                    href={cerInfo.site}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xl text-[var(--cor-bg-1)] leading-snug pl-5 border-l-2 border-gray-100 ml-1.5 truncate block hover:underline"
+                    title={cerInfo.site}
+                  >
+                    {cerInfo.site.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+                  </a>
+                </div>
+              )}
+
+              {cerInfo?.instagram && (
+                <div>
+                  <h5 className="text-xl font-bold text-[var(--cor-bg-1)] uppercase tracking-widest mb-1 flex items-center gap-2">
+                    <Instagram className="w-6 h-6" /> Instagram
+                  </h5>
+                  <a
+                    href={cerInfo.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xl text-[var(--cor-bg-1)] leading-snug pl-5 border-l-2 border-gray-100 ml-1.5 truncate block hover:underline"
+                    title={cerInfo.instagram}
+                  >
+                    @{cerInfo.instagram.replace(/^https?:\/\/www\.instagram\.com\//, "").replace(/\/$/, "")}
+                  </a>
                 </div>
               )}
             </div>
