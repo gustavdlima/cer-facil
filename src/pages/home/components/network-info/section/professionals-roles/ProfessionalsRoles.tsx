@@ -74,7 +74,7 @@ export default function ProfessionalsRoles() {
                     aria-checked={isActive}
                     key={option.id}
                     onClick={() => toggleFilter(option.id)}
-                    className={`focus-within:border-10 focus-within:border-[var(--cor-destaque)] flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-xl transition-all duration-200 border-2 ${
+                    className={`focus-within:border-10 focus-within:border-[var(--cor-destaque)] cursor-pointer flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-xl transition-all duration-200 border-2 ${
                       isActive
                         ? "bg-[var(--cor-bg-1)] border-[var(--cor-bg-1)] text-white shadow-md"
                         : "bg-white border-[var(--cor-bg-1)]/30 text-[var(--cor-bg-1)] hover:border-[var(--cor-bg-1)]"
@@ -140,7 +140,7 @@ export default function ProfessionalsRoles() {
                   </AccordionContent>
 
                   <div className="flex justify-center mt-12">
-                    <AccordionTrigger className="focus-within:border-10 focus-within:border-[var(--cor-destaque)] flex gap-3 items-center text-white px-8 py-4 font-bold transition-all border-2 border-white/40 rounded-full hover:bg-white hover:text-[var(--cor-bg-1)] data-[state=open]:hidden shadow-lg">
+                    <AccordionTrigger className="focus-within:border-10 focus-within:border-[var(--cor-destaque)] cursor-pointer text-xl flex gap-3 items-center text-white px-8 py-4 font-bold transition-all border-white/40 rounded-full hover:bg-white hover:text-[var(--cor-bg-1)] data-[state=open]:hidden shadow-lg [&>svg]:w-6 [&>svg]:h-6">
                       Ver mais
                     </AccordionTrigger>
                   </div>
@@ -170,7 +170,7 @@ function ProfessionalCard({
 }) {
   return (
     <div
-      className={`border rounded-xl transition-all duration-300 h-fit bg-white ${
+      className={`cursor-pointer border rounded-xl transition-all duration-300 h-fit bg-white ${
         isOpen
           ? "border-[var(--cor-bg-1)] shadow-xl ring-1 ring-emerald-50 scale-[1.01]"
           : "border-slate-100 shadow-sm hover:border-emerald-200 hover:shadow-md"

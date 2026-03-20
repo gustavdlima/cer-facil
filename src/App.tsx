@@ -13,7 +13,7 @@ export function App() {
 
   return (
     <>
-      <VLibras forceOnload={true} />
+      <VLibras aria-hidden="true" forceOnload={true} />
       <Home
         showForm={showForm}
         setShowForm={setShowForm}
