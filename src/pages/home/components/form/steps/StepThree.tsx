@@ -1,9 +1,9 @@
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { MapPin, Search, Loader2 } from "lucide-react";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import "@/lib/leaflet-config";
 
 import {
@@ -14,11 +14,19 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
+function MapUpdater({ center }: { center: [number, number] }) {
+  const map = useMap();
+  useEffect(() => {
+    map.flyTo(center, 18);
+  }, [center, map]);
+  return null;
+}
+
 interface StepThreeProps {
   selectedDeficiencies?: string[];
   ageGroup?: string;
   onBack: () => void;
-  onNext: (location: string) => void;
+  onNext: (location: string, coordinates: { lat: number; lng: number }) => void;
 }
 
 interface LocationState {
@@ -35,6 +43,7 @@ export default function StepThree({
   const [cep, setCep] = useState("");
   const [showMap, setShowMap] = useState(false);
   const [location, setLocation] = useState<LocationState | null>(null);
+  const [cityName, setCityName] = useState("");
   const [loading, setLoading] = useState(false);
   const [locationPermission, setLocationPermission] = useState(false);
 
@@ -54,18 +63,24 @@ export default function StepThree({
           setLocation({ lat, lng });
           setShowMap(true);
 
-          // Buscar CEP a partir das coordenadas
           try {
             const response = await fetch(
               `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&addressdetails=1`
             );
             const data = await response.json();
 
+            const city =
+              data.address.city ||
+              data.address.town ||
+              data.address.village ||
+              data.address.municipality;
+            if (city) setCityName(city);
+
             if (data.address && data.address.postcode) {
               setCep(data.address.postcode.replace(/\D/g, ""));
             }
           } catch (error) {
-            console.error("Erro ao buscar CEP:", error);
+            console.error("Erro ao buscar detalhes da localização:", error);
           }
           setLoading(false);
         },
@@ -81,20 +96,33 @@ export default function StepThree({
   };
 
   const handleCepSearch = async () => {
-    if (cep.length < 8) {
+    const cleanCep = cep.replace(/\D/g, "");
+    if (cleanCep.length < 8) {
       alert("Digite um CEP válido");
       return;
     }
 
     setLoading(true);
     try {
-      const response = await fetch(
-        `https://nominatim.openstreetmap.org/search?postalcode=${cep.replace(
-          /\D/g,
-          ""
-        )}&country=Brazil&format=json`
+      const viaCepResponse = await fetch(
+        `https://viacep.com.br/ws/${cleanCep}/json/`
       );
-      const data = await response.json();
+      const viaCepData = await viaCepResponse.json();
+
+      if (viaCepData.erro) {
+        alert("CEP não encontrado.");
+        setLoading(false);
+        return;
+      }
+
+      const { localidade, uf } = viaCepData;
+      setCityName(localidade);
+
+      const cityQuery = `city=${encodeURIComponent(localidade)}&state=${encodeURIComponent(uf)}&country=Brazil&format=json`;
+      const nominatimResponse = await fetch(
+        `https://nominatim.openstreetmap.org/search?${cityQuery}`
+      );
+      const data = await nominatimResponse.json();
 
       if (data && data.length > 0) {
         const lat = parseFloat(data[0].lat);
@@ -102,17 +130,19 @@ export default function StepThree({
         setLocation({ lat, lng });
         setShowMap(true);
       } else {
-        alert("Não foi possível encontrar o CEP");
+        alert(
+          "Não foi possível encontrar as coordenadas para este CEP no mapa."
+        );
       }
     } catch (error) {
       console.error("Erro ao buscar CEP:", error);
-      alert("Erro ao buscar CEP");
+      alert("Erro de conexão ao buscar o mapa.");
     }
     setLoading(false);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && cep.length >= 8) {
+    if (e.key === "Enter" && cep.replace(/\D/g, "").length >= 8) {
       handleCepSearch();
     }
   };
@@ -121,10 +151,8 @@ export default function StepThree({
     <div className="w-full">
       <Card className="border-2 border-[var(--cor-bg-1)] shadow-2xl max-w-4xl mx-auto">
         <CardHeader>
-          <CardTitle asChild className="text-3xl text-[var(--cor-bg-1)] font-bold">
-            <h2>
-              Localização
-            </h2>
+          <CardTitle className="text-3xl text-[var(--cor-bg-1)] font-bold">
+            Localização
           </CardTitle>
           <CardDescription className="text-2xl">
             Precisamos da sua localização para encontrar o CER mais apropriado
@@ -159,7 +187,9 @@ export default function StepThree({
             <div className="text-muted-foreground text-2xl">Ou</div>
 
             <div className="w-full max-w-sm space-y-2">
-              <Label htmlFor="cep" className="text-2xl font-semibold">Digite seu CEP:</Label>
+              <Label htmlFor="cep" className="text-2xl font-semibold">
+                Digite seu CEP:
+              </Label>
               <div className="flex gap-2">
                 <Input
                   id="cep"
@@ -167,14 +197,17 @@ export default function StepThree({
                   placeholder="00000-000"
                   maxLength={9}
                   value={formatCep(cep)}
-                  onChange={(e) => setCep(e.target.value.replace(/\D/g, ""))}
+                  onChange={(e) => {
+                    setCep(e.target.value.replace(/\D/g, ""));
+                    setCityName("");
+                  }}
                   onKeyPress={handleKeyPress}
                   className="text-2xl h-16 placeholder:text-xl"
                 />
                 <Button
                   onClick={handleCepSearch}
                   variant="outline"
-                  disabled={cep.length < 8 || loading}
+                  disabled={cep.replace(/\D/g, "").length < 8 || loading}
                   className="h-16 px-4"
                 >
                   {loading ? (
@@ -187,18 +220,16 @@ export default function StepThree({
             </div>
           </div>
 
-          {showMap && (
-            <div aria-hidden="true" className="w-full space-y-2">
+          {showMap && location && (
+            <div className="w-full space-y-2">
               <div className="text-xl text-green-600 text-center font-semibold">
-                ✓ Localização definida
+                ✓ Localização definida: {cityName}
               </div>
 
               <div aria-hidden="true" className="w-full h-[250px] rounded-lg overflow-hidden border">
                 <MapContainer
-                  center={
-                    location ? [location.lat, location.lng] : [51.505, -0.09]
-                  }
-                  zoom={15}
+                  center={[location.lat, location.lng] as [number, number]}
+                  zoom={16}
                   scrollWheelZoom={true}
                   style={{ height: "100%", width: "100%" }}
                 >
@@ -206,11 +237,14 @@ export default function StepThree({
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                   />
-                  {location && (
-                    <Marker position={[location.lat, location.lng]}>
-                      <Popup>Sua localização</Popup>
-                    </Marker>
-                  )}
+                  <MapUpdater
+                    center={[location.lat, location.lng] as [number, number]}
+                  />
+                  <Marker
+                    position={[location.lat, location.lng] as [number, number]}
+                  >
+                    <Popup>Localização encontrada</Popup>
+                  </Marker>
                 </MapContainer>
               </div>
             </div>
@@ -228,8 +262,12 @@ export default function StepThree({
           </Button>
           <Button
             onClick={() => {
-              if (location && !isNaN(location.lat) && !isNaN(location.lng)) {
-                onNext(`${location.lat},${location.lng}`);
+              if (location) {
+                onNext(cityName || "Localização definida", location);
+              } else {
+                alert(
+                  "Por favor, valide sua localização antes de prosseguir."
+                );
               }
             }}
             disabled={!location}

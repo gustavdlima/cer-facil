@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@types/bun": "latest",
+    "@types/leaflet": "^1.9.21",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "tailwindcss": "^4.1.11",
