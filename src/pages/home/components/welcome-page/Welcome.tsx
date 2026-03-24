@@ -1,23 +1,21 @@
 import CerForm from "../form/CerForm";
 import { ChevronDown, MapPin, Network, BookOpen } from "lucide-react";
 import logoSeuCer from "../../../../assets/welcome-images/seu_cer_logo.png";
+
 interface WelcomeProps {
   showForm: boolean;
   setShowForm: (show: boolean) => void;
 }
 
 export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
-  const rcpdTitleRef = useRef<HTMLHeadingElement>(null);
-  const eduTitleRef = useRef<HTMLHeadingElement>(null);
 
   const handleScrollToSection = () => {
     const section = document.getElementById("network-info");
-    const targetTitle = document.getElementById("rcpd"); // O ID do h2 em WhatIsRCPD
+    const targetTitle = document.getElementById("rcpd"); 
 
     if (section && targetTitle) {
       section.scrollIntoView({ behavior: "smooth" });
 
-      // O leitor de tela precisa que o scroll termine ou estabilize
       setTimeout(() => {
         targetTitle.focus();
       }, 600);
@@ -26,7 +24,7 @@ export default function Welcome({ showForm, setShowForm }: WelcomeProps) {
 
   const handleScrollToEducationalMaterial = () => {
   const section = document.getElementById("educational-material");
-  const targetTitle = document.getElementById("edu-mat"); // O ID do h2 em EducationalMaterial
+  const targetTitle = document.getElementById("edu-mat"); 
 
   if (section && targetTitle) {
     section.scrollIntoView({ behavior: "smooth" });
