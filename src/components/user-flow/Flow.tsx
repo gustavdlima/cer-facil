@@ -74,7 +74,7 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
           <Button
             variant="outline"
             size="sm"
-            className="hidden md:flex text-xl text-[var(--cor-bg-1)] border-[var(--cor-bg-1)] hover:bg-[var(--cor-bg-1)] hover:text-white transition-all"
+            className="hidden md:flex text-xl text-[var(--cor-bg-1)] border-[var(--cor-bg-1)] hover:bg-[var(--cor-bg-1)] hover:text-white transition-all focus-visible:ring-[10px] focus-visible:ring-[var(--cor-destaque)] focus-visible:ring-offset-2 outline-none"
             onClick={() => setShowFlow([false, cerId])}
           >
             Voltar
