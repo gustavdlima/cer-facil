@@ -96,6 +96,9 @@ export default function StepFour({
               return (
                 (espLower && defLower && espLower.includes(defLower)) ||
                 (defLower && espLower && defLower.includes(espLower)) ||
+                
+                { /* ESSA É A PARTE RESPONSÁVEL POR LIDAR COM 
+                  A LÓGICA DA ESCOLHA DA OPÇÃO DE AUTISMO
                 (
                   defLower &&
                   (
@@ -107,6 +110,8 @@ export default function StepFour({
                   espLower &&
                   espLower.includes("intelectual")
                 )
+                */ }
+
               );
             });
           });

@@ -141,7 +141,7 @@ export default function Rodape() {
                 Realização & Colaboradores
               </h3>
 
-              <div className="flex flex-wrap items-center justify-start md:justify-end gap-4">
+              <div className="flex flex-wrap items-center justify-center gap-4">
                 {realizationLogosData.map((logo) => (
                   <img
                     key={logo.alt}

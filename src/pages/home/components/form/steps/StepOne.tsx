@@ -170,6 +170,7 @@ export default function StepOne({ setShowForm, onNext }: StepOneProps) {
             </Card>
           </div>
 
+          { /* PARA DE RENDERIZAR A OPÇÃO DE TEA NO FORMULÁRIO
           <div className="flex justify-center">
             <Card
               role="radio"
@@ -202,6 +203,7 @@ export default function StepOne({ setShowForm, onNext }: StepOneProps) {
               </CardHeader>
             </Card>
           </div>
+          */ }
         </CardContent>
 
         <CardContent className="flex justify-between p-4">
