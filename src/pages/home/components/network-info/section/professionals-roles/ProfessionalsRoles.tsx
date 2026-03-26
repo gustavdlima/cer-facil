@@ -203,11 +203,10 @@ export default function ProfessionalsRoles() {
                     aria-checked={isActive}
                     key={option.id}
                     onClick={() => toggleFilter(option.id)}
-                    className={`focus-within:border-10 focus-within:border-[var(--cor-destaque)] cursor-pointer flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-xl transition-all duration-200 border-2 ${
-                      isActive
+                    className={`focus-within:border-10 focus-within:border-[var(--cor-destaque)] cursor-pointer flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-xl transition-all duration-200 border-2 ${isActive
                         ? "bg-[var(--cor-bg-1)] border-[var(--cor-bg-1)] text-white shadow-md"
                         : "bg-white border-[var(--cor-bg-1)]/30 text-[var(--cor-bg-1)] hover:border-[var(--cor-bg-1)]"
-                    }`}
+                      }`}
                   >
                     <Icon className="w-5 h-5" aria-hidden="true" />
                     <span>{option.label}</span>
@@ -297,11 +296,10 @@ function ProfessionalCard({
 }) {
   return (
     <div
-      className={`border rounded-xl transition-all duration-300 h-fit bg-white ${
-        isOpen
+      className={`border rounded-xl transition-all duration-300 h-fit bg-white ${isOpen
           ? "border-[var(--cor-bg-1)] shadow-xl ring-1 ring-emerald-50 scale-[1.01]"
           : "border-slate-100 shadow-sm hover:border-emerald-200 hover:shadow-md"
-      }`}
+        }`}
     >
       <button
         onClick={onToggle}
@@ -320,18 +318,16 @@ function ProfessionalCard({
           {prof.professional}
         </span>
         <ChevronDown
-          className={`transition-transform duration-300 flex-shrink-0 ml-2 ${
-            isOpen ? "rotate-180 text-[var(--cor-bg-1)]" : "text-slate-400"
-          }`}
+          className={`transition-transform duration-300 flex-shrink-0 ml-2 ${isOpen ? "rotate-180 text-[var(--cor-bg-1)]" : "text-slate-400"
+            }`}
           size={18}
           aria-hidden="true"
         />
       </button>
 
       <div
-        className={`grid transition-all duration-300 ${
-          isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-        }`}
+        className={`grid transition-all duration-300 ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+          }`}
       >
         <div className="overflow-hidden">
           <p className="px-6 pb-6 pt-2 text-black text-xl leading-relaxed border-t border-slate-50">
