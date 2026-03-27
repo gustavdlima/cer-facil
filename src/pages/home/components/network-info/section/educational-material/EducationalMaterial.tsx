@@ -263,12 +263,12 @@ export default function MaterialEducational() {
         <div
           role="tablist"
           aria-label="tipo de material"
-          className="flex gap-4 mb-4"
+          className="flex flex-wrap gap-3 mb-4"
         >
           <button
             aria-label="clique para filtrar por materiais voltados a usuários da rede de cuidado à pessoas com deficiência"
             onClick={() => handleTabChange("user")}
-            className={`focus-within:border-10 focus-within:border-[var(--cor-destaque)] cursor-pointer text-xl flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${activeTab === "user"
+            className={`focus-within:border-10 focus-within:border-[var(--cor-destaque)] cursor-pointer text-xl flex flex-1 sm:flex-none items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${activeTab === "user"
               ? "bg-[var(--cor-bg-1)] text-white shadow-lg"
               : "bg-slate-100 text-black hover:bg-slate-200"
             }`}
@@ -279,7 +279,7 @@ export default function MaterialEducational() {
           <button
             aria-label="clique para filtrar por materiais voltados a profissionais da rede de cuidado à pessoas com deficiência"
             onClick={() => handleTabChange("professional")}
-            className={`focus-within:border-10 focus-within:border-[var(--cor-destaque)] cursor-pointer text-xl flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+            className={`focus-within:border-10 focus-within:border-[var(--cor-destaque)] cursor-pointer text-xl flex flex-1 sm:flex-none items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
               activeTab === "professional"
                 ? "bg-[var(--cor-bg-1)] text-white shadow-lg"
                 : "bg-slate-100 text-black hover:bg-slate-200"
@@ -291,7 +291,7 @@ export default function MaterialEducational() {
           <button
             aria-label="clique para filtrar por materiais voltados a gestores da rede de cuidado à pessoas com deficiência"
             onClick={() => handleTabChange("manager")}
-            className={`focus-within:border-10 focus-within:border-[var(--cor-destaque)] cursor-pointer text-xl flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+            className={`focus-within:border-10 focus-within:border-[var(--cor-destaque)] cursor-pointer text-xl flex flex-1 sm:flex-none items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
               activeTab === "manager"
                 ? "bg-[var(--cor-bg-1)] text-white shadow-lg"
                 : "bg-slate-100 text-black hover:bg-slate-200"
