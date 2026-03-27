@@ -63,22 +63,24 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
       className="px-6 py-8 min-h-[80vh] flex items-start justify-center bg-gradient-to-b from-white to-blue-50/30 relative"
     >
       <div className="mx-auto max-w-3xl w-full">
-        <div className="text-left mb-6 flex justify-between items-end">
-          <div>
-            <h2 id="user-flow" className="font-bold text-3xl mb-2 text-black leading-tight">
-              Como conseguir seu atendimento
-            </h2>
-            <div className="w-16 h-1 bg-[var(--cor-bg-1)] rounded-full"></div>
+        <div className="text-left mb-6">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4">
+            <div>
+              <h2 id="user-flow" className="font-bold text-3xl mb-2 text-black leading-tight">
+                Como conseguir seu atendimento
+              </h2>
+              <div className="w-16 h-1 bg-[var(--cor-bg-1)] rounded-full"></div>
+            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              className="px-8 py-5 text-lg border-2 border-[var(--cor-bg-1)] hover:bg-[var(--cor-bg-1)] hover:text-white
+               focus-visible:ring-[10px] focus-visible:ring-[var(--cor-destaque)] focus-visible:ring-offset-2 outline-none w-full sm:w-auto"
+              onClick={() => setShowFlow([false, cerId])}
+            >
+              Voltar para a busca
+            </Button>
           </div>
-          <Button
-            variant="outline"
-            size="sm"
-            className="px-8 py-5 text-lg border-2 border-[var(--cor-bg-1)] hover:bg-[var(--cor-bg-1)] hover:text-white 
-             focus-visible:ring-[10px] focus-visible:ring-[var(--cor-destaque)] focus-visible:ring-offset-2 outline-none"
-            onClick={() => setShowFlow([false, cerId])}
-          >
-            Voltar para a busca
-          </Button>
         </div>
 
         <div className="flex flex-col gap-5">
@@ -217,15 +219,16 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
           </div>
         </div>
 
-        <div className="mt-6 flex justify-center md:hidden">
+        <div className="mt-6 flex justify-center">
           <Button
             size="sm"
-            className="w-full text-white bg-[var(--cor-bg-1)] hover:bg-orange-600 transition-all text-xl py-5 rounded-xl"
+            className="w-full text-white bg-[var(--cor-bg-1)] hover:bg-[color-mix(in_srgb,var(--cor-bg-1),black_20%)] transition-all text-xl py-5 rounded-xl"
             onClick={() => setShowFlow([false, cerId])}
           >
             Voltar para a busca
           </Button>
         </div>
+
       </div>
     </section>
   );

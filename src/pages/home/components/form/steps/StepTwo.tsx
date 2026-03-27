@@ -188,7 +188,7 @@ export default function StepTwo({ selectedDeficiencies = [], onBack, onNext }: S
           </Card>
         </CardContent>
 
-        <CardContent className="flex justify-between p-4">
+        <CardContent className="flex flex-col sm:flex-row justify-between gap-3 p-4">
           <Button
             variant="outline"
             onClick={onBack}
