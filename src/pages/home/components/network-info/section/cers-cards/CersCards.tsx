@@ -140,14 +140,15 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
 
         <header className="text-left mb-8">
           <h2 id="cards" className="font-bold text-4xl mb-4 text-white">
-            Rede Estadual de Reabilitação
+            Rede Estadual de Reabilitação da Paraíba
           </h2>
+          <img src="C:\Users\Davi\Desktop\cer-facil\src\assets\images\paraiba-flag\paraiba-flag.svg" alt="" />
           <div className="w-24 h-1.5 bg-white rounded-full"></div>
         </header>
 
         <div className="bg-white p-6 rounded-2xl shadow-sm mb-10">
           <div
-            aria-label="filtro por especialidade"
+            aria-label="filtro por tipo de deficiência"
             className="flex items-center gap-2 mb-4 text-black font-semibold uppercase text-sm tracking-wider"
           >
             <Filter size={24} />

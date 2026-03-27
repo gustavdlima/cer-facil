@@ -50,13 +50,9 @@ export default function TypesOfDeficiencies() {
       <div className="mx-auto max-w-6xl">
         <header className="text-left mb-16">
           <h2 id="deficiencies" className="text-4xl font-bold mb-4 text-black">
-            Tipos de Deficiência
+            Os CERs atendem pessoas com:
           </h2>
-          <div className="w-24 h-1.5 bg-[var(--cor-bg-1)] rounded-full mb-6 "></div>
-          <p className="mt-4 max-w-2xl text-2xl text-black leading-relaxed">
-            Entenda as particularidades de cada modalidade atendida pela rede de
-            cuidados.
-          </p>
+          <div className="w-24 h-1.5 bg-[var(--cor-bg-1)] rounded-full mb-6"></div>
         </header>
 
         <div className="flex flex-wrap justify-center gap-6">
