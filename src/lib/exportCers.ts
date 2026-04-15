@@ -1,7 +1,6 @@
 import cersJson from "@/data/cers.json";
 
 interface Cer {
-  id: number;
   nome: string;
   especialidades: string[];
   cidade: string;
