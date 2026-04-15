@@ -1,8 +1,52 @@
 import { useMemo, useState } from "react";
-import { MapPin, Filter, X, LayoutGrid, List, ArrowRight } from "lucide-react";
+import { MapPin, Filter, X, LayoutGrid, List, ArrowRight, Download } from "lucide-react";
 
 import Flow from "@/components/user-flow/Flow.tsx";
 import cersJson from "@/data/cers.json";
+
+const escapeCSV = (value: string | null | undefined): string => {
+  if (value == null) return "";
+  const str = String(value);
+  return str.includes(",") || str.includes('"') || str.includes("\n")
+    ? `"${str.replace(/"/g, '""')}"`
+    : str;
+};
+
+function exportCersToCSV(): void {
+  const headers = [
+    "ID", "Nome", "Cidade", "Especialidades", "Endereço", "Bairro", "CEP",
+    "Horário", "Telefone", "E-mail", "Site", "Instagram",
+    "Latitude", "Longitude", "Google Maps", "CNES",
+  ];
+
+  const rows = (cersJson as any[]).map((cer) => [
+    escapeCSV(String(cer.id)),
+    escapeCSV(cer.nome),
+    escapeCSV(cer.cidade),
+    escapeCSV(cer.especialidades.join("; ")),
+    escapeCSV(`${cer.endereco.rua}, ${cer.endereco.numero}`),
+    escapeCSV(cer.endereco.bairro),
+    escapeCSV(cer.endereco.cep),
+    escapeCSV(cer.horario.texto),
+    escapeCSV(cer.telefone),
+    escapeCSV(cer.email),
+    escapeCSV(cer.site),
+    escapeCSV(cer.instagram),
+    escapeCSV(String(cer.localizacao.latitude)),
+    escapeCSV(String(cer.localizacao.longitude)),
+    escapeCSV(cer.localizacao.googleMapsUrl ?? ""),
+    escapeCSV(String(cer.localizacao.cnes)),
+  ]);
+
+  const csv = "\uFEFF" + [headers.join(","), ...rows.map((r) => r.join(","))].join("\n");
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "rede-estadual-reabilitacao-pb.csv";
+  link.click();
+  URL.revokeObjectURL(url);
+}
 
 import defAuditiva from "@/assets/images/disabillity-images/deficiencia_auditiva.png";
 import defFisica from "@/assets/images/disabillity-images/deficiencia_fisica.png";
@@ -108,7 +152,17 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
               </button>
             </div>
           </div>
-          <div className="w-24 h-1.5 bg-white rounded-full"></div>
+          <div className="flex items-center justify-between">
+            <div className="w-24 h-1.5 bg-white rounded-full"></div>
+            <button
+              onClick={exportCersToCSV}
+              aria-label="Exportar planilha da rede estadual de reabilitação"
+              className="flex items-center gap-2 bg-white text-[var(--cor-bg-1)] px-5 py-2.5 rounded-xl font-bold text-base hover:bg-white/90 transition-opacity focus-visible:ring-4 focus-visible:ring-[var(--cor-destaque)] focus-visible:outline-none"
+            >
+              <Download className="w-5 h-5" />
+              Exportar planilha
+            </button>
+          </div>
         </header>
 
         <div className="bg-white p-6 rounded-2xl shadow-sm mb-10">
