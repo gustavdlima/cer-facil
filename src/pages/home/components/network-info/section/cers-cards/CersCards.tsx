@@ -52,6 +52,7 @@ import defAuditiva from "@/assets/images/disabillity-images/deficiencia_auditiva
 import defFisica from "@/assets/images/disabillity-images/deficiencia_fisica.png";
 import defIntelectual from "@/assets/images/disabillity-images/deficiencia_intelectual.png";
 import defVisual from "@/assets/images/disabillity-images/deficiencia_visual.png";
+import simAutismo from "@/assets/images/disabillity-images/simbolo_autismo.png";
 
 interface DadosCers {
   id: number;
@@ -65,6 +66,7 @@ const filterOptionsData = [
   { id: "Auditiva", label: "Auditiva", icon: defAuditiva },
   { id: "Visual", label: "Visual", icon: defVisual },
   { id: "Intelectual", label: "Intelectual", icon: defIntelectual },
+  { id: "TEA", label: "TEA", icon: simAutismo },
 ];
 
 const cersData: DadosCers[] = cersJson as DadosCers[];
@@ -80,6 +82,7 @@ const getFilterFromSpecialty = (specialty: string): string | null => {
   if (n.includes("audit")) return "Auditiva";
   if (n.includes("visual")) return "Visual";
   if (n.includes("intelect")) return "Intelectual";
+  if (n.includes("tea")) return "TEA";
   if (/f.*sica/.test(n) || n.includes("fisica")) return "Física";
   return null;
 };
@@ -113,6 +116,8 @@ export default function CersCards({ showFlow, setShowFlow }: CersCardsProps) {
       const cerFilters = new Set(
         cer.especialidades.map(getFilterFromSpecialty).filter(Boolean),
       );
+      // TEA equivale a Intelectual para fins de filtro
+      if (cerFilters.has("Intelectual")) cerFilters.add("TEA");
       return activeFilters.every((f) => cerFilters.has(f));
     });
   }, [activeFilters]);
