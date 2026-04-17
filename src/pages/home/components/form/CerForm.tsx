@@ -61,6 +61,15 @@ export default function CerForm({ setShowForm }: CerFormProps) {
     <>
     <BackToHomeButtom onGoHome={() => setShowForm(false)} />
     <div id="cer-form" className="w-full py-8">
+      <div className="max-w-4xl mx-auto px-4 mb-4 flex justify-end">
+        <button
+          onClick={() => setShowForm(false)}
+          className="text-lg font-semibold text-[var(--cor-bg-1)] hover:underline focus:outline-none"
+        >
+          ← Voltar para a página inicial
+        </button>
+      </div>
+
       <div aria-hidden="true" className="max-w-4xl mx-auto px-4 mb-8">
         <StepIndicator
           aria-hidden="true"

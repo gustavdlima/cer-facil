@@ -285,7 +285,7 @@ export default function MaterialEducational() {
         <div
           role="tablist"
           aria-label="tipo de material"
-          className="flex gap-4 mb-4"
+          className="flex flex-wrap gap-3 mb-4"
         >
           <button
             aria-label="clique para filtrar por materiais voltados a usuários da rede de cuidado à pessoas com deficiência"
