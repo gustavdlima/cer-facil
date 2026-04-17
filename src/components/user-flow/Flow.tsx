@@ -137,18 +137,9 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
                focus-visible:ring-[10px] focus-visible:ring-[var(--cor-destaque)] focus-visible:ring-offset-2 outline-none"
               onClick={() => setShowFlow([false, cerId])}
             >
-              Voltar para a busca
+              Voltar
             </Button>
           </div>
-          <Button
-            variant="outline"
-            size="sm"
-            className="px-8 py-5 text-2xl border-2 border-[var(--cor-bg-1)] hover:bg-[var(--cor-bg-1)] hover:text-white 
-             focus-visible:ring-[10px] focus-visible:ring-[var(--cor-destaque)] focus-visible:ring-offset-2 outline-none"
-            onClick={() => setShowFlow([false, cerId])}
-          >
-            Voltar
-          </Button>
         </div>
 
         <div className="flex flex-col gap-5">
