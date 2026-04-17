@@ -12,11 +12,70 @@ import {
   Clock,
   Globe,
   Instagram,
+  Download,
 } from "lucide-react";
 
 interface FlowProps {
   setShowFlow: (show: [boolean, number | null]) => void;
   cerId: number;
+}
+
+function exportFlowToPrint(fluxoInfo: any, cerInfo: any): void {
+  const steps = fluxoInfo.steps
+    .map((s: any, i: number) => `<li style="margin-bottom:12px"><strong>Passo ${i + 1}: ${s.title}</strong><br/>${s.description}</li>`)
+    .join("");
+
+  const docs = fluxoInfo.documents
+    .map((d: string) => `<li>${d}</li>`)
+    .join("");
+
+  const contato = [
+    cerInfo?.endereco ? `<p><strong>Endereço:</strong> ${cerInfo.endereco.rua}, ${cerInfo.endereco.numero} - ${cerInfo.endereco.bairro}, ${cerInfo.cidade} - CEP ${cerInfo.endereco.cep}</p>` : "",
+    cerInfo?.telefone ? `<p><strong>Telefone:</strong> ${cerInfo.telefone}</p>` : "",
+    cerInfo?.email ? `<p><strong>E-mail:</strong> ${cerInfo.email}</p>` : "",
+    cerInfo?.horario?.texto ? `<p><strong>Horário:</strong> ${cerInfo.horario.texto}</p>` : "",
+    cerInfo?.site ? `<p><strong>Site:</strong> ${cerInfo.site}</p>` : "",
+  ].join("");
+
+  const html = `
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+      <meta charset="UTF-8" />
+      <title>${fluxoInfo.title}</title>
+      <style>
+        body { font-family: Arial, sans-serif; font-size: 14px; color: #111; padding: 32px; max-width: 800px; margin: 0 auto; }
+        h1 { font-size: 20px; margin-bottom: 4px; }
+        h2 { font-size: 16px; margin: 24px 0 8px; border-bottom: 2px solid #1a5276; padding-bottom: 4px; color: #1a5276; }
+        ul { padding-left: 20px; } li { margin-bottom: 6px; }
+        p { margin: 4px 0; }
+        .header { border-bottom: 3px solid #1a5276; padding-bottom: 12px; margin-bottom: 20px; }
+        .footer { margin-top: 40px; font-size: 11px; color: #888; border-top: 1px solid #ddd; padding-top: 8px; }
+        @media print { body { padding: 16px; } }
+      </style>
+    </head>
+    <body>
+      <div class="header">
+        <h1>${fluxoInfo.title}</h1>
+        <p style="color:#555">Rede Estadual de Reabilitação da Paraíba — CER Fácil</p>
+      </div>
+      <h2>Contato e Localização</h2>
+      ${contato}
+      <h2>Passo a Passo para Conseguir Atendimento</h2>
+      <ol>${steps}</ol>
+      <h2>Documentos Necessários</h2>
+      <ul>${docs}</ul>
+      <div class="footer">Gerado pelo CER Fácil • cerfacil.pb.gov.br</div>
+    </body>
+    </html>
+  `;
+
+  const win = window.open("", "_blank");
+  if (!win) return;
+  win.document.write(html);
+  win.document.close();
+  win.focus();
+  win.print();
 }
 
 export default function Flow({ setShowFlow, cerId }: FlowProps) {
@@ -79,6 +138,17 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
               onClick={() => setShowFlow([false, cerId])}
             >
               Voltar para a busca
+            </Button>
+          </div>
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              className="px-8 py-5 text-2xl border-2 border-[var(--cor-bg-1)] hover:bg-[var(--cor-bg-1)] hover:text-white 
+               focus-visible:ring-[10px] focus-visible:ring-[var(--cor-destaque)] focus-visible:ring-offset-2 outline-none"
+              onClick={() => setShowFlow([false, cerId])}
+            >
+              Voltar
             </Button>
           </div>
         </div>
@@ -188,11 +258,11 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
                   <div className="bg-gray-50/50 p-3 rounded-lg border border-gray-100 transition-all hover:shadow-sm hover:border-blue-100">
                     <div className="flex items-center gap-2 mb-1">
                       <Calendar className="w-6 h-6 text-[var(--cor-bg-1)]" />
-                      <span className="font-bold text-xl text-gray-800 leading-tight">
+                      <span className="font-bold text-2xl text-gray-800 leading-tight">
                         {step.title}
                       </span>
                     </div>
-                    <p className="text-xl text-gray-600 leading-snug">
+                    <p className="text-2xl text-gray-600 leading-snug">
                       {step.description}
                     </p>
                   </div>
@@ -207,7 +277,7 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
               {fluxoInfo?.documents.map((doc: string, i: number) => (
                 <li
                   key={i}
-                  className="flex items-start text-xl text-gray-700 leading-snug"
+                  className="flex items-start text-2xl text-gray-700 leading-snug"
                 >
                   <span className="mr-2 text-[var(--cor-bg-1)] font-black text-2xl leading-none">
                     •
@@ -219,13 +289,22 @@ export default function Flow({ setShowFlow, cerId }: FlowProps) {
           </div>
         </div>
 
-        <div className="mt-6 flex justify-center">
+        <div className="mt-6 flex gap-3">
           <Button
             size="sm"
-            className="w-full text-white bg-[var(--cor-bg-1)] hover:bg-[color-mix(in_srgb,var(--cor-bg-1),black_20%)] transition-all text-xl py-5 rounded-xl"
+            variant="outline"
+            className="flex-1 text-2xl py-5 rounded-md border-2 border-[var(--cor-bg-1)] hover:bg-[var(--cor-bg-1)] hover:text-white focus-visible:ring-[10px] focus-visible:ring-[var(--cor-destaque)] focus-visible:ring-offset-2 outline-none"
             onClick={() => setShowFlow([false, cerId])}
           >
-            Voltar para a busca
+            Voltar
+          </Button>
+          <Button
+            size="sm"
+            onClick={() => exportFlowToPrint(fluxoInfo, cerInfo)}
+            className="flex-1 flex items-center justify-center gap-2 text-2xl py-5 rounded-md bg-[var(--cor-bg-1)] text-white border-2 border-[var(--cor-bg-1)] hover:bg-[var(--cor-bg-1)]/80 hover:border-[var(--cor-bg-1)]/80 focus-visible:ring-[10px] focus-visible:ring-[var(--cor-destaque)] focus-visible:ring-offset-2 outline-none"
+          >
+            <Download className="w-6 h-6" />
+            Baixar informações
           </Button>
         </div>
 

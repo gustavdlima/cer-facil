@@ -4,6 +4,7 @@ import StepTwo from "./steps/StepTwo";
 import StepThree from "./steps/StepThree";
 import StepFour from "./steps/StepFour";
 import StepIndicator from "./step-indicator/StepIndicator";
+import BackToHomeButtom from "@/components/back-to-home-buttom/BackToHomeButtom";
 
 interface CerFormProps {
   setShowForm: (show: boolean) => void;
@@ -57,6 +58,8 @@ export default function CerForm({ setShowForm }: CerFormProps) {
   };
 
   return (
+    <>
+    <BackToHomeButtom onGoHome={() => setShowForm(false)} />
     <div id="cer-form" className="w-full py-8">
       <div className="max-w-4xl mx-auto px-4 mb-4 flex justify-end">
         <button
@@ -108,5 +111,6 @@ export default function CerForm({ setShowForm }: CerFormProps) {
         />
       )}
     </div>
+    </>
   );
 }

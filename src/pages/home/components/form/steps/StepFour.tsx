@@ -224,7 +224,7 @@ export default function StepFour({
                     onClick={() => setShowFlow([true, result.cer.id])}
                     onKeyDown={(e) => handleKeyDown(e, result.cer.id)}
                     key={result.cer.id}
-                    className="focus-within:border-10 focus-within:border-[var(--cor-destaque)] border-2 border-[var(--cor-bg-1)]/30">
+                    className="focus-within:border-10 focus-within:border-[var(--cor-destaque)] border-2 border-[var(--cor-bg-1)]/30 transition-all duration-200 hover:border-[var(--cor-bg-1)] hover:shadow-lg hover:-translate-y-1 cursor-pointer">
                     <CardContent aria-hidden="true" className="p-5">
                       <div className="flex gap-3 items-center mb-2">
                         <span aria-label={`Resultado ${index + 1}`} className="bg-[var(--cor-bg-1)] text-white w-8 h-8 flex items-center justify-center rounded-full font-bold">
@@ -241,11 +241,18 @@ export default function StepFour({
                       <div className="pl-11 flex justify-between items-center">
                         <div className="flex flex-wrap gap-2">
                           {result.cer.especialidades.map((esp, i) => (
-                            <span key={i} className="bg-gray-100 px-2 py-1 rounded text-sm font-medium">
+                            <span key={i} className="bg-gray-100 px-2 py-1 rounded text-xl font-medium">
                               {esp}
                             </span>
                           ))}
                         </div>
+                        <Button
+                          onClick={(e) => { e.stopPropagation(); setShowFlow([true, result.cer.id]); }}
+                          size="lg"
+                          className="ml-4 shrink-0 text-xl border-2 border-[var(--cor-bg-1)] bg-transparent text-[var(--cor-bg-1)] hover:bg-[var(--cor-bg-1)] hover:text-white focus-visible:ring-[10px] focus-visible:ring-[var(--cor-destaque)] focus-visible:ring-offset-2 outline-none"
+                        >
+                          Saiba mais
+                        </Button>
                       </div>
                     </CardContent>
                   </Card>
