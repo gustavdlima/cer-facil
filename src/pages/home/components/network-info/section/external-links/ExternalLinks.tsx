@@ -52,7 +52,7 @@ export default function ExternalLinks() {
             id="external-links"
             className="text-4xl font-bold mb-4 text-white"
           >
-            Links Oficiais
+            Mais informações
           </h2>
           <div className="w-24 h-1 bg-white/40 rounded-full"></div>
           <p className="text-white/80 mt-4 max-w-4xl text-2xl leading-relaxed">

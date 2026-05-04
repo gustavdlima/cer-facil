@@ -70,6 +70,7 @@ export default function NetworkInfo({
       {/* Azul Petróleo */}
       <div className="bg-[var(--cor-bg-1)] text-white pt-16">
         <ExternalLinks />
+        <WaveBottom color="white" />
       </div>
     </div>
   );
