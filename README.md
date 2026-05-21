@@ -1,11 +1,27 @@
 # SeuCER
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
-[![Bun](https://img.shields.io/badge/Runtime-Bun_1.x-black?logo=bun)](https://bun.sh)
-[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://react.dev)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript)](https://www.typescriptlang.org)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss)](https://tailwindcss.com)
 
+<p align="center">
+  <a href="./LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-blue.svg" />
+  </a>
+
+  <a href="https://bun.sh">
+    <img src="https://img.shields.io/badge/Runtime-Bun_1.x-black?logo=bun" />
+  </a>
+
+  <a href="https://react.dev">
+    <img src="https://img.shields.io/badge/React-19-61DAFB?logo=react" />
+  </a>
+
+  <a href="https://www.typescriptlang.org">
+    <img src="https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript" />
+  </a>
+
+  <a href="https://tailwindcss.com">
+    <img src="https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss" />
+  </a>
+</p>
 <p align="center">
   <img src="./src/assets/logos/seu_cer_vetor.svg" alt="Logo SeuCER" height="120" />
 </p>
