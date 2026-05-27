@@ -236,7 +236,7 @@ function AboutModal({ onClose }: { onClose: () => void }) {
             <section key={section.id}>
               <h3 className="text-2xl font-bold text-black mb-2 flex items-center gap-2">
                 <span
-                  className="w-3 h-3 rounded-full bg-[var(--cor-bg-3)]"
+                  className="w-3 h-3 rounded-full bg-[var(--cor-bg-1)]"
                   aria-hidden="true"
                 />
                 {section.subtitle}
@@ -250,7 +250,7 @@ function AboutModal({ onClose }: { onClose: () => void }) {
 
         <footer className="mt-8 pt-4 border-t border-slate-100 flex justify-end shrink-0">
           <Button
-            className="text-xl bg-[var(--cor-bg-3)] text-white hover:bg-[color-mix(in_srgb,var(--cor-bg-3),black_20%)] rounded-full font-bold transition-all px-8 focus:ring-2 focus:ring-offset-2 focus:ring-[var(--cor-bg-3)]"
+            className="text-xl bg-[var(--cor-bg-1)] text-white hover:bg-[color-mix(in_srgb,var(--cor-bg-1),black_20%)] rounded-full font-bold transition-all px-8 focus:ring-2 focus:ring-offset-2 focus:ring-[var(--cor-bg-1)]"
             onClick={onClose}
           >
             Entendi
