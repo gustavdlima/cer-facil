@@ -467,34 +467,36 @@
   },
   {
     "id": 15,
-    "nome": "CER II - Centro de Reabilitação e Cuidado da Pessoa com Deficiência",
+    "nome": "CER IV - Centro Especializado em Reabilitação - Espaço Acolher",
     "info": "Informação do Cer",
     "especialidades": [
+      "Auditiva",
       "Física",
       "Intelectual",
+      "Visual",
       "TEA"
     ],
     "horario": {
       "dias": "Segunda a Sexta",
       "abertura": "08:00",
-      "fechamento": "17:00",
-      "texto": "Segunda a Sexta, das 08:00 às 17:00"
+      "fechamento": "18:00",
+      "texto": "Segunda a Sexta, das 08:00 às 18:00"
     },
     "endereco": {
-      "rua": "Rua Alberto Brito",
-      "numero": "S/N",
-      "bairro": "Jaguaribe",
-      "cep": "58031-220"
+      "rua": "Rua Bancário Waldemar de Mesquita Accioly",
+      "numero": "618",
+      "bairro": "Bancários",
+      "cep": "58051-420"
     },
     "cidade": "João Pessoa",
-    "email": "funad@funad.pb.gov.br",
+    "email": null,
     "telefone": null,
     "site": null,
     "instagram": null,
     "localizacao": {
-      "latitude": -7.114701031390794,
-      "longitude": -34.86303895711899,
-      "googleMapsUrl": "https://maps.app.goo.gl/KBe5M3QArFx7d7n78",
+      "latitude": -7.144800,
+      "longitude": -34.843100,
+      "googleMapsUrl": "https://maps.google.com/?cid=7238811905681519425",
       "cnes": 3871002
     }
   }
